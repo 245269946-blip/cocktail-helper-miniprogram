@@ -13,9 +13,13 @@
 
 ## 完整源码包
 
-完整项目已经上传到云端，可在另一台电脑下载：
+完整项目源码包已经上传到云端，另一台电脑可直接下载：
 
-https://tmpfiles.org/www8wgzON1X9/cocktail-helper-miniprogram.zip
+优先下载：
+https://gofile.io/d/xQBdkY
+
+备用下载：
+https://tmpfiles.org/dl/www8wgzON1X9/cocktail-helper-miniprogram.zip
 
 下载后请解压，然后用微信开发者工具导入解压后的项目目录。
 
