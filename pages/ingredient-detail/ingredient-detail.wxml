@@ -1,0 +1,34 @@
+<view wx:if="{{ingredient}}" class="page">
+  <view class="section-title">{{ingredient.name}}能调什么？</view>
+  <view class="section-subtitle">从经典搭配、便利店版本和不容易翻车提醒开始。</view>
+
+  <view class="section card">
+    <view class="title">{{ingredient.name}}适合搭什么酒</view>
+    <view class="tags intro-tags">
+      <view wx:for="{{ingredient.goodWith}}" wx:key="*this" class="tag">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">经典搭配</view>
+    <view class="list">
+      <view wx:for="{{recipes}}" wx:key="id" class="card recipe-card" data-id="{{item.id}}" bindtap="onDetailTap">
+        <view class="title">{{item.name}}</view>
+        <view class="section-subtitle">{{item.reason}}</view>
+        <view class="tags">
+          <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{lowAlcohol.length}}" class="section card">
+    <view class="title">低酒精 / 无酒精版本</view>
+    <view wx:for="{{lowAlcohol}}" wx:key="*this" class="body bullet-line">• {{item}}</view>
+  </view>
+
+  <view class="section card warning-card">
+    <view class="title">不推荐搭配提醒</view>
+    <view wx:for="{{ingredient.warnings}}" wx:key="*this" class="body bullet-line">• {{item}}</view>
+  </view>
+</view>

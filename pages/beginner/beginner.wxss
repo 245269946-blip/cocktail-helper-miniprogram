@@ -1,0 +1,9 @@
+.option-tags {
+  margin-top: 18rpx;
+}
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}

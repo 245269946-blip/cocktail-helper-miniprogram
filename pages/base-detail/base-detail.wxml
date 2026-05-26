@@ -1,0 +1,27 @@
+<view wx:if="{{base}}" class="page">
+  <view class="section-title">{{base.name}}</view>
+  <view class="section-subtitle">{{base.intro}}</view>
+
+  <view class="section card">
+    <view class="title">适合什么风味</view>
+    <view class="tags intro-tags">
+      <view wx:for="{{base.tags}}" wx:key="*this" class="tag">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="section list">
+    <block wx:for="{{sections}}" wx:key="title">
+      <view class="section-title">{{item.title}}</view>
+      <view wx:if="{{item.items.length}}" class="list">
+        <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="card recipe-card" data-id="{{drink.id}}" bindtap="onDetailTap">
+          <view class="title">{{drink.name}}</view>
+          <view class="section-subtitle">{{drink.reason}}</view>
+          <view class="tags">
+            <view wx:for="{{drink.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="empty">后续补充更多配方</view>
+    </block>
+  </view>
+</view>

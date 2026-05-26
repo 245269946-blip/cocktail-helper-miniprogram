@@ -1,0 +1,6 @@
+.result-card,
+.empty-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}

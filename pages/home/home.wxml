@@ -1,0 +1,35 @@
+<view class="page home-page">
+  <view class="home-head">
+    <view class="section-title">今晚想搞点什么喝？</view>
+    <view class="section-subtitle">先选最方便的开始方式，后面再帮你缩小选择。</view>
+  </view>
+
+  <view class="action-grid">
+    <view wx:for="{{actionEntries}}" wx:key="title" class="action-card {{item.featured ? 'featured' : ''}}" data-path="{{item.path}}" bindtap="onNavigate">
+      <view class="action-title">{{item.title}}</view>
+      <view class="action-desc">{{item.desc}}</view>
+      <view class="action-note">{{item.note}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">已经知道想搜什么？</view>
+    <view class="search-box">
+      <input class="search-input" value="{{keyword}}" bindinput="onInput" confirm-type="search" bindconfirm="onSearch" placeholder="搜金酒 / 可乐 / 甜口 / 便利店 / 莫吉托" />
+      <button class="search-button" bindtap="onSearch">搜索</button>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">不用想太多，直接点</view>
+    <view class="list">
+      <view wx:for="{{directEntries}}" wx:key="title" class="card home-card" data-path="{{item.path}}" bindtap="onNavigate">
+        <view>
+          <view class="title">{{item.title}}</view>
+          <view class="section-subtitle">{{item.desc}}</view>
+        </view>
+        <view class="arrow">›</view>
+      </view>
+    </view>
+  </view>
+</view>

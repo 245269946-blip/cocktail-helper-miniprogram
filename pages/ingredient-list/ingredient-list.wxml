@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="section-title">你有什么材料？</view>
+  <view class="section-subtitle">从可乐、雪碧、橙汁、咖啡、牛奶这些自然入口开始。</view>
+
+  <view class="section list">
+    <view wx:for="{{categories}}" wx:key="title" class="card">
+      <view class="title category-title">{{item.title}}</view>
+      <view class="tags">
+        <view wx:for="{{item.items}}" wx:for-item="name" wx:key="*this" class="tag" data-name="{{name}}" bindtap="onIngredientTap">{{name}}</view>
+      </view>
+    </view>
+  </view>
+</view>

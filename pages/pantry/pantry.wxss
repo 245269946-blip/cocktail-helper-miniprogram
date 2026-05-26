@@ -1,0 +1,35 @@
+.group-title {
+  margin-bottom: 18rpx;
+}
+
+.drink-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.pantry-section-desc {
+  margin-top: -8rpx;
+  margin-bottom: 16rpx;
+}
+
+.missing {
+  color: #8c4c2e;
+}
+
+.pantry-action {
+  align-self: flex-start;
+  min-height: 44rpx;
+  padding: 7rpx 16rpx;
+  border: 1rpx solid #e1d8ca;
+  border-radius: 999rpx;
+  color: #4f463c;
+  background: #fff9ef;
+  font-size: 23rpx;
+}
+
+.empty {
+  margin: -2rpx 0 12rpx;
+  color: #9b9287;
+  font-size: 25rpx;
+}

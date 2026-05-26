@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>调酒助手结构优化原型</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #181614;
+      --muted: #6e685f;
+      --line: #e2ddd4;
+      --paper: #fbfaf7;
+      --surface: #ffffff;
+      --tea: #2f766f;
+      --berry: #b33d56;
+      --citrus: #d98c24;
+      --soft-tea: #e6f1ef;
+      --soft-berry: #f8e8ec;
+      --soft-citrus: #fff0da;
+      --shadow: 0 18px 48px rgba(30, 25, 18, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f4f2ee;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.5;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(280px, 420px) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    .brief {
+      padding: 40px 34px;
+      background: var(--paper);
+      border-right: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--tea);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 14px 0 26px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .brief-section {
+      margin-top: 26px;
+    }
+
+    .brief-title {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .brief-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .brief-list li {
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: #3b362f;
+      font-size: 14px;
+    }
+
+    .tagline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      height: 30px;
+      padding: 0 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: #4a433a;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .stage {
+      padding: 34px;
+      overflow: auto;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 0 auto 22px;
+      max-width: 1180px;
+    }
+
+    .toolbar-title {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 850;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .tab {
+      height: 34px;
+      padding: 0 13px;
+      border: 0;
+      border-radius: 6px;
+      color: #5e574f;
+      background: transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      color: #ffffff;
+      background: var(--ink);
+    }
+
+    .phones {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(270px, 360px));
+      gap: 22px;
+      justify-content: center;
+      align-items: start;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .phone {
+      width: 100%;
+      min-width: 0;
+      border: 10px solid #151515;
+      border-radius: 34px;
+      background: #151515;
+      box-shadow: var(--shadow);
+    }
+
+    .screen {
+      min-height: 720px;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #fbfaf7;
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 18px 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .appbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 18px 14px;
+      border-bottom: 1px solid #ebe5dc;
+    }
+
+    .appbar-title {
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .icon-btn {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .home-hero {
+      padding: 20px;
+      border: 1px solid #d9e9e6;
+      border-radius: var(--radius);
+      background: var(--soft-tea);
+    }
+
+    .home-title {
+      margin: 0;
+      max-width: 260px;
+      font-size: 27px;
+      line-height: 1.16;
+      font-weight: 900;
+    }
+
+    .home-copy {
+      margin: 10px 0 0;
+      max-width: 280px;
+      color: #4f6661;
+      font-size: 14px;
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .search-mark {
+      color: var(--tea);
+      font-weight: 900;
+    }
+
+    .search-text {
+      color: #8a8379;
+      font-size: 14px;
+    }
+
+    .primary-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .action-card {
+      min-height: 100px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .action-card.featured {
+      grid-column: 1 / -1;
+      min-height: 112px;
+      border-color: #eed6a5;
+      background: var(--soft-citrus);
+    }
+
+    .action-kicker {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .action-title {
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .action-desc {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .rail-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+
+    .rail-title strong {
+      font-size: 17px;
+    }
+
+    .rail-title span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .compact-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .compact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .row-main {
+      min-width: 0;
+    }
+
+    .row-title {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .row-meta {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .arrow {
+      color: #a49a8e;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .scene-strip {
+      display: flex;
+      gap: 8px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .scene-pill {
+      flex: 0 0 auto;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #554d45;
+      font-size: 12px;
+    }
+
+    .guide-top {
+      padding: 18px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .guide-title {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.2;
+      font-weight: 900;
+    }
+
+    .guide-sub {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .segmented {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 15px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #f7f5f0;
+    }
+
+    .seg {
+      padding: 8px 4px;
+      border-radius: 6px;
+      text-align: center;
+      color: #6a6258;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .seg.active {
+      color: #fff;
+      background: var(--tea);
+    }
+
+    .recommend-stack {
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+    }
+
+    .recommend-card {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+    }
+
+    .thumb {
+      min-height: 98px;
+      border-radius: 7px;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      background-color: #e7ece6;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb::before,
+    .photo::before {
+      content: "";
+      position: absolute;
+      inset: 14px 22px 18px;
+      border: 8px solid rgba(255, 255, 255, 0.82);
+      border-top: 0;
+      transform: skewX(-7deg);
+    }
+
+    .thumb::after,
+    .photo::after {
+      content: "";
+      position: absolute;
+      left: 28%;
+      right: 28%;
+      top: 16%;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .thumb.teal {
+      background-color: #b9d7d1;
+    }
+
+    .thumb.berry {
+      background-color: #e6b2bd;
+    }
+
+    .thumb.gold {
+      background-color: #eccb88;
+    }
+
+    .rec-title {
+      font-size: 17px;
+      font-weight: 900;
+    }
+
+    .rec-reason {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .badge {
+      padding: 4px 7px;
+      border-radius: 999px;
+      background: #f1eee8;
+      color: #554d45;
+      font-size: 11px;
+      white-space: nowrap;
+    }
+
+    .detail-photo-wrap {
+      padding: 14px;
+      background: #ffffff;
+    }
+
+    .photo {
+      position: relative;
+      min-height: 218px;
+      overflow: hidden;
+      border: 1px solid #d9e9e6;
+      border-radius: 8px;
+      background-color: #b9d7d1;
+    }
+
+    .photo-label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      max-width: 230px;
+      padding: 8px 10px;
+      border-radius: 7px;
+      color: #fff;
+      background: rgba(24, 22, 20, 0.72);
+      font-size: 12px;
+    }
+
+    .detail-info {
+      padding: 0 18px 18px;
+    }
+
+    .detail-name-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .detail-name {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.18;
+      font-weight: 950;
+    }
+
+    .save {
+      width: 38px;
+      height: 38px;
+      border: 1px solid #e4c8d0;
+      border-radius: 8px;
+      background: var(--soft-berry);
+      color: var(--berry);
+      font-weight: 950;
+    }
+
+    .summary {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      padding: 9px 7px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .section-block {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .block-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      border-bottom: 1px solid #eee8df;
+      font-weight: 900;
+    }
+
+    .block-body {
+      padding: 12px;
+    }
+
+    .ingredient-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .ingredient {
+      padding: 8px;
+      border-radius: 7px;
+      background: #f6f3ee;
+      font-size: 12px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 9px;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--ink);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .bottom-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #ebe5dc;
+      background: #ffffff;
+    }
+
+    .nav-item {
+      padding: 10px 4px 12px;
+      text-align: center;
+      color: #756e63;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .nav-item.active {
+      color: var(--ink);
+    }
+
+    .nav-icon {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 17px;
+    }
+
+    .phone.hidden {
+      display: none;
+    }
+
+    @media (max-width: 1050px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .brief {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .phones {
+        grid-template-columns: minmax(270px, 380px);
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+    }
+
+    @media (max-width: 560px) {
+      .brief,
+      .stage {
+        padding: 22px 16px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .tabs {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      .tab {
+        flex: 1 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <aside class="brief">
+      <p class="eyebrow">IA / UI proposal</p>
+      <h1>把首页从“功能展柜”改成“决策入口”</h1>
+      <p class="lead">目标是让用户先用明确词搜索：鸡尾酒名、基酒、材料、口味、便利店，再由页面逐步引导到更适合的方案。</p>
+
+      <section class="brief-section">
+        <h2 class="brief-title">调整原则</h2>
+        <ul class="brief-list">
+          <li>首页第一屏强化搜索：用户知道可以搜酒名、基酒、材料、口味和便利店。</li>
+          <li>快捷入口保留，但从功能名改成结果导向，减少“我该点哪个”的犹豫。</li>
+          <li>搜索联想分成精准匹配、条件搜索、场景延展，把简单关键词引向明确方案。</li>
+          <li>详情页先建立“想不想喝”的理由，再展示材料用量和步骤。</li>
+        </ul>
+      </section>
+
+      <section class="brief-section">
+        <h2 class="brief-title">首页功能分布</h2>
+        <div class="tagline">
+          <span class="chip">搜金酒</span>
+          <span class="chip">搜可乐</span>
+          <span class="chip">搜甜口</span>
+          <span class="chip">家里有什么</span>
+          <span class="chip">便利店</span>
+        </div>
+      </section>
+
+      <section class="brief-section">
+        <h2 class="brief-title">详情页重点</h2>
+        <ul class="brief-list">
+          <li>图片区预留真实酒图，首屏文案先回答“适合谁、适合什么场景”。</li>
+          <li>变体入口前置：更甜、更清爽、更低酒精、便利店替代、家里简化。</li>
+          <li>材料和步骤放到后面，用户确认想喝后再进入执行。</li>
+        </ul>
+      </section>
+    </aside>
+
+    <section class="stage">
+      <div class="toolbar">
+        <h2 class="toolbar-title">线上预览样例</h2>
+        <div class="tabs" aria-label="切换预览">
+          <button class="tab active" data-view="all" type="button">全部</button>
+          <button class="tab" data-view="home" type="button">首页</button>
+          <button class="tab" data-view="guide" type="button">推荐</button>
+          <button class="tab" data-view="detail" type="button">详情</button>
+        </div>
+      </div>
+
+      <div class="phones">
+        <article class="phone" data-phone="home">
+          <div class="screen">
+            <div class="status"><span>20:26</span><span>5G 100%</span></div>
+            <div class="appbar">
+              <div class="appbar-title">调酒助手</div>
+              <button class="icon-btn" aria-label="筛选" type="button">≡</button>
+            </div>
+            <div class="content">
+              <div class="rail-title" style="margin-top:0">
+                <strong>今晚想搞点什么喝？</strong>
+                <span>先选开始方式</span>
+              </div>
+
+              <section class="primary-actions">
+                <div class="action-card featured">
+                  <div class="action-kicker">5分钟买齐</div>
+                  <div class="action-title">去便利店买</div>
+                  <div class="action-desc">下楼5分钟就能搞定</div>
+                </div>
+                <div class="action-card">
+                  <div class="action-kicker">少补货</div>
+                  <div class="action-title">家里有什么</div>
+                  <div class="action-desc">先看看现在能做什么</div>
+                </div>
+                <div class="action-card">
+                  <div class="action-kicker">先选口味</div>
+                  <div class="action-title">找一杯好喝的</div>
+                  <div class="action-desc">从甜口、清爽、微醺开始</div>
+                </div>
+                <div class="action-card">
+                  <div class="action-kicker">新手友好</div>
+                  <div class="action-title">第一次尝试</div>
+                  <div class="action-desc">几乎喝不出酒味也能喝</div>
+                </div>
+              </section>
+
+              <div class="rail-title">
+                <strong>已经知道想搜什么？</strong>
+              </div>
+              <div class="search">
+                <span class="search-mark">⌕</span>
+                <span class="search-text">搜金酒 / 可乐 / 甜口 / 便利店 / 莫吉托</span>
+              </div>
+
+              <div class="rail-title">
+                <strong>不用想太多，直接点</strong>
+                <span>明确收益</span>
+              </div>
+              <div class="compact-list">
+                <div class="compact-row">
+                  <div class="row-main">
+                    <div class="row-title">便利店能买齐</div>
+                    <div class="row-meta">只买 2-3 样，今晚就能做</div>
+                  </div>
+                  <div class="arrow">›</div>
+                </div>
+                <div class="compact-row">
+                  <div class="row-main">
+                    <div class="row-title">几乎喝不出酒味</div>
+                    <div class="row-meta">前半口像冰饮，后面才有感觉</div>
+                  </div>
+                  <div class="arrow">›</div>
+                </div>
+                <div class="compact-row">
+                  <div class="row-main">
+                    <div class="row-title">家里现在就能做</div>
+                    <div class="row-meta">先看不用出门的方案</div>
+                  </div>
+                  <div class="arrow">›</div>
+                </div>
+              </div>
+            </div>
+            <nav class="bottom-nav" aria-label="底部导航">
+              <div class="nav-item active"><span class="nav-icon">⌂</span>首页</div>
+              <div class="nav-item"><span class="nav-icon">⌕</span>搜索</div>
+              <div class="nav-item"><span class="nav-icon">♡</span>收藏</div>
+            </nav>
+          </div>
+        </article>
+
+        <article class="phone" data-phone="guide">
+          <div class="screen">
+            <div class="status"><span>20:26</span><span>5G 100%</span></div>
+            <div class="guide-top">
+              <h3 class="guide-title">按需求找一杯</h3>
+              <p class="guide-sub">不做内容流，只把常见需求整理成能直接点的找酒路径。</p>
+              <div class="segmented" aria-label="推荐分类">
+                <div class="seg active">需求</div>
+                <div class="seg">口味</div>
+                <div class="seg">材料</div>
+              </div>
+            </div>
+            <div class="recommend-stack">
+              <div class="recommend-card">
+                <div class="thumb teal"></div>
+                <div>
+                  <div class="rec-title">下班后不容易踩雷</div>
+                  <div class="rec-reason">3 分钟、少步骤，回家就能直接做。</div>
+                  <div class="badges">
+                    <span class="badge">买 2 样</span>
+                    <span class="badge">成功率高</span>
+                    <span class="badge">低糖</span>
+                  </div>
+                </div>
+              </div>
+              <div class="recommend-card">
+                <div class="thumb berry"></div>
+                <div>
+                  <div class="rec-title">聚会最容易被夸好喝</div>
+                  <div class="rec-reason">适合批量准备，颜色好看，不容易翻车。</div>
+                  <div class="badges">
+                    <span class="badge">可做 4 杯</span>
+                    <span class="badge">好拍照</span>
+                    <span class="badge">不易错</span>
+                  </div>
+                </div>
+              </div>
+              <div class="recommend-card">
+                <div class="thumb gold"></div>
+                <div>
+                  <div class="rec-title">几乎喝不出酒味</div>
+                  <div class="rec-reason">甜口、奶感、果味优先，适合怕酒味的人。</div>
+                  <div class="badges">
+                    <span class="badge">低酒感</span>
+                    <span class="badge">甜口</span>
+                    <span class="badge">饭后</span>
+                  </div>
+                </div>
+              </div>
+              <div class="recommend-card">
+                <div class="thumb"></div>
+                <div>
+                  <div class="rec-title">家里现在就能做</div>
+                  <div class="rec-reason">先看不出门方案，再提示缺什么。</div>
+                  <div class="badges">
+                    <span class="badge">不用买</span>
+                    <span class="badge">看缺料</span>
+                    <span class="badge">马上做</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="phone" data-phone="detail">
+          <div class="screen">
+            <div class="status"><span>20:26</span><span>5G 100%</span></div>
+            <div class="appbar">
+              <button class="icon-btn" aria-label="返回" type="button">‹</button>
+              <div class="appbar-title">配方详情</div>
+              <button class="icon-btn" aria-label="分享" type="button">↗</button>
+            </div>
+            <div class="detail-photo-wrap">
+              <div class="photo">
+                <div class="photo-label">图片位：后续替换为真实成品图，可露出酒杯、颜色和装饰。</div>
+              </div>
+            </div>
+            <div class="detail-info">
+              <div class="detail-name-row">
+                <div>
+                  <h3 class="detail-name">金汤力</h3>
+                  <p class="summary">前半口像冰饮，后面才慢慢有酒感。适合想喝清爽、不想太甜的人。</p>
+                </div>
+                <button class="save" aria-label="收藏" type="button">♡</button>
+              </div>
+              <div class="stats">
+                <div class="stat"><strong>清爽</strong><span>★★★★★</span></div>
+                <div class="stat"><strong>酒感</strong><span>★★★☆☆</span></div>
+                <div class="stat"><strong>难度</strong><span>★☆☆☆☆</span></div>
+              </div>
+              <section class="section-block">
+                <div class="block-head">变体选择 <span class="arrow">⌄</span></div>
+                <div class="block-body">
+                  <div class="badges">
+                    <span class="badge">更甜一点</span>
+                    <span class="badge">更清爽一点</span>
+                    <span class="badge">更低酒精</span>
+                    <span class="badge">便利店替代版</span>
+                    <span class="badge">家里简化版</span>
+                  </div>
+                </div>
+              </section>
+              <section class="section-block">
+                <div class="block-head">现在就能做 <span>买 2 样 · 3 分钟</span></div>
+              </section>
+              <section class="section-block">
+                <div class="block-head">看完这杯，还可以继续 <span class="arrow">⌄</span></div>
+                <div class="block-body">
+                  <div class="badges">
+                    <span class="badge">更清爽一点</span>
+                    <span class="badge">不苦版本</span>
+                    <span class="badge">更像果酒</span>
+                    <span class="badge">夏夜推荐</span>
+                  </div>
+                </div>
+              </section>
+              <section class="section-block">
+                <div class="block-head">材料和步骤 <span>展开后看 ml 和做法</span></div>
+              </section>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const phones = document.querySelectorAll('.phone');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const view = tab.dataset.view;
+        tabs.forEach((item) => item.classList.toggle('active', item === tab));
+        phones.forEach((phone) => {
+          phone.classList.toggle('hidden', view !== 'all' && phone.dataset.phone !== view);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

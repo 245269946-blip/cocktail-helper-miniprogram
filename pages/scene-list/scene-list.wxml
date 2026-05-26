@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="section-title">按需求找一杯</view>
+  <view class="section-subtitle">不做内容流，只把常见需求整理成能直接点的找酒路径。</view>
+
+  <view class="section list">
+    <view wx:for="{{collections}}" wx:key="title" class="card collection-card" data-value="{{item.value}}" data-title="{{item.title}}" bindtap="onTap">
+      <view class="row">
+        <view>
+          <view class="title">{{item.title}}</view>
+          <view class="section-subtitle">{{item.desc}}</view>
+        </view>
+        <view class="arrow">›</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+.intro-tags {
+  margin-top: 18rpx;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.bullet-line {
+  margin-top: 8rpx;
+}
+
+.warning-card {
+  border-color: #e3b89f;
+  background: #fff8f2;
+}

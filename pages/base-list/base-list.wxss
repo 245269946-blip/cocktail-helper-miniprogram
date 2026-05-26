@@ -1,0 +1,14 @@
+.base-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.card-tags {
+  gap: 10rpx;
+}
+
+.arrow {
+  color: #9f9385;
+  font-size: 46rpx;
+}

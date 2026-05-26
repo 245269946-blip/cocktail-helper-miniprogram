@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="section-title">照着买就能做</view>
+  <view class="section-subtitle">把配方改成购买清单，适合现在就去便利店补货。</view>
+
+  <view class="section">
+    <view class="tags">
+      <view wx:for="{{places}}" wx:key="label" class="tag {{item.active ? 'active' : ''}}" data-value="{{item.label}}" bindtap="onPlaceTap">{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">你想要什么感觉？</view>
+    <view class="tags">
+      <view wx:for="{{moods}}" wx:key="label" class="tag {{item.active ? 'active' : ''}}" data-value="{{item.label}}" bindtap="onMoodTap">{{item.label}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">套餐方案</view>
+    <view class="list">
+      <view wx:for="{{results}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
+        <view class="package-title">{{item.packageTitle}}</view>
+        <view class="section-subtitle">{{item.packageIntro}}</view>
+        <view class="small price">{{item.packageMeta}}</view>
+        <view class="small muted">{{item.packageFit}}</view>
+        <view class="tags">
+          <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
+        </view>
+        <view class="package-action">查看购物清单</view>
+      </view>
+    </view>
+  </view>
+</view>

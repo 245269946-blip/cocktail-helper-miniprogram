@@ -1,0 +1,27 @@
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.package-title {
+  font-size: 32rpx;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.price {
+  color: #d98c24;
+  font-weight: 600;
+}
+
+.package-action {
+  align-self: flex-start;
+  min-height: 44rpx;
+  padding: 7rpx 16rpx;
+  border: 1rpx solid #e1d8ca;
+  border-radius: 999rpx;
+  color: #4f463c;
+  background: #fff9ef;
+  font-size: 23rpx;
+}

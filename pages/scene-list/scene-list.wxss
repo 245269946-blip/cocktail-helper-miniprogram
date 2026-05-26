@@ -1,0 +1,8 @@
+.collection-card {
+  min-height: 124rpx;
+}
+
+.arrow {
+  color: #9f9385;
+  font-size: 46rpx;
+}

@@ -1,0 +1,39 @@
+<view class="page">
+  <view class="section-title">{{title}}</view>
+  <view class="section-subtitle">{{subtitle}}</view>
+
+  <view wx:if="{{results.length}}" class="section list">
+    <view wx:for="{{results}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
+      <view class="row">
+        <view>
+          <view class="title">{{item.name}}</view>
+          <view class="small muted">{{item.audienceText}}</view>
+        </view>
+        <view class="type-label">{{item.type === 'scheme' ? '方案' : '配方'}}</view>
+      </view>
+      <view class="result-entry">{{item.entryLine}}</view>
+      <view class="execute-line">{{item.executionLine}}</view>
+      <view class="score-mini">
+        <view wx:for="{{item.scoreRows}}" wx:for-item="score" wx:key="key" class="score-mini-row">
+          <text class="score-mini-label">{{score.label}}</text>
+          <text class="score-stars">{{score.stars}}</text>
+          <text class="score-note">{{score.note}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section-title explore-title">继续探索</view>
+    <view class="explore-grid">
+      <view wx:for="{{exploreOptions}}" wx:key="title" class="card explore-card" data-value="{{item.value}}" data-title="{{item.title}}" bindtap="onExploreTap">
+        <view class="explore-card-title">{{item.title}}</view>
+        <view class="small muted">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="section card empty-card">
+    <view class="title">还没找到合适结果</view>
+    <view class="section-subtitle">可以试试“金酒”“可乐”“甜口”“便利店调酒”这类关键词。</view>
+    <button class="button-primary empty-button" bindtap="onSearchAgain">重新搜索</button>
+  </view>
+</view>

@@ -1,0 +1,87 @@
+<view wx:if="{{detail}}" class="page detail-page">
+  <view class="detail-head">
+    <view>
+      <view class="detail-title">{{detail.name}}</view>
+      <view class="detail-en">{{detail.entryLine}}</view>
+    </view>
+    <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="onToggleFavorite">{{favoriteText}}</button>
+  </view>
+
+  <view class="tags">
+    <view wx:for="{{detail.tags}}" wx:key="*this" class="tag">{{item}}</view>
+  </view>
+
+  <view class="section card">
+    <view class="title">适合谁 / 什么场景</view>
+    <view class="body reason">{{detail.audienceText}}</view>
+    <view class="section-subtitle">{{detail.sceneText}}</view>
+  </view>
+
+  <view class="section card">
+    <view class="title">风味评分</view>
+    <view class="score-list score-list-human">
+      <view wx:for="{{scoreRows}}" wx:key="key" class="score-row">
+        <view class="score-label">{{item.label}}</view>
+        <view class="score-stars">{{item.stars}}</view>
+        <view class="score-human">{{item.note}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section card action-card">
+    <view class="title">现在就能做</view>
+    <view class="body">{{detail.actionLine}}</view>
+  </view>
+
+  <view class="section card">
+    <view class="title">材料 / 替代版</view>
+    <view class="section-subtitle">{{detail.materialSummary}}</view>
+    <view wx:for="{{materialSections}}" wx:key="title" class="material-section">
+      <view class="material-title">{{item.title}}</view>
+      <view wx:for="{{item.items}}" wx:for-item="line" wx:key="*this" class="body material-line">• {{line}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{detail.price}}" class="section card">
+    <view class="title">购买清单</view>
+    <view class="body">预计价格：{{detail.price}}</view>
+  </view>
+
+  <view class="section card">
+    <view class="title">调制步骤</view>
+    <view wx:for="{{detail.steps}}" wx:key="*this" class="step-row">
+      <view class="step-index">{{index + 1}}</view>
+      <view class="body step-text">{{item}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{exploreOptions.length}}" class="section">
+    <view class="section-title">看完这杯，还可以继续</view>
+    <view class="explore-grid">
+      <view wx:for="{{exploreOptions}}" wx:key="title" class="card explore-card" data-value="{{item.title}}" data-title="{{item.title}}" bindtap="onExploreTap">
+        <view class="explore-card-title">{{item.title}}</view>
+        <view class="small muted">{{item.desc}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section card">
+    <view class="title">替代方案</view>
+    <view wx:for="{{detail.substitutes}}" wx:key="*this" class="body bullet-line">• {{item}}</view>
+  </view>
+
+  <view wx:if="{{detail.warnings}}" class="section card warning-card">
+    <view class="title">翻车提醒</view>
+    <view wx:for="{{detail.warnings}}" wx:key="*this" class="body bullet-line">• {{item}}</view>
+  </view>
+
+  <view wx:if="{{similarItems.length}}" class="section">
+    <view class="section-title">如果你喜欢这种口感</view>
+    <view class="list">
+      <view wx:for="{{similarItems}}" wx:key="id" class="card similar-card" data-id="{{item.id}}" bindtap="onSimilarTap">
+        <view class="title">{{item.name}}</view>
+        <view class="section-subtitle">{{item.reason}}</view>
+      </view>
+    </view>
+  </view>
+</view>

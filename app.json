@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/search/search",
+    "pages/base-list/base-list",
+    "pages/base-detail/base-detail",
+    "pages/ingredient-list/ingredient-list",
+    "pages/ingredient-detail/ingredient-detail",
+    "pages/convenience/convenience",
+    "pages/pantry/pantry",
+    "pages/beginner/beginner",
+    "pages/flavor-list/flavor-list",
+    "pages/scene-list/scene-list",
+    "pages/results/results",
+    "pages/detail/detail",
+    "pages/collections/collections"
+  ],
+  "window": {
+    "navigationBarTitleText": "调酒助手",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f3ed"
+  },
+  "tabBar": {
+    "color": "#7a7368",
+    "selectedColor": "#16120f",
+    "backgroundColor": "#fffdf8",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/tabbar/home-normal.png",
+        "selectedIconPath": "assets/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "assets/tabbar/search-normal.png",
+        "selectedIconPath": "assets/tabbar/search-active.png"
+      },
+      {
+        "pagePath": "pages/collections/collections",
+        "text": "收藏",
+        "iconPath": "assets/tabbar/collections-normal.png",
+        "selectedIconPath": "assets/tabbar/collections-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

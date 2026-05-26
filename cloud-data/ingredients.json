@@ -1,0 +1,358 @@
+[
+  {
+    "id": "cola",
+    "name": "可乐",
+    "category": "碳酸饮料",
+    "tags": [
+      "甜口",
+      "气泡感",
+      "聚会",
+      "便利店"
+    ],
+    "goodWith": [
+      "威士忌",
+      "朗姆",
+      "野格",
+      "金酒"
+    ],
+    "recipes": [
+      "whisky-cola",
+      "cuba-libre",
+      "jager-cola"
+    ],
+    "lowAlcohol": [
+      "cola-lemon-zero"
+    ],
+    "warnings": [
+      "不太建议搭奶类利口酒，甜腻感会被放大。",
+      "搭金酒时建议加柠檬，不然草本味容易显得突兀。"
+    ]
+  },
+  {
+    "id": "sprite",
+    "name": "雪碧",
+    "category": "碳酸饮料",
+    "tags": [
+      "清爽",
+      "甜口",
+      "低门槛",
+      "便利店"
+    ],
+    "goodWith": [
+      "金酒",
+      "朗姆",
+      "龙舌兰",
+      "伏特加"
+    ],
+    "recipes": [
+      "gin-sprite",
+      "rum-sprite",
+      "tequila-sprite"
+    ],
+    "lowAlcohol": [
+      "sprite-lemon-zero"
+    ],
+    "warnings": [
+      "本身偏甜，基酒不要倒太多。",
+      "想更清爽可以加冰和柠檬。"
+    ]
+  },
+  {
+    "id": "orange-juice",
+    "name": "橙汁",
+    "category": "果汁",
+    "tags": [
+      "果味",
+      "酸甜",
+      "新手友好",
+      "便利店"
+    ],
+    "goodWith": [
+      "伏特加",
+      "朗姆",
+      "龙舌兰"
+    ],
+    "recipes": [
+      "vodka-orange",
+      "mimosa"
+    ],
+    "lowAlcohol": [
+      "orange-soda-zero"
+    ],
+    "warnings": [
+      "和烟熏感强的威士忌不一定搭。"
+    ]
+  },
+  {
+    "id": "coffee",
+    "name": "咖啡",
+    "category": "咖啡",
+    "tags": [
+      "咖啡感",
+      "苦甜",
+      "进阶",
+      "夜晚"
+    ],
+    "goodWith": [
+      "伏特加",
+      "百利甜",
+      "威士忌"
+    ],
+    "recipes": [
+      "espresso-martini",
+      "baileys-coffee"
+    ],
+    "lowAlcohol": [
+      "coffee-tonic-zero"
+    ],
+    "warnings": [
+      "含咖啡因，晚上别做太大杯。"
+    ]
+  },
+  {
+    "id": "milk",
+    "name": "牛奶",
+    "category": "乳饮",
+    "tags": [
+      "奶香",
+      "甜口",
+      "新手友好",
+      "低门槛"
+    ],
+    "goodWith": [
+      "百利甜",
+      "咖啡利口酒"
+    ],
+    "recipes": [
+      "baileys-milk"
+    ],
+    "lowAlcohol": [
+      "milk-coffee-zero"
+    ],
+    "warnings": [
+      "不建议和高酸果汁同杯，容易分层或结块。"
+    ]
+  },
+  {
+    "id": "tea",
+    "name": "茶",
+    "category": "茶饮",
+    "tags": [
+      "茶感",
+      "清爽",
+      "不太甜",
+      "便利店"
+    ],
+    "goodWith": [
+      "威士忌",
+      "伏特加",
+      "梅酒"
+    ],
+    "recipes": [
+      "whisky-oolong",
+      "vodka-tea",
+      "gin-lemon-tea"
+    ],
+    "lowAlcohol": [
+      "tea-lemon-zero"
+    ],
+    "warnings": [
+      "无糖茶更稳，含糖茶要减少糖浆或甜饮比例。"
+    ]
+  },
+  {
+    "id": "soda-water",
+    "name": "气泡水",
+    "category": "碳酸饮料",
+    "tags": [
+      "清爽",
+      "气泡感",
+      "低酒精",
+      "不太甜"
+    ],
+    "goodWith": [
+      "金酒",
+      "威士忌",
+      "伏特加",
+      "梅酒",
+      "果酒"
+    ],
+    "recipes": [
+      "gin-tonic",
+      "whisky-highball",
+      "vodka-soda",
+      "umeshu-soda",
+      "fruit-wine-spritz"
+    ],
+    "lowAlcohol": [
+      "soda-lemon-zero"
+    ],
+    "warnings": [
+      "气泡水不遮酒味，基酒品质差时会更明显。",
+      "先加酒再补气泡水，轻搅即可，别把气泡搅没。"
+    ]
+  },
+  {
+    "id": "tonic-water",
+    "name": "汤力水",
+    "category": "碳酸饮料",
+    "tags": [
+      "微苦",
+      "清爽",
+      "气泡感",
+      "酒吧感"
+    ],
+    "goodWith": [
+      "金酒",
+      "伏特加",
+      "咖啡"
+    ],
+    "recipes": [
+      "gin-tonic",
+      "coffee-tonic"
+    ],
+    "lowAlcohol": [
+      "coffee-tonic-zero"
+    ],
+    "warnings": [
+      "汤力水有苦味，怕苦的人可以换雪碧或半汤力半气泡水。"
+    ]
+  },
+  {
+    "id": "lemon",
+    "name": "柠檬",
+    "category": "水果",
+    "tags": [
+      "酸甜",
+      "清爽",
+      "去腻",
+      "便利店"
+    ],
+    "goodWith": [
+      "金酒",
+      "伏特加",
+      "朗姆",
+      "威士忌",
+      "龙舌兰"
+    ],
+    "recipes": [
+      "tom-collins",
+      "daiquiri",
+      "margarita",
+      "whisky-highball",
+      "gin-sprite"
+    ],
+    "lowAlcohol": [
+      "soda-lemon-zero",
+      "tea-lemon-zero"
+    ],
+    "warnings": [
+      "柠檬主要负责提亮，不要一次挤太多，酸度会压住酒香。"
+    ]
+  },
+  {
+    "id": "grapefruit-juice",
+    "name": "葡萄柚汁",
+    "category": "果汁",
+    "tags": [
+      "酸甜",
+      "微苦",
+      "果味",
+      "清爽"
+    ],
+    "goodWith": [
+      "龙舌兰",
+      "伏特加",
+      "金酒"
+    ],
+    "recipes": [
+      "paloma",
+      "vodka-grapefruit"
+    ],
+    "lowAlcohol": [
+      "grapefruit-soda-zero"
+    ],
+    "warnings": [
+      "葡萄柚自带轻微苦味，怕苦就加一点糖或换橙汁。"
+    ]
+  },
+  {
+    "id": "oolong",
+    "name": "乌龙茶",
+    "category": "茶饮",
+    "tags": [
+      "茶感",
+      "不太甜",
+      "清爽",
+      "便利店"
+    ],
+    "goodWith": [
+      "威士忌",
+      "梅酒",
+      "伏特加"
+    ],
+    "recipes": [
+      "whisky-oolong",
+      "umeshu-oolong",
+      "vodka-tea"
+    ],
+    "lowAlcohol": [
+      "tea-lemon-zero"
+    ],
+    "warnings": [
+      "无糖乌龙更适合做酒饮，含糖款会让整体显腻。"
+    ]
+  },
+  {
+    "id": "lemon-tea",
+    "name": "柠檬茶",
+    "category": "茶饮",
+    "tags": [
+      "酸甜",
+      "茶感",
+      "便利店",
+      "新手友好"
+    ],
+    "goodWith": [
+      "金酒",
+      "伏特加",
+      "朗姆"
+    ],
+    "recipes": [
+      "gin-lemon-tea",
+      "vodka-tea"
+    ],
+    "lowAlcohol": [
+      "tea-lemon-zero"
+    ],
+    "warnings": [
+      "瓶装柠檬茶通常已经很甜，基酒用量建议保守。"
+    ]
+  },
+  {
+    "id": "apple-juice",
+    "name": "苹果汁",
+    "category": "果汁",
+    "tags": [
+      "果味",
+      "甜口",
+      "低门槛",
+      "便利店"
+    ],
+    "goodWith": [
+      "威士忌",
+      "伏特加",
+      "朗姆"
+    ],
+    "recipes": [
+      "whisky-apple",
+      "vodka-apple"
+    ],
+    "lowAlcohol": [
+      "apple-soda-zero"
+    ],
+    "warnings": [
+      "苹果汁甜度高，适合加柠檬或气泡水降低厚重感。"
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="section-title">输入手边材料</view>
+  <view class="section-subtitle">先回答“我现在能做什么”，再提示只差哪一两样。</view>
+
+  <view class="section list">
+    <view wx:for="{{groups}}" wx:key="title" class="card">
+      <view class="title group-title">{{item.title}}</view>
+      <view class="tags">
+        <view wx:for="{{item.items}}" wx:for-item="choice" wx:key="name" class="tag {{choice.active ? 'active' : ''}}" data-value="{{choice.name}}" bindtap="onToggle">{{choice.name}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{selected.length}}" class="section">
+    <button class="button-ghost" bindtap="onClear">清空已选</button>
+  </view>
+
+  <view wx:if="{{result}}" class="section list">
+    <block wx:for="{{sections}}" wx:key="key">
+      <view class="section-title">{{item.title}}</view>
+      <view class="section-subtitle pantry-section-desc">{{item.desc}}</view>
+      <view wx:if="{{item.items.length}}" class="list">
+        <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="card drink-card" data-id="{{drink.id}}" bindtap="onDetailTap">
+          <view class="title">{{drink.name}}</view>
+          <view class="section-subtitle">{{drink.reason}}</view>
+          <view wx:if="{{drink.missingText}}" class="small missing">只差：{{drink.missingText}}。去便利店补这个就能做。</view>
+          <view class="pantry-action">{{drink.actionText}}</view>
+        </view>
+      </view>
+      <view wx:else class="empty">暂无匹配</view>
+    </block>
+  </view>
+</view>

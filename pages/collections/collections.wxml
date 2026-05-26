@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="section-title">我的收藏</view>
+  <view class="section-subtitle">收藏的配方和便利店方案会放在这里。</view>
+
+  <view wx:if="{{items.length}}" class="section list">
+    <view wx:for="{{items}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
+      <view class="title">{{item.name}}</view>
+      <view class="section-subtitle">{{item.reason}}</view>
+      <view class="tags">
+        <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="section card empty-card">
+    <view class="title">还没有收藏</view>
+    <view class="section-subtitle">先从首页搜索、便利店方案或新手推荐里找到想做的一杯。</view>
+    <button class="button-primary" bindtap="onGoHome">回到首页</button>
+  </view>
+</view>

@@ -1,0 +1,144 @@
+page {
+  min-height: 100%;
+  color: #17130f;
+  background: #f6f3ed;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+view,
+text,
+button,
+input {
+  box-sizing: border-box;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24rpx;
+}
+
+.section {
+  margin-top: 28rpx;
+}
+
+.section-title {
+  margin-bottom: 16rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #17130f;
+}
+
+.section-subtitle {
+  margin-top: 6rpx;
+  color: #756e63;
+  font-size: 25rpx;
+  line-height: 1.55;
+}
+
+.card {
+  padding: 24rpx;
+  border: 1rpx solid #e8e0d3;
+  border-radius: 8rpx;
+  background: #fffdf8;
+}
+
+.muted {
+  color: #756e63;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48rpx;
+  padding: 0 18rpx;
+  border: 1rpx solid #e1d8ca;
+  border-radius: 999rpx;
+  color: #4f463c;
+  background: #fff9ef;
+  font-size: 24rpx;
+}
+
+.tag.active {
+  color: #fffdf8;
+  border-color: #17130f;
+  background: #17130f;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16rpx;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14rpx;
+}
+
+.button-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  margin: 0;
+  border-radius: 8rpx;
+  color: #fffdf8;
+  background: #17130f;
+  font-size: 28rpx;
+  line-height: 1;
+}
+
+.button-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  margin: 0;
+  border: 1rpx solid #d8cdbc;
+  border-radius: 8rpx;
+  color: #17130f;
+  background: #fffdf8;
+  font-size: 27rpx;
+  line-height: 1;
+}
+
+button::after {
+  border: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.body {
+  color: #4f463c;
+  font-size: 27rpx;
+  line-height: 1.65;
+}
+
+.small {
+  font-size: 24rpx;
+  line-height: 1.5;
+}

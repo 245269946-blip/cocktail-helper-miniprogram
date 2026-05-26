@@ -1,0 +1,88 @@
+.result-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.type-label {
+  flex: 0 0 auto;
+  padding: 8rpx 12rpx;
+  border-radius: 999rpx;
+  color: #fffdf8;
+  background: #17130f;
+  font-size: 22rpx;
+}
+
+.empty-card {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.empty-button {
+  margin-top: 8rpx;
+}
+
+.result-entry {
+  color: #17130f;
+  font-size: 28rpx;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.execute-line {
+  color: #d98c24;
+  font-size: 24rpx;
+  line-height: 1.45;
+}
+
+.score-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+  padding-top: 4rpx;
+}
+
+.score-mini-row {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  font-size: 23rpx;
+  line-height: 1.4;
+}
+
+.score-mini-label {
+  width: 64rpx;
+  color: #4f463c;
+}
+
+.score-stars {
+  width: 116rpx;
+  color: #d98c24;
+  letter-spacing: 1rpx;
+}
+
+.score-note {
+  flex: 1;
+  color: #756e63;
+}
+
+.explore-title {
+  margin-top: 12rpx;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16rpx;
+}
+
+.explore-card {
+  min-height: 110rpx;
+}
+
+.explore-card-title {
+  margin-bottom: 8rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}

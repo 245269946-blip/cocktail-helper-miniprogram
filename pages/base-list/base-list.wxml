@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="section-title">你手上有什么酒？</view>
+  <view class="section-subtitle">点进基酒后，看它现在能做什么，而不是只看介绍。</view>
+
+  <view class="section list">
+    <view wx:for="{{bases}}" wx:key="id" class="card base-card" data-id="{{item.id}}" bindtap="onBaseTap">
+      <view class="row">
+        <view>
+          <view class="title">{{item.name}}</view>
+          <view class="section-subtitle">{{item.subtitle}}</view>
+        </view>
+        <view class="arrow">›</view>
+      </view>
+      <view class="tags card-tags">
+        <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
+      </view>
+    </view>
+  </view>
+</view>

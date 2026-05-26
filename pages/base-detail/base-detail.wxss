@@ -1,0 +1,14 @@
+.intro-tags {
+  margin-top: 18rpx;
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
+.empty {
+  color: #9b9287;
+  font-size: 25rpx;
+}

@@ -1,0 +1,149 @@
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18rpx;
+  padding-top: 12rpx;
+  margin-bottom: 18rpx;
+}
+
+.detail-title {
+  font-size: 48rpx;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.detail-en {
+  margin-top: 6rpx;
+  color: #756e63;
+  font-size: 26rpx;
+}
+
+.favorite-button {
+  flex: 0 0 auto;
+  min-width: 132rpx;
+  height: 64rpx;
+  margin: 0;
+  border: 1rpx solid #d8cdbc;
+  border-radius: 8rpx;
+  color: #17130f;
+  background: #fffdf8;
+  font-size: 24rpx;
+  line-height: 64rpx;
+}
+
+.favorite-button.active {
+  color: #fffdf8;
+  border-color: #17130f;
+  background: #17130f;
+}
+
+.reason {
+  margin-top: 12rpx;
+}
+
+.score-list {
+  margin-top: 18rpx;
+}
+
+.score-row {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  margin-top: 14rpx;
+}
+
+.score-label {
+  width: 86rpx;
+  color: #4f463c;
+  font-size: 25rpx;
+}
+
+.score-stars {
+  width: 132rpx;
+  color: #d98c24;
+  font-size: 24rpx;
+  letter-spacing: 1rpx;
+}
+
+.score-human {
+  flex: 1;
+  color: #756e63;
+  font-size: 24rpx;
+}
+
+.action-card {
+  border-color: #d8e8d0;
+  background: #edf5e8;
+}
+
+.material-section {
+  margin-top: 20rpx;
+}
+
+.material-title {
+  margin-bottom: 8rpx;
+  color: #17130f;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.material-line,
+.bullet-line {
+  margin-top: 6rpx;
+}
+
+.step-row {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 18rpx;
+}
+
+.step-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 42rpx;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+  color: #fffdf8;
+  background: #17130f;
+  font-size: 23rpx;
+}
+
+.step-text {
+  flex: 1;
+  padding-top: 1rpx;
+}
+
+.scene-tags {
+  margin-top: 16rpx;
+}
+
+.warning-card {
+  border-color: #e3b89f;
+  background: #fff8f2;
+}
+
+.similar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16rpx;
+}
+
+.explore-card {
+  min-height: 116rpx;
+}
+
+.explore-card-title {
+  margin-bottom: 8rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}

@@ -1,0 +1,32 @@
+.search-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-top: 24rpx;
+}
+
+.search-input {
+  height: 92rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid #ded3c2;
+  border-radius: 8rpx;
+  background: #fffdf8;
+  font-size: 28rpx;
+}
+
+.suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.suggestion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.suggestion-title {
+  font-size: 28rpx;
+  font-weight: 700;
+}
