@@ -1,14 +1,15 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
+const illustrations = require('../../utils/illustrations')
 
 Page({
   data: {
-    bases: data.bases
+    bases: data.bases.map((item) => illustrations.decorateBase(item))
   },
 
   onLoad() {
     contentStore.getContent().then((content) => {
-      this.setData({ bases: content.bases })
+      this.setData({ bases: content.bases.map((item) => illustrations.decorateBase(item)) })
     })
   },
 

@@ -1,3 +1,9 @@
+.ingredient-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
 .intro-tags {
   margin-top: 18rpx;
 }
@@ -8,11 +14,16 @@
   gap: 14rpx;
 }
 
+.recipe-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .bullet-line {
   margin-top: 8rpx;
 }
 
 .warning-card {
-  border-color: #e3b89f;
-  background: #fff8f2;
+  border-color: #f0c5b0;
+  background: linear-gradient(145deg, #fff8f2 0%, #fff1ea 100%);
 }

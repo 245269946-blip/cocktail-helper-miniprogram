@@ -1,3 +1,9 @@
+.base-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 14rpx;
+}
+
 .intro-tags {
   margin-top: 18rpx;
 }
@@ -6,6 +12,11 @@
   display: flex;
   flex-direction: column;
   gap: 14rpx;
+}
+
+.recipe-copy {
+  flex: 1;
+  min-width: 0;
 }
 
 .empty {

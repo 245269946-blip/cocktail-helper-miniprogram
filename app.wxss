@@ -163,6 +163,32 @@ button::after {
   gap: 20rpx;
 }
 
+.asset-illo {
+  flex: 0 0 auto;
+  width: 132rpx;
+  height: 108rpx;
+  overflow: hidden;
+  border-radius: 24rpx;
+  background: rgba(255, 253, 247, 0.72);
+}
+
+.asset-illo.large-asset {
+  width: 100%;
+  height: 300rpx;
+  border-radius: 34rpx;
+}
+
+.asset-illo.bottle-asset {
+  width: 154rpx;
+  height: 122rpx;
+}
+
+.asset-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .drink-illo {
   position: relative;
   flex: 0 0 auto;

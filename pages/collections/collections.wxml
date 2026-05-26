@@ -4,8 +4,15 @@
 
   <view wx:if="{{items.length}}" class="section list">
     <view wx:for="{{items}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
-      <view class="title">{{item.name}}</view>
-      <view class="section-subtitle">{{item.reason}}</view>
+      <view class="visual-row">
+        <view class="collection-copy">
+          <view class="title">{{item.name}}</view>
+          <view class="section-subtitle">{{item.entryLine}}</view>
+        </view>
+        <view class="asset-illo">
+          <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
+        </view>
+      </view>
       <view class="tags">
         <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
       </view>

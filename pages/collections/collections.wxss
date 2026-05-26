@@ -4,3 +4,8 @@
   flex-direction: column;
   gap: 16rpx;
 }
+
+.collection-copy {
+  flex: 1;
+  min-width: 0;
+}

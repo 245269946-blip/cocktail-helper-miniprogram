@@ -4,12 +4,14 @@
 
   <view class="section list">
     <view wx:for="{{bases}}" wx:key="id" class="card base-card" data-id="{{item.id}}" bindtap="onBaseTap">
-      <view class="row">
-        <view>
+      <view class="visual-row">
+        <view class="base-copy">
           <view class="title">{{item.name}}</view>
           <view class="section-subtitle">{{item.subtitle}}</view>
         </view>
-        <view class="arrow">›</view>
+        <view class="asset-illo bottle-asset">
+          <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
+        </view>
       </view>
       <view class="tags card-tags">
         <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>

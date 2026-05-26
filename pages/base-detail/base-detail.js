@@ -1,5 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
+const illustrations = require('../../utils/illustrations')
+const drinkView = require('../../utils/drinkView')
 
 Page({
   data: {
@@ -27,11 +29,11 @@ Page({
 
     const sections = sectionMeta.map((meta) => ({
       title: meta.title,
-      items: recommend.getItemsByIds(base.recipes[meta.key] || [])
+      items: recommend.getItemsByIds(base.recipes[meta.key] || []).map((item) => drinkView.resultCard(item))
     }))
 
     wx.setNavigationBarTitle({ title: base.name })
-    this.setData({ base, sections })
+    this.setData({ base: illustrations.decorateBase(base), sections })
   },
 
   onDetailTap(event) {

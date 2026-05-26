@@ -1,6 +1,11 @@
 <view wx:if="{{base}}" class="page">
-  <view class="section-title">{{base.name}}</view>
-  <view class="section-subtitle">{{base.intro}}</view>
+  <view class="base-hero">
+    <view class="asset-illo large-asset">
+      <image class="asset-image" src="{{base.illustration}}" mode="aspectFit" />
+    </view>
+    <view class="section-title">{{base.name}}</view>
+    <view class="section-subtitle">{{base.intro}}</view>
+  </view>
 
   <view class="section card">
     <view class="title">适合什么风味</view>
@@ -14,8 +19,15 @@
       <view class="section-title">{{item.title}}</view>
       <view wx:if="{{item.items.length}}" class="list">
         <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="card recipe-card" data-id="{{drink.id}}" bindtap="onDetailTap">
-          <view class="title">{{drink.name}}</view>
-          <view class="section-subtitle">{{drink.reason}}</view>
+          <view class="visual-row">
+            <view class="recipe-copy">
+              <view class="title">{{drink.name}}</view>
+              <view class="section-subtitle">{{drink.entryLine}}</view>
+            </view>
+            <view class="asset-illo">
+              <image class="asset-image" src="{{drink.illustration}}" mode="aspectFit" />
+            </view>
+          </view>
           <view class="tags">
             <view wx:for="{{drink.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
           </view>

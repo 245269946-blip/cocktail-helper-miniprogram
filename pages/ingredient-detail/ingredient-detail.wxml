@@ -1,6 +1,11 @@
 <view wx:if="{{ingredient}}" class="page">
-  <view class="section-title">{{ingredient.name}}能调什么？</view>
-  <view class="section-subtitle">从经典搭配、便利店版本和不容易翻车提醒开始。</view>
+  <view class="ingredient-hero">
+    <view class="asset-illo large-asset">
+      <image class="asset-image" src="{{ingredient.illustration}}" mode="aspectFit" />
+    </view>
+    <view class="section-title">{{ingredient.name}}能调什么？</view>
+    <view class="section-subtitle">从经典搭配、便利店版本和不容易翻车提醒开始。</view>
+  </view>
 
   <view class="section card">
     <view class="title">{{ingredient.name}}适合搭什么酒</view>
@@ -13,8 +18,15 @@
     <view class="section-title">经典搭配</view>
     <view class="list">
       <view wx:for="{{recipes}}" wx:key="id" class="card recipe-card" data-id="{{item.id}}" bindtap="onDetailTap">
-        <view class="title">{{item.name}}</view>
-        <view class="section-subtitle">{{item.reason}}</view>
+        <view class="visual-row">
+          <view class="recipe-copy">
+            <view class="title">{{item.name}}</view>
+            <view class="section-subtitle">{{item.entryLine}}</view>
+          </view>
+          <view class="asset-illo">
+            <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
+          </view>
+        </view>
         <view class="tags">
           <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
         </view>

@@ -1,15 +1,16 @@
 const data = require('../../utils/data')
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
+const illustrations = require('../../utils/illustrations')
 
 Page({
   data: {
-    categories: data.ingredientCategories
+    categories: illustrations.ingredientGroups(data.ingredientCategories)
   },
 
   onLoad() {
     contentStore.getContent().then((content) => {
-      this.setData({ categories: content.ingredientCategories })
+      this.setData({ categories: illustrations.ingredientGroups(content.ingredientCategories) })
     })
   },
 

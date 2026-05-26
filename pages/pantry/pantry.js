@@ -54,7 +54,8 @@ Page({
       items: items.map((item) => Object.assign({}, item, {
         missingText: item.missing && item.missing.length ? item.missing.join('、') : '',
         actionText,
-        visualClass: drinkView.visualClass(item)
+        visualClass: drinkView.visualClass(item),
+        illustration: drinkView.resultCard(item).illustration
       }))
     }
   },

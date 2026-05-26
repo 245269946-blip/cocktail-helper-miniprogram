@@ -1,5 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
+const illustrations = require('../../utils/illustrations')
+const drinkView = require('../../utils/drinkView')
 
 const lowAlcoholLabels = {
   'cola-lemon-zero': '可乐 + 柠檬 + 冰块',
@@ -28,11 +30,11 @@ Page({
     const ingredient = recommend.findIngredient(options.id)
     if (!ingredient) return
 
-    const recipes = recommend.getItemsByIds(ingredient.recipes || [])
+    const recipes = recommend.getItemsByIds(ingredient.recipes || []).map((item) => drinkView.resultCard(item))
     const lowAlcohol = (ingredient.lowAlcohol || []).map((id) => lowAlcoholLabels[id] || id)
 
     wx.setNavigationBarTitle({ title: ingredient.name })
-    this.setData({ ingredient, recipes, lowAlcohol })
+    this.setData({ ingredient: illustrations.decorateIngredient(ingredient), recipes, lowAlcohol })
   },
 
   onDetailTap(event) {

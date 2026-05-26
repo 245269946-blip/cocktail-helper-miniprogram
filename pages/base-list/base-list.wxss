@@ -5,6 +5,11 @@
   background: linear-gradient(145deg, #fffdf8 0%, #f4fbff 100%);
 }
 
+.base-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .card-tags {
   gap: 10rpx;
 }

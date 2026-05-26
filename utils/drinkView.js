@@ -1,5 +1,6 @@
 const STAR_FULL = '★'
 const STAR_EMPTY = '☆'
+const illustrations = require('./illustrations')
 
 function clampScore(value) {
   const number = Number(value || 0)
@@ -135,7 +136,8 @@ function resultCard(item) {
     audienceText: audienceText(item),
     executionLine: executionLine(item),
     scoreRows: flavorRows(item, true),
-    visualClass: visualClass(item)
+    visualClass: visualClass(item),
+    illustration: illustrations.drinkPath(item)
   })
 }
 
@@ -148,7 +150,8 @@ function detailView(item) {
     materialSummary: materialSummary(item),
     scoreRows: flavorRows(item, false),
     exploreOptions: exploreOptions(item),
-    visualClass: visualClass(item)
+    visualClass: visualClass(item),
+    illustration: illustrations.drinkPath(item)
   })
 }
 
@@ -160,7 +163,8 @@ function packageView(item, index) {
     packageIntro: entryLine(item),
     packageMeta: `${item.price || '约 35-55 元'} · 可做 ${index === 0 ? '3-4' : '2-3'} 杯 · ${item.flavor && item.flavor.difficulty <= 1 ? '成功率高' : '少买少错'}`,
     packageFit: `适合：${((item.scenes || []).slice(0, 2).join(' / ')) || '今晚临时想喝'}`,
-    visualClass: visualClass(item)
+    visualClass: visualClass(item),
+    illustration: illustrations.drinkPath(item)
   })
 }
 

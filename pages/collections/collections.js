@@ -1,5 +1,6 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
+const drinkView = require('../../utils/drinkView')
 
 Page({
   data: {
@@ -9,7 +10,7 @@ Page({
   onShow() {
     contentStore.getContent().then(() => {
       const favorites = wx.getStorageSync('favorites') || []
-      this.setData({ items: recommend.getItemsByIds(favorites) })
+      this.setData({ items: recommend.getItemsByIds(favorites).map((item) => drinkView.resultCard(item)) })
     })
   },
 

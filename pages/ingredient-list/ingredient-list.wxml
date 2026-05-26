@@ -5,8 +5,11 @@
   <view class="section list">
     <view wx:for="{{categories}}" wx:key="title" class="card">
       <view class="title category-title">{{item.title}}</view>
-      <view class="tags">
-        <view wx:for="{{item.items}}" wx:for-item="name" wx:key="*this" class="tag" data-name="{{name}}" bindtap="onIngredientTap">{{name}}</view>
+      <view class="ingredient-grid">
+        <view wx:for="{{item.items}}" wx:for-item="choice" wx:key="name" class="ingredient-choice" data-name="{{choice.name}}" bindtap="onIngredientTap">
+          <image class="ingredient-image" src="{{choice.illustration}}" mode="aspectFit" />
+          <view class="ingredient-name">{{choice.name}}</view>
+        </view>
       </view>
     </view>
   </view>

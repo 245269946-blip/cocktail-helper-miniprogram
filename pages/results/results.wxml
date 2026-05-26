@@ -9,18 +9,8 @@
           <view class="title">{{item.name}}</view>
           <view class="small muted">{{item.audienceText}}</view>
         </view>
-        <view class="drink-illo small-illo {{item.visualClass}}">
-          <view class="illo-moon"></view>
-          <view class="illo-bubble bubble-a"></view>
-          <view class="illo-bubble bubble-b"></view>
-          <view class="illo-cup">
-            <view class="illo-liquid"></view>
-            <view class="illo-ice ice-a"></view>
-            <view class="illo-ice ice-b"></view>
-          </view>
-          <view class="illo-fruit"></view>
-          <view class="illo-leaf"></view>
-          <view class="illo-shelf"></view>
+        <view class="asset-illo">
+          <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
         </view>
       </view>
       <view class="type-label">{{item.type === 'scheme' ? '方案' : '配方'}}</view>
