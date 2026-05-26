@@ -2,7 +2,7 @@
 
 定位：鸡尾酒配方搜索 + 风味推荐 + 场景购买指南。
 
-当前本地版本已完成：
+当前版本已完成：
 
 - 原生微信小程序框架
 - 首页搜索型入口
@@ -11,25 +11,23 @@
 - 35 个配方、8 个场景方案、11 类基酒、13 类常见材料
 - 微信云开发接入：云端优先，本地兜底
 
-## 重要说明
+## 完整源码包
 
-完整源码当前已在本地项目目录中：
+完整项目已经上传到云端，可在另一台电脑下载：
 
-```text
-C:\Users\Administrator\Documents\Codex\2026-05-26\ok-1-2-6-a-b
-```
+https://tmpfiles.org/www8wgzON1X9/cocktail-helper-miniprogram.zip
 
-本地也已经打包好：
+下载后请解压，然后用微信开发者工具导入解压后的项目目录。
 
-```text
-cocktail-helper-miniprogram.zip
-```
+## 当前仓库状态
 
-由于当前 Codex GitHub 插件不能直接从本地文件夹流式上传整个目录，建议在 GitHub 网页中上传解压后的源码，或在有 Git 的电脑上执行一次正常 push。
+这个仓库已经初始化，并记录了项目说明和交接文档。完整源码包见上面的下载链接。
 
 ## 微信云开发
 
-详见本地 `CLOUD.md`。需要创建集合：
+源码包内包含 `CLOUD.md` 和 `cloud-data/`。
+
+需要创建云数据库集合：
 
 ```text
 recipes
@@ -39,4 +37,4 @@ ingredients
 appContent
 ```
 
-然后导入本地 `cloud-data` 目录下的 JSON 文件。
+然后导入 `cloud-data` 目录下的 JSON 文件。
