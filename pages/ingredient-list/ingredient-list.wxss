@@ -1,3 +1,7 @@
 .category-title {
   margin-bottom: 18rpx;
 }
+
+.card {
+  background: linear-gradient(145deg, #fffdf8 0%, #fff7ee 100%);
+}

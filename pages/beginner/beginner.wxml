@@ -27,8 +27,24 @@
     <view class="section-title">新手推荐酒单</view>
     <view class="list">
       <view wx:for="{{results}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
-        <view class="title">{{item.name}}</view>
-        <view class="section-subtitle">{{item.reason}}</view>
+        <view class="visual-row">
+          <view class="beginner-copy">
+            <view class="title">{{item.name}}</view>
+            <view class="section-subtitle">{{item.entryLine}}</view>
+          </view>
+          <view class="drink-illo small-illo {{item.visualClass}}">
+            <view class="illo-bubble bubble-a"></view>
+            <view class="illo-bubble bubble-b"></view>
+            <view class="illo-cup">
+              <view class="illo-liquid"></view>
+              <view class="illo-ice ice-a"></view>
+              <view class="illo-ice ice-b"></view>
+            </view>
+            <view class="illo-fruit"></view>
+            <view class="illo-leaf"></view>
+            <view class="illo-shelf"></view>
+          </view>
+        </view>
         <view class="tags">
           <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
         </view>

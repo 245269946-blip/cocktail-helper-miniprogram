@@ -21,8 +21,24 @@
       <view class="section-subtitle pantry-section-desc">{{item.desc}}</view>
       <view wx:if="{{item.items.length}}" class="list">
         <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="card drink-card" data-id="{{drink.id}}" bindtap="onDetailTap">
-          <view class="title">{{drink.name}}</view>
-          <view class="section-subtitle">{{drink.reason}}</view>
+          <view class="visual-row">
+            <view class="pantry-copy">
+              <view class="title">{{drink.name}}</view>
+              <view class="section-subtitle">{{drink.reason}}</view>
+            </view>
+            <view class="drink-illo small-illo {{drink.visualClass}}">
+              <view class="illo-bubble bubble-a"></view>
+              <view class="illo-bubble bubble-b"></view>
+              <view class="illo-cup">
+                <view class="illo-liquid"></view>
+                <view class="illo-ice ice-a"></view>
+                <view class="illo-ice ice-b"></view>
+              </view>
+              <view class="illo-fruit"></view>
+              <view class="illo-leaf"></view>
+              <view class="illo-shelf"></view>
+            </view>
+          </view>
           <view wx:if="{{drink.missingText}}" class="small missing">只差：{{drink.missingText}}。去便利店补这个就能做。</view>
           <view class="pantry-action">{{drink.actionText}}</view>
         </view>

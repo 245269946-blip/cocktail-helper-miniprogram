@@ -1,7 +1,7 @@
 page {
   min-height: 100%;
-  color: #17130f;
-  background: #f6f3ed;
+  color: #2b2520;
+  background: #fbf6ec;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -14,7 +14,10 @@ input {
 
 .page {
   min-height: 100vh;
-  padding: 24rpx;
+  padding: 28rpx 24rpx 40rpx;
+  background:
+    radial-gradient(circle at 10% 4%, rgba(255, 221, 189, 0.5) 0, rgba(255, 221, 189, 0) 180rpx),
+    linear-gradient(180deg, #fffaf1 0%, #f7fbf7 42%, #fbf6ec 100%);
 }
 
 .section {
@@ -25,25 +28,26 @@ input {
   margin-bottom: 16rpx;
   font-size: 34rpx;
   font-weight: 700;
-  color: #17130f;
+  color: #2b2520;
 }
 
 .section-subtitle {
   margin-top: 6rpx;
-  color: #756e63;
+  color: #81766c;
   font-size: 25rpx;
   line-height: 1.55;
 }
 
 .card {
   padding: 24rpx;
-  border: 1rpx solid #e8e0d3;
-  border-radius: 8rpx;
-  background: #fffdf8;
+  border: 2rpx solid rgba(76, 62, 47, 0.11);
+  border-radius: 24rpx;
+  background: rgba(255, 253, 247, 0.92);
+  box-shadow: 0 14rpx 34rpx rgba(91, 70, 48, 0.07);
 }
 
 .muted {
-  color: #756e63;
+  color: #81766c;
 }
 
 .tags {
@@ -57,17 +61,17 @@ input {
   align-items: center;
   min-height: 48rpx;
   padding: 0 18rpx;
-  border: 1rpx solid #e1d8ca;
+  border: 2rpx solid rgba(76, 62, 47, 0.1);
   border-radius: 999rpx;
-  color: #4f463c;
-  background: #fff9ef;
+  color: #5d5045;
+  background: rgba(255, 249, 239, 0.9);
   font-size: 24rpx;
 }
 
 .tag.active {
-  color: #fffdf8;
-  border-color: #17130f;
-  background: #17130f;
+  color: #2f4f4a;
+  border-color: #a8d8cf;
+  background: #e4f4ef;
 }
 
 .grid-2 {
@@ -88,11 +92,12 @@ input {
   justify-content: center;
   height: 88rpx;
   margin: 0;
-  border-radius: 8rpx;
+  border-radius: 999rpx;
   color: #fffdf8;
-  background: #17130f;
+  background: #2f4f4a;
   font-size: 28rpx;
   line-height: 1;
+  box-shadow: 0 12rpx 24rpx rgba(47, 79, 74, 0.18);
 }
 
 .button-ghost {
@@ -101,10 +106,10 @@ input {
   justify-content: center;
   height: 80rpx;
   margin: 0;
-  border: 1rpx solid #d8cdbc;
-  border-radius: 8rpx;
-  color: #17130f;
-  background: #fffdf8;
+  border: 2rpx solid rgba(76, 62, 47, 0.12);
+  border-radius: 999rpx;
+  color: #2b2520;
+  background: rgba(255, 253, 247, 0.92);
   font-size: 27rpx;
   line-height: 1;
 }
@@ -130,10 +135,11 @@ button::after {
   font-size: 32rpx;
   font-weight: 700;
   line-height: 1.25;
+  color: #2b2520;
 }
 
 .body {
-  color: #4f463c;
+  color: #5d5045;
   font-size: 27rpx;
   line-height: 1.65;
 }
@@ -141,4 +147,290 @@ button::after {
 .small {
   font-size: 24rpx;
   line-height: 1.5;
+}
+
+.soft-panel {
+  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border-radius: 30rpx;
+  background: rgba(255, 253, 247, 0.86);
+  box-shadow: 0 18rpx 42rpx rgba(91, 70, 48, 0.06);
+}
+
+.visual-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.drink-illo {
+  position: relative;
+  flex: 0 0 auto;
+  width: 168rpx;
+  height: 142rpx;
+  overflow: hidden;
+  border: 2rpx solid rgba(76, 62, 47, 0.12);
+  border-radius: 30rpx;
+  background: linear-gradient(145deg, #f7fff9 0%, #eef8ff 100%);
+}
+
+.drink-illo.small-illo {
+  width: 128rpx;
+  height: 112rpx;
+  border-radius: 24rpx;
+}
+
+.drink-illo.large-illo {
+  width: 100%;
+  height: 290rpx;
+  border-radius: 34rpx;
+}
+
+.illo-cup {
+  position: absolute;
+  left: 56rpx;
+  bottom: 18rpx;
+  width: 64rpx;
+  height: 88rpx;
+  border: 4rpx solid rgba(76, 62, 47, 0.64);
+  border-top-width: 3rpx;
+  border-radius: 14rpx 14rpx 22rpx 22rpx;
+  transform: rotate(-3deg);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.large-illo .illo-cup {
+  left: 50%;
+  bottom: 36rpx;
+  width: 108rpx;
+  height: 154rpx;
+  margin-left: -54rpx;
+  border-radius: 20rpx 20rpx 32rpx 32rpx;
+}
+
+.illo-liquid {
+  position: absolute;
+  left: 8rpx;
+  right: 8rpx;
+  bottom: 8rpx;
+  height: 54rpx;
+  border-radius: 8rpx 8rpx 16rpx 16rpx;
+  background: linear-gradient(180deg, #bfe9ec 0%, #8fd6d0 100%);
+}
+
+.large-illo .illo-liquid {
+  height: 94rpx;
+  border-radius: 12rpx 12rpx 24rpx 24rpx;
+}
+
+.illo-ice {
+  position: absolute;
+  width: 18rpx;
+  height: 16rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.95);
+  border-radius: 5rpx;
+  background: rgba(255, 255, 255, 0.38);
+}
+
+.ice-a {
+  left: 14rpx;
+  bottom: 40rpx;
+  transform: rotate(12deg);
+}
+
+.ice-b {
+  right: 13rpx;
+  bottom: 28rpx;
+  transform: rotate(-10deg);
+}
+
+.illo-bubble {
+  position: absolute;
+  width: 12rpx;
+  height: 12rpx;
+  border: 3rpx solid rgba(111, 183, 196, 0.45);
+  border-radius: 50%;
+}
+
+.bubble-a {
+  top: 24rpx;
+  left: 34rpx;
+}
+
+.bubble-b {
+  top: 48rpx;
+  right: 32rpx;
+  width: 9rpx;
+  height: 9rpx;
+}
+
+.bubble-c {
+  top: 72rpx;
+  left: 22rpx;
+  width: 7rpx;
+  height: 7rpx;
+}
+
+.illo-fruit {
+  position: absolute;
+  left: 46rpx;
+  bottom: 70rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border: 4rpx solid #a8d86f;
+  border-radius: 50%;
+  background: #f8f6a8;
+  transform: rotate(-16deg);
+}
+
+.large-illo .illo-fruit {
+  left: 50%;
+  bottom: 142rpx;
+  margin-left: -62rpx;
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.illo-leaf {
+  position: absolute;
+  right: 44rpx;
+  bottom: 88rpx;
+  width: 22rpx;
+  height: 34rpx;
+  border-radius: 22rpx 4rpx 22rpx 4rpx;
+  background: #8ac9a5;
+  transform: rotate(22deg);
+}
+
+.large-illo .illo-leaf {
+  right: 50%;
+  bottom: 178rpx;
+  margin-right: -78rpx;
+  width: 32rpx;
+  height: 48rpx;
+}
+
+.illo-moon {
+  position: absolute;
+  right: 22rpx;
+  top: 18rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #ffe8a8;
+  box-shadow: -9rpx 3rpx 0 #f7fff9;
+}
+
+.large-illo .illo-moon {
+  right: 58rpx;
+  top: 34rpx;
+  width: 44rpx;
+  height: 44rpx;
+  box-shadow: -13rpx 4rpx 0 #f7fff9;
+}
+
+.illo-shelf {
+  position: absolute;
+  left: 16rpx;
+  right: 16rpx;
+  bottom: 15rpx;
+  height: 7rpx;
+  border-radius: 999rpx;
+  background: rgba(76, 62, 47, 0.12);
+}
+
+.illo-fresh {
+  background: linear-gradient(145deg, #f4fff8 0%, #e7f8ff 100%);
+}
+
+.illo-fresh .illo-liquid {
+  background: linear-gradient(180deg, #c8f3f0 0%, #85d7d2 100%);
+}
+
+.illo-milky {
+  background: linear-gradient(145deg, #fffaf0 0%, #f7efe1 100%);
+}
+
+.illo-milky .illo-liquid {
+  background: linear-gradient(180deg, #fff2d8 0%, #dfc29c 100%);
+}
+
+.illo-fruity {
+  background: linear-gradient(145deg, #fff8ed 0%, #ffe9ef 100%);
+}
+
+.illo-fruity .illo-liquid {
+  background: linear-gradient(180deg, #ffd9b8 0%, #ff9f9a 100%);
+}
+
+.illo-tipsy {
+  background: linear-gradient(145deg, #fff7f2 0%, #f0ecff 100%);
+}
+
+.illo-tipsy .illo-liquid {
+  background: linear-gradient(180deg, #f2c7e8 0%, #b7aadf 100%);
+}
+
+.illo-convenience {
+  background: linear-gradient(145deg, #f8fff7 0%, #eff7ff 48%, #fff4e4 100%);
+}
+
+.illo-convenience .illo-liquid {
+  background: linear-gradient(180deg, #cbe9ff 0%, #95d6bd 100%);
+}
+
+.sketch-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 62rpx;
+  height: 62rpx;
+  border: 3rpx solid rgba(76, 62, 47, 0.58);
+  border-radius: 20rpx;
+  background: rgba(255, 253, 247, 0.65);
+  transform: rotate(-3deg);
+}
+
+.sketch-icon::after {
+  position: absolute;
+  content: "";
+}
+
+.icon-store::after {
+  left: 12rpx;
+  right: 12rpx;
+  top: 18rpx;
+  height: 8rpx;
+  border-radius: 8rpx;
+  background: #8fd6d0;
+  box-shadow: 0 14rpx 0 #ffd9b8;
+}
+
+.icon-home::after {
+  left: 15rpx;
+  top: 13rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-left: 4rpx solid #8ac9a5;
+  border-bottom: 4rpx solid #8ac9a5;
+  transform: rotate(135deg);
+}
+
+.icon-glass::after {
+  left: 19rpx;
+  top: 12rpx;
+  width: 24rpx;
+  height: 34rpx;
+  border: 4rpx solid #85d7d2;
+  border-top-width: 3rpx;
+  border-radius: 6rpx 6rpx 12rpx 12rpx;
+}
+
+.icon-first::after {
+  left: 15rpx;
+  top: 15rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #ffd0dc;
+  box-shadow: 18rpx -10rpx 0 -7rpx #ffe8a8;
 }

@@ -1,4 +1,19 @@
 <view wx:if="{{detail}}" class="page detail-page">
+  <view class="detail-visual drink-illo large-illo {{detail.visualClass}}">
+    <view class="illo-moon"></view>
+    <view class="illo-bubble bubble-a"></view>
+    <view class="illo-bubble bubble-b"></view>
+    <view class="illo-bubble bubble-c"></view>
+    <view class="illo-cup">
+      <view class="illo-liquid"></view>
+      <view class="illo-ice ice-a"></view>
+      <view class="illo-ice ice-b"></view>
+    </view>
+    <view class="illo-fruit"></view>
+    <view class="illo-leaf"></view>
+    <view class="illo-shelf"></view>
+  </view>
+
   <view class="detail-head">
     <view>
       <view class="detail-title">{{detail.name}}</view>

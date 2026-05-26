@@ -1,5 +1,22 @@
 .home-head {
-  padding: 18rpx 0 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  padding: 20rpx 2rpx 16rpx;
+}
+
+.home-kicker {
+  margin-bottom: 8rpx;
+  color: #5fa69b;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.home-title {
+  margin-bottom: 8rpx;
+  font-size: 42rpx;
+  line-height: 1.18;
 }
 
 .search-box {
@@ -7,9 +24,10 @@
   align-items: center;
   gap: 12rpx;
   padding: 12rpx;
-  border: 1rpx solid #ded3c2;
-  border-radius: 8rpx;
-  background: #fffdf8;
+  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border-radius: 28rpx;
+  background: rgba(255, 253, 247, 0.9);
+  box-shadow: 0 12rpx 30rpx rgba(91, 70, 48, 0.06);
 }
 
 .search-input {
@@ -23,9 +41,9 @@
   width: 128rpx;
   height: 68rpx;
   margin: 0;
-  border-radius: 8rpx;
+  border-radius: 999rpx;
   color: #fffdf8;
-  background: #17130f;
+  background: #2f4f4a;
   font-size: 26rpx;
   line-height: 68rpx;
 }
@@ -39,26 +57,34 @@
 
 .action-card {
   width: calc((100% - 16rpx) / 2);
-  min-height: 154rpx;
+  min-height: 182rpx;
   padding: 22rpx;
-  border: 1rpx solid #e8e0d3;
-  border-radius: 8rpx;
-  background: #fffdf8;
+  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border-radius: 28rpx;
+  background: rgba(255, 253, 247, 0.9);
+  box-shadow: 0 14rpx 34rpx rgba(91, 70, 48, 0.07);
 }
 
 .action-card.featured {
-  border-color: #ead2a6;
-  background: #fff0da;
+  border-color: #f0d4a8;
+  background: linear-gradient(145deg, #fff8ea 0%, #ffe8c9 100%);
 }
 
 .action-card:nth-child(2) {
-  border-color: #cfe5df;
-  background: #e8f3f0;
+  border-color: #bfe0d8;
+  background: linear-gradient(145deg, #f8fff9 0%, #e5f4f0 100%);
 }
 
 .action-card:nth-child(4) {
-  border-color: #ead0d6;
-  background: #fae9ed;
+  border-color: #edcdd7;
+  background: linear-gradient(145deg, #fff7f8 0%, #fae5ec 100%);
+}
+
+.action-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12rpx;
 }
 
 .action-title {
@@ -68,7 +94,7 @@
 
 .action-desc {
   margin-top: 8rpx;
-  color: #756e63;
+  color: #81766c;
   font-size: 24rpx;
   line-height: 1.45;
 }
@@ -87,7 +113,7 @@
 }
 
 .arrow {
-  color: #9f9385;
+  color: #8bbdb4;
   font-size: 46rpx;
   line-height: 1;
 }

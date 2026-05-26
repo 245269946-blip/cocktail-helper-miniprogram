@@ -1,5 +1,6 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
+const drinkView = require('../../utils/drinkView')
 
 Page({
   data: {
@@ -36,7 +37,7 @@ Page({
       levelOptions: levelRaw.map((label) => ({ label, active: label === this.data.level })),
       flavorOptions: flavorRaw.map((label) => ({ label, active: label === this.data.flavor })),
       buyOptions: buyRaw.map((label) => ({ label, active: label === this.data.buy })),
-      results
+      results: results.map((item) => drinkView.resultCard(item))
     })
   },
 

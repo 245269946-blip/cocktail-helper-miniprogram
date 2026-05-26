@@ -1,12 +1,31 @@
 <view class="page home-page">
   <view class="home-head">
-    <view class="section-title">今晚想搞点什么喝？</view>
-    <view class="section-subtitle">先选最方便的开始方式，后面再帮你缩小选择。</view>
+    <view>
+      <view class="home-kicker">Yoru Sip Guide</view>
+      <view class="section-title home-title">今晚想搞点什么喝？</view>
+      <view class="section-subtitle">先选最方便的开始方式，后面再帮你缩小选择。</view>
+    </view>
+    <view class="drink-illo small-illo illo-fresh">
+      <view class="illo-moon"></view>
+      <view class="illo-bubble bubble-a"></view>
+      <view class="illo-bubble bubble-b"></view>
+      <view class="illo-cup">
+        <view class="illo-liquid"></view>
+        <view class="illo-ice ice-a"></view>
+        <view class="illo-ice ice-b"></view>
+      </view>
+      <view class="illo-fruit"></view>
+      <view class="illo-leaf"></view>
+      <view class="illo-shelf"></view>
+    </view>
   </view>
 
   <view class="action-grid">
     <view wx:for="{{actionEntries}}" wx:key="title" class="action-card {{item.featured ? 'featured' : ''}}" data-path="{{item.path}}" bindtap="onNavigate">
-      <view class="action-title">{{item.title}}</view>
+      <view class="action-top">
+        <view class="action-title">{{item.title}}</view>
+        <view class="sketch-icon {{item.iconClass}}"></view>
+      </view>
       <view class="action-desc">{{item.desc}}</view>
       <view class="action-note">{{item.note}}</view>
     </view>

@@ -72,6 +72,18 @@ function executionLine(item) {
   return parts.join(' · ')
 }
 
+function visualClass(item) {
+  const tags = item.tags || []
+  const flavor = item.flavor || {}
+  const name = item.name || ''
+  if (tags.includes('便利店') || item.type === 'scheme') return 'illo-convenience'
+  if (tags.includes('奶香') || name.includes('百利甜') || name.includes('牛奶')) return 'illo-milky'
+  if (tags.includes('果味') || tags.includes('酸甜') || name.includes('梅酒') || name.includes('橙')) return 'illo-fruity'
+  if (tags.includes('微醺') || flavor.alcohol >= 3) return 'illo-tipsy'
+  if (flavor.fresh >= 4 || tags.includes('清爽')) return 'illo-fresh'
+  return 'illo-fruity'
+}
+
 function detailActionLine(item) {
   const flavor = item.flavor || {}
   const pieces = []
@@ -122,7 +134,8 @@ function resultCard(item) {
     entryLine: entryLine(item),
     audienceText: audienceText(item),
     executionLine: executionLine(item),
-    scoreRows: flavorRows(item, true)
+    scoreRows: flavorRows(item, true),
+    visualClass: visualClass(item)
   })
 }
 
@@ -134,7 +147,8 @@ function detailView(item) {
     actionLine: detailActionLine(item),
     materialSummary: materialSummary(item),
     scoreRows: flavorRows(item, false),
-    exploreOptions: exploreOptions(item)
+    exploreOptions: exploreOptions(item),
+    visualClass: visualClass(item)
   })
 }
 
@@ -145,13 +159,15 @@ function packageView(item, index) {
     packageTitle: title,
     packageIntro: entryLine(item),
     packageMeta: `${item.price || '约 35-55 元'} · 可做 ${index === 0 ? '3-4' : '2-3'} 杯 · ${item.flavor && item.flavor.difficulty <= 1 ? '成功率高' : '少买少错'}`,
-    packageFit: `适合：${((item.scenes || []).slice(0, 2).join(' / ')) || '今晚临时想喝'}`
+    packageFit: `适合：${((item.scenes || []).slice(0, 2).join(' / ')) || '今晚临时想喝'}`,
+    visualClass: visualClass(item)
   })
 }
 
 module.exports = {
   stars,
   flavorRows,
+  visualClass,
   resultCard,
   detailView,
   exploreOptions,

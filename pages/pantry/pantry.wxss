@@ -8,6 +8,11 @@
   gap: 10rpx;
 }
 
+.pantry-copy {
+  flex: 1;
+  min-width: 0;
+}
+
 .pantry-section-desc {
   margin-top: -8rpx;
   margin-bottom: 16rpx;
@@ -21,10 +26,10 @@
   align-self: flex-start;
   min-height: 44rpx;
   padding: 7rpx 16rpx;
-  border: 1rpx solid #e1d8ca;
+  border: 2rpx solid rgba(76, 62, 47, 0.1);
   border-radius: 999rpx;
-  color: #4f463c;
-  background: #fff9ef;
+  color: #2f4f4a;
+  background: #e4f4ef;
   font-size: 23rpx;
 }
 

@@ -1,15 +1,23 @@
 .result-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 14rpx;
+  overflow: hidden;
+}
+
+.result-copy {
+  flex: 1;
+  min-width: 0;
 }
 
 .type-label {
   flex: 0 0 auto;
+  align-self: flex-start;
   padding: 8rpx 12rpx;
   border-radius: 999rpx;
-  color: #fffdf8;
-  background: #17130f;
+  color: #2f4f4a;
+  background: #e4f4ef;
   font-size: 22rpx;
 }
 
@@ -24,7 +32,7 @@
 }
 
 .result-entry {
-  color: #17130f;
+  color: #2b2520;
   font-size: 28rpx;
   font-weight: 700;
   line-height: 1.45;
@@ -53,18 +61,18 @@
 
 .score-mini-label {
   width: 64rpx;
-  color: #4f463c;
+  color: #5d5045;
 }
 
 .score-stars {
   width: 116rpx;
-  color: #d98c24;
+  color: #e4a356;
   letter-spacing: 1rpx;
 }
 
 .score-note {
   flex: 1;
-  color: #756e63;
+  color: #81766c;
 }
 
 .explore-title {
@@ -79,6 +87,7 @@
 
 .explore-card {
   min-height: 110rpx;
+  background: linear-gradient(145deg, #fffdf8 0%, #f1faf7 100%);
 }
 
 .explore-card-title {

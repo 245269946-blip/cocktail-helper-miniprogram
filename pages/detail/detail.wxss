@@ -1,3 +1,7 @@
+.detail-visual {
+  margin-bottom: 22rpx;
+}
+
 .detail-head {
   display: flex;
   align-items: flex-start;
@@ -8,15 +12,16 @@
 }
 
 .detail-title {
-  font-size: 48rpx;
+  font-size: 50rpx;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .detail-en {
   margin-top: 6rpx;
-  color: #756e63;
+  color: #81766c;
   font-size: 26rpx;
+  line-height: 1.5;
 }
 
 .favorite-button {
@@ -24,18 +29,18 @@
   min-width: 132rpx;
   height: 64rpx;
   margin: 0;
-  border: 1rpx solid #d8cdbc;
-  border-radius: 8rpx;
-  color: #17130f;
-  background: #fffdf8;
+  border: 2rpx solid rgba(76, 62, 47, 0.12);
+  border-radius: 999rpx;
+  color: #2b2520;
+  background: rgba(255, 253, 247, 0.9);
   font-size: 24rpx;
   line-height: 64rpx;
 }
 
 .favorite-button.active {
   color: #fffdf8;
-  border-color: #17130f;
-  background: #17130f;
+  border-color: #eaa8ba;
+  background: #eaa8ba;
 }
 
 .reason {
@@ -55,26 +60,26 @@
 
 .score-label {
   width: 86rpx;
-  color: #4f463c;
+  color: #5d5045;
   font-size: 25rpx;
 }
 
 .score-stars {
   width: 132rpx;
-  color: #d98c24;
+  color: #e4a356;
   font-size: 24rpx;
   letter-spacing: 1rpx;
 }
 
 .score-human {
   flex: 1;
-  color: #756e63;
+  color: #81766c;
   font-size: 24rpx;
 }
 
 .action-card {
-  border-color: #d8e8d0;
-  background: #edf5e8;
+  border-color: #c7e4dc;
+  background: linear-gradient(145deg, #f6fff7 0%, #e7f5f1 100%);
 }
 
 .material-section {
@@ -83,7 +88,7 @@
 
 .material-title {
   margin-bottom: 8rpx;
-  color: #17130f;
+  color: #2b2520;
   font-size: 27rpx;
   font-weight: 700;
 }
@@ -108,7 +113,7 @@
   height: 42rpx;
   border-radius: 50%;
   color: #fffdf8;
-  background: #17130f;
+  background: #2f4f4a;
   font-size: 23rpx;
 }
 
@@ -122,8 +127,8 @@
 }
 
 .warning-card {
-  border-color: #e3b89f;
-  background: #fff8f2;
+  border-color: #f0c5b0;
+  background: linear-gradient(145deg, #fff8f2 0%, #fff1ea 100%);
 }
 
 .similar-card {
@@ -140,6 +145,7 @@
 
 .explore-card {
   min-height: 116rpx;
+  background: linear-gradient(145deg, #fffdf8 0%, #f7f2ff 100%);
 }
 
 .explore-card-title {

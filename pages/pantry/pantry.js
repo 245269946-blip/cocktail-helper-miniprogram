@@ -1,6 +1,7 @@
 const data = require('../../utils/data')
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
+const drinkView = require('../../utils/drinkView')
 
 Page({
   data: {
@@ -52,7 +53,8 @@ Page({
       title,
       items: items.map((item) => Object.assign({}, item, {
         missingText: item.missing && item.missing.length ? item.missing.join('、') : '',
-        actionText
+        actionText,
+        visualClass: drinkView.visualClass(item)
       }))
     }
   },

@@ -5,10 +5,10 @@ Page({
   data: {
     keyword: '',
     actionEntries: [
-      { title: '去便利店买', desc: '下楼5分钟就能搞定', note: '少买少错', path: '/pages/convenience/convenience', featured: true },
-      { title: '家里有什么', desc: '先看看现在能做什么', note: '少补货', path: '/pages/pantry/pantry' },
-      { title: '找一杯好喝的', desc: '从甜口、清爽、微醺开始', note: '先选口味', path: '/pages/flavor-list/flavor-list' },
-      { title: '第一次尝试', desc: '几乎喝不出酒味也能喝', note: '新手友好', path: '/pages/beginner/beginner' }
+      { title: '去便利店买', desc: '下楼5分钟就能搞定', note: '少买少错', iconClass: 'icon-store', path: '/pages/convenience/convenience', featured: true },
+      { title: '家里有什么', desc: '先看看现在能做什么', note: '少补货', iconClass: 'icon-home', path: '/pages/pantry/pantry' },
+      { title: '找一杯好喝的', desc: '从甜口、清爽、微醺开始', note: '先选口味', iconClass: 'icon-glass', path: '/pages/flavor-list/flavor-list' },
+      { title: '第一次尝试', desc: '几乎喝不出酒味也能喝', note: '新手友好', iconClass: 'icon-first', path: '/pages/beginner/beginner' }
     ],
     directEntries: [
       { title: '便利店能买齐', desc: '只买 2-3 样，今晚就能做', path: '/pages/convenience/convenience' },
