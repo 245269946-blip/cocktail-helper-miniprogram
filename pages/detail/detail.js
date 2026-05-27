@@ -1,10 +1,12 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const visualSystem = require('../../utils/visualSystem')
 
 Page({
   data: {
     detail: null,
+    themeClass: 'theme-gin',
     scoreRows: [],
     materialSections: [],
     exploreOptions: [],
@@ -36,6 +38,7 @@ Page({
     wx.setNavigationBarTitle({ title: detail.name })
     this.setData({
       detail: viewDetail,
+      themeClass: visualSystem.themeClass(detail),
       scoreRows: viewDetail.scoreRows,
       materialSections,
       exploreOptions: viewDetail.exploreOptions,
