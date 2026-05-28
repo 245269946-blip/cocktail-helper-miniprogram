@@ -18,9 +18,11 @@ Page({
     if (!base) return
 
     const sectionMeta = [
-      { key: 'classic', title: '最经典配方' },
-      { key: 'beginner', title: '新手友好配方' },
-      { key: 'convenience', title: '便利店能搭什么' },
+      { key: 'first', title: '第一杯推荐' },
+      { key: 'beginner', title: '新手推荐' },
+      { key: 'convenience', title: '便利店方案' },
+      { key: 'lowAlcohol', title: '低酒感方案' },
+      { key: 'classic', title: '基础经典款' },
       { key: 'sweet', title: '甜口版' },
       { key: 'fresh', title: '清爽版' },
       { key: 'friendly', title: '女生更容易接受版' },

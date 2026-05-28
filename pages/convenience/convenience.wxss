@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 16rpx;
-  background: linear-gradient(145deg, #fffdf8 0%, #f5fbff 100%);
+  background:
+    radial-gradient(circle at 86% 14%, rgba(142, 219, 213, 0.24) 0, rgba(142, 219, 213, 0) 130rpx),
+    linear-gradient(145deg, rgba(255, 253, 247, 0.86) 0%, rgba(232, 246, 255, 0.78) 100%);
 }
 
 .package-copy {
@@ -17,7 +19,7 @@
 }
 
 .price {
-  color: #d98c24;
+  color: #c77b35;
   font-weight: 600;
 }
 
@@ -25,9 +27,9 @@
   align-self: flex-start;
   min-height: 44rpx;
   padding: 7rpx 16rpx;
-  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border: 2rpx solid rgba(61, 119, 118, 0.12);
   border-radius: 999rpx;
-  color: #2f4f4a;
-  background: #e4f4ef;
+  color: #255b58;
+  background: #dff5f1;
   font-size: 23rpx;
 }

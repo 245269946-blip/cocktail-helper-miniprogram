@@ -1,4 +1,68 @@
 const visualThemes = {
+  sparkling: {
+    id: 'sparkling',
+    name: '气泡饮',
+    className: 'theme-sparkling',
+    keywords: ['气泡', '苏打', '汤力', 'sparkling', 'soda', 'tonic', '清爽'],
+    mood: ['青柠', '冰块', '透明杯', '气泡', '冷凝水'],
+    palette: {
+      primary: '#2f948c',
+      secondary: '#8edbd5',
+      accent: '#d8ef70',
+      paper: '#fff7e5',
+      liquid: '#73d7c9'
+    },
+    materials: ['透明玻璃', '气泡水', '冷凝水', '清透冰块'],
+    elements: ['高球杯', '青柠圆片', '细气泡', '透明液体']
+  },
+  coffee: {
+    id: 'coffee',
+    name: '咖啡特调',
+    className: 'theme-coffee',
+    keywords: ['咖啡', '冷萃', '拿铁', 'espresso', 'coffee'],
+    mood: ['咖啡棕', '奶油', '柔光', '微苦', '冰杯'],
+    palette: {
+      primary: '#8c6648',
+      secondary: '#d7b992',
+      accent: '#f2d6a7',
+      paper: '#fff3e3',
+      liquid: '#b98a62'
+    },
+    materials: ['咖啡泡沫', '奶油纸感', '柔和灯光'],
+    elements: ['咖啡杯', '冰块', '奶油旋涡', '棕色液体']
+  },
+  tea: {
+    id: 'tea',
+    name: '茶饮',
+    className: 'theme-tea',
+    keywords: ['茶', '乌龙', '绿茶', '柠檬茶', 'tea', 'oolong'],
+    mood: ['茶色', '柠檬', '清爽感', '透明冰杯'],
+    palette: {
+      primary: '#7f9f69',
+      secondary: '#dce7b5',
+      accent: '#f0d66d',
+      paper: '#fff8e7',
+      liquid: '#c9b26a'
+    },
+    materials: ['茶汤渐变', '柠檬片', '冰块'],
+    elements: ['高杯', '柠檬', '茶色液体', '冰块']
+  },
+  juice: {
+    id: 'juice',
+    name: '果汁',
+    className: 'theme-juice',
+    keywords: ['果汁', '橙汁', '苹果汁', '葡萄柚', '水果', 'juice', 'fruit'],
+    mood: ['水果色', '半透明', '明亮', '酸甜'],
+    palette: {
+      primary: '#e0945a',
+      secondary: '#ffc49b',
+      accent: '#f7df73',
+      paper: '#fff3df',
+      liquid: '#f6a66e'
+    },
+    materials: ['水果切片', '半透明液体', '冰块'],
+    elements: ['水果杯', '橙色液体', '果片', '细气泡']
+  },
   gin: {
     id: 'gin',
     name: '金酒',
@@ -79,6 +143,54 @@ const visualThemes = {
     materials: ['水果切片', '薄荷叶', '碎冰', '夏天光感'],
     elements: ['莫吉托杯', '薄荷叶', '青柠', '热带水果']
   },
+  tequila: {
+    id: 'tequila',
+    name: '龙舌兰',
+    className: 'theme-tequila',
+    keywords: ['龙舌兰', '玛格丽特', '帕洛玛', 'tequila', 'margarita', 'paloma'],
+    mood: ['青柠', '盐边', '葡萄柚', '明亮酸甜'],
+    palette: {
+      primary: '#c98c3a',
+      secondary: '#ffd06f',
+      accent: '#bfe07a',
+      paper: '#fff7e1',
+      liquid: '#f5b661'
+    },
+    materials: ['盐边杯', '青柠角', '葡萄柚汽水', '暖黄光'],
+    elements: ['浅口杯', '盐边', '青柠', '粉橙液体']
+  },
+  plumWine: {
+    id: 'plumWine',
+    name: '梅酒',
+    className: 'theme-plum-wine',
+    keywords: ['梅酒', '梅子', 'umeshu'],
+    mood: ['梅子', '酸甜', '浅粉', '轻微醺'],
+    palette: {
+      primary: '#b66a85',
+      secondary: '#f2bfd0',
+      accent: '#f7d37c',
+      paper: '#fff6ea',
+      liquid: '#eaa0b6'
+    },
+    materials: ['梅子果脯', '透明气泡', '浅粉液体'],
+    elements: ['圆杯', '梅子', '气泡', '粉色液体']
+  },
+  sake: {
+    id: 'sake',
+    name: '清酒',
+    className: 'theme-sake',
+    keywords: ['清酒', '日本酒', 'sake', '绿茶'],
+    mood: ['米香', '冷白', '绿茶', '轻盈'],
+    palette: {
+      primary: '#6faaa0',
+      secondary: '#d8eee8',
+      accent: '#c8d982',
+      paper: '#fffaf0',
+      liquid: '#dcefe8'
+    },
+    materials: ['小清酒瓶', '绿茶杯', '冰杯', '冷白光'],
+    elements: ['小杯', '米白液体', '茶色渐变', '细气泡']
+  },
   convenience: {
     id: 'convenience',
     name: '便利店调酒',
@@ -129,7 +241,7 @@ const visualThemes = {
   }
 }
 
-const themePriority = ['gin', 'whisky', 'baileys', 'vodka', 'rum', 'convenience', 'beginner', 'lowAlcohol']
+const themePriority = ['convenience', 'coffee', 'tea', 'juice', 'sparkling', 'gin', 'whisky', 'baileys', 'vodka', 'rum', 'tequila', 'plumWine', 'sake', 'beginner', 'lowAlcohol']
 
 function normalizeText(value) {
   return String(value || '').toLowerCase()

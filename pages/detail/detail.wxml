@@ -1,18 +1,33 @@
-<view wx:if="{{detail}}" class="page detail-page">
-  <view class="detail-visual asset-illo large-asset">
-    <image class="asset-image" src="{{detail.illustration}}" mode="aspectFit" />
-  </view>
-
-  <view class="detail-head">
-    <view>
-      <view class="detail-title">{{detail.name}}</view>
-      <view class="detail-en">{{detail.entryLine}}</view>
+<view wx:if="{{detail}}" class="page detail-page {{themeClass}}">
+  <view class="detail-hero lab-shell">
+    <view class="detail-visual asset-illo large-asset">
+      <image class="asset-image" src="{{detail.illustration}}" mode="aspectFit" />
     </view>
-    <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="onToggleFavorite">{{favoriteText}}</button>
+
+    <view class="detail-head">
+      <view>
+        <view class="detail-kicker">Recipe</view>
+        <view class="detail-title">{{detail.name}}</view>
+        <view class="detail-en">{{detail.entryLine}}</view>
+      </view>
+      <button class="favorite-button {{isFavorite ? 'active' : ''}}" bindtap="onToggleFavorite">{{favoriteText}}</button>
+    </view>
+
+    <view class="tags">
+      <view wx:for="{{detail.tags}}" wx:key="*this" class="tag">{{item}}</view>
+    </view>
   </view>
 
-  <view class="tags">
-    <view wx:for="{{detail.tags}}" wx:key="*this" class="tag">{{item}}</view>
+  <view class="fact-grid">
+    <view wx:for="{{detail.basicFacts}}" wx:key="label" class="fact-card">
+      <view class="fact-label">{{item.label}}</view>
+      <view class="fact-value">{{item.value}}</view>
+    </view>
+  </view>
+
+  <view class="section card action-card">
+    <view class="title">现在就能做</view>
+    <view class="body">{{detail.actionLine}}</view>
   </view>
 
   <view class="section card">
@@ -30,11 +45,6 @@
         <view class="score-human">{{item.note}}</view>
       </view>
     </view>
-  </view>
-
-  <view class="section card action-card">
-    <view class="title">现在就能做</view>
-    <view class="body">{{detail.actionLine}}</view>
   </view>
 
   <view class="section card">

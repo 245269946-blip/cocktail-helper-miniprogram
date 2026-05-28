@@ -1,5 +1,39 @@
 [
   {
+    "id": "juice",
+    "name": "果汁",
+    "category": "果汁",
+    "tags": [
+      "果味",
+      "酸甜",
+      "低门槛",
+      "便利店"
+    ],
+    "goodWith": [
+      "伏特加",
+      "朗姆",
+      "龙舌兰",
+      "果酒",
+      "起泡酒"
+    ],
+    "recipes": [
+      "vodka-orange",
+      "vodka-grapefruit",
+      "vodka-apple",
+      "paloma",
+      "mimosa",
+      "fruit-wine-spritz"
+    ],
+    "lowAlcohol": [
+      "orange-soda-zero",
+      "apple-soda-zero"
+    ],
+    "warnings": [
+      "果汁很遮酒味，基酒先少倒，试味后再加。",
+      "想清爽就加气泡水或柠檬。"
+    ]
+  },
+  {
     "id": "cola",
     "name": "可乐",
     "category": "碳酸饮料",
@@ -251,6 +285,36 @@
     ]
   },
   {
+    "id": "lime",
+    "name": "青柠",
+    "category": "水果",
+    "tags": [
+      "酸甜",
+      "清爽",
+      "去腻",
+      "经典"
+    ],
+    "goodWith": [
+      "金酒",
+      "朗姆",
+      "伏特加",
+      "龙舌兰"
+    ],
+    "recipes": [
+      "mojito",
+      "gin-tonic",
+      "daiquiri",
+      "margarita",
+      "paloma"
+    ],
+    "lowAlcohol": [
+      "soda-lemon-zero"
+    ],
+    "warnings": [
+      "青柠香气更尖锐，怕酸可以用柠檬替代。"
+    ]
+  },
+  {
     "id": "grapefruit-juice",
     "name": "葡萄柚汁",
     "category": "果汁",
@@ -327,6 +391,33 @@
     ],
     "warnings": [
       "瓶装柠檬茶通常已经很甜，基酒用量建议保守。"
+    ]
+  },
+  {
+    "id": "green-tea",
+    "name": "绿茶",
+    "category": "茶饮",
+    "tags": [
+      "茶感",
+      "清爽",
+      "不太甜",
+      "便利店"
+    ],
+    "goodWith": [
+      "清酒",
+      "伏特加",
+      "梅酒"
+    ],
+    "recipes": [
+      "sake-green-tea",
+      "vodka-tea",
+      "umeshu-oolong"
+    ],
+    "lowAlcohol": [
+      "tea-lemon-zero"
+    ],
+    "warnings": [
+      "无糖绿茶更清爽，含糖绿茶要减少基酒量。"
     ]
   },
   {

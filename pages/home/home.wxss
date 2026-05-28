@@ -1,9 +1,181 @@
+.home-page {
+  min-height: 100vh;
+}
+
+.lab-start {
+  min-height: calc(100vh - 68rpx);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 34rpx;
+  padding: 10rpx 0 28rpx;
+}
+
+.night-lab {
+  position: relative;
+  min-height: 560rpx;
+  overflow: hidden;
+  border: 2rpx solid rgba(61, 119, 118, 0.18);
+  border-radius: 42rpx;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(185, 244, 235, 0.38) 0, rgba(185, 244, 235, 0) 180rpx),
+    linear-gradient(160deg, #eaf9f6 0%, #dff0f4 42%, #fff4df 100%);
+  box-shadow: 0 28rpx 70rpx rgba(57, 96, 102, 0.16);
+}
+
+.lab-glow {
+  position: absolute;
+  left: -40rpx;
+  right: -40rpx;
+  bottom: 0;
+  height: 210rpx;
+  background: linear-gradient(0deg, rgba(126, 220, 211, 0.34), rgba(126, 220, 211, 0));
+}
+
+.bubble-field {
+  position: absolute;
+  inset: 0;
+}
+
+.float-bubble {
+  position: absolute;
+  width: 18rpx;
+  height: 18rpx;
+  border: 3rpx solid rgba(80, 169, 165, 0.34);
+  border-radius: 50%;
+  animation: bubble-drift 6s ease-in-out infinite;
+}
+
+.bubble-one {
+  left: 70rpx;
+  top: 86rpx;
+}
+
+.bubble-two {
+  right: 116rpx;
+  top: 132rpx;
+  width: 26rpx;
+  height: 26rpx;
+  animation-delay: 1.2s;
+}
+
+.bubble-three {
+  left: 148rpx;
+  bottom: 174rpx;
+  width: 14rpx;
+  height: 14rpx;
+  animation-delay: 2s;
+}
+
+.lab-window {
+  position: absolute;
+  left: 48rpx;
+  right: 48rpx;
+  top: 46rpx;
+  height: 280rpx;
+  overflow: hidden;
+  border: 3rpx solid rgba(47, 79, 74, 0.18);
+  border-radius: 34rpx;
+  background: linear-gradient(145deg, rgba(244, 255, 252, 0.52), rgba(201, 231, 238, 0.72));
+}
+
+.fridge-light {
+  position: absolute;
+  left: 28rpx;
+  top: 0;
+  width: 110rpx;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+}
+
+.fridge-shelf {
+  position: absolute;
+  left: 26rpx;
+  right: 26rpx;
+  height: 4rpx;
+  border-radius: 999rpx;
+  background: rgba(47, 79, 74, 0.1);
+}
+
+.shelf-a {
+  top: 112rpx;
+}
+
+.shelf-b {
+  top: 198rpx;
+}
+
+.fridge-bottle {
+  position: absolute;
+  bottom: 88rpx;
+  width: 42rpx;
+  border-radius: 14rpx 14rpx 10rpx 10rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(125, 212, 202, 0.64));
+  box-shadow: inset 0 0 0 3rpx rgba(255, 255, 255, 0.42);
+}
+
+.bottle-a {
+  left: 80rpx;
+  height: 92rpx;
+}
+
+.bottle-b {
+  left: 146rpx;
+  height: 126rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(252, 202, 164, 0.68));
+}
+
+.bottle-c {
+  right: 92rpx;
+  height: 108rpx;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(196, 223, 142, 0.68));
+}
+
+.start-drink {
+  position: absolute;
+  left: 50%;
+  bottom: 26rpx;
+  width: 360rpx;
+  height: 320rpx;
+  margin-left: -180rpx;
+  border-color: rgba(47, 79, 74, 0.14);
+  box-shadow: 0 24rpx 54rpx rgba(61, 119, 118, 0.16);
+}
+
+.start-copy {
+  padding: 0 8rpx;
+}
+
+.start-title {
+  color: #203b3b;
+  font-size: 54rpx;
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+.start-subtitle {
+  margin-top: 18rpx;
+  color: #5c6c69;
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+.start-button {
+  height: 96rpx;
+  box-shadow: 0 18rpx 38rpx rgba(47, 119, 112, 0.22);
+}
+
 .home-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20rpx;
-  padding: 20rpx 2rpx 16rpx;
+  padding: 26rpx 24rpx;
+  border: 2rpx solid rgba(61, 119, 118, 0.12);
+  border-radius: 34rpx;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(142, 219, 213, 0.28) 0, rgba(142, 219, 213, 0) 150rpx),
+    linear-gradient(145deg, rgba(255, 253, 247, 0.88), rgba(239, 250, 248, 0.82));
 }
 
 .home-kicker {
@@ -24,10 +196,17 @@
   align-items: center;
   gap: 12rpx;
   padding: 12rpx;
-  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border: 2rpx solid rgba(61, 119, 118, 0.14);
   border-radius: 28rpx;
-  background: rgba(255, 253, 247, 0.9);
-  box-shadow: 0 12rpx 30rpx rgba(91, 70, 48, 0.06);
+  background: rgba(255, 253, 247, 0.82);
+  box-shadow: 0 14rpx 34rpx rgba(57, 96, 102, 0.08);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.search-box.focused {
+  border-color: rgba(65, 176, 166, 0.52);
+  box-shadow: 0 18rpx 46rpx rgba(80, 169, 165, 0.18), 0 0 0 6rpx rgba(151, 230, 222, 0.16);
+  transform: translateY(-2rpx);
 }
 
 .search-input {
@@ -48,6 +227,13 @@
   line-height: 68rpx;
 }
 
+.quick-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 18rpx;
+}
+
 .action-grid {
   display: flex;
   flex-wrap: wrap;
@@ -61,8 +247,12 @@
   padding: 22rpx;
   border: 2rpx solid rgba(76, 62, 47, 0.1);
   border-radius: 28rpx;
-  background: rgba(255, 253, 247, 0.9);
-  box-shadow: 0 14rpx 34rpx rgba(91, 70, 48, 0.07);
+  background: linear-gradient(145deg, rgba(255, 253, 247, 0.88), rgba(238, 250, 248, 0.72));
+  box-shadow: 0 14rpx 34rpx rgba(57, 96, 102, 0.07);
+}
+
+.compact-actions .action-card:first-child {
+  width: 100%;
 }
 
 .action-card.featured {
@@ -116,4 +306,17 @@
   color: #8bbdb4;
   font-size: 46rpx;
   line-height: 1;
+}
+
+@keyframes bubble-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-16rpx);
+    opacity: 1;
+  }
 }

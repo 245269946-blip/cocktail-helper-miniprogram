@@ -1,14 +1,14 @@
 {
   "_id": "main",
   "hotKeywords": [
-    "莫吉托",
-    "金汤力",
-    "百利甜",
-    "便利店调酒",
-    "甜口",
-    "新手入门",
-    "低酒精",
-    "聚会"
+    "气泡水能做什么",
+    "咖啡怎么调好喝",
+    "茶饮能调什么",
+    "果汁能调什么",
+    "可乐能调什么",
+    "便利店饮品",
+    "无酒精",
+    "低酒感"
   ],
   "quickEntries": [
     {
@@ -17,7 +17,7 @@
       "path": "/pages/search/search"
     },
     {
-      "title": "按基酒找",
+      "title": "按酒底找",
       "desc": "金酒、伏特加、威士忌",
       "path": "/pages/base-list/base-list"
     },
@@ -27,7 +27,7 @@
       "path": "/pages/ingredient-list/ingredient-list"
     },
     {
-      "title": "便利店调酒",
+      "title": "便利店饮品",
       "desc": "临时采购也能调",
       "path": "/pages/convenience/convenience"
     },
@@ -87,6 +87,7 @@
     {
       "title": "果汁",
       "items": [
+        "果汁",
         "橙汁",
         "葡萄柚汁",
         "苹果汁"
@@ -143,8 +144,9 @@
         "朗姆",
         "龙舌兰",
         "百利甜",
-        "野格",
         "梅酒",
+        "清酒",
+        "野格",
         "果酒",
         "起泡酒"
       ]
@@ -156,10 +158,12 @@
         "雪碧",
         "气泡水",
         "汤力水",
+        "果汁",
         "橙汁",
         "葡萄柚汁",
         "苹果汁",
         "茶",
+        "绿茶",
         "咖啡",
         "牛奶"
       ]
@@ -169,6 +173,7 @@
       "items": [
         "冰块",
         "柠檬",
+        "青柠",
         "糖",
         "盐",
         "水果",
@@ -274,6 +279,254 @@
       "title": "不喝酒也像调饮",
       "value": "无酒精",
       "desc": "照顾不喝酒的人，也有调饮感。"
+    }
+  ],
+  "searchMappings": [
+    {
+      "keywords": [
+        "金酒兑什么",
+        "金酒怎么喝",
+        "金酒调什么",
+        "gin兑什么"
+      ],
+      "recipeIds": [
+        "gin-tonic",
+        "gin-sprite",
+        "tom-collins",
+        "gin-lemon-tea"
+      ],
+      "reason": "金酒优先从气泡、柠檬和茶饮方向开始。"
+    },
+    {
+      "keywords": [
+        "威士忌怎么喝",
+        "威士忌兑什么",
+        "威士忌调什么",
+        "whisky怎么喝"
+      ],
+      "recipeIds": [
+        "whisky-highball",
+        "whisky-cola",
+        "whisky-oolong",
+        "whisky-apple"
+      ],
+      "reason": "威士忌先用苏打、可乐、乌龙茶降低冲击感。"
+    },
+    {
+      "keywords": [
+        "伏特加怎么喝",
+        "伏特加兑什么",
+        "伏特加调什么",
+        "vodka怎么喝"
+      ],
+      "recipeIds": [
+        "vodka-orange",
+        "vodka-soda",
+        "vodka-tea",
+        "vodka-apple"
+      ],
+      "reason": "伏特加百搭，果汁、茶饮和气泡水都稳。"
+    },
+    {
+      "keywords": [
+        "朗姆怎么喝",
+        "朗姆兑什么",
+        "朗姆调什么",
+        "rum怎么喝"
+      ],
+      "recipeIds": [
+        "cuba-libre",
+        "rum-sprite",
+        "mojito",
+        "daiquiri"
+      ],
+      "reason": "朗姆适合甜口、可乐、雪碧和薄荷柠檬。"
+    },
+    {
+      "keywords": [
+        "龙舌兰怎么喝",
+        "龙舌兰兑什么",
+        "龙舌兰调什么",
+        "tequila怎么喝"
+      ],
+      "recipeIds": [
+        "tequila-sprite",
+        "paloma",
+        "margarita"
+      ],
+      "reason": "龙舌兰先做酸甜长饮，比纯喝友好很多。"
+    },
+    {
+      "keywords": [
+        "百利甜怎么喝",
+        "百利甜兑什么",
+        "百利甜调什么",
+        "奶酒怎么喝"
+      ],
+      "recipeIds": [
+        "baileys-milk",
+        "baileys-coffee"
+      ],
+      "reason": "百利甜优先搭牛奶和咖啡，目标是甜品微醺。"
+    },
+    {
+      "keywords": [
+        "梅酒怎么喝",
+        "梅酒兑什么",
+        "梅酒调什么"
+      ],
+      "recipeIds": [
+        "umeshu-soda",
+        "umeshu-oolong"
+      ],
+      "reason": "梅酒本身已经好喝，加气泡或乌龙就够。"
+    },
+    {
+      "keywords": [
+        "清酒怎么喝",
+        "清酒兑什么",
+        "清酒调什么",
+        "sake怎么喝"
+      ],
+      "recipeIds": [
+        "sake-highball",
+        "sake-green-tea",
+        "sake-sprite"
+      ],
+      "reason": "清酒适合低酒感长饮，气泡、绿茶、雪碧都容易成功。"
+    },
+    {
+      "keywords": [
+        "可乐能调什么",
+        "可乐兑什么酒",
+        "可乐调酒"
+      ],
+      "recipeIds": [
+        "whisky-cola",
+        "cuba-libre",
+        "jager-cola"
+      ],
+      "reason": "可乐适合聚会型长饮，甜味会遮住酒精刺激。"
+    },
+    {
+      "keywords": [
+        "雪碧能调什么",
+        "雪碧兑什么酒",
+        "雪碧调酒"
+      ],
+      "recipeIds": [
+        "gin-sprite",
+        "rum-sprite",
+        "tequila-sprite",
+        "sake-sprite"
+      ],
+      "reason": "雪碧适合新手甜口，记得加冰和柠檬。"
+    },
+    {
+      "keywords": [
+        "果汁能调什么",
+        "橙汁能调什么",
+        "苹果汁能调什么"
+      ],
+      "recipeIds": [
+        "vodka-orange",
+        "vodka-apple",
+        "whisky-apple",
+        "mimosa"
+      ],
+      "reason": "果汁能把基酒做得更顺口，适合第一杯。"
+    },
+    {
+      "keywords": [
+        "茶饮能调什么",
+        "茶能调什么",
+        "绿茶能调什么",
+        "乌龙茶能调什么"
+      ],
+      "recipeIds": [
+        "whisky-oolong",
+        "vodka-tea",
+        "umeshu-oolong",
+        "sake-green-tea"
+      ],
+      "reason": "茶饮适合不想太甜的人，便利店很容易买齐。"
+    },
+    {
+      "keywords": [
+        "气泡水能做什么",
+        "气泡饮",
+        "清爽气泡",
+        "苏打水能做什么"
+      ],
+      "recipeIds": [
+        "coffee-tonic",
+        "vodka-soda",
+        "umeshu-soda",
+        "sake-highball",
+        "cv-nonalcohol-fresh"
+      ],
+      "reason": "气泡水优先做清爽、低负担、冰块多的长饮。"
+    },
+    {
+      "keywords": [
+        "咖啡怎么调好喝",
+        "咖啡特调",
+        "咖啡能调什么",
+        "冷萃能调什么"
+      ],
+      "recipeIds": [
+        "coffee-tonic",
+        "baileys-coffee",
+        "espresso-martini",
+        "cv-coffee-night"
+      ],
+      "reason": "咖啡适合做苦甜、奶香和无酒精气泡方向。"
+    },
+    {
+      "keywords": [
+        "无酒精",
+        "不喝酒",
+        "mocktail",
+        "零酒精"
+      ],
+      "recipeIds": [
+        "cv-nonalcohol-fresh",
+        "coffee-tonic"
+      ],
+      "reason": "先给有调饮感但没有酒精负担的方案。"
+    },
+    {
+      "keywords": [
+        "便利店调酒",
+        "便利店饮品",
+        "便利店能做什么",
+        "下楼买什么调酒"
+      ],
+      "recipeIds": [
+        "cv-nonalcohol-fresh",
+        "cv-fresh-tipsy",
+        "cv-sweet-party",
+        "cv-milk-soft",
+        "cv-tea-light",
+        "cv-fruit-low"
+      ],
+      "reason": "优先给能现在买、现在做的方案。"
+    },
+    {
+      "keywords": [
+        "低酒感",
+        "喝不出酒味",
+        "新手第一杯",
+        "第一次尝试"
+      ],
+      "recipeIds": [
+        "baileys-milk",
+        "umeshu-soda",
+        "vodka-orange",
+        "sake-highball",
+        "mimosa"
+      ],
+      "reason": "这些更像饮料，适合第一次打开就决定。"
     }
   ]
 }

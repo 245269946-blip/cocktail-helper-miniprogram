@@ -1,53 +1,106 @@
-<view class="page home-page">
-  <view class="home-head">
-    <view>
-      <view class="home-kicker">Yoru Sip Guide</view>
-      <view class="section-title home-title">今晚想搞点什么喝？</view>
-      <view class="section-subtitle">先选最方便的开始方式，后面再帮你缩小选择。</view>
-    </view>
-    <view class="drink-illo small-illo illo-fresh">
-      <view class="illo-moon"></view>
-      <view class="illo-bubble bubble-a"></view>
-      <view class="illo-bubble bubble-b"></view>
-      <view class="illo-cup">
-        <view class="illo-liquid"></view>
-        <view class="illo-ice ice-a"></view>
-        <view class="illo-ice ice-b"></view>
+<view class="page home-page lab-page">
+  <view wx:if="{{showSplash}}" class="lab-start">
+    <view class="night-lab">
+      <view class="lab-glow"></view>
+      <view class="bubble-field">
+        <view class="float-bubble bubble-one"></view>
+        <view class="float-bubble bubble-two"></view>
+        <view class="float-bubble bubble-three"></view>
       </view>
-      <view class="illo-fruit"></view>
-      <view class="illo-leaf"></view>
-      <view class="illo-shelf"></view>
-    </view>
-  </view>
-
-  <view class="action-grid">
-    <view wx:for="{{actionEntries}}" wx:key="title" class="action-card {{item.featured ? 'featured' : ''}}" data-path="{{item.path}}" bindtap="onNavigate">
-      <view class="action-top">
-        <view class="action-title">{{item.title}}</view>
-        <view class="sketch-icon {{item.iconClass}}"></view>
+      <view class="lab-window">
+        <view class="fridge-light"></view>
+        <view class="fridge-shelf shelf-a"></view>
+        <view class="fridge-shelf shelf-b"></view>
+        <view class="fridge-bottle bottle-a"></view>
+        <view class="fridge-bottle bottle-b"></view>
+        <view class="fridge-bottle bottle-c"></view>
       </view>
-      <view class="action-desc">{{item.desc}}</view>
-      <view class="action-note">{{item.note}}</view>
-    </view>
-  </view>
-
-  <view class="section">
-    <view class="section-title">已经知道想搜什么？</view>
-    <view class="search-box">
-      <input class="search-input" value="{{keyword}}" bindinput="onInput" confirm-type="search" bindconfirm="onSearch" placeholder="搜金酒 / 可乐 / 甜口 / 便利店 / 莫吉托" />
-      <button class="search-button" bindtap="onSearch">搜索</button>
-    </view>
-  </view>
-
-  <view class="section">
-    <view class="section-title">不用想太多，直接点</view>
-    <view class="list">
-      <view wx:for="{{directEntries}}" wx:key="title" class="card home-card" data-path="{{item.path}}" bindtap="onNavigate">
-        <view>
-          <view class="title">{{item.title}}</view>
-          <view class="section-subtitle">{{item.desc}}</view>
+      <view class="drink-illo large-illo illo-convenience start-drink">
+        <view class="illo-moon"></view>
+        <view class="illo-bubble bubble-a"></view>
+        <view class="illo-bubble bubble-b"></view>
+        <view class="illo-bubble bubble-c"></view>
+        <view class="illo-cup">
+          <view class="illo-liquid"></view>
+          <view class="illo-ice ice-a"></view>
+          <view class="illo-ice ice-b"></view>
         </view>
-        <view class="arrow">›</view>
+        <view class="illo-fruit"></view>
+        <view class="illo-leaf"></view>
+        <view class="illo-shelf"></view>
+      </view>
+    </view>
+    <view class="start-copy">
+      <view class="home-kicker">Summer Night Drink Lab</view>
+      <view class="start-title">夏夜便利店饮品实验室</view>
+      <view class="start-subtitle">搜一杯清爽气泡饮、无酒精特调、茶饮或咖啡特调，照着材料步骤就能做。</view>
+    </view>
+    <button class="button-primary start-button" bindtap="onStart">开始今天第一杯</button>
+  </view>
+
+  <view wx:else>
+    <view class="home-head lab-shell">
+      <view>
+        <view class="home-kicker">Drink Search</view>
+        <view class="section-title home-title">今天想喝什么？</view>
+        <view class="section-subtitle">鸡尾酒、无酒精特调、气泡饮、茶饮、咖啡特调，都可以从一个词开始搜。</view>
+      </view>
+      <view class="drink-illo small-illo illo-fresh">
+        <view class="illo-moon"></view>
+        <view class="illo-bubble bubble-a"></view>
+        <view class="illo-bubble bubble-b"></view>
+        <view class="illo-cup">
+          <view class="illo-liquid"></view>
+          <view class="illo-ice ice-a"></view>
+          <view class="illo-ice ice-b"></view>
+        </view>
+        <view class="illo-fruit"></view>
+        <view class="illo-leaf"></view>
+        <view class="illo-shelf"></view>
+      </view>
+    </view>
+
+    <view class="section search-section">
+      <view class="search-box {{isFocused ? 'focused' : ''}}">
+        <input class="search-input" value="{{keyword}}" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" confirm-type="search" bindconfirm="onSearch" placeholder="搜气泡水 / 柠檬茶 / 咖啡 / 便利店 / 莫吉托" />
+        <button class="search-button" bindtap="onSearch">搜索</button>
+      </view>
+      <view class="quick-tags">
+        <view wx:for="{{hotKeywords}}" wx:key="*this" class="tag" data-keyword="{{item}}" bindtap="onHotTap">{{item}}</view>
+      </view>
+    </view>
+
+    <view wx:if="{{recentSearches.length}}" class="section">
+      <view class="section-title">最近搜索</view>
+      <view class="quick-tags">
+        <view wx:for="{{recentSearches}}" wx:key="*this" class="tag recent-tag" data-keyword="{{item}}" bindtap="onHotTap">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">高频入口</view>
+      <view class="action-grid compact-actions">
+        <view wx:for="{{actionEntries}}" wx:key="title" class="action-card {{item.featured ? 'featured' : ''}}" data-path="{{item.path}}" bindtap="onNavigate">
+          <view class="action-top">
+            <view class="action-title">{{item.title}}</view>
+            <view class="sketch-icon {{item.iconClass}}"></view>
+          </view>
+          <view class="action-desc">{{item.desc}}</view>
+          <view class="action-note">{{item.note}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">不用想太多，直接搜</view>
+      <view class="list">
+        <view wx:for="{{directEntries}}" wx:key="title" class="card home-card" data-keyword="{{item.keyword}}" bindtap="onDirectSearch">
+          <view>
+            <view class="title">{{item.title}}</view>
+            <view class="section-subtitle">{{item.desc}}</view>
+          </view>
+          <view class="arrow">›</view>
+        </view>
       </view>
     </view>
   </view>

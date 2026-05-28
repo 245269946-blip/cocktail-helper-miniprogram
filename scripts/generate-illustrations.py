@@ -21,6 +21,7 @@ SLUGS = {
     '雪碧': 'sprite',
     '气泡水': 'soda-water',
     '汤力水': 'tonic-water',
+    '果汁': 'juice',
     '橙汁': 'orange-juice',
     '葡萄柚汁': 'grapefruit-juice',
     '苹果汁': 'apple-juice',

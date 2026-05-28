@@ -73,6 +73,40 @@ function executionLine(item) {
   return parts.join(' · ')
 }
 
+function beginnerText(item) {
+  const flavor = item.flavor || {}
+  const tags = item.tags || []
+  if (tags.includes('新手友好') || flavor.alcohol <= 1 || flavor.difficulty <= 1) return '新手友好'
+  if (flavor.difficulty <= 2 && flavor.alcohol <= 3) return '新手可试'
+  return '更适合喝过几次'
+}
+
+function convenienceText(item) {
+  const tags = item.tags || []
+  const materials = item.materials || {}
+  if (item.type === 'scheme') return '照清单买'
+  if (tags.includes('便利店') || (materials.convenience || []).length) return '便利店可做'
+  return '建议家里备料'
+}
+
+function difficultyText(item) {
+  const value = item.flavor && item.flavor.difficulty
+  return flavorNote('difficulty', value)
+}
+
+function baseText(item) {
+  return item.base || (item.type === 'scheme' ? '方案' : '配方')
+}
+
+function basicFacts(item) {
+  return [
+    { label: '类型', value: baseText(item) },
+    { label: '新手', value: beginnerText(item) },
+    { label: '购买', value: convenienceText(item) },
+    { label: '难度', value: difficultyText(item) }
+  ]
+}
+
 function visualClass(item) {
   const tags = item.tags || []
   const flavor = item.flavor || {}
@@ -135,6 +169,7 @@ function resultCard(item) {
     entryLine: entryLine(item),
     audienceText: audienceText(item),
     executionLine: executionLine(item),
+    basicFacts: basicFacts(item),
     scoreRows: flavorRows(item, true),
     visualClass: visualClass(item),
     illustration: illustrations.drinkPath(item)
@@ -148,6 +183,7 @@ function detailView(item) {
     sceneText: ((item.scenes || []).slice(0, 3).join(' / ')) || '今晚想轻松喝点时',
     actionLine: detailActionLine(item),
     materialSummary: materialSummary(item),
+    basicFacts: basicFacts(item),
     scoreRows: flavorRows(item, false),
     exploreOptions: exploreOptions(item),
     visualClass: visualClass(item),

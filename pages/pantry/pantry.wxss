@@ -19,17 +19,17 @@
 }
 
 .missing {
-  color: #8c4c2e;
+  color: #c77b35;
 }
 
 .pantry-action {
   align-self: flex-start;
   min-height: 44rpx;
   padding: 7rpx 16rpx;
-  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border: 2rpx solid rgba(61, 119, 118, 0.12);
   border-radius: 999rpx;
-  color: #2f4f4a;
-  background: #e4f4ef;
+  color: #255b58;
+  background: #dff5f1;
   font-size: 23rpx;
 }
 

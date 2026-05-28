@@ -28,7 +28,8 @@ writeJson('appContent', {
   ingredientCategories: data.ingredientCategories,
   pantryGroups: data.pantryGroups,
   flavorCollections: data.flavorCollections,
-  sceneCollections: data.sceneCollections
+  sceneCollections: data.sceneCollections,
+  searchMappings: data.searchMappings
 })
 
 console.log(`Cloud data exported to ${outputDir}`)

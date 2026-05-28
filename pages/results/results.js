@@ -80,6 +80,9 @@ Page({
       subtitle = '根据你的选择生成的推荐。'
     }
 
+    const mainId = mainRecommendation && mainRecommendation.id
+    const resultCards = cards(mainId ? results.filter((item) => item.id !== mainId) : results)
+
     wx.setNavigationBarTitle({ title })
     this.setData({
       title,
@@ -88,7 +91,7 @@ Page({
       decisionIntro,
       mainRecommendation,
       extensionSections,
-      results: cards(results)
+      results: resultCards
     })
   },
 

@@ -1,10 +1,10 @@
-const hotKeywords = ['莫吉托', '金汤力', '百利甜', '便利店调酒', '甜口', '新手入门', '低酒精', '聚会']
+const hotKeywords = ['气泡水能做什么', '咖啡怎么调好喝', '茶饮能调什么', '果汁能调什么', '可乐能调什么', '便利店饮品', '无酒精', '低酒感']
 
 const quickEntries = [
   { title: '搜配方', desc: '明确想喝哪一杯', path: '/pages/search/search' },
-  { title: '按基酒找', desc: '金酒、伏特加、威士忌', path: '/pages/base-list/base-list' },
+  { title: '按酒底找', desc: '金酒、伏特加、威士忌', path: '/pages/base-list/base-list' },
   { title: '按材料找', desc: '可乐、雪碧、橙汁、咖啡', path: '/pages/ingredient-list/ingredient-list' },
-  { title: '便利店调酒', desc: '临时采购也能调', path: '/pages/convenience/convenience' },
+  { title: '便利店饮品', desc: '临时采购也能调', path: '/pages/convenience/convenience' },
   { title: '家里有什么', desc: '勾选材料出酒单', path: '/pages/pantry/pantry' },
   { title: '新手推荐', desc: '不知道喝什么就点这', path: '/pages/beginner/beginner' }
 ]
@@ -51,9 +51,11 @@ const bases = [
     tags: ['清爽', '微苦', '气泡感', '夏天'],
     intro: '金酒最适合做清爽、气泡、柑橘感明显的酒，搭配汤力水、苏打水、柠檬茶都很容易成立。',
     recipes: {
+      first: ['gin-tonic'],
       classic: ['gin-tonic', 'tom-collins'],
       beginner: ['gin-tonic', 'gin-sprite'],
       convenience: ['gin-sprite', 'gin-lemon-tea'],
+      lowAlcohol: ['gin-sprite', 'gin-lemon-tea'],
       sweet: ['gin-sprite'],
       fresh: ['gin-tonic', 'tom-collins'],
       friendly: ['gin-sprite', 'gin-lemon-tea'],
@@ -67,9 +69,11 @@ const bases = [
     tags: ['百搭', '果味', '便利店', '低门槛'],
     intro: '伏特加本身存在感低，适合和果汁、茶饮、咖啡、汽水组合，做新手第一杯很稳。',
     recipes: {
+      first: ['vodka-orange'],
       classic: ['vodka-orange', 'moscow-mule'],
       beginner: ['vodka-orange', 'vodka-soda'],
       convenience: ['vodka-orange', 'vodka-tea'],
+      lowAlcohol: ['vodka-orange', 'vodka-tea'],
       sweet: ['vodka-orange'],
       fresh: ['vodka-soda', 'moscow-mule'],
       friendly: ['vodka-orange', 'vodka-tea'],
@@ -83,9 +87,11 @@ const bases = [
     tags: ['酒感', '可乐', '茶感', '聚会'],
     intro: '威士忌适合和可乐、苏打水、乌龙茶、咖啡做长饮，想降低冲击感就加足冰和气泡。',
     recipes: {
+      first: ['whisky-highball'],
       classic: ['whisky-highball', 'whisky-cola'],
       beginner: ['whisky-cola', 'whisky-oolong'],
       convenience: ['whisky-cola', 'whisky-oolong'],
+      lowAlcohol: ['whisky-oolong', 'whisky-apple'],
       sweet: ['whisky-cola'],
       fresh: ['whisky-highball'],
       friendly: ['whisky-oolong'],
@@ -99,9 +105,11 @@ const bases = [
     tags: ['甜口', '薄荷', '果味', '夏天'],
     intro: '朗姆适合做莫吉托、可乐桶和各种果汁长饮，香甜感明显，聚会接受度高。',
     recipes: {
+      first: ['cuba-libre'],
       classic: ['mojito', 'cuba-libre'],
       beginner: ['cuba-libre', 'rum-sprite'],
       convenience: ['cuba-libre', 'rum-sprite'],
+      lowAlcohol: ['rum-sprite'],
       sweet: ['cuba-libre', 'rum-sprite'],
       fresh: ['mojito'],
       friendly: ['rum-sprite'],
@@ -115,9 +123,11 @@ const bases = [
     tags: ['酸甜', '果味', '聚会', '进阶'],
     intro: '龙舌兰适合和柑橘、盐、气泡、葡萄柚一起出现，做酸甜方向会比纯饮友好得多。',
     recipes: {
+      first: ['tequila-sprite'],
       classic: ['margarita', 'paloma'],
       beginner: ['tequila-sprite'],
       convenience: ['tequila-sprite'],
+      lowAlcohol: ['paloma'],
       sweet: ['tequila-sprite'],
       fresh: ['paloma'],
       friendly: ['tequila-sprite'],
@@ -131,9 +141,11 @@ const bases = [
     tags: ['甜口', '奶香', '低门槛', '女生更容易接受'],
     intro: '利口酒适合做甜口、奶香、果味方案，也适合作为鸡尾酒里的风味补强。',
     recipes: {
+      first: ['baileys-milk'],
       classic: ['baileys-milk', 'jager-cola'],
       beginner: ['baileys-milk', 'jager-redbull'],
       convenience: ['baileys-milk', 'jager-cola'],
+      lowAlcohol: ['baileys-milk', 'baileys-coffee'],
       sweet: ['baileys-milk'],
       fresh: ['jager-redbull'],
       friendly: ['baileys-milk'],
@@ -147,9 +159,11 @@ const bases = [
     tags: ['甜口', '奶香', '低酒精', '新手友好'],
     intro: '百利甜最适合和牛奶、咖啡、冰淇淋方向组合，目标不是做烈酒感，而是做一杯带微醺的甜品饮料。',
     recipes: {
+      first: ['baileys-milk'],
       classic: ['baileys-milk', 'baileys-coffee'],
       beginner: ['baileys-milk'],
       convenience: ['baileys-milk', 'baileys-coffee'],
+      lowAlcohol: ['baileys-milk', 'baileys-coffee'],
       sweet: ['baileys-milk'],
       fresh: ['baileys-coffee'],
       friendly: ['baileys-milk', 'baileys-coffee'],
@@ -163,9 +177,11 @@ const bases = [
     tags: ['苦甜', '聚会', '便利店', '酒感'],
     intro: '野格适合做派对型长饮，和可乐、能量饮料、柠檬汽水都能快速成杯，但甜苦和酒感都比较明显。',
     recipes: {
+      first: ['jager-cola'],
       classic: ['jager-cola', 'jager-redbull'],
       beginner: ['jager-cola'],
       convenience: ['jager-cola', 'jager-redbull'],
+      lowAlcohol: ['jager-cola'],
       sweet: ['jager-cola'],
       fresh: ['jager-redbull'],
       friendly: ['jager-cola'],
@@ -179,13 +195,33 @@ const bases = [
     tags: ['酸甜', '果味', '低酒精', '女生更容易接受'],
     intro: '梅酒本身酸甜明显，适合加冰、苏打、乌龙茶或绿茶，几乎不需要复杂调制。',
     recipes: {
+      first: ['umeshu-soda'],
       classic: ['umeshu-soda', 'umeshu-oolong'],
       beginner: ['umeshu-soda', 'umeshu-oolong'],
       convenience: ['umeshu-soda', 'umeshu-oolong'],
+      lowAlcohol: ['umeshu-soda', 'umeshu-oolong'],
       sweet: ['umeshu-soda'],
       fresh: ['umeshu-oolong'],
       friendly: ['umeshu-soda', 'umeshu-oolong'],
       advanced: ['umeshu-soda']
+    }
+  },
+  {
+    id: 'sake',
+    name: '清酒',
+    subtitle: '米香、清爽、茶饮和气泡',
+    tags: ['清爽', '低酒精', '茶感', '新手友好'],
+    intro: '清酒适合做低压力长饮，和气泡水、绿茶、苹果汁都能把米香变得更轻松。',
+    recipes: {
+      first: ['sake-highball'],
+      classic: ['sake-highball', 'sake-green-tea'],
+      beginner: ['sake-sprite', 'sake-green-tea'],
+      convenience: ['sake-sprite', 'sake-green-tea'],
+      lowAlcohol: ['sake-highball', 'sake-green-tea'],
+      sweet: ['sake-sprite'],
+      fresh: ['sake-highball', 'sake-green-tea'],
+      friendly: ['sake-sprite', 'sake-green-tea'],
+      advanced: ['sake-highball']
     }
   },
   {
@@ -195,9 +231,11 @@ const bases = [
     tags: ['果味', '甜口', '低酒精', '聚会'],
     intro: '果酒更像“微醺饮料底”，适合加气泡水、冰块、柠檬和水果做低酒精方案。',
     recipes: {
+      first: ['fruit-wine-spritz'],
       classic: ['fruit-wine-spritz', 'sangria-light'],
       beginner: ['fruit-wine-spritz'],
       convenience: ['fruit-wine-spritz'],
+      lowAlcohol: ['fruit-wine-spritz'],
       sweet: ['sangria-light'],
       fresh: ['fruit-wine-spritz'],
       friendly: ['fruit-wine-spritz', 'sangria-light'],
@@ -211,9 +249,11 @@ const bases = [
     tags: ['气泡感', '清爽', '低酒精', '聚会'],
     intro: '起泡酒适合做轻松的 Spritz、果汁 Mimosa 和聚会低度饮，重点是保持冰冷和气泡。',
     recipes: {
+      first: ['mimosa'],
       classic: ['mimosa', 'aperol-spritz'],
       beginner: ['mimosa', 'fruit-wine-spritz'],
       convenience: ['mimosa'],
+      lowAlcohol: ['mimosa'],
       sweet: ['mimosa'],
       fresh: ['aperol-spritz'],
       friendly: ['mimosa'],
@@ -224,7 +264,7 @@ const bases = [
 
 const ingredientCategories = [
   { title: '碳酸饮料', items: ['可乐', '雪碧', '气泡水', '汤力水'] },
-  { title: '果汁', items: ['橙汁', '葡萄柚汁', '苹果汁'] },
+  { title: '果汁', items: ['果汁', '橙汁', '葡萄柚汁', '苹果汁'] },
   { title: '茶饮', items: ['乌龙茶', '柠檬茶', '绿茶'] },
   { title: '咖啡', items: ['冷萃咖啡', '浓缩咖啡'] },
   { title: '乳饮', items: ['牛奶', '椰奶'] },
@@ -233,6 +273,16 @@ const ingredientCategories = [
 ]
 
 const ingredients = [
+  {
+    id: 'juice',
+    name: '果汁',
+    category: '果汁',
+    tags: ['果味', '酸甜', '低门槛', '便利店'],
+    goodWith: ['伏特加', '朗姆', '龙舌兰', '果酒', '起泡酒'],
+    recipes: ['vodka-orange', 'vodka-grapefruit', 'vodka-apple', 'paloma', 'mimosa', 'fruit-wine-spritz'],
+    lowAlcohol: ['orange-soda-zero', 'apple-soda-zero'],
+    warnings: ['果汁很遮酒味，基酒先少倒，试味后再加。', '想清爽就加气泡水或柠檬。']
+  },
   {
     id: 'cola',
     name: '可乐',
@@ -324,6 +374,16 @@ const ingredients = [
     warnings: ['柠檬主要负责提亮，不要一次挤太多，酸度会压住酒香。']
   },
   {
+    id: 'lime',
+    name: '青柠',
+    category: '水果',
+    tags: ['酸甜', '清爽', '去腻', '经典'],
+    goodWith: ['金酒', '朗姆', '伏特加', '龙舌兰'],
+    recipes: ['mojito', 'gin-tonic', 'daiquiri', 'margarita', 'paloma'],
+    lowAlcohol: ['soda-lemon-zero'],
+    warnings: ['青柠香气更尖锐，怕酸可以用柠檬替代。']
+  },
+  {
     id: 'grapefruit-juice',
     name: '葡萄柚汁',
     category: '果汁',
@@ -352,6 +412,16 @@ const ingredients = [
     recipes: ['gin-lemon-tea', 'vodka-tea'],
     lowAlcohol: ['tea-lemon-zero'],
     warnings: ['瓶装柠檬茶通常已经很甜，基酒用量建议保守。']
+  },
+  {
+    id: 'green-tea',
+    name: '绿茶',
+    category: '茶饮',
+    tags: ['茶感', '清爽', '不太甜', '便利店'],
+    goodWith: ['清酒', '伏特加', '梅酒'],
+    recipes: ['sake-green-tea', 'vodka-tea', 'umeshu-oolong'],
+    lowAlcohol: ['tea-lemon-zero'],
+    warnings: ['无糖绿茶更清爽，含糖绿茶要减少基酒量。']
   },
   {
     id: 'apple-juice',
@@ -1065,6 +1135,66 @@ const recipes = [
     scenes: ['便利店调酒', '新手第一杯', '甜口入门', '宿舍/租房'],
     substitutes: ['苹果汁可换橙汁。', '想清爽就加气泡水。', '想酸甜就加柠檬。'],
     similar: ['vodka-orange', 'whisky-apple']
+  },
+  {
+    id: 'sake-highball',
+    type: 'recipe',
+    name: '清酒嗨棒',
+    enName: 'Sake Highball',
+    aliases: ['清酒苏打', '日本酒苏打', '清酒气泡水', 'sake highball'],
+    base: '清酒',
+    tags: ['清爽', '气泡感', '低酒精', '新手友好', '便利店'],
+    reason: '适合想喝清酒但怕米香太明显的人，加气泡后会像更轻的冰饮。',
+    flavor: { sweet: 1, sour: 1, alcohol: 1, fresh: 5, difficulty: 1 },
+    materials: {
+      standard: ['清酒 60ml', '气泡水 120ml', '柠檬或青柠', '冰块'],
+      convenience: ['清酒小瓶', '气泡水', '柠檬片杯', '冰杯'],
+      simple: ['清酒', '气泡水', '冰块']
+    },
+    steps: ['杯中加满冰块。', '倒入清酒。', '补气泡水，轻轻搅一下。', '挤一点柠檬让米香更清爽。'],
+    scenes: ['新手第一杯', '下班放松', '便利店调酒', '不想喝太甜'],
+    substitutes: ['气泡水可换苏打水。', '想甜一点可换雪碧。', '想低酒感就减少清酒、增加气泡水。'],
+    similar: ['umeshu-soda', 'vodka-soda', 'whisky-highball']
+  },
+  {
+    id: 'sake-green-tea',
+    type: 'recipe',
+    name: '清酒绿茶',
+    enName: 'Sake Green Tea',
+    aliases: ['清酒兑绿茶', '日本酒绿茶', '清酒茶饮'],
+    base: '清酒',
+    tags: ['茶感', '清爽', '低酒精', '便利店', '不太甜'],
+    reason: '适合不想喝甜饮的人，绿茶能把清酒做得更像日常冰茶。',
+    flavor: { sweet: 1, sour: 0, alcohol: 1, fresh: 4, difficulty: 1 },
+    materials: {
+      standard: ['清酒 60ml', '无糖绿茶 120ml', '冰块'],
+      convenience: ['清酒小瓶', '无糖绿茶', '冰杯'],
+      simple: ['清酒', '茶', '冰块']
+    },
+    steps: ['冰杯倒入清酒。', '补无糖绿茶。', '轻轻搅匀后试味。'],
+    scenes: ['下班放松', '便利店调酒', '低酒精', '不想喝太甜'],
+    substitutes: ['绿茶可换乌龙茶。', '想甜一点用含糖茶饮。', '酒感明显就增加茶的比例。'],
+    similar: ['umeshu-oolong', 'whisky-oolong', 'vodka-tea']
+  },
+  {
+    id: 'sake-sprite',
+    type: 'recipe',
+    name: '清酒雪碧',
+    enName: 'Sake Sprite',
+    aliases: ['清酒兑雪碧', '日本酒雪碧', '清酒汽水'],
+    base: '清酒',
+    tags: ['甜口', '清爽', '低酒精', '便利店', '新手友好'],
+    reason: '适合第一次尝试清酒，雪碧会把米香变得更软、更像冰镇汽水。',
+    flavor: { sweet: 4, sour: 1, alcohol: 1, fresh: 4, difficulty: 1 },
+    materials: {
+      standard: ['清酒 60ml', '雪碧 120ml', '柠檬', '冰块'],
+      convenience: ['清酒小瓶', '雪碧', '冰杯'],
+      simple: ['清酒', '雪碧']
+    },
+    steps: ['杯中加冰。', '倒入清酒。', '补雪碧。', '加柠檬会更清爽。'],
+    scenes: ['新手第一杯', '便利店调酒', '甜口入门', '宿舍/租房'],
+    substitutes: ['雪碧可换气泡水。', '想不甜就换无糖茶。', '想低酒感就减少清酒。'],
+    similar: ['gin-sprite', 'rum-sprite', 'umeshu-soda']
   }
 ]
 
@@ -1247,10 +1377,98 @@ const schemes = [
   }
 ]
 
+const searchMappings = [
+  {
+    keywords: ['金酒兑什么', '金酒怎么喝', '金酒调什么', 'gin兑什么'],
+    recipeIds: ['gin-tonic', 'gin-sprite', 'tom-collins', 'gin-lemon-tea'],
+    reason: '金酒优先从气泡、柠檬和茶饮方向开始。'
+  },
+  {
+    keywords: ['威士忌怎么喝', '威士忌兑什么', '威士忌调什么', 'whisky怎么喝'],
+    recipeIds: ['whisky-highball', 'whisky-cola', 'whisky-oolong', 'whisky-apple'],
+    reason: '威士忌先用苏打、可乐、乌龙茶降低冲击感。'
+  },
+  {
+    keywords: ['伏特加怎么喝', '伏特加兑什么', '伏特加调什么', 'vodka怎么喝'],
+    recipeIds: ['vodka-orange', 'vodka-soda', 'vodka-tea', 'vodka-apple'],
+    reason: '伏特加百搭，果汁、茶饮和气泡水都稳。'
+  },
+  {
+    keywords: ['朗姆怎么喝', '朗姆兑什么', '朗姆调什么', 'rum怎么喝'],
+    recipeIds: ['cuba-libre', 'rum-sprite', 'mojito', 'daiquiri'],
+    reason: '朗姆适合甜口、可乐、雪碧和薄荷柠檬。'
+  },
+  {
+    keywords: ['龙舌兰怎么喝', '龙舌兰兑什么', '龙舌兰调什么', 'tequila怎么喝'],
+    recipeIds: ['tequila-sprite', 'paloma', 'margarita'],
+    reason: '龙舌兰先做酸甜长饮，比纯喝友好很多。'
+  },
+  {
+    keywords: ['百利甜怎么喝', '百利甜兑什么', '百利甜调什么', '奶酒怎么喝'],
+    recipeIds: ['baileys-milk', 'baileys-coffee'],
+    reason: '百利甜优先搭牛奶和咖啡，目标是甜品微醺。'
+  },
+  {
+    keywords: ['梅酒怎么喝', '梅酒兑什么', '梅酒调什么'],
+    recipeIds: ['umeshu-soda', 'umeshu-oolong'],
+    reason: '梅酒本身已经好喝，加气泡或乌龙就够。'
+  },
+  {
+    keywords: ['清酒怎么喝', '清酒兑什么', '清酒调什么', 'sake怎么喝'],
+    recipeIds: ['sake-highball', 'sake-green-tea', 'sake-sprite'],
+    reason: '清酒适合低酒感长饮，气泡、绿茶、雪碧都容易成功。'
+  },
+  {
+    keywords: ['可乐能调什么', '可乐兑什么酒', '可乐调酒'],
+    recipeIds: ['whisky-cola', 'cuba-libre', 'jager-cola'],
+    reason: '可乐适合聚会型长饮，甜味会遮住酒精刺激。'
+  },
+  {
+    keywords: ['雪碧能调什么', '雪碧兑什么酒', '雪碧调酒'],
+    recipeIds: ['gin-sprite', 'rum-sprite', 'tequila-sprite', 'sake-sprite'],
+    reason: '雪碧适合新手甜口，记得加冰和柠檬。'
+  },
+  {
+    keywords: ['果汁能调什么', '橙汁能调什么', '苹果汁能调什么'],
+    recipeIds: ['vodka-orange', 'vodka-apple', 'whisky-apple', 'mimosa'],
+    reason: '果汁能把基酒做得更顺口，适合第一杯。'
+  },
+  {
+    keywords: ['茶饮能调什么', '茶能调什么', '绿茶能调什么', '乌龙茶能调什么'],
+    recipeIds: ['whisky-oolong', 'vodka-tea', 'umeshu-oolong', 'sake-green-tea'],
+    reason: '茶饮适合不想太甜的人，便利店很容易买齐。'
+  },
+  {
+    keywords: ['气泡水能做什么', '气泡饮', '清爽气泡', '苏打水能做什么'],
+    recipeIds: ['coffee-tonic', 'vodka-soda', 'umeshu-soda', 'sake-highball', 'cv-nonalcohol-fresh'],
+    reason: '气泡水优先做清爽、低负担、冰块多的长饮。'
+  },
+  {
+    keywords: ['咖啡怎么调好喝', '咖啡特调', '咖啡能调什么', '冷萃能调什么'],
+    recipeIds: ['coffee-tonic', 'baileys-coffee', 'espresso-martini', 'cv-coffee-night'],
+    reason: '咖啡适合做苦甜、奶香和无酒精气泡方向。'
+  },
+  {
+    keywords: ['无酒精', '不喝酒', 'mocktail', '零酒精'],
+    recipeIds: ['cv-nonalcohol-fresh', 'coffee-tonic'],
+    reason: '先给有调饮感但没有酒精负担的方案。'
+  },
+  {
+    keywords: ['便利店调酒', '便利店饮品', '便利店能做什么', '下楼买什么调酒'],
+    recipeIds: ['cv-nonalcohol-fresh', 'cv-fresh-tipsy', 'cv-sweet-party', 'cv-milk-soft', 'cv-tea-light', 'cv-fruit-low'],
+    reason: '优先给能现在买、现在做的方案。'
+  },
+  {
+    keywords: ['低酒感', '喝不出酒味', '新手第一杯', '第一次尝试'],
+    recipeIds: ['baileys-milk', 'umeshu-soda', 'vodka-orange', 'sake-highball', 'mimosa'],
+    reason: '这些更像饮料，适合第一次打开就决定。'
+  }
+]
+
 const pantryGroups = [
-  { title: '基酒', items: ['金酒', '伏特加', '威士忌', '朗姆', '龙舌兰', '百利甜', '野格', '梅酒', '果酒', '起泡酒'] },
-  { title: '饮料', items: ['可乐', '雪碧', '气泡水', '汤力水', '橙汁', '葡萄柚汁', '苹果汁', '茶', '咖啡', '牛奶'] },
-  { title: '辅助', items: ['冰块', '柠檬', '糖', '盐', '水果', '薄荷', '能量饮料'] }
+  { title: '基酒', items: ['金酒', '伏特加', '威士忌', '朗姆', '龙舌兰', '百利甜', '梅酒', '清酒', '野格', '果酒', '起泡酒'] },
+  { title: '饮料', items: ['可乐', '雪碧', '气泡水', '汤力水', '果汁', '橙汁', '葡萄柚汁', '苹果汁', '茶', '绿茶', '咖啡', '牛奶'] },
+  { title: '辅助', items: ['冰块', '柠檬', '青柠', '糖', '盐', '水果', '薄荷', '能量饮料'] }
 ]
 
 module.exports = {
@@ -1259,6 +1477,7 @@ module.exports = {
   homeCards,
   flavorCollections,
   sceneCollections,
+  searchMappings,
   bases,
   ingredients,
   ingredientCategories,

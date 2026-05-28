@@ -2249,5 +2249,205 @@
       "vodka-orange",
       "whisky-apple"
     ]
+  },
+  {
+    "id": "sake-highball",
+    "type": "recipe",
+    "name": "清酒嗨棒",
+    "enName": "Sake Highball",
+    "aliases": [
+      "清酒苏打",
+      "日本酒苏打",
+      "清酒气泡水",
+      "sake highball"
+    ],
+    "base": "清酒",
+    "tags": [
+      "清爽",
+      "气泡感",
+      "低酒精",
+      "新手友好",
+      "便利店"
+    ],
+    "reason": "适合想喝清酒但怕米香太明显的人，加气泡后会像更轻的冰饮。",
+    "flavor": {
+      "sweet": 1,
+      "sour": 1,
+      "alcohol": 1,
+      "fresh": 5,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "清酒 60ml",
+        "气泡水 120ml",
+        "柠檬或青柠",
+        "冰块"
+      ],
+      "convenience": [
+        "清酒小瓶",
+        "气泡水",
+        "柠檬片杯",
+        "冰杯"
+      ],
+      "simple": [
+        "清酒",
+        "气泡水",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "杯中加满冰块。",
+      "倒入清酒。",
+      "补气泡水，轻轻搅一下。",
+      "挤一点柠檬让米香更清爽。"
+    ],
+    "scenes": [
+      "新手第一杯",
+      "下班放松",
+      "便利店调酒",
+      "不想喝太甜"
+    ],
+    "substitutes": [
+      "气泡水可换苏打水。",
+      "想甜一点可换雪碧。",
+      "想低酒感就减少清酒、增加气泡水。"
+    ],
+    "similar": [
+      "umeshu-soda",
+      "vodka-soda",
+      "whisky-highball"
+    ]
+  },
+  {
+    "id": "sake-green-tea",
+    "type": "recipe",
+    "name": "清酒绿茶",
+    "enName": "Sake Green Tea",
+    "aliases": [
+      "清酒兑绿茶",
+      "日本酒绿茶",
+      "清酒茶饮"
+    ],
+    "base": "清酒",
+    "tags": [
+      "茶感",
+      "清爽",
+      "低酒精",
+      "便利店",
+      "不太甜"
+    ],
+    "reason": "适合不想喝甜饮的人，绿茶能把清酒做得更像日常冰茶。",
+    "flavor": {
+      "sweet": 1,
+      "sour": 0,
+      "alcohol": 1,
+      "fresh": 4,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "清酒 60ml",
+        "无糖绿茶 120ml",
+        "冰块"
+      ],
+      "convenience": [
+        "清酒小瓶",
+        "无糖绿茶",
+        "冰杯"
+      ],
+      "simple": [
+        "清酒",
+        "茶",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "冰杯倒入清酒。",
+      "补无糖绿茶。",
+      "轻轻搅匀后试味。"
+    ],
+    "scenes": [
+      "下班放松",
+      "便利店调酒",
+      "低酒精",
+      "不想喝太甜"
+    ],
+    "substitutes": [
+      "绿茶可换乌龙茶。",
+      "想甜一点用含糖茶饮。",
+      "酒感明显就增加茶的比例。"
+    ],
+    "similar": [
+      "umeshu-oolong",
+      "whisky-oolong",
+      "vodka-tea"
+    ]
+  },
+  {
+    "id": "sake-sprite",
+    "type": "recipe",
+    "name": "清酒雪碧",
+    "enName": "Sake Sprite",
+    "aliases": [
+      "清酒兑雪碧",
+      "日本酒雪碧",
+      "清酒汽水"
+    ],
+    "base": "清酒",
+    "tags": [
+      "甜口",
+      "清爽",
+      "低酒精",
+      "便利店",
+      "新手友好"
+    ],
+    "reason": "适合第一次尝试清酒，雪碧会把米香变得更软、更像冰镇汽水。",
+    "flavor": {
+      "sweet": 4,
+      "sour": 1,
+      "alcohol": 1,
+      "fresh": 4,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "清酒 60ml",
+        "雪碧 120ml",
+        "柠檬",
+        "冰块"
+      ],
+      "convenience": [
+        "清酒小瓶",
+        "雪碧",
+        "冰杯"
+      ],
+      "simple": [
+        "清酒",
+        "雪碧"
+      ]
+    },
+    "steps": [
+      "杯中加冰。",
+      "倒入清酒。",
+      "补雪碧。",
+      "加柠檬会更清爽。"
+    ],
+    "scenes": [
+      "新手第一杯",
+      "便利店调酒",
+      "甜口入门",
+      "宿舍/租房"
+    ],
+    "substitutes": [
+      "雪碧可换气泡水。",
+      "想不甜就换无糖茶。",
+      "想低酒感就减少清酒。"
+    ],
+    "similar": [
+      "gin-sprite",
+      "rum-sprite",
+      "umeshu-soda"
+    ]
   }
 ]

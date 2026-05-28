@@ -16,7 +16,7 @@
     "pages/collections/collections"
   ],
   "window": {
-    "navigationBarTitleText": "调酒助手",
+    "navigationBarTitleText": "饮品助手",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#f6f3ed"

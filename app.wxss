@@ -1,7 +1,7 @@
 page {
   min-height: 100%;
-  color: #2b2520;
-  background: #fbf6ec;
+  color: #233836;
+  background: #f8f1e4;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -16,8 +16,9 @@ input {
   min-height: 100vh;
   padding: 28rpx 24rpx 40rpx;
   background:
-    radial-gradient(circle at 10% 4%, rgba(255, 221, 189, 0.5) 0, rgba(255, 221, 189, 0) 180rpx),
-    linear-gradient(180deg, #fffaf1 0%, #f7fbf7 42%, #fbf6ec 100%);
+    radial-gradient(circle at 14% 2%, rgba(156, 225, 217, 0.34) 0, rgba(156, 225, 217, 0) 190rpx),
+    radial-gradient(circle at 90% 10%, rgba(255, 223, 179, 0.46) 0, rgba(255, 223, 179, 0) 210rpx),
+    linear-gradient(180deg, #fff8eb 0%, #edf9f6 48%, #f8f1e4 100%);
 }
 
 .section {
@@ -28,7 +29,7 @@ input {
   margin-bottom: 16rpx;
   font-size: 34rpx;
   font-weight: 700;
-  color: #2b2520;
+  color: #233836;
 }
 
 .section-subtitle {
@@ -40,10 +41,18 @@ input {
 
 .card {
   padding: 24rpx;
-  border: 2rpx solid rgba(76, 62, 47, 0.11);
-  border-radius: 24rpx;
-  background: rgba(255, 253, 247, 0.92);
-  box-shadow: 0 14rpx 34rpx rgba(91, 70, 48, 0.07);
+  border: 2rpx solid rgba(61, 119, 118, 0.12);
+  border-radius: 28rpx;
+  background:
+    linear-gradient(145deg, rgba(255, 253, 247, 0.84), rgba(238, 250, 248, 0.68));
+  box-shadow: 0 16rpx 40rpx rgba(57, 96, 102, 0.08);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.card:active {
+  transform: translateY(-3rpx) scale(0.994);
+  border-color: rgba(80, 169, 165, 0.34);
+  box-shadow: 0 18rpx 42rpx rgba(57, 96, 102, 0.12);
 }
 
 .muted {
@@ -61,17 +70,17 @@ input {
   align-items: center;
   min-height: 48rpx;
   padding: 0 18rpx;
-  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border: 2rpx solid rgba(61, 119, 118, 0.13);
   border-radius: 999rpx;
-  color: #5d5045;
-  background: rgba(255, 249, 239, 0.9);
+  color: #4e6863;
+  background: rgba(255, 250, 239, 0.78);
   font-size: 24rpx;
 }
 
 .tag.active {
-  color: #2f4f4a;
-  border-color: #a8d8cf;
-  background: #e4f4ef;
+  color: #203b3b;
+  border-color: rgba(80, 169, 165, 0.44);
+  background: #dff5f1;
 }
 
 .grid-2 {
@@ -94,10 +103,17 @@ input {
   margin: 0;
   border-radius: 999rpx;
   color: #fffdf8;
-  background: #2f4f4a;
+  background: linear-gradient(135deg, #2f7770 0%, #244d50 100%);
   font-size: 28rpx;
   line-height: 1;
-  box-shadow: 0 12rpx 24rpx rgba(47, 79, 74, 0.18);
+  box-shadow: 0 14rpx 30rpx rgba(47, 119, 112, 0.22);
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.button-primary:active,
+.button-ghost:active {
+  transform: scale(0.985);
+  opacity: 0.86;
 }
 
 .button-ghost {
@@ -106,10 +122,10 @@ input {
   justify-content: center;
   height: 80rpx;
   margin: 0;
-  border: 2rpx solid rgba(76, 62, 47, 0.12);
+  border: 2rpx solid rgba(61, 119, 118, 0.14);
   border-radius: 999rpx;
-  color: #2b2520;
-  background: rgba(255, 253, 247, 0.92);
+  color: #233836;
+  background: rgba(255, 253, 247, 0.82);
   font-size: 27rpx;
   line-height: 1;
 }
@@ -135,7 +151,7 @@ button::after {
   font-size: 32rpx;
   font-weight: 700;
   line-height: 1.25;
-  color: #2b2520;
+  color: #233836;
 }
 
 .body {
@@ -150,10 +166,10 @@ button::after {
 }
 
 .soft-panel {
-  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border: 2rpx solid rgba(61, 119, 118, 0.12);
   border-radius: 30rpx;
-  background: rgba(255, 253, 247, 0.86);
-  box-shadow: 0 18rpx 42rpx rgba(91, 70, 48, 0.06);
+  background: rgba(255, 253, 247, 0.78);
+  box-shadow: 0 18rpx 42rpx rgba(57, 96, 102, 0.07);
 }
 
 .visual-row {
@@ -169,7 +185,11 @@ button::after {
   height: 108rpx;
   overflow: hidden;
   border-radius: 24rpx;
-  background: rgba(255, 253, 247, 0.72);
+  border: 2rpx solid rgba(80, 169, 165, 0.12);
+  background:
+    radial-gradient(circle at 76% 20%, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0) 48rpx),
+    linear-gradient(145deg, rgba(243, 255, 252, 0.78), rgba(255, 246, 230, 0.66));
+  animation: soft-breath 4.8s ease-in-out infinite;
 }
 
 .asset-illo.large-asset {
@@ -189,15 +209,54 @@ button::after {
   height: 100%;
 }
 
+.fact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.fact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+  min-height: 44rpx;
+  padding: 0 14rpx;
+  border: 2rpx solid rgba(61, 119, 118, 0.1);
+  border-radius: 999rpx;
+  background: rgba(255, 250, 240, 0.64);
+}
+
+.fact-label {
+  color: #9a8a7a;
+  font-size: 21rpx;
+}
+
+.fact-value {
+  color: #2f4f4a;
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+@keyframes soft-breath {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3rpx);
+  }
+}
+
 .drink-illo {
   position: relative;
   flex: 0 0 auto;
   width: 168rpx;
   height: 142rpx;
   overflow: hidden;
-  border: 2rpx solid rgba(76, 62, 47, 0.12);
+  border: 2rpx solid rgba(61, 119, 118, 0.14);
   border-radius: 30rpx;
-  background: linear-gradient(145deg, #f7fff9 0%, #eef8ff 100%);
+  background: linear-gradient(145deg, #f7fff9 0%, #eaf7fb 100%);
 }
 
 .drink-illo.small-illo {
@@ -459,4 +518,41 @@ button::after {
   border-radius: 50%;
   background: #ffd0dc;
   box-shadow: 18rpx -10rpx 0 -7rpx #ffe8a8;
+}
+
+.theme-sparkling .asset-illo,
+.theme-gin .asset-illo,
+.theme-vodka .asset-illo {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 60rpx),
+    linear-gradient(145deg, rgba(236, 255, 251, 0.86), rgba(224, 246, 255, 0.76));
+}
+
+.theme-coffee .asset-illo,
+.theme-baileys .asset-illo {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0) 60rpx),
+    linear-gradient(145deg, rgba(255, 247, 232, 0.9), rgba(238, 218, 190, 0.74));
+}
+
+.theme-tea .asset-illo,
+.theme-sake .asset-illo {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0) 60rpx),
+    linear-gradient(145deg, rgba(250, 255, 237, 0.88), rgba(224, 241, 218, 0.74));
+}
+
+.theme-juice .asset-illo,
+.theme-rum .asset-illo,
+.theme-tequila .asset-illo,
+.theme-plum-wine .asset-illo {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0) 60rpx),
+    linear-gradient(145deg, rgba(255, 248, 232, 0.9), rgba(255, 224, 213, 0.76));
+}
+
+.theme-convenience .asset-illo {
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0) 70rpx),
+    linear-gradient(145deg, rgba(238, 255, 252, 0.88), rgba(226, 242, 255, 0.76) 54%, rgba(255, 246, 226, 0.72));
 }

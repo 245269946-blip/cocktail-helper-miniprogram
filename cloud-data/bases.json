@@ -11,6 +11,9 @@
     ],
     "intro": "金酒最适合做清爽、气泡、柑橘感明显的酒，搭配汤力水、苏打水、柠檬茶都很容易成立。",
     "recipes": {
+      "first": [
+        "gin-tonic"
+      ],
       "classic": [
         "gin-tonic",
         "tom-collins"
@@ -20,6 +23,10 @@
         "gin-sprite"
       ],
       "convenience": [
+        "gin-sprite",
+        "gin-lemon-tea"
+      ],
+      "lowAlcohol": [
         "gin-sprite",
         "gin-lemon-tea"
       ],
@@ -51,6 +58,9 @@
     ],
     "intro": "伏特加本身存在感低，适合和果汁、茶饮、咖啡、汽水组合，做新手第一杯很稳。",
     "recipes": {
+      "first": [
+        "vodka-orange"
+      ],
       "classic": [
         "vodka-orange",
         "moscow-mule"
@@ -60,6 +70,10 @@
         "vodka-soda"
       ],
       "convenience": [
+        "vodka-orange",
+        "vodka-tea"
+      ],
+      "lowAlcohol": [
         "vodka-orange",
         "vodka-tea"
       ],
@@ -91,6 +105,9 @@
     ],
     "intro": "威士忌适合和可乐、苏打水、乌龙茶、咖啡做长饮，想降低冲击感就加足冰和气泡。",
     "recipes": {
+      "first": [
+        "whisky-highball"
+      ],
       "classic": [
         "whisky-highball",
         "whisky-cola"
@@ -102,6 +119,10 @@
       "convenience": [
         "whisky-cola",
         "whisky-oolong"
+      ],
+      "lowAlcohol": [
+        "whisky-oolong",
+        "whisky-apple"
       ],
       "sweet": [
         "whisky-cola"
@@ -129,6 +150,9 @@
     ],
     "intro": "朗姆适合做莫吉托、可乐桶和各种果汁长饮，香甜感明显，聚会接受度高。",
     "recipes": {
+      "first": [
+        "cuba-libre"
+      ],
       "classic": [
         "mojito",
         "cuba-libre"
@@ -139,6 +163,9 @@
       ],
       "convenience": [
         "cuba-libre",
+        "rum-sprite"
+      ],
+      "lowAlcohol": [
         "rum-sprite"
       ],
       "sweet": [
@@ -168,6 +195,9 @@
     ],
     "intro": "龙舌兰适合和柑橘、盐、气泡、葡萄柚一起出现，做酸甜方向会比纯饮友好得多。",
     "recipes": {
+      "first": [
+        "tequila-sprite"
+      ],
       "classic": [
         "margarita",
         "paloma"
@@ -177,6 +207,9 @@
       ],
       "convenience": [
         "tequila-sprite"
+      ],
+      "lowAlcohol": [
+        "paloma"
       ],
       "sweet": [
         "tequila-sprite"
@@ -204,6 +237,9 @@
     ],
     "intro": "利口酒适合做甜口、奶香、果味方案，也适合作为鸡尾酒里的风味补强。",
     "recipes": {
+      "first": [
+        "baileys-milk"
+      ],
       "classic": [
         "baileys-milk",
         "jager-cola"
@@ -215,6 +251,10 @@
       "convenience": [
         "baileys-milk",
         "jager-cola"
+      ],
+      "lowAlcohol": [
+        "baileys-milk",
+        "baileys-coffee"
       ],
       "sweet": [
         "baileys-milk"
@@ -242,6 +282,9 @@
     ],
     "intro": "百利甜最适合和牛奶、咖啡、冰淇淋方向组合，目标不是做烈酒感，而是做一杯带微醺的甜品饮料。",
     "recipes": {
+      "first": [
+        "baileys-milk"
+      ],
       "classic": [
         "baileys-milk",
         "baileys-coffee"
@@ -250,6 +293,10 @@
         "baileys-milk"
       ],
       "convenience": [
+        "baileys-milk",
+        "baileys-coffee"
+      ],
+      "lowAlcohol": [
         "baileys-milk",
         "baileys-coffee"
       ],
@@ -280,6 +327,9 @@
     ],
     "intro": "野格适合做派对型长饮，和可乐、能量饮料、柠檬汽水都能快速成杯，但甜苦和酒感都比较明显。",
     "recipes": {
+      "first": [
+        "jager-cola"
+      ],
       "classic": [
         "jager-cola",
         "jager-redbull"
@@ -290,6 +340,9 @@
       "convenience": [
         "jager-cola",
         "jager-redbull"
+      ],
+      "lowAlcohol": [
+        "jager-cola"
       ],
       "sweet": [
         "jager-cola"
@@ -317,6 +370,9 @@
     ],
     "intro": "梅酒本身酸甜明显，适合加冰、苏打、乌龙茶或绿茶，几乎不需要复杂调制。",
     "recipes": {
+      "first": [
+        "umeshu-soda"
+      ],
       "classic": [
         "umeshu-soda",
         "umeshu-oolong"
@@ -326,6 +382,10 @@
         "umeshu-oolong"
       ],
       "convenience": [
+        "umeshu-soda",
+        "umeshu-oolong"
+      ],
+      "lowAlcohol": [
         "umeshu-soda",
         "umeshu-oolong"
       ],
@@ -345,6 +405,53 @@
     }
   },
   {
+    "id": "sake",
+    "name": "清酒",
+    "subtitle": "米香、清爽、茶饮和气泡",
+    "tags": [
+      "清爽",
+      "低酒精",
+      "茶感",
+      "新手友好"
+    ],
+    "intro": "清酒适合做低压力长饮，和气泡水、绿茶、苹果汁都能把米香变得更轻松。",
+    "recipes": {
+      "first": [
+        "sake-highball"
+      ],
+      "classic": [
+        "sake-highball",
+        "sake-green-tea"
+      ],
+      "beginner": [
+        "sake-sprite",
+        "sake-green-tea"
+      ],
+      "convenience": [
+        "sake-sprite",
+        "sake-green-tea"
+      ],
+      "lowAlcohol": [
+        "sake-highball",
+        "sake-green-tea"
+      ],
+      "sweet": [
+        "sake-sprite"
+      ],
+      "fresh": [
+        "sake-highball",
+        "sake-green-tea"
+      ],
+      "friendly": [
+        "sake-sprite",
+        "sake-green-tea"
+      ],
+      "advanced": [
+        "sake-highball"
+      ]
+    }
+  },
+  {
     "id": "fruit-wine",
     "name": "果酒",
     "subtitle": "低度、果味、气泡和甜口",
@@ -356,6 +463,9 @@
     ],
     "intro": "果酒更像“微醺饮料底”，适合加气泡水、冰块、柠檬和水果做低酒精方案。",
     "recipes": {
+      "first": [
+        "fruit-wine-spritz"
+      ],
       "classic": [
         "fruit-wine-spritz",
         "sangria-light"
@@ -364,6 +474,9 @@
         "fruit-wine-spritz"
       ],
       "convenience": [
+        "fruit-wine-spritz"
+      ],
+      "lowAlcohol": [
         "fruit-wine-spritz"
       ],
       "sweet": [
@@ -393,6 +506,9 @@
     ],
     "intro": "起泡酒适合做轻松的 Spritz、果汁 Mimosa 和聚会低度饮，重点是保持冰冷和气泡。",
     "recipes": {
+      "first": [
+        "mimosa"
+      ],
       "classic": [
         "mimosa",
         "aperol-spritz"
@@ -402,6 +518,9 @@
         "fruit-wine-spritz"
       ],
       "convenience": [
+        "mimosa"
+      ],
+      "lowAlcohol": [
         "mimosa"
       ],
       "sweet": [

@@ -3,7 +3,9 @@
 }
 
 .card {
-  background: linear-gradient(145deg, #fffdf8 0%, #fff7ee 100%);
+  background:
+    radial-gradient(circle at 88% 16%, rgba(255, 197, 155, 0.18) 0, rgba(255, 197, 155, 0) 130rpx),
+    linear-gradient(145deg, rgba(255, 253, 247, 0.86) 0%, rgba(255, 244, 232, 0.76) 100%);
 }
 
 .ingredient-grid {
@@ -15,9 +17,9 @@
 .ingredient-choice {
   min-width: 0;
   padding: 10rpx 8rpx 12rpx;
-  border: 2rpx solid rgba(76, 62, 47, 0.1);
+  border: 2rpx solid rgba(61, 119, 118, 0.11);
   border-radius: 22rpx;
-  background: rgba(255, 253, 247, 0.72);
+  background: rgba(255, 253, 247, 0.66);
 }
 
 .ingredient-image {
