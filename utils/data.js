@@ -52,14 +52,14 @@ const bases = [
     intro: '金酒最适合做清爽、气泡、柑橘感明显的酒，搭配汤力水、苏打水、柠檬茶都很容易成立。',
     recipes: {
       first: ['gin-tonic'],
-      classic: ['gin-tonic', 'tom-collins'],
-      beginner: ['gin-tonic', 'gin-sprite'],
-      convenience: ['gin-sprite', 'gin-lemon-tea'],
-      lowAlcohol: ['gin-sprite', 'gin-lemon-tea'],
-      sweet: ['gin-sprite'],
+      classic: ['gin-tonic', 'tom-collins', 'negroni', 'dry-martini'],
+      beginner: ['gin-tonic', 'tom-collins'],
+      convenience: ['gin-tonic', 'tom-collins'],
+      lowAlcohol: ['gin-tonic', 'tom-collins'],
+      sweet: ['tom-collins'],
       fresh: ['gin-tonic', 'tom-collins'],
-      friendly: ['gin-sprite', 'gin-lemon-tea'],
-      advanced: ['negroni']
+      friendly: ['gin-tonic', 'tom-collins'],
+      advanced: ['negroni', 'dry-martini']
     }
   },
   {
@@ -70,13 +70,13 @@ const bases = [
     intro: '伏特加本身存在感低，适合和果汁、茶饮、咖啡、汽水组合，做新手第一杯很稳。',
     recipes: {
       first: ['vodka-orange'],
-      classic: ['vodka-orange', 'moscow-mule'],
-      beginner: ['vodka-orange', 'vodka-soda'],
-      convenience: ['vodka-orange', 'vodka-tea'],
-      lowAlcohol: ['vodka-orange', 'vodka-tea'],
-      sweet: ['vodka-orange'],
-      fresh: ['vodka-soda', 'moscow-mule'],
-      friendly: ['vodka-orange', 'vodka-tea'],
+      classic: ['vodka-orange', 'moscow-mule', 'sea-breeze'],
+      beginner: ['vodka-orange', 'vodka-soda', 'sea-breeze'],
+      convenience: ['vodka-orange', 'vodka-soda', 'sea-breeze'],
+      lowAlcohol: ['vodka-orange', 'sea-breeze'],
+      sweet: ['vodka-orange', 'sea-breeze'],
+      fresh: ['vodka-soda', 'moscow-mule', 'sea-breeze'],
+      friendly: ['vodka-orange', 'sea-breeze'],
       advanced: ['espresso-martini']
     }
   },
@@ -88,14 +88,14 @@ const bases = [
     intro: '威士忌适合和可乐、苏打水、乌龙茶、咖啡做长饮，想降低冲击感就加足冰和气泡。',
     recipes: {
       first: ['whisky-highball'],
-      classic: ['whisky-highball', 'whisky-cola'],
+      classic: ['whisky-highball', 'whiskey-sour', 'whisky-cola'],
       beginner: ['whisky-cola', 'whisky-oolong'],
-      convenience: ['whisky-cola', 'whisky-oolong'],
-      lowAlcohol: ['whisky-oolong', 'whisky-apple'],
-      sweet: ['whisky-cola'],
-      fresh: ['whisky-highball'],
+      convenience: ['cola-bucket', 'whisky-cola', 'whisky-oolong'],
+      lowAlcohol: ['whisky-oolong', 'whisky-highball'],
+      sweet: ['cola-bucket', 'whisky-cola'],
+      fresh: ['whisky-highball', 'whiskey-sour'],
       friendly: ['whisky-oolong'],
-      advanced: ['old-fashioned']
+      advanced: ['whiskey-sour', 'old-fashioned']
     }
   },
   {
@@ -106,14 +106,14 @@ const bases = [
     intro: '朗姆适合做莫吉托、可乐桶和各种果汁长饮，香甜感明显，聚会接受度高。',
     recipes: {
       first: ['cuba-libre'],
-      classic: ['mojito', 'cuba-libre'],
-      beginner: ['cuba-libre', 'rum-sprite'],
-      convenience: ['cuba-libre', 'rum-sprite'],
-      lowAlcohol: ['rum-sprite'],
-      sweet: ['cuba-libre', 'rum-sprite'],
-      fresh: ['mojito'],
-      friendly: ['rum-sprite'],
-      advanced: ['daiquiri']
+      classic: ['mojito', 'cuba-libre', 'daiquiri', 'caipirinha'],
+      beginner: ['cuba-libre', 'mojito', 'caipirinha'],
+      convenience: ['cuba-libre'],
+      lowAlcohol: ['cuba-libre'],
+      sweet: ['cuba-libre'],
+      fresh: ['mojito', 'caipirinha', 'daiquiri'],
+      friendly: ['cuba-libre'],
+      advanced: ['daiquiri', 'caipirinha']
     }
   },
   {
@@ -123,14 +123,14 @@ const bases = [
     tags: ['酸甜', '果味', '聚会', '进阶'],
     intro: '龙舌兰适合和柑橘、盐、气泡、葡萄柚一起出现，做酸甜方向会比纯饮友好得多。',
     recipes: {
-      first: ['tequila-sprite'],
-      classic: ['margarita', 'paloma'],
-      beginner: ['tequila-sprite'],
-      convenience: ['tequila-sprite'],
+      first: ['paloma'],
+      classic: ['margarita', 'paloma', 'tequila-sunrise'],
+      beginner: ['paloma', 'tequila-sunrise'],
+      convenience: ['paloma', 'tequila-sunrise'],
       lowAlcohol: ['paloma'],
-      sweet: ['tequila-sprite'],
-      fresh: ['paloma'],
-      friendly: ['tequila-sprite'],
+      sweet: ['tequila-sunrise'],
+      fresh: ['paloma', 'tequila-sunrise'],
+      friendly: ['paloma', 'tequila-sunrise'],
       advanced: ['margarita']
     }
   },
@@ -142,13 +142,13 @@ const bases = [
     intro: '利口酒适合做甜口、奶香、果味方案，也适合作为鸡尾酒里的风味补强。',
     recipes: {
       first: ['baileys-milk'],
-      classic: ['baileys-milk', 'jager-cola'],
-      beginner: ['baileys-milk', 'jager-redbull'],
-      convenience: ['baileys-milk', 'jager-cola'],
-      lowAlcohol: ['baileys-milk', 'baileys-coffee'],
-      sweet: ['baileys-milk'],
-      fresh: ['jager-redbull'],
-      friendly: ['baileys-milk'],
+      classic: ['baileys-milk', 'white-russian', 'jager-cola'],
+      beginner: ['baileys-milk', 'white-russian', 'jager-cola'],
+      convenience: ['baileys-milk', 'white-russian', 'jager-cola'],
+      lowAlcohol: ['baileys-milk', 'white-russian', 'baileys-coffee'],
+      sweet: ['baileys-milk', 'white-russian'],
+      fresh: ['jager-cola'],
+      friendly: ['baileys-milk', 'white-russian'],
       advanced: ['espresso-martini']
     }
   },
@@ -178,14 +178,14 @@ const bases = [
     intro: '野格适合做派对型长饮，和可乐、能量饮料、柠檬汽水都能快速成杯，但甜苦和酒感都比较明显。',
     recipes: {
       first: ['jager-cola'],
-      classic: ['jager-cola', 'jager-redbull'],
+      classic: ['jager-cola'],
       beginner: ['jager-cola'],
-      convenience: ['jager-cola', 'jager-redbull'],
+      convenience: ['jager-cola'],
       lowAlcohol: ['jager-cola'],
       sweet: ['jager-cola'],
-      fresh: ['jager-redbull'],
+      fresh: ['jager-cola'],
       friendly: ['jager-cola'],
-      advanced: ['jager-redbull']
+      advanced: ['jager-cola']
     }
   },
   {
@@ -215,12 +215,12 @@ const bases = [
     recipes: {
       first: ['sake-highball'],
       classic: ['sake-highball', 'sake-green-tea'],
-      beginner: ['sake-sprite', 'sake-green-tea'],
-      convenience: ['sake-sprite', 'sake-green-tea'],
+      beginner: ['sake-highball', 'sake-green-tea'],
+      convenience: ['sake-highball', 'sake-green-tea'],
       lowAlcohol: ['sake-highball', 'sake-green-tea'],
-      sweet: ['sake-sprite'],
+      sweet: ['sake-highball'],
       fresh: ['sake-highball', 'sake-green-tea'],
-      friendly: ['sake-sprite', 'sake-green-tea'],
+      friendly: ['sake-highball', 'sake-green-tea'],
       advanced: ['sake-highball']
     }
   },
@@ -279,7 +279,7 @@ const ingredients = [
     category: '果汁',
     tags: ['果味', '酸甜', '低门槛', '便利店'],
     goodWith: ['伏特加', '朗姆', '龙舌兰', '果酒', '起泡酒'],
-    recipes: ['vodka-orange', 'vodka-grapefruit', 'vodka-apple', 'paloma', 'mimosa', 'fruit-wine-spritz'],
+    recipes: ['vodka-orange', 'sea-breeze', 'paloma', 'mimosa', 'fruit-wine-spritz'],
     lowAlcohol: ['orange-soda-zero', 'apple-soda-zero'],
     warnings: ['果汁很遮酒味，基酒先少倒，试味后再加。', '想清爽就加气泡水或柠檬。']
   },
@@ -299,7 +299,7 @@ const ingredients = [
     category: '碳酸饮料',
     tags: ['清爽', '甜口', '低门槛', '便利店'],
     goodWith: ['金酒', '朗姆', '龙舌兰', '伏特加'],
-    recipes: ['gin-sprite', 'rum-sprite', 'tequila-sprite'],
+    recipes: ['cv-sweet-party', 'cuba-libre', 'tequila-sunrise', 'sake-highball'],
     lowAlcohol: ['sprite-lemon-zero'],
     warnings: ['本身偏甜，基酒不要倒太多。', '想更清爽可以加冰和柠檬。']
   },
@@ -339,7 +339,7 @@ const ingredients = [
     category: '茶饮',
     tags: ['茶感', '清爽', '不太甜', '便利店'],
     goodWith: ['威士忌', '伏特加', '梅酒'],
-    recipes: ['whisky-oolong', 'vodka-tea', 'gin-lemon-tea'],
+    recipes: ['whisky-oolong', 'umeshu-oolong', 'sake-green-tea', 'cv-tea-light'],
     lowAlcohol: ['tea-lemon-zero'],
     warnings: ['无糖茶更稳，含糖茶要减少糖浆或甜饮比例。']
   },
@@ -369,7 +369,7 @@ const ingredients = [
     category: '水果',
     tags: ['酸甜', '清爽', '去腻', '便利店'],
     goodWith: ['金酒', '伏特加', '朗姆', '威士忌', '龙舌兰'],
-    recipes: ['tom-collins', 'daiquiri', 'margarita', 'whisky-highball', 'gin-sprite'],
+    recipes: ['tom-collins', 'daiquiri', 'margarita', 'whisky-highball'],
     lowAlcohol: ['soda-lemon-zero', 'tea-lemon-zero'],
     warnings: ['柠檬主要负责提亮，不要一次挤太多，酸度会压住酒香。']
   },
@@ -389,8 +389,8 @@ const ingredients = [
     category: '果汁',
     tags: ['酸甜', '微苦', '果味', '清爽'],
     goodWith: ['龙舌兰', '伏特加', '金酒'],
-    recipes: ['paloma', 'vodka-grapefruit'],
-    lowAlcohol: ['grapefruit-soda-zero'],
+    recipes: ['paloma', 'sea-breeze'],
+    lowAlcohol: ['sea-breeze'],
     warnings: ['葡萄柚自带轻微苦味，怕苦就加一点糖或换橙汁。']
   },
   {
@@ -399,7 +399,7 @@ const ingredients = [
     category: '茶饮',
     tags: ['茶感', '不太甜', '清爽', '便利店'],
     goodWith: ['威士忌', '梅酒', '伏特加'],
-    recipes: ['whisky-oolong', 'umeshu-oolong', 'vodka-tea'],
+    recipes: ['whisky-oolong', 'umeshu-oolong', 'sake-green-tea', 'cv-tea-light'],
     lowAlcohol: ['tea-lemon-zero'],
     warnings: ['无糖乌龙更适合做酒饮，含糖款会让整体显腻。']
   },
@@ -409,7 +409,7 @@ const ingredients = [
     category: '茶饮',
     tags: ['酸甜', '茶感', '便利店', '新手友好'],
     goodWith: ['金酒', '伏特加', '朗姆'],
-    recipes: ['gin-lemon-tea', 'vodka-tea'],
+    recipes: ['cv-tea-light', 'tom-collins'],
     lowAlcohol: ['tea-lemon-zero'],
     warnings: ['瓶装柠檬茶通常已经很甜，基酒用量建议保守。']
   },
@@ -419,7 +419,7 @@ const ingredients = [
     category: '茶饮',
     tags: ['茶感', '清爽', '不太甜', '便利店'],
     goodWith: ['清酒', '伏特加', '梅酒'],
-    recipes: ['sake-green-tea', 'vodka-tea', 'umeshu-oolong'],
+    recipes: ['sake-green-tea', 'umeshu-oolong', 'cv-tea-light'],
     lowAlcohol: ['tea-lemon-zero'],
     warnings: ['无糖绿茶更清爽，含糖绿茶要减少基酒量。']
   },
@@ -429,7 +429,7 @@ const ingredients = [
     category: '果汁',
     tags: ['果味', '甜口', '低门槛', '便利店'],
     goodWith: ['威士忌', '伏特加', '朗姆'],
-    recipes: ['whisky-apple', 'vodka-apple'],
+    recipes: ['sea-breeze', 'vodka-orange'],
     lowAlcohol: ['apple-soda-zero'],
     warnings: ['苹果汁甜度高，适合加柠檬或气泡水降低厚重感。']
   }
@@ -454,7 +454,7 @@ const recipes = [
     steps: ['杯中压出青柠汁和薄荷香气。', '加入朗姆和大量冰块。', '补苏打水或雪碧，轻轻搅匀。', '试味后用柠檬或糖调整酸甜。'],
     scenes: ['夏天晚上', '朋友小聚', '新手第一杯', '不想喝太甜'],
     substitutes: ['没有薄荷就做朗姆雪碧。', '不想太甜就用气泡水替代雪碧。', '想低酒精就把朗姆减半。'],
-    similar: ['gin-sprite', 'rum-sprite', 'gin-tonic']
+    similar: ['gin-tonic', 'cuba-libre', 'caipirinha']
   },
   {
     id: 'gin-tonic',
@@ -474,7 +474,7 @@ const recipes = [
     steps: ['高杯加满冰块。', '倒入金酒。', '补汤力水，沿杯壁轻搅。', '挤一点柠檬汁提升清爽感。'],
     scenes: ['下班放松', '夏天晚上', '不想喝太甜', '新手第一杯'],
     substitutes: ['没有汤力水可用气泡水加少量柠檬。', '不想太苦就换雪碧或加蜂蜜。', '想低酒精就用 25ml 金酒。'],
-    similar: ['gin-sprite', 'tom-collins', 'vodka-soda']
+    similar: ['tom-collins', 'vodka-soda', 'mojito']
   },
   {
     id: 'baileys-milk',
@@ -534,7 +534,7 @@ const recipes = [
     steps: ['杯中加冰。', '倒入伏特加。', '补橙汁并搅匀。'],
     scenes: ['新手第一杯', '便利店调酒', '低酒精', '不喜欢苦味'],
     substitutes: ['橙汁可换葡萄柚汁。', '想更清爽可加气泡水。', '想低酒精就减少伏特加。'],
-    similar: ['gin-sprite', 'rum-sprite', 'tequila-sprite']
+    similar: ['sea-breeze', 'tequila-sunrise', 'cuba-libre']
   },
   {
     id: 'whisky-highball',
@@ -559,6 +559,7 @@ const recipes = [
   {
     id: 'gin-sprite',
     type: 'recipe',
+    hidden: true,
     name: '金酒雪碧',
     enName: 'Gin Sprite',
     aliases: ['金酒兑雪碧', '金雪'],
@@ -574,7 +575,7 @@ const recipes = [
     steps: ['杯中加冰。', '倒入金酒。', '补雪碧。', '加柠檬会更清爽。'],
     scenes: ['便利店调酒', '新手第一杯', '甜口入门', '宿舍/租房'],
     substitutes: ['想低糖可用无糖雪碧。', '想更像金汤力可换汤力水。', '没有柠檬也能做。'],
-    similar: ['gin-tonic', 'vodka-orange', 'rum-sprite']
+    similar: ['gin-tonic', 'vodka-orange', 'cuba-libre']
   },
   {
     id: 'whisky-oolong',
@@ -594,7 +595,7 @@ const recipes = [
     steps: ['杯中加冰。', '倒入威士忌。', '补乌龙茶并搅匀。'],
     scenes: ['下班放松', '便利店调酒', '不想喝太甜', '夜晚独处'],
     substitutes: ['乌龙茶可换绿茶或柠檬茶。', '想更甜用含糖茶饮。', '酒感强就增加茶的比例。'],
-    similar: ['vodka-tea', 'gin-lemon-tea', 'whisky-highball']
+    similar: ['whisky-oolong', 'sake-green-tea', 'whisky-highball']
   },
   {
     id: 'espresso-martini',
@@ -634,11 +635,12 @@ const recipes = [
     steps: ['杯中加入金酒、柠檬汁和糖。', '加满冰块。', '补气泡水并轻轻搅匀。'],
     scenes: ['夏天晚上', '朋友小聚', '不想喝太甜', '新手第一杯'],
     substitutes: ['没有糖浆可用白糖先溶在柠檬汁里。', '怕酸就减少柠檬。', '想更省事可直接用柠檬味气泡水。'],
-    similar: ['gin-tonic', 'gin-sprite', 'vodka-soda']
+    similar: ['gin-tonic', 'vodka-soda', 'moscow-mule']
   },
   {
     id: 'gin-lemon-tea',
     type: 'recipe',
+    hidden: true,
     name: '金酒柠檬茶',
     enName: 'Gin Lemon Tea',
     aliases: ['金酒兑柠檬茶', '便利店金酒茶'],
@@ -654,7 +656,7 @@ const recipes = [
     steps: ['冰杯倒入金酒。', '补柠檬茶。', '搅匀后用冰块控制甜度。'],
     scenes: ['便利店调酒', '宿舍/租房', '新手第一杯', '甜口入门'],
     substitutes: ['柠檬茶可换绿茶加柠檬。', '太甜就加气泡水。', '想低酒精就减少金酒。'],
-    similar: ['vodka-tea', 'whisky-oolong', 'gin-sprite']
+    similar: ['whisky-oolong', 'sake-green-tea', 'cv-tea-light']
   },
   {
     id: 'negroni',
@@ -719,6 +721,7 @@ const recipes = [
   {
     id: 'vodka-tea',
     type: 'recipe',
+    hidden: true,
     name: '伏特加茶饮',
     enName: 'Vodka Tea',
     aliases: ['伏特加兑茶', '茶兑伏特加'],
@@ -734,7 +737,7 @@ const recipes = [
     steps: ['杯中加冰。', '倒入伏特加。', '补茶饮并搅匀。'],
     scenes: ['便利店调酒', '宿舍/租房', '新手第一杯', '不想复杂'],
     substitutes: ['想清爽用无糖茶。', '想甜口用柠檬茶。', '想低酒精就增加茶的比例。'],
-    similar: ['whisky-oolong', 'gin-lemon-tea']
+    similar: ['whisky-oolong', 'sake-green-tea']
   },
   {
     id: 'cuba-libre',
@@ -754,11 +757,12 @@ const recipes = [
     steps: ['杯中加冰。', '挤入柠檬汁。', '倒入朗姆并补可乐。'],
     scenes: ['朋友小聚', '便利店调酒', '甜口入门', '聚会前临时采购'],
     substitutes: ['没有柠檬也能做。', '怕甜用无糖可乐。', '朗姆可换威士忌。'],
-    similar: ['whisky-cola', 'rum-sprite', 'jager-cola']
+    similar: ['whisky-cola', 'cola-bucket', 'jager-cola']
   },
   {
     id: 'rum-sprite',
     type: 'recipe',
+    hidden: true,
     name: '朗姆雪碧',
     enName: 'Rum Sprite',
     aliases: ['朗姆兑雪碧', '朗姆汽水'],
@@ -774,7 +778,7 @@ const recipes = [
     steps: ['杯中加冰。', '倒入朗姆。', '补雪碧，喜欢清爽就加柠檬。'],
     scenes: ['便利店调酒', '新手第一杯', '朋友小聚', '甜口入门'],
     substitutes: ['雪碧可换可乐。', '想不甜用气泡水。', '想更像莫吉托就加薄荷和柠檬。'],
-    similar: ['mojito', 'gin-sprite', 'cuba-libre']
+    similar: ['mojito', 'cuba-libre', 'gin-tonic']
   },
   {
     id: 'daiquiri',
@@ -834,11 +838,12 @@ const recipes = [
     steps: ['杯中加冰。', '倒入龙舌兰和柠檬汁。', '补葡萄柚汽水，轻搅。'],
     scenes: ['夏天晚上', '朋友小聚', '清爽果味', '新手进阶'],
     substitutes: ['没有葡萄柚汽水可用葡萄柚汁加气泡水。', '怕苦可换橙汁。', '想更甜加雪碧。'],
-    similar: ['margarita', 'tequila-sprite']
+    similar: ['margarita', 'tequila-sunrise']
   },
   {
     id: 'tequila-sprite',
     type: 'recipe',
+    hidden: true,
     name: '龙舌兰雪碧',
     enName: 'Tequila Sprite',
     aliases: ['龙舌兰兑雪碧'],
@@ -854,7 +859,7 @@ const recipes = [
     steps: ['冰杯倒入龙舌兰。', '补雪碧。', '加柠檬后轻搅。'],
     scenes: ['便利店调酒', '朋友小聚', '新手第一杯', '甜口入门'],
     substitutes: ['雪碧可换葡萄柚汽水。', '想更酸加柠檬。', '想低酒精就减少龙舌兰。'],
-    similar: ['paloma', 'gin-sprite', 'rum-sprite']
+    similar: ['paloma', 'tequila-sunrise', 'cuba-libre']
   },
   {
     id: 'jager-cola',
@@ -874,11 +879,12 @@ const recipes = [
     steps: ['杯中加冰。', '倒入野格。', '补可乐并轻搅。'],
     scenes: ['朋友小聚', '聚会前临时采购', '便利店调酒', '甜口入门'],
     substitutes: ['怕甜用无糖可乐。', '想更刺激可换能量饮料。', '加柠檬能减少草本药感。'],
-    similar: ['whisky-cola', 'cuba-libre', 'jager-redbull']
+    similar: ['whisky-cola', 'cuba-libre', 'cola-bucket']
   },
   {
     id: 'jager-redbull',
     type: 'recipe',
+    hidden: true,
     name: '野格能量饮',
     enName: 'Jager Energy',
     aliases: ['野格炸弹', '野格红牛'],
@@ -1079,6 +1085,7 @@ const recipes = [
   {
     id: 'vodka-grapefruit',
     type: 'recipe',
+    hidden: true,
     name: '伏特加葡萄柚',
     enName: 'Vodka Grapefruit',
     aliases: ['伏特加西柚', '西柚伏特加'],
@@ -1097,8 +1104,30 @@ const recipes = [
     similar: ['vodka-orange', 'paloma']
   },
   {
+    id: 'sea-breeze',
+    type: 'recipe',
+    name: '海风',
+    enName: 'Sea Breeze',
+    aliases: ['海风鸡尾酒', 'sea breeze', '伏特加海风'],
+    base: '伏特加',
+    tags: ['果味', '酸甜', '清爽', '新手友好', '低门槛'],
+    reason: '适合想要比螺丝刀更清爽、有一点莓果酸甜和葡萄柚微苦的人。',
+    flavor: { sweet: 2, sour: 3, alcohol: 1, fresh: 4, difficulty: 1 },
+    materials: {
+      standard: ['伏特加 35ml', '葡萄柚汁 60ml', '蔓越莓汁 60ml', '冰块'],
+      convenience: ['伏特加小瓶', '葡萄柚汁或西柚饮料', '蔓越莓汁或莓果汁', '冰杯'],
+      simple: ['伏特加', '葡萄柚汁', '莓果汁', '冰块']
+    },
+    steps: ['杯中加满冰。', '倒入伏特加、葡萄柚汁和蔓越莓汁。', '轻轻搅匀，试味后用果汁调整酸甜。'],
+    scenes: ['新手第一杯', '夏天晚上', '果味低酒精', '下班放松'],
+    substitutes: ['没有蔓越莓汁可用莓果汁或少量石榴汁。', '没有葡萄柚汁可用橙汁，但清爽感会降低。', '想更低酒感就多加果汁。'],
+    warnings: ['果汁很遮酒味，伏特加先少倒。'],
+    similar: ['vodka-orange', 'paloma', 'vodka-soda']
+  },
+  {
     id: 'whisky-apple',
     type: 'recipe',
+    hidden: true,
     name: '威士忌苹果汁',
     enName: 'Whisky Apple',
     aliases: ['威士忌兑苹果汁', '苹果嗨棒'],
@@ -1119,6 +1148,7 @@ const recipes = [
   {
     id: 'vodka-apple',
     type: 'recipe',
+    hidden: true,
     name: '伏特加苹果汁',
     enName: 'Vodka Apple',
     aliases: ['苹果伏特加'],
@@ -1134,7 +1164,7 @@ const recipes = [
     steps: ['冰杯倒入伏特加。', '补苹果汁。', '搅匀后试甜度。'],
     scenes: ['便利店调酒', '新手第一杯', '甜口入门', '宿舍/租房'],
     substitutes: ['苹果汁可换橙汁。', '想清爽就加气泡水。', '想酸甜就加柠檬。'],
-    similar: ['vodka-orange', 'whisky-apple']
+    similar: ['vodka-orange', 'sea-breeze']
   },
   {
     id: 'sake-highball',
@@ -1174,11 +1204,12 @@ const recipes = [
     steps: ['冰杯倒入清酒。', '补无糖绿茶。', '轻轻搅匀后试味。'],
     scenes: ['下班放松', '便利店调酒', '低酒精', '不想喝太甜'],
     substitutes: ['绿茶可换乌龙茶。', '想甜一点用含糖茶饮。', '酒感明显就增加茶的比例。'],
-    similar: ['umeshu-oolong', 'whisky-oolong', 'vodka-tea']
+    similar: ['umeshu-oolong', 'whisky-oolong', 'sake-green-tea']
   },
   {
     id: 'sake-sprite',
     type: 'recipe',
+    hidden: true,
     name: '清酒雪碧',
     enName: 'Sake Sprite',
     aliases: ['清酒兑雪碧', '日本酒雪碧', '清酒汽水'],
@@ -1194,9 +1225,212 @@ const recipes = [
     steps: ['杯中加冰。', '倒入清酒。', '补雪碧。', '加柠檬会更清爽。'],
     scenes: ['新手第一杯', '便利店调酒', '甜口入门', '宿舍/租房'],
     substitutes: ['雪碧可换气泡水。', '想不甜就换无糖茶。', '想低酒感就减少清酒。'],
-    similar: ['gin-sprite', 'rum-sprite', 'umeshu-soda']
+    similar: ['gin-tonic', 'cuba-libre', 'umeshu-soda']
+  },
+  {
+    id: 'whiskey-sour',
+    type: 'recipe',
+    name: '威士忌酸',
+    enName: 'Whiskey Sour',
+    aliases: ['威士忌柠檬', 'whiskey sour', 'whisky sour'],
+    base: '威士忌',
+    tags: ['酸甜', '经典', '泡沫感', '进阶', '适合在家做'],
+    reason: '适合想从长饮进阶到经典酸甜型的人，柠檬、糖和厚泡沫会把威士忌变得更圆润。',
+    flavor: { sweet: 2, sour: 4, alcohol: 3, fresh: 3, difficulty: 3 },
+    materials: {
+      standard: ['威士忌 45ml', '柠檬汁 25ml', '糖浆 15ml', '蛋清或可省略', '冰块'],
+      convenience: ['威士忌小瓶', '柠檬汁或柠檬', '糖浆或蜂蜜', '冰杯'],
+      simple: ['威士忌', '柠檬', '糖或蜂蜜', '冰块']
+    },
+    steps: ['摇壶加入威士忌、柠檬汁、糖浆和蛋清。', '先不加冰干摇，让泡沫打起来。', '加冰后再用力摇到冰冷。', '滤入矮杯，可加柠檬片装饰。'],
+    scenes: ['夜晚放松', '经典鸡尾酒', '适合在家做', '酸甜爱好者'],
+    substitutes: ['不想用蛋清可以省略，泡沫会少一些。', '糖浆可用蜂蜜水替代。', '怕酸就把糖浆加到 20ml。'],
+    similar: ['daiquiri', 'margarita', 'whisky-highball']
+  },
+  {
+    id: 'caipirinha',
+    type: 'recipe',
+    name: '卡琵莉亚',
+    enName: 'Caipirinha',
+    aliases: ['卡皮莉亚', 'caipirinha', '卡莎萨青柠'],
+    base: '卡莎萨',
+    tags: ['青柠', '酸甜', '捣压', '清爽', '夏天'],
+    reason: '适合喜欢青柠块、冰块和直接清爽口感的人，捣压后的青柠香气很明显。',
+    flavor: { sweet: 2, sour: 4, alcohol: 3, fresh: 5, difficulty: 2 },
+    materials: {
+      standard: ['卡莎萨 50ml', '青柠 半颗切块', '白糖 2茶匙', '碎冰或冰块'],
+      convenience: ['卡莎萨或白朗姆', '青柠', '白糖或糖浆', '冰杯'],
+      simple: ['白朗姆', '青柠', '糖', '冰块']
+    },
+    steps: ['青柠切块放入杯中。', '加入糖，轻轻捣压出汁和香气。', '加满碎冰或冰块。', '倒入卡莎萨并搅匀。'],
+    scenes: ['夏天晚上', '朋友小聚', '清爽果味', '新手进阶'],
+    substitutes: ['没有卡莎萨可用白朗姆做简化版。', '怕酸就少压青柠白色部分。', '没有碎冰就用普通冰块。'],
+    similar: ['mojito', 'daiquiri', 'cuba-libre']
+  },
+  {
+    id: 'white-russian',
+    type: 'recipe',
+    name: '白俄罗斯',
+    enName: 'White Russian',
+    aliases: ['white russian', '伏特加咖啡奶', '咖啡奶酒'],
+    base: '伏特加',
+    tags: ['咖啡感', '奶香', '甜口', '顺滑', '夜晚'],
+    reason: '适合喜欢咖啡奶感、顺滑甜口和夜晚放松的人，步骤很短但层次很明显。',
+    flavor: { sweet: 4, sour: 0, alcohol: 2, fresh: 1, difficulty: 1 },
+    materials: {
+      standard: ['伏特加 40ml', '咖啡利口酒 25ml', '牛奶或淡奶油 40ml', '冰块'],
+      convenience: ['伏特加小瓶', '咖啡利口酒或冷萃咖啡', '牛奶', '冰杯'],
+      simple: ['伏特加', '冷萃咖啡', '牛奶', '糖']
+    },
+    steps: ['矮杯加满冰块。', '倒入伏特加和咖啡利口酒。', '缓慢倒入牛奶或淡奶油。', '轻轻搅一下，让咖啡棕和奶白形成融合层次。'],
+    scenes: ['夜晚放松', '甜口入门', '咖啡爱好者', '适合在家做'],
+    substitutes: ['没有咖啡利口酒可用冷萃咖啡加糖。', '想更轻就用牛奶，不用淡奶油。', '怕甜就多加冰和牛奶。'],
+    similar: ['espresso-martini', 'baileys-coffee', 'baileys-milk']
+  },
+  {
+    id: 'cola-bucket',
+    type: 'recipe',
+    name: '可乐桶',
+    enName: 'Cola Bucket',
+    aliases: ['可乐酒桶', '朋友局可乐桶', 'cola bucket', '大杯可乐酒'],
+    base: '威士忌',
+    tags: ['甜口', '气泡感', '聚会', '便利店', '适合分享'],
+    reason: '适合朋友局和临时聚会，原料好买、容量大、接受度高，但要注意控制基酒比例。',
+    flavor: { sweet: 4, sour: 1, alcohol: 3, fresh: 3, difficulty: 1 },
+    materials: {
+      standard: ['威士忌或朗姆 120ml', '可乐 500ml', '青柠或柠檬', '大量冰块'],
+      convenience: ['小瓶威士忌或朗姆', '大瓶可乐', '冰杯或冰袋', '柠檬片'],
+      simple: ['基酒', '可乐', '冰块']
+    },
+    steps: ['大杯或小桶先加大量冰块。', '倒入基酒。', '补可乐并轻轻搅匀。', '加入青柠或柠檬片，按人数分杯。'],
+    scenes: ['朋友小聚', '聚会前临时采购', '便利店调酒', '适合分享'],
+    substitutes: ['可乐可换无糖可乐。', '基酒可以用威士忌、朗姆或伏特加。', '人多时先少倒酒，后面再补。'],
+    similar: ['whisky-cola', 'cuba-libre', 'jager-cola']
+  },
+  {
+    id: 'dry-martini',
+    type: 'recipe',
+    name: '干马天尼',
+    enName: 'Dry Martini',
+    aliases: ['干马丁尼', 'dry martini', '金酒马天尼'],
+    base: '金酒',
+    tags: ['经典', '清冷', '酒感', '进阶', '不太甜'],
+    reason: '适合想了解经典短饮、能接受明显酒感的人，透明酒液和橄榄是最强识别点。',
+    flavor: { sweet: 0, sour: 0, alcohol: 5, fresh: 2, difficulty: 4 },
+    materials: {
+      standard: ['金酒 60ml', '干味美思 10ml', '橄榄或柠檬皮', '冰块'],
+      convenience: ['金酒', '干味美思', '橄榄或柠檬皮', '冰块'],
+      simple: ['金酒', '少量干味美思', '冰块']
+    },
+    steps: ['调酒杯加冰。', '倒入金酒和干味美思。', '充分搅拌到冰冷。', '滤入马天尼杯，用橄榄或柠檬皮点缀。'],
+    scenes: ['经典鸡尾酒', '夜晚放松', '进阶尝试', '不想喝太甜'],
+    substitutes: ['没有马天尼杯可用小酒杯。', '怕酒感太强就降低金酒、增加冰镇时间。', '不喜欢橄榄可换柠檬皮。'],
+    similar: ['gin-tonic', 'negroni', 'old-fashioned']
+  },
+  {
+    id: 'tequila-sunrise',
+    type: 'recipe',
+    name: '龙舌兰日出',
+    enName: 'Tequila Sunrise',
+    aliases: ['tequila sunrise', '龙舌兰橙汁', '日出鸡尾酒'],
+    base: '龙舌兰',
+    tags: ['果味', '甜口', '橙汁', '新手进阶', '聚会'],
+    reason: '适合想要果汁好入口、颜色有记忆点的一杯，橙汁会把龙舌兰做得更友好。',
+    flavor: { sweet: 4, sour: 2, alcohol: 3, fresh: 3, difficulty: 2 },
+    materials: {
+      standard: ['龙舌兰 45ml', '橙汁 120ml', '红石榴糖浆 10ml', '冰块'],
+      convenience: ['龙舌兰小瓶', '橙汁', '红石榴糖浆或少量莓果汁', '冰杯'],
+      simple: ['龙舌兰', '橙汁', '少量红色果汁']
+    },
+    steps: ['高杯加冰。', '倒入龙舌兰和橙汁并轻轻搅匀。', '沿杯壁慢慢加入红石榴糖浆。', '不要过度搅拌，让颜色自然下沉。'],
+    scenes: ['新手进阶', '朋友小聚', '甜口入门', '聚会'],
+    substitutes: ['没有红石榴糖浆可用少量莓果汁。', '怕甜就减少糖浆。', '想更清爽可加一点气泡水。'],
+    similar: ['paloma', 'margarita', 'vodka-orange']
   }
 ]
+
+recipes.push(
+  {
+    id: 'cv-gin-tonic',
+    type: 'recipe',
+    name: '便利店版金汤力',
+    enName: 'Convenience Gin Tonic',
+    aliases: ['便利店金汤力', '便利店版gin tonic'],
+    base: '金酒',
+    tags: ['便利店', '清爽', '微醺', '低门槛', '气泡感'],
+    reason: '适合下班路上临时买，小瓶金酒加一瓶喜欢的软饮就能做，汤力水和气泡水只是最清爽的方向。',
+    flavor: { sweet: 1, sour: 2, alcohol: 2, fresh: 5, difficulty: 1 },
+    materials: {
+      standard: ['金酒小瓶 1支', '汤力水 / 气泡水 / 雪碧 1瓶', '冰杯 1杯'],
+      convenience: ['金酒小瓶', '喜欢的软饮', '冰杯', '柠檬片可选'],
+      simple: ['金酒', '饮料', '冰块']
+    },
+    steps: ['冰杯倒入金酒 25-35ml。', '补汤力水、气泡水、雪碧或你喜欢的饮料。', '有柠檬再挤一点，没有也可以直接轻搅。'],
+    scenes: ['下班放松', '便利店调酒', '夏天晚上', '不想喝甜'],
+    substitutes: ['没有汤力水就用气泡水、雪碧或无糖茶。', '柠檬买不到可以不加。', '想更低酒精就只倒半瓶小酒。'],
+    similar: ['gin-tonic', 'vodka-soda', 'whisky-highball']
+  },
+  {
+    id: 'cv-cuba-libre',
+    type: 'recipe',
+    name: '便利店版自由古巴',
+    enName: 'Convenience Cuba Libre',
+    aliases: ['便利店朗姆可乐', '便利店自由古巴'],
+    base: '朗姆',
+    tags: ['便利店', '甜口', '聚会', '低门槛', '气泡感'],
+    reason: '适合朋友局临时起意，朗姆加可乐最稳；没有柠檬也不影响成杯。',
+    flavor: { sweet: 4, sour: 1, alcohol: 2, fresh: 3, difficulty: 1 },
+    materials: {
+      standard: ['朗姆小瓶 1支', '可乐 1瓶', '冰杯 1杯'],
+      convenience: ['朗姆小瓶', '可乐', '冰杯', '柠檬片可选'],
+      simple: ['朗姆', '可乐', '冰块']
+    },
+    steps: ['冰杯倒入朗姆 30-45ml。', '补可乐，轻轻搅匀。', '有柠檬再加一点清爽感，没有就直接喝。'],
+    scenes: ['朋友小聚', '便利店调酒', '聚会前临时采购', '甜口入门'],
+    substitutes: ['朗姆可换威士忌。', '怕甜用无糖可乐或加一点气泡水。', '没有柠檬也可以直接做。'],
+    similar: ['cuba-libre', 'whisky-cola', 'cola-bucket']
+  },
+  {
+    id: 'cv-vodka-soda',
+    type: 'recipe',
+    name: '便利店版伏特加苏打',
+    enName: 'Convenience Vodka Soda',
+    aliases: ['便利店伏特加苏打', '便利店伏特加气泡水'],
+    base: '伏特加',
+    tags: ['便利店', '清爽', '低糖', '微醺', '气泡感'],
+    reason: '适合想要干净、低甜、低负担的一杯；如果不爱气泡水，可以换成茶饮、果汁或自己喜欢的饮料。',
+    flavor: { sweet: 0, sour: 1, alcohol: 2, fresh: 5, difficulty: 1 },
+    materials: {
+      standard: ['伏特加小瓶 1支', '气泡水 / 无糖茶 / 果汁 1瓶', '冰杯 1杯'],
+      convenience: ['伏特加小瓶', '喜欢的饮料', '冰杯', '柠檬片可选'],
+      simple: ['伏特加', '饮料', '冰块']
+    },
+    steps: ['冰杯倒入伏特加 25-35ml。', '补气泡水、茶饮、果汁或你喜欢的饮料。', '有柠檬再挤一点，没有也可以不加。'],
+    scenes: ['下班放松', '便利店调酒', '不想喝甜', '低糖'],
+    substitutes: ['不喜欢气泡水就换茶饮、果汁或运动饮料。', '酒感明显就多加饮料。', '柠檬和薄荷都不是必需。'],
+    similar: ['vodka-soda', 'gin-tonic', 'coffee-tonic']
+  },
+  {
+    id: 'cv-screwdriver',
+    type: 'recipe',
+    name: '便利店版螺丝刀',
+    enName: 'Convenience Screwdriver',
+    aliases: ['便利店伏特加橙汁', '便利店螺丝刀'],
+    base: '伏特加',
+    tags: ['便利店', '果味', '甜口', '低门槛', '新手友好'],
+    reason: '适合想要果汁感和轻微微醺的人，伏特加加橙汁最简单，也可以换成葡萄柚汁、苹果汁或茶饮。',
+    flavor: { sweet: 3, sour: 2, alcohol: 1, fresh: 4, difficulty: 1 },
+    materials: {
+      standard: ['伏特加小瓶 1支', '橙汁 / 果汁 / 茶饮 1瓶', '冰杯 1杯'],
+      convenience: ['伏特加小瓶', '喜欢的果汁或茶饮', '冰杯'],
+      simple: ['伏特加', '果汁']
+    },
+    steps: ['冰杯倒入伏特加 20-30ml。', '补橙汁、葡萄柚汁、苹果汁或茶饮到七八分满。', '轻轻搅匀后试甜度。'],
+    scenes: ['新手第一杯', '便利店调酒', '女生更容易接受', '果味低酒精'],
+    substitutes: ['橙汁可换葡萄柚汁、苹果汁或柠檬茶。', '想更轻就多加饮料或冰。', '没有水果辅料也不影响。'],
+    similar: ['vodka-orange', 'tequila-sunrise', 'sea-breeze']
+  }
+)
 
 const schemes = [
   {
@@ -1205,21 +1439,21 @@ const schemes = [
     name: '便利店清爽微醺方案',
     enName: 'Convenience Fresh Highball',
     tags: ['便利店', '清爽', '微醺', '低酒精', '气泡感'],
-    reason: '适合下班路上临时买，回家三分钟做一杯清爽低负担长饮。',
+    reason: '适合下班路上临时买，小瓶酒加一瓶清爽软饮就能做；气泡水、汤力水、雪碧都可以按口味替换。',
     flavor: { sweet: 1, sour: 2, alcohol: 2, fresh: 5, difficulty: 1 },
     place: ['便利店', '宿舍/租房', '聚会前临时采购'],
     mood: ['清爽', '微醺', '低酒精', '气泡感'],
     price: '约 35-55 元',
     materials: {
-      standard: ['金酒小瓶', '汤力水或气泡水', '柠檬片杯', '冰杯'],
-      convenience: ['金酒小瓶 1支', '汤力水 1瓶', '柠檬片杯 1份', '冰杯 1杯'],
-      simple: ['金酒', '气泡水', '冰块']
+      standard: ['金酒小瓶', '汤力水 / 气泡水 / 雪碧', '冰杯', '柠檬片可选'],
+      convenience: ['金酒小瓶 1支', '喜欢的清爽软饮 1瓶', '冰杯 1杯', '柠檬片可选'],
+      simple: ['金酒', '喜欢的饮料', '冰块']
     },
-    steps: ['冰杯倒入金酒 25-35ml。', '补汤力水或气泡水。', '挤入柠檬，轻轻搅匀。'],
+    steps: ['冰杯倒入金酒 25-35ml。', '补汤力水、气泡水、雪碧或喜欢的茶饮。', '有柠檬再挤一点，没有就直接轻搅。'],
     scenes: ['下班放松', '夏天晚上', '一个人微醺', '不想喝甜'],
-    substitutes: ['没有汤力水就用气泡水。', '怕苦就换雪碧。', '想更低酒精就只倒半瓶小酒。'],
+    substitutes: ['没有汤力水就用气泡水、雪碧或无糖茶。', '不喜欢气泡水就换茶饮或果汁。', '柠檬和薄荷买不到都可以不加。'],
     warnings: ['便利店冰杯融化快，先冰饮料再混合。'],
-    similar: ['gin-tonic', 'gin-sprite', 'whisky-highball']
+    similar: ['gin-tonic', 'tom-collins', 'whisky-highball']
   },
   {
     id: 'cv-sweet-party',
@@ -1233,13 +1467,13 @@ const schemes = [
     mood: ['甜口', '果味', '微醺'],
     price: '约 45-80 元',
     materials: {
-      standard: ['威士忌或朗姆', '可乐', '柠檬', '冰块'],
-      convenience: ['威士忌小瓶 1支', '可乐 1瓶', '冰杯 2杯', '柠檬片杯 1份'],
+      standard: ['威士忌或朗姆', '可乐', '冰块', '柠檬可选'],
+      convenience: ['威士忌小瓶或朗姆小瓶 1支', '可乐 1瓶', '冰杯 2杯', '柠檬片可选'],
       simple: ['威士忌', '可乐']
     },
-    steps: ['冰杯加威士忌 30-45ml。', '补可乐。', '加柠檬减少甜腻。'],
+    steps: ['冰杯加威士忌或朗姆 30-45ml。', '补可乐。', '有柠檬再加一点减少甜腻，没有就直接做。'],
     scenes: ['朋友小聚', '聚会前临时采购', '甜口入门', '不想失败'],
-    substitutes: ['威士忌可换朗姆。', '怕甜用无糖可乐。', '想更酸甜就加橙汁或柠檬。'],
+    substitutes: ['威士忌可换朗姆。', '怕甜用无糖可乐或加一点气泡水。', '想增加风味可换樱桃可乐、柠檬茶或果汁。'],
     warnings: ['可乐很遮酒味，别连续加太多基酒。'],
     similar: ['whisky-cola', 'cuba-libre', 'jager-cola']
   },
@@ -1285,7 +1519,7 @@ const schemes = [
     scenes: ['下班放松', '宿舍/租房', '不想喝太甜', '便利店调酒'],
     substitutes: ['威士忌更有香气，伏特加更干净。', '想甜一点换柠檬茶。', '想低酒精就只倒半瓶小酒。'],
     warnings: ['茶饮越浓越显酒感，新手建议先少倒酒。'],
-    similar: ['whisky-oolong', 'vodka-tea', 'umeshu-oolong']
+    similar: ['whisky-oolong', 'sake-green-tea', 'umeshu-oolong']
   },
   {
     id: 'cv-fruit-low',
@@ -1299,15 +1533,15 @@ const schemes = [
     mood: ['果味', '酸甜', '低酒精', '微醺'],
     price: '约 35-65 元',
     materials: {
-      standard: ['伏特加或低度果酒', '橙汁或葡萄柚汁', '气泡水', '冰块'],
-      convenience: ['伏特加小瓶或果酒', '果汁 1瓶', '气泡水 1瓶', '冰杯'],
-      simple: ['伏特加', '果汁', '冰块']
+      standard: ['伏特加或低度果酒', '橙汁 / 葡萄柚汁 / 茶饮', '冰块', '气泡水可选'],
+      convenience: ['伏特加小瓶或果酒', '喜欢的果汁或茶饮 1瓶', '冰杯', '气泡水可选'],
+      simple: ['伏特加', '果汁或茶饮', '冰块']
     },
-    steps: ['冰杯倒入少量基酒。', '加入果汁至七分满。', '补气泡水，让口感更轻。'],
+    steps: ['冰杯倒入少量基酒。', '加入果汁或茶饮至七八分满。', '喜欢更轻盈再补一点气泡水，不喜欢就省略。'],
     scenes: ['新手第一杯', '女生更容易接受', '夏天晚上', '朋友小聚'],
-    substitutes: ['橙汁更甜，葡萄柚更清爽。', '不用伏特加也可以直接果酒加气泡水。', '怕酸就选苹果汁。'],
+    substitutes: ['橙汁更甜，葡萄柚更清爽。', '不喜欢气泡水就全用果汁或茶饮。', '没有水果辅料也不影响。'],
     warnings: ['果汁遮酒味，聚会时别连续加酒。'],
-    similar: ['vodka-orange', 'vodka-grapefruit', 'fruit-wine-spritz']
+    similar: ['vodka-orange', 'sea-breeze', 'fruit-wine-spritz']
   },
   {
     id: 'cv-coffee-night',
@@ -1337,19 +1571,19 @@ const schemes = [
     name: '便利店无酒精清爽方案',
     enName: 'Convenience Zero Proof Fresh',
     tags: ['便利店', '无酒精', '清爽', '低门槛', '气泡感'],
-    reason: '适合不喝酒但想有“调饮感”的场景，也可以作为聚会照顾款。',
+    reason: '适合不喝酒但想有“调饮感”的场景，重点是冰杯和喜欢的饮料，柠檬只是让味道更亮。',
     flavor: { sweet: 1, sour: 2, alcohol: 0, fresh: 5, difficulty: 1 },
     place: ['便利店', '超市', '家里', '宿舍/租房', '聚会前临时采购'],
     mood: ['无酒精', '清爽', '酸甜', '气泡感'],
     price: '约 15-35 元',
     materials: {
-      standard: ['气泡水', '柠檬', '无糖茶或冷萃咖啡', '冰块'],
-      convenience: ['气泡水 1瓶', '柠檬片杯 1份', '冰杯 1杯', '无糖茶或冷萃咖啡'],
-      simple: ['气泡水', '柠檬', '冰块']
+      standard: ['气泡水 / 雪碧 / 茶饮', '无糖茶或冷萃咖啡', '冰块', '柠檬可选'],
+      convenience: ['喜欢的饮料 1瓶', '冰杯 1杯', '无糖茶或冷萃咖啡', '柠檬片可选'],
+      simple: ['喜欢的饮料', '冰块']
     },
-    steps: ['冰杯加入柠檬。', '倒入气泡水。', '想要层次可加少量茶或咖啡。'],
+    steps: ['冰杯倒入喜欢的气泡饮、茶饮或雪碧。', '想要层次可加少量茶或咖啡。', '有柠檬再加一点，没有就省略。'],
     scenes: ['无酒精', '聚会照顾款', '下午', '不想喝甜'],
-    substitutes: ['想甜口用雪碧。', '想咖啡感用冷萃加汤力水。', '想茶感用无糖茶加柠檬。'],
+    substitutes: ['想甜口用雪碧。', '想咖啡感用冷萃加汤力水。', '不想气泡就用茶饮或果汁。'],
     warnings: ['无酒精方案也要注意含糖饮料和咖啡因。'],
     similar: ['coffee-tonic', 'fruit-wine-spritz']
   },
@@ -1377,79 +1611,179 @@ const schemes = [
   }
 ]
 
+// 常见错别字/别名 → 正确词的映射（搜索前自动扩展）
+const searchAliases = {
+  '莫希托': '莫吉托', '毛吉托': '莫吉托', '毛希托': '莫吉托', '莫西托': '莫吉托',
+  '螺丝起子': '螺丝刀', '螺丝刀': '伏特加橙汁',
+  '嗨棒': '威士忌嗨棒', '海棒': '威士忌嗨棒',
+  '金汤力水': '金汤力', '金巴利': '内格罗尼',
+  '姜汁伏特加': '莫斯科骡子', '莫斯科毛驴': '莫斯科骡子',
+  '马格丽特': '玛格丽特', '玛格丽': '玛格丽特',
+  'g&t': '金汤力', 'gt': '金汤力', 'gintonic': '金汤力',
+  '长岛冰茶': '', 'b52': '', '长岛': '',
+  '西柚': '葡萄柚', '柚子': '葡萄柚', '西柚汁': '葡萄柚汁',
+  '红牛': '能量饮料', '红牛兑酒': '能量饮料', '能量': '能量饮料',
+  '椰奶': '牛奶', '燕麦奶': '牛奶',
+  '蜂蜜': '糖', '蜂蜜水': '糖',
+  '苏打水': '气泡水', '苏打': '气泡水',
+  '基酒': '', '利口酒': '百利甜',
+  '野格炸弹': '野格红牛', '野格子弹': '野格红牛',
+  '甜苦艾酒': '甜味美思', '味美思': '甜味美思',
+  '黑朗姆': '朗姆', '白朗姆': '朗姆', '深色朗姆': '朗姆',
+  '含羞草': 'mimosa', '香槟橙汁': 'mimosa',
+  '桑格利亚': '简易桑格利亚', '桑格莉亚': '简易桑格利亚',
+  '梅酒苏打': '梅酒苏打', '梅子酒': '梅酒', 'ume': '梅酒',
+  '清酒气泡水': '清酒嗨棒', '日本酒': '清酒',
+  '奶酒': '百利甜', '百利甜牛奶': '百利甜牛奶',
+  '咖啡马丁尼': '浓缩咖啡马天尼', '咖啡马天尼': '浓缩咖啡马天尼',
+  'tomcollins': '汤姆柯林斯', '汤姆克林斯': '汤姆柯林斯',
+  '朗姆可乐': '自由古巴', '可乐桶': '可乐桶',
+  '威可': '威士忌可乐', '金雪': '金汤力',
+  '朗姆雪碧': '自由古巴', '龙舌兰葡萄柚': '帕洛玛',
+  '伏特加西柚': '海风', '西柚伏特加': '海风',
+  '威士忌酸': '威士忌酸', '威士忌柠檬': '威士忌酸',
+  '卡琵莉亚': '卡琵莉亚', '卡皮莉亚': '卡琵莉亚',
+  '白俄罗斯': '白俄罗斯', '伏特加咖啡奶': '白俄罗斯',
+  '干马天尼': '干马天尼', '干马丁尼': '干马天尼',
+  '龙舌兰日出': '龙舌兰日出',
+  '威士忌兑苹果汁': '威士忌可乐', '苹果嗨棒': '威士忌嗨棒',
+  '伏特加兑橙汁': '伏特加橙汁', '伏特加葡萄柚': '海风',
+  '百利甜兑咖啡': '百利甜咖啡', '奶酒咖啡': '百利甜咖啡',
+  '冷萃汤力': '咖啡汤力', '金酒兑柠檬茶': '汤姆柯林斯',
+  '梅酒兑苏打': '梅酒苏打', '梅酒兑乌龙茶': '梅酒乌龙',
+  '果酒气泡': '果酒气泡杯', '果酒苏打': '果酒气泡杯',
+  '起泡酒橙汁': '含羞草', '阿佩罗': '阿佩罗橙光',
+  '威士忌兑茶': '威士忌乌龙茶', '乌龙嗨棒': '威士忌乌龙茶',
+  '伏特加兑茶': '便利店茶感不甜方案', '茶兑伏特加': '便利店茶感不甜方案',
+  '金酒兑雪碧': '金汤力', '龙舌兰兑雪碧': '龙舌兰日出',
+  '野格兑可乐': '野格可乐', '金巴利金酒': '内格罗尼',
+  '伏特加气泡水': '伏特加苏打', '金酒汤力': '金汤力',
+  '伏特加兑葡萄柚': '海风', '野格可乐桶': '野格可乐',
+
+  /* ========== 反向映射：中文常用名/简称 → recipe ID（确保搜中文名能命中）========== */
+  '金汤力': 'gin-tonic', '金酒汤力': 'gin-tonic', 'gin tonic': 'gin-tonic', '金汤': 'gin-tonic',
+  '莫吉托': 'mojito', '莫希托': 'mojito', '毛吉托': 'mojito', '毛希托': 'mojito', '薄荷朗姆': 'mojito',
+  '百利甜牛奶': 'baileys-milk', '百利甜': 'baileys-milk', '奶酒': 'baileys-milk',
+  '威士忌可乐': 'whisky-cola', '威可': 'whisky-cola', '威士忌兑可乐': 'whisky-cola',
+  '威士忌嗨棒': 'whisky-highball', '嗨棒': 'whisky-highball', '海棒': 'whisky-highball', '威士忌苏打': 'whisky-highball',
+  '威士忌酸': 'whiskey-sour', '威士忌柠檬': 'whiskey-sour', 'whiskey sour': 'whiskey-sour', 'whisky sour': 'whiskey-sour',
+  '伏特加橙汁': 'vodka-orange', '螺丝刀': 'vodka-orange', '伏特加兑橙汁': 'vodka-orange',
+  '海风': 'sea-breeze', '海风鸡尾酒': 'sea-breeze', 'sea breeze': 'sea-breeze', '伏特加海风': 'sea-breeze',
+  '金酒雪碧': 'gin-tonic', '金酒兑雪碧': 'gin-tonic', '金雪': 'gin-tonic',
+  '自由古巴': 'cuba-libre', '朗姆可乐': 'cuba-libre',
+  '朗姆雪碧': 'cuba-libre', '朗姆汽水': 'cuba-libre',
+  '浓缩咖啡马天尼': 'espresso-martini', '咖啡马天尼': 'espresso-martini',
+  '汤姆柯林斯': 'tom-collins', '金酒柠檬苏打': 'tom-collins',
+  '内格罗尼': 'negroni', '金巴利金酒': 'negroni',
+  '莫斯科骡子': 'moscow-mule', '姜汁伏特加': 'moscow-mule',
+  '伏特加苏打': 'vodka-soda', '伏特加气泡水': 'vodka-soda',
+  '伏特加茶饮': 'cv-tea-light', '伏特加兑茶': 'cv-tea-light',
+  '威士忌乌龙茶': 'whisky-oolong', '威士忌乌龙': 'whisky-oolong', '乌龙嗨棒': 'whisky-oolong',
+  '古典鸡尾酒': 'old-fashioned', '威士忌古典': 'old-fashioned',
+  '玛格丽特': 'margarita', '龙舌兰酸': 'margarita',
+  '帕洛玛': 'paloma', '龙舌兰葡萄柚': 'paloma',
+  '龙舌兰日出': 'tequila-sunrise', 'tequila sunrise': 'tequila-sunrise',
+  '龙舌兰雪碧': 'tequila-sunrise', '龙舌兰兑雪碧': 'tequila-sunrise',
+  '野格可乐': 'jager-cola', '野格兑可乐': 'jager-cola',
+  '野格红牛': 'jager-cola', '野格炸弹': 'jager-cola',
+  '梅酒苏打': 'umeshu-soda', '梅酒气泡水': 'umeshu-soda',
+  '梅酒乌龙': 'umeshu-oolong', '梅酒兑乌龙茶': 'umeshu-oolong',
+  '清酒嗨棒': 'sake-highball', '清酒苏打': 'sake-highball', '清酒气泡水': 'sake-highball',
+  '含羞草': 'mimosa',
+  '阿佩罗橙光': 'aperol-spritz',
+  '代基里': 'daiquiri', '戴基里': 'daiquiri', '朗姆酸': 'daiquiri',
+  '卡琵莉亚': 'caipirinha', '卡皮莉亚': 'caipirinha', 'caipirinha': 'caipirinha',
+  '白俄罗斯': 'white-russian', 'white russian': 'white-russian', '伏特加咖啡奶': 'white-russian',
+  '可乐桶': 'cola-bucket', '可乐酒桶': 'cola-bucket', 'cola bucket': 'cola-bucket',
+  '干马天尼': 'dry-martini', '干马丁尼': 'dry-martini', 'dry martini': 'dry-martini',
+  '咖啡汤力': 'coffee-tonic', '冷萃汤力': 'coffee-tonic',
+  '果酒气泡杯': 'fruit-wine-spritz', '果酒气泡': 'fruit-wine-spritz',
+  '简易桑格利亚': 'sangria-light',
+  '威士忌苹果汁': 'whisky-cola', '苹果嗨棒': 'whisky-highball',
+  '伏特加苹果汁': 'vodka-orange',
+  '伏特加葡萄柚': 'sea-breeze',
+  '金酒柠檬茶': 'tom-collins', '金酒兑柠檬茶': 'tom-collins',
+  '百利甜咖啡': 'baileys-coffee', '百利甜兑咖啡': 'baileys-coffee'
+}
+
 const searchMappings = [
   {
-    keywords: ['金酒兑什么', '金酒怎么喝', '金酒调什么', 'gin兑什么'],
-    recipeIds: ['gin-tonic', 'gin-sprite', 'tom-collins', 'gin-lemon-tea'],
+    keywords: ['金酒兑什么', '金酒怎么喝', '金酒调什么', 'gin兑什么', '金酒搭配'],
+    recipeIds: ['gin-tonic', 'tom-collins', 'negroni', 'dry-martini'],
     reason: '金酒优先从气泡、柠檬和茶饮方向开始。'
   },
   {
-    keywords: ['威士忌怎么喝', '威士忌兑什么', '威士忌调什么', 'whisky怎么喝'],
-    recipeIds: ['whisky-highball', 'whisky-cola', 'whisky-oolong', 'whisky-apple'],
+    keywords: ['威士忌怎么喝', '威士忌兑什么', '威士忌调什么', 'whisky怎么喝', '威士忌搭配'],
+    recipeIds: ['whisky-highball', 'whiskey-sour', 'cola-bucket', 'whisky-cola', 'whisky-oolong', 'old-fashioned'],
     reason: '威士忌先用苏打、可乐、乌龙茶降低冲击感。'
   },
   {
-    keywords: ['伏特加怎么喝', '伏特加兑什么', '伏特加调什么', 'vodka怎么喝'],
-    recipeIds: ['vodka-orange', 'vodka-soda', 'vodka-tea', 'vodka-apple'],
+    keywords: ['伏特加怎么喝', '伏特加兑什么', '伏特加调什么', 'vodka怎么喝', '伏特加搭配'],
+    recipeIds: ['vodka-orange', 'vodka-soda', 'sea-breeze', 'white-russian', 'espresso-martini'],
     reason: '伏特加百搭，果汁、茶饮和气泡水都稳。'
   },
   {
-    keywords: ['朗姆怎么喝', '朗姆兑什么', '朗姆调什么', 'rum怎么喝'],
-    recipeIds: ['cuba-libre', 'rum-sprite', 'mojito', 'daiquiri'],
+    keywords: ['朗姆怎么喝', '朗姆兑什么', '朗姆调什么', 'rum怎么喝', '朗姆搭配'],
+    recipeIds: ['cuba-libre', 'mojito', 'caipirinha', 'daiquiri'],
     reason: '朗姆适合甜口、可乐、雪碧和薄荷柠檬。'
   },
   {
-    keywords: ['龙舌兰怎么喝', '龙舌兰兑什么', '龙舌兰调什么', 'tequila怎么喝'],
-    recipeIds: ['tequila-sprite', 'paloma', 'margarita'],
+    keywords: ['龙舌兰怎么喝', '龙舌兰兑什么', '龙舌兰调什么', 'tequila怎么喝', '龙舌兰搭配'],
+    recipeIds: ['paloma', 'tequila-sunrise', 'margarita'],
     reason: '龙舌兰先做酸甜长饮，比纯喝友好很多。'
   },
   {
-    keywords: ['百利甜怎么喝', '百利甜兑什么', '百利甜调什么', '奶酒怎么喝'],
+    keywords: ['百利甜怎么喝', '百利甜兑什么', '百利甜调什么', '奶酒怎么喝', '百利甜搭配'],
     recipeIds: ['baileys-milk', 'baileys-coffee'],
     reason: '百利甜优先搭牛奶和咖啡，目标是甜品微醺。'
   },
   {
-    keywords: ['梅酒怎么喝', '梅酒兑什么', '梅酒调什么'],
+    keywords: ['梅酒怎么喝', '梅酒兑什么', '梅酒调什么', '梅酒搭配'],
     recipeIds: ['umeshu-soda', 'umeshu-oolong'],
     reason: '梅酒本身已经好喝，加气泡或乌龙就够。'
   },
   {
-    keywords: ['清酒怎么喝', '清酒兑什么', '清酒调什么', 'sake怎么喝'],
-    recipeIds: ['sake-highball', 'sake-green-tea', 'sake-sprite'],
+    keywords: ['清酒怎么喝', '清酒兑什么', '清酒调什么', 'sake怎么喝', '清酒搭配'],
+    recipeIds: ['sake-highball', 'sake-green-tea'],
     reason: '清酒适合低酒感长饮，气泡、绿茶、雪碧都容易成功。'
   },
   {
-    keywords: ['可乐能调什么', '可乐兑什么酒', '可乐调酒'],
-    recipeIds: ['whisky-cola', 'cuba-libre', 'jager-cola'],
+    keywords: ['野格怎么喝', '野格兑什么', '野格调什么', '野格搭配'],
+    recipeIds: ['jager-cola'],
+    reason: '野格适合派对场景，可乐和能量饮料是经典搭配。'
+  },
+  {
+    keywords: ['可乐能调什么', '可乐兑什么酒', '可乐调酒', '可乐搭配'],
+    recipeIds: ['cola-bucket', 'whisky-cola', 'cuba-libre', 'jager-cola'],
     reason: '可乐适合聚会型长饮，甜味会遮住酒精刺激。'
   },
   {
-    keywords: ['雪碧能调什么', '雪碧兑什么酒', '雪碧调酒'],
-    recipeIds: ['gin-sprite', 'rum-sprite', 'tequila-sprite', 'sake-sprite'],
+    keywords: ['雪碧能调什么', '雪碧兑什么酒', '雪碧调酒', '雪碧搭配'],
+    recipeIds: ['cv-sweet-party', 'cuba-libre', 'tequila-sunrise', 'sake-highball'],
     reason: '雪碧适合新手甜口，记得加冰和柠檬。'
   },
   {
-    keywords: ['果汁能调什么', '橙汁能调什么', '苹果汁能调什么'],
-    recipeIds: ['vodka-orange', 'vodka-apple', 'whisky-apple', 'mimosa'],
+    keywords: ['果汁能调什么', '橙汁能调什么', '苹果汁能调什么', '果汁搭配'],
+    recipeIds: ['vodka-orange', 'sea-breeze', 'tequila-sunrise', 'mimosa'],
     reason: '果汁能把基酒做得更顺口，适合第一杯。'
   },
   {
-    keywords: ['茶饮能调什么', '茶能调什么', '绿茶能调什么', '乌龙茶能调什么'],
-    recipeIds: ['whisky-oolong', 'vodka-tea', 'umeshu-oolong', 'sake-green-tea'],
+    keywords: ['茶饮能调什么', '茶能调什么', '绿茶能调什么', '乌龙茶能调什么', '茶饮搭配'],
+    recipeIds: ['whisky-oolong', 'umeshu-oolong', 'sake-green-tea', 'cv-tea-light'],
     reason: '茶饮适合不想太甜的人，便利店很容易买齐。'
   },
   {
-    keywords: ['气泡水能做什么', '气泡饮', '清爽气泡', '苏打水能做什么'],
+    keywords: ['气泡水能做什么', '气泡饮', '清爽气泡', '苏打水能做什么', '气泡水搭配'],
     recipeIds: ['coffee-tonic', 'vodka-soda', 'umeshu-soda', 'sake-highball', 'cv-nonalcohol-fresh'],
     reason: '气泡水优先做清爽、低负担、冰块多的长饮。'
   },
   {
-    keywords: ['咖啡怎么调好喝', '咖啡特调', '咖啡能调什么', '冷萃能调什么'],
-    recipeIds: ['coffee-tonic', 'baileys-coffee', 'espresso-martini', 'cv-coffee-night'],
+    keywords: ['咖啡怎么调好喝', '咖啡特调', '咖啡能调什么', '冷萃能调什么', '咖啡搭配'],
+    recipeIds: ['coffee-tonic', 'white-russian', 'baileys-coffee', 'espresso-martini', 'cv-coffee-night'],
     reason: '咖啡适合做苦甜、奶香和无酒精气泡方向。'
   },
   {
-    keywords: ['无酒精', '不喝酒', 'mocktail', '零酒精'],
+    keywords: ['无酒精', '不喝酒', 'mocktail', '零酒精', '不喝酒调什么'],
     recipeIds: ['cv-nonalcohol-fresh', 'coffee-tonic'],
     reason: '先给有调饮感但没有酒精负担的方案。'
   },
@@ -1459,9 +1793,97 @@ const searchMappings = [
     reason: '优先给能现在买、现在做的方案。'
   },
   {
-    keywords: ['低酒感', '喝不出酒味', '新手第一杯', '第一次尝试'],
+    keywords: ['低酒感', '喝不出酒味', '新手第一杯', '第一次尝试', '低度酒'],
     recipeIds: ['baileys-milk', 'umeshu-soda', 'vodka-orange', 'sake-highball', 'mimosa'],
     reason: '这些更像饮料，适合第一次打开就决定。'
+  },
+  // === 新增：场景意图词 ===
+  {
+    keywords: ['聚会喝什么', '聚会调酒', '朋友聚会', '聚会', 'party'],
+    recipeIds: ['cola-bucket', 'cuba-libre', 'tequila-sunrise', 'whisky-cola', 'jager-cola', 'fruit-wine-spritz', 'sangria-light'],
+    reason: '聚会优先选接受度高、能批量做的方案。'
+  },
+  {
+    keywords: ['夏天喝什么', '夏天调酒', '夏天', '清爽夏夜', '夏日饮品'],
+    recipeIds: ['mojito', 'caipirinha', 'paloma', 'gin-tonic', 'umeshu-soda', 'fruit-wine-spritz'],
+    reason: '夏天优先清爽、气泡、果味和冰饮感方向。'
+  },
+  {
+    keywords: ['下班喝什么', '下班后', '下班放松', '回家喝什么', '晚上喝什么'],
+    recipeIds: ['whisky-highball', 'whisky-oolong', 'gin-tonic', 'umeshu-soda', 'cv-tea-light'],
+    reason: '下班后选不累、步骤短的轻松方向。'
+  },
+  {
+    keywords: ['约会喝什么', '约会', '两个人喝什么', '浪漫'],
+    recipeIds: ['mimosa', 'aperol-spritz', 'umeshu-soda', 'fruit-wine-spritz'],
+    reason: '约会选好看、低压力、果味和气泡方向。'
+  },
+  {
+    keywords: ['宿舍调酒', '宿舍喝什么', '租房喝什么', '宿舍'],
+    recipeIds: ['vodka-orange', 'sea-breeze', 'baileys-milk', 'cv-tea-light'],
+    reason: '宿舍/租房优先不需要工具、材料简单的方案。'
+  },
+  {
+    keywords: ['女生喝什么', '女生调酒', '给女生推荐'],
+    recipeIds: ['baileys-milk', 'mimosa', 'umeshu-soda', 'fruit-wine-spritz', 'sea-breeze'],
+    reason: '优先甜口、果味、奶香、低酒感方向。'
+  },
+  {
+    keywords: ['不苦', '不烈', '不呛', '怕苦', '怕辣'],
+    recipeIds: ['baileys-milk', 'vodka-orange', 'umeshu-soda', 'mimosa', 'cuba-libre'],
+    reason: '怕苦怕辣就选甜口、果味、奶香方向。'
+  },
+  // === 新增：材料别名扩展 ===
+  {
+    keywords: ['西柚能调什么', '葡萄柚能调什么', '柚子调酒'],
+    recipeIds: ['paloma', 'sea-breeze'],
+    reason: '葡萄柚适合酸甜微苦、清爽果味方向。'
+  },
+  {
+    keywords: ['蜂蜜能调什么', '蜂蜜调酒'],
+    recipeIds: ['tom-collins', 'whisky-highball', 'old-fashioned'],
+    reason: '蜂蜜适合增加圆润甜感，特别适合威士忌和金酒方向。'
+  },
+  {
+    keywords: ['椰子调酒', '椰奶调酒', '椰子能调什么'],
+    recipeIds: ['baileys-milk', 'fruit-wine-spritz'],
+    reason: '椰奶和牛奶一样，适合甜口奶香方向。'
+  },
+  {
+    keywords: ['薄荷调酒', '薄荷能调什么', '薄荷饮品'],
+    recipeIds: ['mojito', 'jager-cola'],
+    reason: '薄荷适合清爽、辛香方向，莫吉托是经典选择。'
+  },
+  {
+    keywords: ['能量饮料调酒', '红牛调酒', '能量饮料兑什么'],
+    recipeIds: ['jager-cola'],
+    reason: '能量饮料搭配野格是派对经典，但注意咖啡因。'
+  },
+  // === 新增：兜底/泛搜索词 ===
+  {
+    keywords: ['好喝的', '推荐一杯', '随便来一杯', '喝什么好', '调什么好喝'],
+    recipeIds: ['gin-tonic', 'mojito', 'baileys-milk', 'whisky-cola', 'umeshu-soda'],
+    reason: '不确定时给最不容易踩雷的经典款。'
+  },
+  {
+    keywords: ['甜的', '甜口', '喜欢甜的', '甜味调酒'],
+    recipeIds: ['baileys-milk', 'cuba-libre', 'mimosa', 'umeshu-soda'],
+    reason: '甜口优先奶香、果味、甜口长饮方向。'
+  },
+  {
+    keywords: ['清爽的', '清爽', '冰的', '解腻'],
+    recipeIds: ['gin-tonic', 'mojito', 'vodka-soda', 'umeshu-soda', 'coffee-tonic'],
+    reason: '清爽优先气泡、柑橘、薄荷和茶感方向。'
+  },
+  {
+    keywords: ['酒感强', '想喝醉', '酒感明显', '高度数'],
+    recipeIds: ['old-fashioned', 'negroni', 'espresso-martini', 'margarita'],
+    reason: '酒感强优先经典短饮和进阶款。'
+  },
+  {
+    keywords: ['简单', '快手', '懒人调酒', '最简单'],
+    recipeIds: ['vodka-orange', 'whisky-cola', 'baileys-milk', 'umeshu-soda', 'gin-tonic'],
+    reason: '简单优先两三步就能做的低门槛方案。'
   }
 ]
 
@@ -1477,6 +1899,7 @@ module.exports = {
   homeCards,
   flavorCollections,
   sceneCollections,
+  searchAliases,
   searchMappings,
   bases,
   ingredients,

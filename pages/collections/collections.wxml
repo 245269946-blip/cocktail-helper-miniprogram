@@ -19,9 +19,9 @@
     </view>
   </view>
 
-  <view wx:else class="section card empty-card">
-    <view class="title">还没有收藏</view>
-    <view class="section-subtitle">先从首页搜索、便利店方案或新手推荐里找到想做的一杯。</view>
-    <button class="button-primary" bindtap="onGoHome">回到首页</button>
+  <view wx:else class="empty-state">
+    <text class="empty-title">还没有收藏</text>
+    <text class="empty-desc">搜到喜欢的配方后，在详情页收藏，这里就会显示。今晚想喝什么，先去首页看看？</text>
+    <button class="button-primary" bindtap="onGoHome">去逛逛酒单</button>
   </view>
 </view>

@@ -1,7 +1,432 @@
 {
   "description": "Cocktail mini program prototype",
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "value": "_history",
+        "type": "folder"
+      },
+      {
+        "value": "prototype",
+        "type": "folder"
+      },
+      {
+        "value": "scripts",
+        "type": "folder"
+      },
+      {
+        "value": "cloud-data",
+        "type": "folder"
+      },
+      {
+        "value": "_asset_backup_preview_compress_20260604",
+        "type": "folder"
+      },
+      {
+        "value": "project.private.config.json",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for_co_2026-05-28T07-46-45.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for_gi_2026-05-28T07-48-19.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for_mo_2026-05-28T07-44-58.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for_wh_2026-05-28T07-46-46.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for__c_2026-05-28T07-45-18.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for__c_2026-05-28T07-48-26.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_for__p_2026-05-28T07-45-03.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_of_a_l_2026-05-28T07-50-07.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_of_a_s_2026-05-28T07-49-46.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_of_con_2026-05-28T07-50-03.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Watercolor_illustration_of_whi_2026-05-28T07-51-24.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/Complete_watercolor_illustrati_2026-05-28T07-43-47.png",
+        "type": "file"
+      },
+      {
+        "value": ".md",
+        "type": "suffix"
+      },
+      {
+        "value": ".html",
+        "type": "suffix"
+      },
+      {
+        "value": ".py",
+        "type": "suffix"
+      },
+      {
+        "value": "assets/scenes/card-convenience.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/card-lighter.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/card-sweeter.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/card-whisky-refresh.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-base-spirits.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-conv-hero.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-fridge.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-gin-hero.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-pantry.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-splash.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/scenes/scene-whisky-hero.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/conv-can-drink.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/conv-scheme-card.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/deco-gin-lime.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/ext-gin-variations.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-baileys-milk.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-bourbon.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-cuba-libre.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-espresso-martini.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-gin-sprite.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-gin-tonic.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-jager-cola.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-mimosa.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-mojito.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-moscow-mule.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-negroni.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-sake-highball.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-tequila-sprite.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-tom-collins.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-umeshu-soda.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-vodka-orange.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-whisky-cola.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/hero-whisky-highball.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/list-whisky-coke.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/layer3/list-whisky-ginger.png",
+        "type": "file"
+      },
+      {
+        "value": "-card.png",
+        "type": "suffix"
+      },
+      {
+        "value": "-thumb.png",
+        "type": "suffix"
+      },
+      {
+        "value": "assets/p2/base-aperol-spritz-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-baileys-coffee-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-baileys-milk-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-caipirinha-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-coffee-tonic-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cola-bucket-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cuba-libre-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-coffee-night-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-cuba-libre-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-fresh-tipsy-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-fruit-low-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-gin-tonic-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-milk-soft-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-nonalcohol-fresh-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-screwdriver-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-sweet-party-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-tea-light-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-cv-vodka-soda-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-daiquiri-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-dry-martini-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-espresso-martini-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-fruit-wine-spritz-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-gin-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-gin-tonic-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-jager-cola-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-margarita-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-mimosa-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-mojito-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-moscow-mule-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-negroni-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-old-fashioned-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-paloma-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-sake-green-tea-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-sake-highball-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-sangria-light-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-screwdriver-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-sea-breeze-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-supermarket-party-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-tequila-sunrise-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-tom-collins-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-umeshu-oolong-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-umeshu-soda-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-vodka-soda-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-whiskey-highball-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-whiskey-sour-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-whisky-cola-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-whisky-oolong-result.png",
+        "type": "file"
+      },
+      {
+        "value": "assets/p2/base-white-russian-result.png",
+        "type": "file"
+      }
+    ],
     "include": []
   },
   "setting": {

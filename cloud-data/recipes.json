@@ -66,9 +66,9 @@
       "想低酒精就把朗姆减半。"
     ],
     "similar": [
-      "gin-sprite",
-      "rum-sprite",
-      "gin-tonic"
+      "gin-tonic",
+      "cuba-libre",
+      "caipirinha"
     ]
   },
   {
@@ -135,9 +135,9 @@
       "想低酒精就用 25ml 金酒。"
     ],
     "similar": [
-      "gin-sprite",
       "tom-collins",
-      "vodka-soda"
+      "vodka-soda",
+      "mojito"
     ]
   },
   {
@@ -331,9 +331,9 @@
       "想低酒精就减少伏特加。"
     ],
     "similar": [
-      "gin-sprite",
-      "rum-sprite",
-      "tequila-sprite"
+      "sea-breeze",
+      "tequila-sunrise",
+      "cuba-libre"
     ]
   },
   {
@@ -407,6 +407,7 @@
   {
     "id": "gin-sprite",
     "type": "recipe",
+    "hidden": true,
     "name": "金酒雪碧",
     "enName": "Gin Sprite",
     "aliases": [
@@ -467,7 +468,7 @@
     "similar": [
       "gin-tonic",
       "vodka-orange",
-      "rum-sprite"
+      "cuba-libre"
     ]
   },
   {
@@ -529,8 +530,8 @@
       "酒感强就增加茶的比例。"
     ],
     "similar": [
-      "vodka-tea",
-      "gin-lemon-tea",
+      "whisky-oolong",
+      "sake-green-tea",
       "whisky-highball"
     ]
   },
@@ -664,13 +665,14 @@
     ],
     "similar": [
       "gin-tonic",
-      "gin-sprite",
-      "vodka-soda"
+      "vodka-soda",
+      "moscow-mule"
     ]
   },
   {
     "id": "gin-lemon-tea",
     "type": "recipe",
+    "hidden": true,
     "name": "金酒柠檬茶",
     "enName": "Gin Lemon Tea",
     "aliases": [
@@ -727,9 +729,9 @@
       "想低酒精就减少金酒。"
     ],
     "similar": [
-      "vodka-tea",
       "whisky-oolong",
-      "gin-sprite"
+      "sake-green-tea",
+      "cv-tea-light"
     ]
   },
   {
@@ -931,6 +933,7 @@
   {
     "id": "vodka-tea",
     "type": "recipe",
+    "hidden": true,
     "name": "伏特加茶饮",
     "enName": "Vodka Tea",
     "aliases": [
@@ -987,7 +990,7 @@
     ],
     "similar": [
       "whisky-oolong",
-      "gin-lemon-tea"
+      "sake-green-tea"
     ]
   },
   {
@@ -1051,13 +1054,14 @@
     ],
     "similar": [
       "whisky-cola",
-      "rum-sprite",
+      "cola-bucket",
       "jager-cola"
     ]
   },
   {
     "id": "rum-sprite",
     "type": "recipe",
+    "hidden": true,
     "name": "朗姆雪碧",
     "enName": "Rum Sprite",
     "aliases": [
@@ -1115,8 +1119,8 @@
     ],
     "similar": [
       "mojito",
-      "gin-sprite",
-      "cuba-libre"
+      "cuba-libre",
+      "gin-tonic"
     ]
   },
   {
@@ -1310,12 +1314,13 @@
     ],
     "similar": [
       "margarita",
-      "tequila-sprite"
+      "tequila-sunrise"
     ]
   },
   {
     "id": "tequila-sprite",
     "type": "recipe",
+    "hidden": true,
     "name": "龙舌兰雪碧",
     "enName": "Tequila Sprite",
     "aliases": [
@@ -1373,8 +1378,8 @@
     ],
     "similar": [
       "paloma",
-      "gin-sprite",
-      "rum-sprite"
+      "tequila-sunrise",
+      "cuba-libre"
     ]
   },
   {
@@ -1437,12 +1442,13 @@
     "similar": [
       "whisky-cola",
       "cuba-libre",
-      "jager-redbull"
+      "cola-bucket"
     ]
   },
   {
     "id": "jager-redbull",
     "type": "recipe",
+    "hidden": true,
     "name": "野格能量饮",
     "enName": "Jager Energy",
     "aliases": [
@@ -2068,6 +2074,7 @@
   {
     "id": "vodka-grapefruit",
     "type": "recipe",
+    "hidden": true,
     "name": "伏特加葡萄柚",
     "enName": "Vodka Grapefruit",
     "aliases": [
@@ -2129,8 +2136,80 @@
     ]
   },
   {
+    "id": "sea-breeze",
+    "type": "recipe",
+    "name": "海风",
+    "enName": "Sea Breeze",
+    "aliases": [
+      "海风鸡尾酒",
+      "sea breeze",
+      "伏特加海风"
+    ],
+    "base": "伏特加",
+    "tags": [
+      "果味",
+      "酸甜",
+      "清爽",
+      "新手友好",
+      "低门槛"
+    ],
+    "reason": "适合想要比螺丝刀更清爽、有一点莓果酸甜和葡萄柚微苦的人。",
+    "flavor": {
+      "sweet": 2,
+      "sour": 3,
+      "alcohol": 1,
+      "fresh": 4,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "伏特加 35ml",
+        "葡萄柚汁 60ml",
+        "蔓越莓汁 60ml",
+        "冰块"
+      ],
+      "convenience": [
+        "伏特加小瓶",
+        "葡萄柚汁或西柚饮料",
+        "蔓越莓汁或莓果汁",
+        "冰杯"
+      ],
+      "simple": [
+        "伏特加",
+        "葡萄柚汁",
+        "莓果汁",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "杯中加满冰。",
+      "倒入伏特加、葡萄柚汁和蔓越莓汁。",
+      "轻轻搅匀，试味后用果汁调整酸甜。"
+    ],
+    "scenes": [
+      "新手第一杯",
+      "夏天晚上",
+      "果味低酒精",
+      "下班放松"
+    ],
+    "substitutes": [
+      "没有蔓越莓汁可用莓果汁或少量石榴汁。",
+      "没有葡萄柚汁可用橙汁，但清爽感会降低。",
+      "想更低酒感就多加果汁。"
+    ],
+    "warnings": [
+      "果汁很遮酒味，伏特加先少倒。"
+    ],
+    "similar": [
+      "vodka-orange",
+      "paloma",
+      "vodka-soda"
+    ]
+  },
+  {
     "id": "whisky-apple",
     "type": "recipe",
+    "hidden": true,
     "name": "威士忌苹果汁",
     "enName": "Whisky Apple",
     "aliases": [
@@ -2193,6 +2272,7 @@
   {
     "id": "vodka-apple",
     "type": "recipe",
+    "hidden": true,
     "name": "伏特加苹果汁",
     "enName": "Vodka Apple",
     "aliases": [
@@ -2247,7 +2327,7 @@
     ],
     "similar": [
       "vodka-orange",
-      "whisky-apple"
+      "sea-breeze"
     ]
   },
   {
@@ -2381,12 +2461,13 @@
     "similar": [
       "umeshu-oolong",
       "whisky-oolong",
-      "vodka-tea"
+      "sake-green-tea"
     ]
   },
   {
     "id": "sake-sprite",
     "type": "recipe",
+    "hidden": true,
     "name": "清酒雪碧",
     "enName": "Sake Sprite",
     "aliases": [
@@ -2445,9 +2526,680 @@
       "想低酒感就减少清酒。"
     ],
     "similar": [
-      "gin-sprite",
-      "rum-sprite",
+      "gin-tonic",
+      "cuba-libre",
       "umeshu-soda"
+    ]
+  },
+  {
+    "id": "whiskey-sour",
+    "type": "recipe",
+    "name": "威士忌酸",
+    "enName": "Whiskey Sour",
+    "aliases": [
+      "威士忌柠檬",
+      "whiskey sour",
+      "whisky sour"
+    ],
+    "base": "威士忌",
+    "tags": [
+      "酸甜",
+      "经典",
+      "泡沫感",
+      "进阶",
+      "适合在家做"
+    ],
+    "reason": "适合想从长饮进阶到经典酸甜型的人，柠檬、糖和厚泡沫会把威士忌变得更圆润。",
+    "flavor": {
+      "sweet": 2,
+      "sour": 4,
+      "alcohol": 3,
+      "fresh": 3,
+      "difficulty": 3
+    },
+    "materials": {
+      "standard": [
+        "威士忌 45ml",
+        "柠檬汁 25ml",
+        "糖浆 15ml",
+        "蛋清或可省略",
+        "冰块"
+      ],
+      "convenience": [
+        "威士忌小瓶",
+        "柠檬汁或柠檬",
+        "糖浆或蜂蜜",
+        "冰杯"
+      ],
+      "simple": [
+        "威士忌",
+        "柠檬",
+        "糖或蜂蜜",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "摇壶加入威士忌、柠檬汁、糖浆和蛋清。",
+      "先不加冰干摇，让泡沫打起来。",
+      "加冰后再用力摇到冰冷。",
+      "滤入矮杯，可加柠檬片装饰。"
+    ],
+    "scenes": [
+      "夜晚放松",
+      "经典鸡尾酒",
+      "适合在家做",
+      "酸甜爱好者"
+    ],
+    "substitutes": [
+      "不想用蛋清可以省略，泡沫会少一些。",
+      "糖浆可用蜂蜜水替代。",
+      "怕酸就把糖浆加到 20ml。"
+    ],
+    "similar": [
+      "daiquiri",
+      "margarita",
+      "whisky-highball"
+    ]
+  },
+  {
+    "id": "caipirinha",
+    "type": "recipe",
+    "name": "卡琵莉亚",
+    "enName": "Caipirinha",
+    "aliases": [
+      "卡皮莉亚",
+      "caipirinha",
+      "卡莎萨青柠"
+    ],
+    "base": "卡莎萨",
+    "tags": [
+      "青柠",
+      "酸甜",
+      "捣压",
+      "清爽",
+      "夏天"
+    ],
+    "reason": "适合喜欢青柠块、冰块和直接清爽口感的人，捣压后的青柠香气很明显。",
+    "flavor": {
+      "sweet": 2,
+      "sour": 4,
+      "alcohol": 3,
+      "fresh": 5,
+      "difficulty": 2
+    },
+    "materials": {
+      "standard": [
+        "卡莎萨 50ml",
+        "青柠 半颗切块",
+        "白糖 2茶匙",
+        "碎冰或冰块"
+      ],
+      "convenience": [
+        "卡莎萨或白朗姆",
+        "青柠",
+        "白糖或糖浆",
+        "冰杯"
+      ],
+      "simple": [
+        "白朗姆",
+        "青柠",
+        "糖",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "青柠切块放入杯中。",
+      "加入糖，轻轻捣压出汁和香气。",
+      "加满碎冰或冰块。",
+      "倒入卡莎萨并搅匀。"
+    ],
+    "scenes": [
+      "夏天晚上",
+      "朋友小聚",
+      "清爽果味",
+      "新手进阶"
+    ],
+    "substitutes": [
+      "没有卡莎萨可用白朗姆做简化版。",
+      "怕酸就少压青柠白色部分。",
+      "没有碎冰就用普通冰块。"
+    ],
+    "similar": [
+      "mojito",
+      "daiquiri",
+      "cuba-libre"
+    ]
+  },
+  {
+    "id": "white-russian",
+    "type": "recipe",
+    "name": "白俄罗斯",
+    "enName": "White Russian",
+    "aliases": [
+      "white russian",
+      "伏特加咖啡奶",
+      "咖啡奶酒"
+    ],
+    "base": "伏特加",
+    "tags": [
+      "咖啡感",
+      "奶香",
+      "甜口",
+      "顺滑",
+      "夜晚"
+    ],
+    "reason": "适合喜欢咖啡奶感、顺滑甜口和夜晚放松的人，步骤很短但层次很明显。",
+    "flavor": {
+      "sweet": 4,
+      "sour": 0,
+      "alcohol": 2,
+      "fresh": 1,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "伏特加 40ml",
+        "咖啡利口酒 25ml",
+        "牛奶或淡奶油 40ml",
+        "冰块"
+      ],
+      "convenience": [
+        "伏特加小瓶",
+        "咖啡利口酒或冷萃咖啡",
+        "牛奶",
+        "冰杯"
+      ],
+      "simple": [
+        "伏特加",
+        "冷萃咖啡",
+        "牛奶",
+        "糖"
+      ]
+    },
+    "steps": [
+      "矮杯加满冰块。",
+      "倒入伏特加和咖啡利口酒。",
+      "缓慢倒入牛奶或淡奶油。",
+      "轻轻搅一下，让咖啡棕和奶白形成融合层次。"
+    ],
+    "scenes": [
+      "夜晚放松",
+      "甜口入门",
+      "咖啡爱好者",
+      "适合在家做"
+    ],
+    "substitutes": [
+      "没有咖啡利口酒可用冷萃咖啡加糖。",
+      "想更轻就用牛奶，不用淡奶油。",
+      "怕甜就多加冰和牛奶。"
+    ],
+    "similar": [
+      "espresso-martini",
+      "baileys-coffee",
+      "baileys-milk"
+    ]
+  },
+  {
+    "id": "cola-bucket",
+    "type": "recipe",
+    "name": "可乐桶",
+    "enName": "Cola Bucket",
+    "aliases": [
+      "可乐酒桶",
+      "朋友局可乐桶",
+      "cola bucket",
+      "大杯可乐酒"
+    ],
+    "base": "威士忌",
+    "tags": [
+      "甜口",
+      "气泡感",
+      "聚会",
+      "便利店",
+      "适合分享"
+    ],
+    "reason": "适合朋友局和临时聚会，原料好买、容量大、接受度高，但要注意控制基酒比例。",
+    "flavor": {
+      "sweet": 4,
+      "sour": 1,
+      "alcohol": 3,
+      "fresh": 3,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "威士忌或朗姆 120ml",
+        "可乐 500ml",
+        "青柠或柠檬",
+        "大量冰块"
+      ],
+      "convenience": [
+        "小瓶威士忌或朗姆",
+        "大瓶可乐",
+        "冰杯或冰袋",
+        "柠檬片"
+      ],
+      "simple": [
+        "基酒",
+        "可乐",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "大杯或小桶先加大量冰块。",
+      "倒入基酒。",
+      "补可乐并轻轻搅匀。",
+      "加入青柠或柠檬片，按人数分杯。"
+    ],
+    "scenes": [
+      "朋友小聚",
+      "聚会前临时采购",
+      "便利店调酒",
+      "适合分享"
+    ],
+    "substitutes": [
+      "可乐可换无糖可乐。",
+      "基酒可以用威士忌、朗姆或伏特加。",
+      "人多时先少倒酒，后面再补。"
+    ],
+    "similar": [
+      "whisky-cola",
+      "cuba-libre",
+      "jager-cola"
+    ]
+  },
+  {
+    "id": "dry-martini",
+    "type": "recipe",
+    "name": "干马天尼",
+    "enName": "Dry Martini",
+    "aliases": [
+      "干马丁尼",
+      "dry martini",
+      "金酒马天尼"
+    ],
+    "base": "金酒",
+    "tags": [
+      "经典",
+      "清冷",
+      "酒感",
+      "进阶",
+      "不太甜"
+    ],
+    "reason": "适合想了解经典短饮、能接受明显酒感的人，透明酒液和橄榄是最强识别点。",
+    "flavor": {
+      "sweet": 0,
+      "sour": 0,
+      "alcohol": 5,
+      "fresh": 2,
+      "difficulty": 4
+    },
+    "materials": {
+      "standard": [
+        "金酒 60ml",
+        "干味美思 10ml",
+        "橄榄或柠檬皮",
+        "冰块"
+      ],
+      "convenience": [
+        "金酒",
+        "干味美思",
+        "橄榄或柠檬皮",
+        "冰块"
+      ],
+      "simple": [
+        "金酒",
+        "少量干味美思",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "调酒杯加冰。",
+      "倒入金酒和干味美思。",
+      "充分搅拌到冰冷。",
+      "滤入马天尼杯，用橄榄或柠檬皮点缀。"
+    ],
+    "scenes": [
+      "经典鸡尾酒",
+      "夜晚放松",
+      "进阶尝试",
+      "不想喝太甜"
+    ],
+    "substitutes": [
+      "没有马天尼杯可用小酒杯。",
+      "怕酒感太强就降低金酒、增加冰镇时间。",
+      "不喜欢橄榄可换柠檬皮。"
+    ],
+    "similar": [
+      "gin-tonic",
+      "negroni",
+      "old-fashioned"
+    ]
+  },
+  {
+    "id": "tequila-sunrise",
+    "type": "recipe",
+    "name": "龙舌兰日出",
+    "enName": "Tequila Sunrise",
+    "aliases": [
+      "tequila sunrise",
+      "龙舌兰橙汁",
+      "日出鸡尾酒"
+    ],
+    "base": "龙舌兰",
+    "tags": [
+      "果味",
+      "甜口",
+      "橙汁",
+      "新手进阶",
+      "聚会"
+    ],
+    "reason": "适合想要果汁好入口、颜色有记忆点的一杯，橙汁会把龙舌兰做得更友好。",
+    "flavor": {
+      "sweet": 4,
+      "sour": 2,
+      "alcohol": 3,
+      "fresh": 3,
+      "difficulty": 2
+    },
+    "materials": {
+      "standard": [
+        "龙舌兰 45ml",
+        "橙汁 120ml",
+        "红石榴糖浆 10ml",
+        "冰块"
+      ],
+      "convenience": [
+        "龙舌兰小瓶",
+        "橙汁",
+        "红石榴糖浆或少量莓果汁",
+        "冰杯"
+      ],
+      "simple": [
+        "龙舌兰",
+        "橙汁",
+        "少量红色果汁"
+      ]
+    },
+    "steps": [
+      "高杯加冰。",
+      "倒入龙舌兰和橙汁并轻轻搅匀。",
+      "沿杯壁慢慢加入红石榴糖浆。",
+      "不要过度搅拌，让颜色自然下沉。"
+    ],
+    "scenes": [
+      "新手进阶",
+      "朋友小聚",
+      "甜口入门",
+      "聚会"
+    ],
+    "substitutes": [
+      "没有红石榴糖浆可用少量莓果汁。",
+      "怕甜就减少糖浆。",
+      "想更清爽可加一点气泡水。"
+    ],
+    "similar": [
+      "paloma",
+      "margarita",
+      "vodka-orange"
+    ]
+  },
+  {
+    "id": "cv-gin-tonic",
+    "type": "recipe",
+    "name": "便利店版金汤力",
+    "enName": "Convenience Gin Tonic",
+    "aliases": [
+      "便利店金汤力",
+      "便利店版gin tonic"
+    ],
+    "base": "金酒",
+    "tags": [
+      "便利店",
+      "清爽",
+      "微醺",
+      "低门槛",
+      "气泡感"
+    ],
+    "reason": "适合下班路上临时买，小瓶金酒加一瓶喜欢的软饮就能做，汤力水和气泡水只是最清爽的方向。",
+    "flavor": {
+      "sweet": 1,
+      "sour": 2,
+      "alcohol": 2,
+      "fresh": 5,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "金酒小瓶 1支",
+        "汤力水 / 气泡水 / 雪碧 1瓶",
+        "冰杯 1杯"
+      ],
+      "convenience": [
+        "金酒小瓶",
+        "喜欢的软饮",
+        "冰杯",
+        "柠檬片可选"
+      ],
+      "simple": [
+        "金酒",
+        "饮料",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "冰杯倒入金酒 25-35ml。",
+      "补汤力水、气泡水、雪碧或你喜欢的饮料。",
+      "有柠檬再挤一点，没有也可以直接轻搅。"
+    ],
+    "scenes": [
+      "下班放松",
+      "便利店调酒",
+      "夏天晚上",
+      "不想喝甜"
+    ],
+    "substitutes": [
+      "没有汤力水就用气泡水、雪碧或无糖茶。",
+      "柠檬买不到可以不加。",
+      "想更低酒精就只倒半瓶小酒。"
+    ],
+    "similar": [
+      "gin-tonic",
+      "vodka-soda",
+      "whisky-highball"
+    ]
+  },
+  {
+    "id": "cv-cuba-libre",
+    "type": "recipe",
+    "name": "便利店版自由古巴",
+    "enName": "Convenience Cuba Libre",
+    "aliases": [
+      "便利店朗姆可乐",
+      "便利店自由古巴"
+    ],
+    "base": "朗姆",
+    "tags": [
+      "便利店",
+      "甜口",
+      "聚会",
+      "低门槛",
+      "气泡感"
+    ],
+    "reason": "适合朋友局临时起意，朗姆加可乐最稳；没有柠檬也不影响成杯。",
+    "flavor": {
+      "sweet": 4,
+      "sour": 1,
+      "alcohol": 2,
+      "fresh": 3,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "朗姆小瓶 1支",
+        "可乐 1瓶",
+        "冰杯 1杯"
+      ],
+      "convenience": [
+        "朗姆小瓶",
+        "可乐",
+        "冰杯",
+        "柠檬片可选"
+      ],
+      "simple": [
+        "朗姆",
+        "可乐",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "冰杯倒入朗姆 30-45ml。",
+      "补可乐，轻轻搅匀。",
+      "有柠檬再加一点清爽感，没有就直接喝。"
+    ],
+    "scenes": [
+      "朋友小聚",
+      "便利店调酒",
+      "聚会前临时采购",
+      "甜口入门"
+    ],
+    "substitutes": [
+      "朗姆可换威士忌。",
+      "怕甜用无糖可乐或加一点气泡水。",
+      "没有柠檬也可以直接做。"
+    ],
+    "similar": [
+      "cuba-libre",
+      "whisky-cola",
+      "cola-bucket"
+    ]
+  },
+  {
+    "id": "cv-vodka-soda",
+    "type": "recipe",
+    "name": "便利店版伏特加苏打",
+    "enName": "Convenience Vodka Soda",
+    "aliases": [
+      "便利店伏特加苏打",
+      "便利店伏特加气泡水"
+    ],
+    "base": "伏特加",
+    "tags": [
+      "便利店",
+      "清爽",
+      "低糖",
+      "微醺",
+      "气泡感"
+    ],
+    "reason": "适合想要干净、低甜、低负担的一杯；如果不爱气泡水，可以换成茶饮、果汁或自己喜欢的饮料。",
+    "flavor": {
+      "sweet": 0,
+      "sour": 1,
+      "alcohol": 2,
+      "fresh": 5,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "伏特加小瓶 1支",
+        "气泡水 / 无糖茶 / 果汁 1瓶",
+        "冰杯 1杯"
+      ],
+      "convenience": [
+        "伏特加小瓶",
+        "喜欢的饮料",
+        "冰杯",
+        "柠檬片可选"
+      ],
+      "simple": [
+        "伏特加",
+        "饮料",
+        "冰块"
+      ]
+    },
+    "steps": [
+      "冰杯倒入伏特加 25-35ml。",
+      "补气泡水、茶饮、果汁或你喜欢的饮料。",
+      "有柠檬再挤一点，没有也可以不加。"
+    ],
+    "scenes": [
+      "下班放松",
+      "便利店调酒",
+      "不想喝甜",
+      "低糖"
+    ],
+    "substitutes": [
+      "不喜欢气泡水就换茶饮、果汁或运动饮料。",
+      "酒感明显就多加饮料。",
+      "柠檬和薄荷都不是必需。"
+    ],
+    "similar": [
+      "vodka-soda",
+      "gin-tonic",
+      "coffee-tonic"
+    ]
+  },
+  {
+    "id": "cv-screwdriver",
+    "type": "recipe",
+    "name": "便利店版螺丝刀",
+    "enName": "Convenience Screwdriver",
+    "aliases": [
+      "便利店伏特加橙汁",
+      "便利店螺丝刀"
+    ],
+    "base": "伏特加",
+    "tags": [
+      "便利店",
+      "果味",
+      "甜口",
+      "低门槛",
+      "新手友好"
+    ],
+    "reason": "适合想要果汁感和轻微微醺的人，伏特加加橙汁最简单，也可以换成葡萄柚汁、苹果汁或茶饮。",
+    "flavor": {
+      "sweet": 3,
+      "sour": 2,
+      "alcohol": 1,
+      "fresh": 4,
+      "difficulty": 1
+    },
+    "materials": {
+      "standard": [
+        "伏特加小瓶 1支",
+        "橙汁 / 果汁 / 茶饮 1瓶",
+        "冰杯 1杯"
+      ],
+      "convenience": [
+        "伏特加小瓶",
+        "喜欢的果汁或茶饮",
+        "冰杯"
+      ],
+      "simple": [
+        "伏特加",
+        "果汁"
+      ]
+    },
+    "steps": [
+      "冰杯倒入伏特加 20-30ml。",
+      "补橙汁、葡萄柚汁、苹果汁或茶饮到七八分满。",
+      "轻轻搅匀后试甜度。"
+    ],
+    "scenes": [
+      "新手第一杯",
+      "便利店调酒",
+      "女生更容易接受",
+      "果味低酒精"
+    ],
+    "substitutes": [
+      "橙汁可换葡萄柚汁、苹果汁或柠檬茶。",
+      "想更轻就多加饮料或冰。",
+      "没有水果辅料也不影响。"
+    ],
+    "similar": [
+      "vodka-orange",
+      "tequila-sunrise",
+      "sea-breeze"
     ]
   }
 ]

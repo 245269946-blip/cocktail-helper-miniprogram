@@ -18,8 +18,7 @@
     ],
     "recipes": [
       "vodka-orange",
-      "vodka-grapefruit",
-      "vodka-apple",
+      "sea-breeze",
       "paloma",
       "mimosa",
       "fruit-wine-spritz"
@@ -79,9 +78,10 @@
       "伏特加"
     ],
     "recipes": [
-      "gin-sprite",
-      "rum-sprite",
-      "tequila-sprite"
+      "cv-sweet-party",
+      "cuba-libre",
+      "tequila-sunrise",
+      "sake-highball"
     ],
     "lowAlcohol": [
       "sprite-lemon-zero"
@@ -184,8 +184,9 @@
     ],
     "recipes": [
       "whisky-oolong",
-      "vodka-tea",
-      "gin-lemon-tea"
+      "umeshu-oolong",
+      "sake-green-tea",
+      "cv-tea-light"
     ],
     "lowAlcohol": [
       "tea-lemon-zero"
@@ -273,8 +274,7 @@
       "tom-collins",
       "daiquiri",
       "margarita",
-      "whisky-highball",
-      "gin-sprite"
+      "whisky-highball"
     ],
     "lowAlcohol": [
       "soda-lemon-zero",
@@ -331,10 +331,10 @@
     ],
     "recipes": [
       "paloma",
-      "vodka-grapefruit"
+      "sea-breeze"
     ],
     "lowAlcohol": [
-      "grapefruit-soda-zero"
+      "sea-breeze"
     ],
     "warnings": [
       "葡萄柚自带轻微苦味，怕苦就加一点糖或换橙汁。"
@@ -358,7 +358,8 @@
     "recipes": [
       "whisky-oolong",
       "umeshu-oolong",
-      "vodka-tea"
+      "sake-green-tea",
+      "cv-tea-light"
     ],
     "lowAlcohol": [
       "tea-lemon-zero"
@@ -383,8 +384,8 @@
       "朗姆"
     ],
     "recipes": [
-      "gin-lemon-tea",
-      "vodka-tea"
+      "cv-tea-light",
+      "tom-collins"
     ],
     "lowAlcohol": [
       "tea-lemon-zero"
@@ -410,8 +411,8 @@
     ],
     "recipes": [
       "sake-green-tea",
-      "vodka-tea",
-      "umeshu-oolong"
+      "umeshu-oolong",
+      "cv-tea-light"
     ],
     "lowAlcohol": [
       "tea-lemon-zero"
@@ -436,8 +437,8 @@
       "朗姆"
     ],
     "recipes": [
-      "whisky-apple",
-      "vodka-apple"
+      "sea-breeze",
+      "vodka-orange"
     ],
     "lowAlcohol": [
       "apple-soda-zero"

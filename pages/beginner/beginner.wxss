@@ -2,11 +2,12 @@
   margin-top: 18rpx;
 }
 
+/* 推荐酒单列表项（轻量风格） */
 .result-card {
   display: flex;
   flex-direction: column;
   gap: 14rpx;
-  background: linear-gradient(145deg, #fffdf8 0%, #f7f2ff 100%);
+  padding: 24rpx 0;
 }
 
 .beginner-copy {

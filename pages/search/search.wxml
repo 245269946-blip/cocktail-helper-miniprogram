@@ -13,8 +13,42 @@
     <button class="button-primary" bindtap="onSearch">查看结果</button>
   </view>
 
+  <view class="section featured-search-block">
+    <view class="section-head">
+      <view>
+        <view class="section-label">推荐第一杯</view>
+      </view>
+      <view class="section-action">左右滑动</view>
+    </view>
+    <scroll-view class="search-featured-scroll" scroll-x>
+      <view class="search-featured-track">
+        <view wx:for="{{featuredRecipes}}" wx:key="id" class="search-featured-card" data-id="{{item.id}}" bindtap="onRecipeTap">
+          <image class="search-featured-img" src="{{item.image}}" mode="aspectFill" />
+          <view class="search-featured-wash"></view>
+          <view class="search-featured-copy">
+            <view class="search-featured-name">{{item.name}}</view>
+            <view class="search-featured-tags">
+              <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="search-featured-tag">{{tag}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 搜索历史（从首页同步） -->
+  <view wx:if="{{recentSearches.length && !keyword}}" class="section">
+    <view class="section-head">
+      <view class="section-label">🕐 最近搜过</view>
+      <view class="section-action" bindtap="onClearRecent">清空</view>
+    </view>
+    <scroll-view scroll-x enable-flex class="history-scroll">
+      <view wx:for="{{recentSearches}}" wx:key="*this" class="history-chip" data-keyword="{{item}}" bindtap="onKeywordTap">{{item}}</view>
+    </scroll-view>
+  </view>
+
   <view class="section">
-    <view class="section-title">从一个词继续展开</view>
+    <view class="section-title">按条件找配方</view>
     <view class="suggestion-list">
       <view wx:for="{{suggestionGroups}}" wx:key="title" class="card suggestion-group">
         <view class="suggestion-title">{{item.title}}</view>

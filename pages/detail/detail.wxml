@@ -6,7 +6,7 @@
 
     <view class="detail-head">
       <view>
-        <view class="detail-kicker">Recipe</view>
+        <view class="detail-kicker">今晚这杯配方</view>
         <view class="detail-title">{{detail.name}}</view>
         <view class="detail-en">{{detail.entryLine}}</view>
       </view>
@@ -26,8 +26,38 @@
   </view>
 
   <view class="section card action-card">
-    <view class="title">现在就能做</view>
-    <view class="body">{{detail.actionLine}}</view>
+    <view class="action-card-head">
+      <view>
+        <view class="action-kicker">Quick start</view>
+        <view class="title">现在就能做</view>
+      </view>
+      <view class="action-sticker">{{processGuide.methodLabel}}</view>
+    </view>
+    <view class="action-flow">
+      <view wx:for="{{actionPreviewSteps}}" wx:key="text" class="action-flow-item">
+        <view class="action-flow-icon">{{item.icon}}</view>
+        <view class="action-flow-text">{{item.text}}</view>
+        <view class="action-flow-sub">{{item.sub}}</view>
+      </view>
+    </view>
+    <view class="body action-body">{{detail.actionLine}}</view>
+  </view>
+
+  <view class="section card">
+    <view class="title">材料 / 替代版</view>
+    <view class="section-subtitle">{{detail.materialSummary}}</view>
+    <view wx:for="{{materialSections}}" wx:key="title" class="material-section">
+      <view class="material-title">{{item.title}}</view>
+      <view wx:for="{{item.items}}" wx:for-item="line" wx:key="*this" class="body material-line">• {{line}}</view>
+    </view>
+  </view>
+
+  <view class="section card">
+    <view class="title">调制步骤</view>
+    <view wx:for="{{detail.steps}}" wx:key="*this" class="step-row">
+      <view class="step-index">{{index + 1}}</view>
+      <view class="body step-text">{{item}}</view>
+    </view>
   </view>
 
   <view class="section card">
@@ -41,31 +71,11 @@
     <view class="score-list score-list-human">
       <view wx:for="{{scoreRows}}" wx:key="key" class="score-row">
         <view class="score-label">{{item.label}}</view>
-        <view class="score-stars">{{item.stars}}</view>
+        <view class="score-meter">
+          <view class="score-fill" style="width: {{item.percent}}%;"></view>
+        </view>
         <view class="score-human">{{item.note}}</view>
       </view>
-    </view>
-  </view>
-
-  <view class="section card">
-    <view class="title">材料 / 替代版</view>
-    <view class="section-subtitle">{{detail.materialSummary}}</view>
-    <view wx:for="{{materialSections}}" wx:key="title" class="material-section">
-      <view class="material-title">{{item.title}}</view>
-      <view wx:for="{{item.items}}" wx:for-item="line" wx:key="*this" class="body material-line">• {{line}}</view>
-    </view>
-  </view>
-
-  <view wx:if="{{detail.price}}" class="section card">
-    <view class="title">购买清单</view>
-    <view class="body">预计价格：{{detail.price}}</view>
-  </view>
-
-  <view class="section card">
-    <view class="title">调制步骤</view>
-    <view wx:for="{{detail.steps}}" wx:key="*this" class="step-row">
-      <view class="step-index">{{index + 1}}</view>
-      <view class="body step-text">{{item}}</view>
     </view>
   </view>
 
@@ -77,6 +87,11 @@
         <view class="small muted">{{item.desc}}</view>
       </view>
     </view>
+  </view>
+
+  <view wx:if="{{detail.price}}" class="section card">
+    <view class="title">购买清单</view>
+    <view class="body">预计价格：{{detail.price}}</view>
   </view>
 
   <view class="section card">

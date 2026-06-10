@@ -1,39 +1,254 @@
 const ingredientSlugs = {
-  可乐: 'cola',
-  雪碧: 'sprite',
-  气泡水: 'soda-water',
-  汤力水: 'tonic-water',
-  果汁: 'juice',
-  橙汁: 'orange-juice',
-  葡萄柚汁: 'grapefruit-juice',
-  苹果汁: 'apple-juice',
-  乌龙茶: 'oolong',
-  柠檬茶: 'lemon-tea',
-  绿茶: 'green-tea',
-  冷萃咖啡: 'cold-brew',
-  浓缩咖啡: 'espresso',
-  咖啡: 'coffee',
-  茶: 'tea',
-  牛奶: 'milk',
-  椰奶: 'coconut-milk',
-  柠檬: 'lemon',
-  青柠: 'lime',
-  橙子: 'orange',
-  薄荷: 'mint',
-  冰块: 'ice',
-  糖: 'sugar',
-  盐: 'salt',
-  蜂蜜: 'honey'
+  '可乐': 'cola',
+  '雪碧': 'sprite',
+  '气泡水': 'soda-water',
+  '苏打水': 'soda-water',
+  '汤力水': 'tonic-water',
+  '果汁': 'juice',
+  '橙汁': 'orange-juice',
+  '葡萄柚汁': 'grapefruit-juice',
+  '西柚汁': 'grapefruit-juice',
+  '乌龙茶': 'oolong',
+  '柠檬茶': 'lemon-tea',
+  '绿茶': 'green-tea',
+  '冷萃咖啡': 'cold-brew',
+  '浓缩咖啡': 'espresso',
+  '咖啡': 'coffee',
+  '茶': 'tea',
+  '牛奶': 'milk',
+  '椰奶': 'coconut-milk',
+  '柠檬': 'lemon',
+  '青柠': 'lime',
+  '橙子': 'orange',
+  '薄荷': 'mint',
+  '冰块': 'ice',
+  '糖': 'sugar',
+  '盐': 'salt',
+  '蜂蜜': 'honey'
 }
 
-function drinkPath(itemOrId) {
-  const id = typeof itemOrId === 'string' ? itemOrId : itemOrId && itemOrId.id
-  return id ? `/assets/illustrations/drinks/${id}.png` : ''
+const DEFAULT_HERO = '/assets/p2/recipe-gin-tonic-hero.png'
+const DEFAULT_CARD = DEFAULT_HERO
+const DEFAULT_LIST = DEFAULT_HERO
+const DEFAULT_CONV = '/assets/p2/recipe-vodka-soda-hero.png'
+const DEFAULT_DECO = DEFAULT_HERO
+
+const P2_BASE_POOL = {
+  gin: '/assets/p2/recipe-gin-tonic-hero.png',
+  vodka: '/assets/p2/recipe-vodka-soda-hero.png',
+  whisky: '/assets/p2/recipe-whiskey-highball-hero.png',
+  rum: '/assets/p2/recipe-cuba-libre-hero.png',
+  tequila: '/assets/p2/recipe-tequila-sunrise-hero.png',
+  baileys: '/assets/p2/recipe-white-russian-hero.png',
+  jager: '/assets/p2/recipe-cola-bucket-hero.png',
+  sake: '/assets/p2/recipe-vodka-soda-hero.png',
+  'plum-wine': '/assets/p2/recipe-whiskey-highball-hero.png'
+}
+
+const visual = (slug) => ({
+  card: `/assets/p2/recipe-${slug}-hero.png`,
+  hero: `/assets/p2/recipe-${slug}-hero.png`,
+  thumb: `/assets/p2/recipe-${slug}-hero.png`
+})
+
+const aliasVisual = (slug) => ({
+  card: `/assets/p2/recipe-${slug}-hero.png`,
+  hero: `/assets/p2/recipe-${slug}-hero.png`,
+  thumb: `/assets/p2/recipe-${slug}-hero.png`
+})
+
+const P2_RECIPE_VISUALS = {
+  'mojito': aliasVisual('mojito'),
+  'gin-tonic': visual('gin-tonic'),
+  'baileys-milk': aliasVisual('white-russian'),
+  'whisky-cola': aliasVisual('cola-bucket'),
+  'vodka-orange': aliasVisual('screwdriver'),
+  'whisky-highball': aliasVisual('whiskey-highball'),
+  'whisky-oolong': aliasVisual('whiskey-highball'),
+  'espresso-martini': aliasVisual('espresso-martini'),
+  'tom-collins': aliasVisual('tom-collins'),
+  'negroni': aliasVisual('negroni'),
+  'moscow-mule': aliasVisual('moscow-mule'),
+  'vodka-soda': aliasVisual('vodka-soda'),
+  'cuba-libre': aliasVisual('cuba-libre'),
+  'daiquiri': aliasVisual('daiquiri'),
+  'margarita': aliasVisual('margarita'),
+  'paloma': aliasVisual('paloma'),
+  'jager-cola': aliasVisual('cola-bucket'),
+  'baileys-coffee': aliasVisual('white-russian'),
+  'coffee-tonic': aliasVisual('vodka-soda'),
+  'old-fashioned': aliasVisual('old-fashioned'),
+  'umeshu-soda': aliasVisual('whiskey-highball'),
+  'umeshu-oolong': aliasVisual('whiskey-highball'),
+  'fruit-wine-spritz': aliasVisual('paloma'),
+  'sangria-light': aliasVisual('cola-bucket'),
+  'mimosa': aliasVisual('mimosa'),
+  'aperol-spritz': aliasVisual('aperol-spritz'),
+  'sea-breeze': aliasVisual('sea-breeze'),
+  'sake-highball': aliasVisual('vodka-soda'),
+  'sake-green-tea': aliasVisual('vodka-soda'),
+  'whiskey-sour': aliasVisual('whiskey-sour'),
+  'caipirinha': aliasVisual('caipirinha'),
+  'white-russian': aliasVisual('white-russian'),
+  'cola-bucket': aliasVisual('cola-bucket'),
+  'dry-martini': aliasVisual('dry-martini'),
+  'tequila-sunrise': aliasVisual('tequila-sunrise'),
+  'cv-fresh-tipsy': aliasVisual('vodka-soda'),
+  'cv-gin-tonic': visual('gin-tonic'),
+  'cv-cuba-libre': aliasVisual('cuba-libre'),
+  'cv-vodka-soda': aliasVisual('vodka-soda'),
+  'cv-screwdriver': aliasVisual('screwdriver'),
+  'cv-sweet-party': aliasVisual('cola-bucket'),
+  'cv-milk-soft': aliasVisual('white-russian'),
+  'cv-tea-light': aliasVisual('whiskey-highball'),
+  'cv-fruit-low': aliasVisual('paloma'),
+  'cv-coffee-night': aliasVisual('white-russian'),
+  'cv-nonalcohol-fresh': aliasVisual('vodka-soda'),
+  'supermarket-party': aliasVisual('cola-bucket')
+}
+
+const P2_RECIPE_ALIASES = {
+  '金汤力': 'gin-tonic',
+  '金酒雪碧': 'gin-tonic',
+  '汤姆柯林斯': 'tom-collins',
+  '内格罗尼': 'negroni',
+  '伏特加橙汁': 'vodka-orange',
+  '螺丝刀': 'vodka-orange',
+  '伏特加苏打': 'vodka-soda',
+  '莫斯科骡子': 'moscow-mule',
+  '浓缩咖啡马天尼': 'espresso-martini',
+  '咖啡马天尼': 'espresso-martini',
+  '威士忌嗨棒': 'whisky-highball',
+  '威士忌高球': 'whisky-highball',
+  '威士忌可乐': 'whisky-cola',
+  '威士忌乌龙': 'whisky-oolong',
+  '古典鸡尾酒': 'old-fashioned',
+  '莫吉托': 'mojito',
+  '自由古巴': 'cuba-libre',
+  '朗姆可乐': 'cuba-libre',
+  '朗姆雪碧': 'cuba-libre',
+  '龙舌兰雪碧': 'tequila-sunrise',
+  '玛格丽特': 'margarita',
+  '百利甜牛奶': 'baileys-milk',
+  '百利甜咖啡': 'baileys-coffee',
+  '野格可乐': 'jager-cola',
+  '野格红牛': 'jager-cola',
+  '梅酒苏打': 'umeshu-soda',
+  '梅酒乌龙': 'umeshu-oolong',
+  '清酒嗨棒': 'sake-highball',
+  '清酒绿茶': 'sake-green-tea',
+  '清酒雪碧': 'sake-highball',
+  '含羞草': 'mimosa',
+  '果酒气泡杯': 'fruit-wine-spritz',
+  '简易桑格利亚': 'sangria-light',
+  '咖啡汤力': 'coffee-tonic',
+  '伏特加茶饮': 'cv-tea-light',
+  '帕洛玛': 'paloma',
+  '阿佩罗橙光': 'aperol-spritz',
+  '代基里': 'daiquiri',
+  '戴基里': 'daiquiri',
+  '伏特加葡萄柚': 'sea-breeze',
+  '海风': 'sea-breeze',
+  '威士忌苹果汁': 'whisky-highball',
+  '伏特加苹果汁': 'vodka-orange',
+  '龙舌兰日出': 'tequila-sunrise',
+  '威士忌酸': 'whiskey-sour',
+  '卡琵莉亚': 'caipirinha',
+  '卡皮莉亚': 'caipirinha',
+  '白俄罗斯': 'white-russian',
+  '可乐桶': 'cola-bucket',
+  '干马天尼': 'dry-martini',
+  '干马丁尼': 'dry-martini'
+}
+
+const BASE_PATHS = {
+  'mojito': '/assets/p2/base-mojito-result.png',
+  'gin-tonic': '/assets/p2/base-gin-result.png',
+  'baileys-milk': '/assets/p2/base-white-russian-result.png',
+  'whisky-cola': '/assets/p2/base-cola-bucket-result.png',
+  'vodka-orange': '/assets/p2/base-screwdriver-result.png',
+  'whisky-highball': '/assets/p2/base-whiskey-highball-result.png',
+  'whisky-oolong': '/assets/p2/base-whiskey-highball-result.png',
+  'espresso-martini': '/assets/p2/base-espresso-martini-result.png',
+  'tom-collins': '/assets/p2/base-tom-collins-result.png',
+  'negroni': '/assets/p2/base-negroni-result.png',
+  'moscow-mule': '/assets/p2/base-moscow-mule-result.png',
+  'vodka-soda': '/assets/p2/base-vodka-soda-result.png',
+  'cuba-libre': '/assets/p2/base-cuba-libre-result.png',
+  'daiquiri': '/assets/p2/base-daiquiri-result.png',
+  'margarita': '/assets/p2/base-margarita-result.png',
+  'paloma': '/assets/p2/base-paloma-result.png',
+  'jager-cola': '/assets/p2/base-cola-bucket-result.png',
+  'baileys-coffee': '/assets/p2/base-white-russian-result.png',
+  'coffee-tonic': '/assets/p2/base-vodka-soda-result.png',
+  'old-fashioned': '/assets/p2/base-old-fashioned-result.png',
+  'umeshu-soda': '/assets/p2/base-whiskey-highball-result.png',
+  'umeshu-oolong': '/assets/p2/base-whiskey-highball-result.png',
+  'fruit-wine-spritz': '/assets/p2/base-paloma-result.png',
+  'sangria-light': '/assets/p2/base-cola-bucket-result.png',
+  'mimosa': '/assets/p2/base-mimosa-result.png',
+  'aperol-spritz': '/assets/p2/base-aperol-spritz-result.png',
+  'sea-breeze': '/assets/p2/base-sea-breeze-result.png',
+  'sake-highball': '/assets/p2/base-vodka-soda-result.png',
+  'sake-green-tea': '/assets/p2/base-vodka-soda-result.png',
+  'whiskey-sour': '/assets/p2/base-whiskey-sour-result.png',
+  'caipirinha': '/assets/p2/base-caipirinha-result.png',
+  'white-russian': '/assets/p2/base-white-russian-result.png',
+  'cola-bucket': '/assets/p2/base-cola-bucket-result.png',
+  'dry-martini': '/assets/p2/base-dry-martini-result.png',
+  'tequila-sunrise': '/assets/p2/base-tequila-sunrise-result.png'
+}
+
+function resolveVisual(visual, variant) {
+  if (!visual) return variant === 'card' ? DEFAULT_CARD : (variant === 'thumb' ? DEFAULT_LIST : DEFAULT_HERO)
+  return visual[variant] || visual.hero || DEFAULT_HERO
+}
+
+function normalizeValues(itemOrId) {
+  if (typeof itemOrId === 'string') return [itemOrId]
+  if (!itemOrId) return []
+  return [itemOrId.id, itemOrId.name, itemOrId.enName, itemOrId.englishName, itemOrId.base]
+    .filter(Boolean)
+    .map((value) => String(value))
+}
+
+function matchRecipeKey(itemOrId) {
+  const values = normalizeValues(itemOrId)
+  const joined = values.join(' ').toLowerCase()
+  for (const value of values) {
+    if (P2_RECIPE_VISUALS[value]) return value
+  }
+  for (const key of Object.keys(P2_RECIPE_VISUALS)) {
+    if (joined.includes(key.toLowerCase())) return key
+  }
+  for (const [name, slug] of Object.entries(P2_RECIPE_ALIASES)) {
+    if (joined.includes(name.toLowerCase())) return slug
+  }
+  return ''
+}
+
+function drinkPath(itemOrId, variant = 'hero') {
+  const slug = matchRecipeKey(itemOrId)
+  if (slug) return resolveVisual(P2_RECIPE_VISUALS[slug], variant)
+  if (variant === 'card') return DEFAULT_CARD
+  return variant === 'thumb' ? DEFAULT_LIST : DEFAULT_HERO
 }
 
 function basePath(itemOrId) {
-  const id = typeof itemOrId === 'string' ? itemOrId : itemOrId && itemOrId.id
-  return id ? `/assets/illustrations/bases/${id}.png` : ''
+  const slug = matchRecipeKey(itemOrId)
+  if (slug && P2_RECIPE_VISUALS[slug]) return resolveVisual(P2_RECIPE_VISUALS[slug], 'hero')
+  if (slug && BASE_PATHS[slug]) return BASE_PATHS[slug]
+  const key = normalizeValues(itemOrId).join(' ').toLowerCase()
+  if (key.includes('whisk') || key.includes('bourbon') || key.includes('威士忌')) return P2_BASE_POOL.whisky
+  if (key.includes('gin') || key.includes('金酒')) return P2_BASE_POOL.gin
+  if (key.includes('vodka') || key.includes('伏特加')) return P2_BASE_POOL.vodka
+  if (key.includes('rum') || key.includes('朗姆')) return P2_BASE_POOL.rum
+  if (key.includes('tequila') || key.includes('龙舌兰')) return P2_BASE_POOL.tequila
+  if (key.includes('baileys') || key.includes('百利')) return P2_BASE_POOL.baileys
+  if (key.includes('jager') || key.includes('野格')) return P2_BASE_POOL.jager
+  if (key.includes('sake') || key.includes('清酒')) return P2_BASE_POOL.sake
+  if (key.includes('plum') || key.includes('梅酒')) return P2_BASE_POOL['plum-wine']
+  return DEFAULT_DECO
 }
 
 function ingredientPath(nameOrItem) {
@@ -59,8 +274,7 @@ function ingredientChoice(name) {
 }
 
 function ingredientGroups(groups) {
-  return (groups || []).map((group) => ({
-    title: group.title,
+  return (groups || []).map((group) => Object.assign({}, group, {
     items: (group.items || []).map(ingredientChoice)
   }))
 }
@@ -73,5 +287,10 @@ module.exports = {
   decorateBase,
   decorateIngredient,
   ingredientChoice,
-  ingredientGroups
+  ingredientGroups,
+  DEFAULT_HERO,
+  DEFAULT_CARD,
+  DEFAULT_LIST,
+  DEFAULT_CONV,
+  DEFAULT_DECO
 }

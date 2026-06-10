@@ -1,14 +1,10 @@
+/* 搜索 Hero 区（杂志风格，无容器感） */
 .search-hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20rpx;
   padding: 26rpx 24rpx;
-  border: 2rpx solid rgba(61, 119, 118, 0.12);
-  border-radius: 34rpx;
-  background:
-    radial-gradient(circle at 86% 12%, rgba(142, 219, 213, 0.26) 0, rgba(142, 219, 213, 0) 150rpx),
-    linear-gradient(145deg, rgba(255, 253, 247, 0.88), rgba(238, 250, 248, 0.72));
 }
 
 .search-kicker {
@@ -23,18 +19,11 @@
   flex-direction: column;
   gap: 16rpx;
   margin-top: 24rpx;
-  padding: 18rpx;
-  border: 2rpx solid rgba(61, 119, 118, 0.14);
-  border-radius: 30rpx;
-  background: linear-gradient(145deg, rgba(255, 253, 247, 0.84) 0%, rgba(231, 249, 246, 0.74) 100%);
-  box-shadow: 0 16rpx 36rpx rgba(57, 96, 102, 0.08);
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
-}
-
-.search-panel.focused {
-  border-color: rgba(65, 176, 166, 0.52);
-  box-shadow: 0 18rpx 46rpx rgba(80, 169, 165, 0.18), 0 0 0 6rpx rgba(151, 230, 222, 0.16);
-  transform: translateY(-2rpx);
+  padding: 20rpx 24rpx;
+  border-radius: 24rpx;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(142,219,213,0.06) 0, transparent 180rpx),
+    linear-gradient(160deg, rgba(255,253,247,0.72) 0%, rgba(234,249,245,0.58) 100%);
 }
 
 .search-input {
@@ -62,4 +51,170 @@
 .suggestion-title {
   font-size: 28rpx;
   font-weight: 700;
+}
+
+/* 搜索历史 */
+.history-scroll { white-space: nowrap; margin-top: 12rpx; }
+
+.history-chip {
+  display: inline-block;
+  padding: 12rpx 24rpx;
+  margin-right: 14rpx;
+  font-size: 26rpx;
+  color: #4a5852;
+  background: rgba(95, 184, 166, 0.06);
+  border-radius: 32rpx;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.section-label {
+  font-size: 26rpx;
+  color: #7a8a82;
+  font-weight: 500;
+}
+
+.section-action {
+  font-size: 23rpx;
+  color: #b0beb8;
+}
+
+.featured-search-block {
+  margin-top: 28rpx;
+}
+
+.search-featured-scroll {
+  white-space: nowrap;
+  padding: 4rpx 0 12rpx;
+}
+
+.search-featured-card {
+  position: relative;
+  display: inline-block;
+  width: 300rpx;
+  min-height: 300rpx;
+  margin-right: 18rpx;
+  overflow: hidden;
+  vertical-align: top;
+  border: 1rpx solid rgba(47, 143, 123, 0.10);
+  border-radius: 28rpx;
+  background:
+    linear-gradient(150deg, rgba(255, 252, 244, 0.94), rgba(234, 246, 240, 0.74));
+  box-shadow:
+    0 10rpx 24rpx rgba(80, 70, 50, 0.055),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.52);
+}
+
+.search-featured-img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 168rpx;
+  opacity: 0.88;
+}
+
+.search-featured-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 244, 0.02) 0%, rgba(255, 252, 244, 0.72) 48%, rgba(255, 252, 244, 0.98) 100%);
+}
+
+.search-featured-copy {
+  position: relative;
+  z-index: 1;
+  padding: 168rpx 20rpx 20rpx;
+  white-space: normal;
+}
+
+.search-featured-name {
+  color: #203b35;
+  font-size: 30rpx;
+  line-height: 1.18;
+  font-weight: 900;
+}
+
+.search-featured-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8rpx;
+  margin-top: 14rpx;
+}
+
+.search-featured-tag {
+  min-height: 34rpx;
+  padding: 0 12rpx;
+  border: 1rpx solid rgba(47, 143, 123, 0.12);
+  border-radius: 999rpx;
+  color: #43766c;
+  background: rgba(255, 252, 244, 0.56);
+  font-size: 20rpx;
+  line-height: 32rpx;
+}
+
+.search-panel {
+  border: 1rpx solid rgba(47, 143, 123, 0.08);
+  box-shadow:
+    0 10rpx 24rpx rgba(80, 70, 50, 0.05),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.38);
+}
+
+.search-panel .button-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1 !important;
+}
+
+.search-panel .button-primary::before {
+  content: '';
+  width: 24rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+  border: 3rpx solid rgba(36, 77, 67, 0.34);
+  border-top-width: 2rpx;
+  border-radius: 6rpx 6rpx 12rpx 12rpx;
+  transform: rotate(-6deg);
+}
+
+.search-featured-scroll {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  padding-bottom: 24rpx;
+}
+
+.search-featured-track {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 20rpx;
+  padding-right: 28rpx;
+}
+
+.search-featured-card {
+  flex: 0 0 560rpx;
+  width: 560rpx;
+  min-width: 560rpx;
+  min-height: 430rpx;
+  margin-right: 0;
+  border-radius: 36rpx;
+  white-space: normal;
+}
+
+.search-featured-img {
+  height: 240rpx;
+}
+
+.search-featured-copy {
+  padding: 232rpx 26rpx 26rpx;
+}
+
+.search-featured-name {
+  font-size: 42rpx;
 }

@@ -1,22 +1,59 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
+const illustrations = require('../../utils/illustrations')
 
 Page({
   data: {
     showSplash: true,
     keyword: '',
     isFocused: false,
-    hotKeywords: ['气泡水', '柠檬茶', '咖啡特调', '可乐能调什么', '便利店饮品', '无酒精', '甜口', '低酒感'],
+    hotKeywords: ['金酒兑什么', '威士忌酸', '白俄罗斯', '可乐桶', '帕洛玛', '清爽气泡', '甜口', '新手第一杯'],
     recentSearches: [],
-    actionEntries: [
-      { title: '家里有什么', desc: '先看看现在能直接做什么', note: '少补货', iconClass: 'icon-home', path: '/pages/pantry/pantry', featured: true },
-      { title: '便利店饮品', desc: '下楼 5 分钟买齐材料', note: '照着买', iconClass: 'icon-store', path: '/pages/convenience/convenience' },
-      { title: '按材料找', desc: '从可乐、茶、咖啡、果汁开始', note: '更明确', iconClass: 'icon-glass', path: '/pages/ingredient-list/ingredient-list' }
+    demandTags: [
+      { label: '金汤力', keyword: '金汤力', desc: '经典 / 清爽' },
+      { label: '便利店调酒', keyword: '便利店调酒', desc: '下楼买 / 马上兑' },
+      { label: '低酒感', keyword: '低酒感', desc: '轻微醺 / 好入口' }
     ],
-    directEntries: [
-      { title: '便利店能买齐', desc: '只买 2-3 样，今晚就能做', keyword: '便利店饮品' },
-      { title: '无酒精也好喝', desc: '气泡、茶、咖啡都能做成特调', keyword: '无酒精' },
-      { title: '像冰饮一样清爽', desc: '青柠、气泡、冰块优先', keyword: '清爽气泡' }
+    featuredRecipes: [
+      { id: 'gin-tonic', name: '金汤力', image: illustrations.drinkPath('gin-tonic', 'card'), demand: '想喝清爽经典', reason: '冰块、青柠和汤力水，第一杯不容易错。', tags: ['清爽', '经典', '新手'] },
+      { id: 'whiskey-sour', name: '威士忌酸', image: illustrations.drinkPath('whiskey-sour', 'card'), demand: '想喝经典酸甜', reason: '厚泡沫、柠檬和威士忌，像在家做一杯正式鸡尾酒。', tags: ['酸甜', '泡沫感', '经典'] },
+      { id: 'mojito', name: '莫吉托', image: illustrations.drinkPath('mojito', 'card'), demand: '想喝薄荷气泡', reason: '青柠、薄荷和气泡水，适合夏天和新手。', tags: ['薄荷', '气泡感', '低门槛'] },
+      { id: 'cuba-libre', name: '自由古巴', image: illustrations.drinkPath('cuba-libre', 'card'), demand: '想喝可乐朗姆', reason: '朗姆、可乐和青柠，经典、直接，也适合朋友局。', tags: ['经典', '可乐', '聚会'] },
+      { id: 'white-russian', name: '白俄罗斯', image: illustrations.drinkPath('white-russian', 'card'), demand: '想喝咖啡奶感', reason: '咖啡棕和奶油白融合，适合夜晚放松。', tags: ['咖啡感', '奶香', '顺滑'] }
+    ],
+    firstRecipe: {
+      id: 'gin-tonic',
+      name: '金汤力',
+      image: illustrations.drinkPath('gin-tonic', 'card'),
+      demand: '今晚第一杯推荐',
+      reason: '冰块、青柠和汤力水，清爽、不太甜，第一杯不容易出错。',
+      tags: ['清爽', '气泡感', '新手友好']
+    },
+    toolEntries: [
+      {
+        title: '家里有什么',
+        desc: '选材料，直接看能做哪些酒。',
+        tags: ['选材料', '出配方'],
+        image: '/assets/layer2/header-cocktail.png',
+        theme: 'pantry',
+        path: '/pages/pantry/pantry'
+      },
+      {
+        title: '便利店微醺',
+        desc: '按便利店能买到的东西配一杯。',
+        tags: ['能买齐', '马上调'],
+        image: '/assets/layer2/card-pantry.png',
+        theme: 'store',
+        path: '/pages/convenience/convenience'
+      },
+      {
+        title: '按基酒找',
+        desc: '有金酒、伏特加、威士忌？直接看配方。',
+        tags: ['按酒找', '看配方'],
+        image: '/assets/layer2/card-base.png',
+        theme: 'base',
+        path: '/pages/base-list/base-list'
+      }
     ]
   },
 
@@ -24,16 +61,27 @@ Page({
     contentStore.getContent().then((content) => {
       const hotKeywords = (content.hotKeywords || []).slice(0, 8)
       this.setData({
-        hotKeywords: ['气泡水', '柠檬茶', '咖啡特调'].concat(hotKeywords).slice(0, 8),
+        hotKeywords: ['金酒兑什么', '威士忌酸', '白俄罗斯', '可乐桶', '帕洛玛'].concat(hotKeywords).slice(0, 8),
         recentSearches: wx.getStorageSync('recentSearches') || []
       })
     })
   },
 
+  /* ====== Layer 1: 启动页交互 ====== */
   onStart() {
     this.setData({ showSplash: false })
   },
 
+  onTapProfile() {
+    wx.switchTab({ url: '/pages/collections/collections' })
+  },
+
+  onRecipeTap(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  },
+
+  /* ====== Layer 2: 搜索交互 ====== */
   onInput(event) {
     this.setData({ keyword: event.detail.value })
   },
@@ -63,7 +111,7 @@ Page({
     })
   },
 
-  onDirectSearch(event) {
+  onDemandTap(event) {
     const keyword = event.currentTarget.dataset.keyword
     if (!keyword) return
     this.saveRecent(keyword)

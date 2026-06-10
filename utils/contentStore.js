@@ -4,6 +4,14 @@ const recommend = require('./recommend')
 const COLLECTIONS = ['recipes', 'schemes', 'bases', 'ingredients']
 const SINGLE_DOC_ID = 'main'
 
+// 各集合必填字段，用于云端数据校验
+const REQUIRED_FIELDS = {
+  recipes: ['id', 'name', 'materials', 'steps', 'tags', 'flavor'],
+  schemes: ['id', 'name', 'materials', 'steps', 'tags'],
+  bases: ['id', 'name', 'recipes'],
+  ingredients: ['id', 'name', 'recipes']
+}
+
 let contentCache = null
 let loadingPromise = null
 
@@ -11,12 +19,22 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value))
 }
 
+function validateItems(name, items) {
+  const required = REQUIRED_FIELDS[name]
+  if (!required) return items
+  return items.filter((item) => {
+    return required.every((field) => item[field] !== undefined && item[field] !== null)
+  })
+}
+
 function mergeContent(remote) {
   const merged = clone(localData)
   if (!remote) return merged
 
   COLLECTIONS.forEach((name) => {
-    if (remote[name] && remote[name].length) merged[name] = remote[name]
+    if (remote[name] && remote[name].length) {
+      merged[name] = validateItems(name, remote[name])
+    }
   })
 
   const appContent = remote.appContent || {}

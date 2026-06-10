@@ -1,40 +1,106 @@
-<view class="page theme-convenience">
-  <view class="section-title">照着买就能做</view>
-  <view class="section-subtitle">把配方改成购买清单，适合现在就去便利店补货。</view>
+<view class="page conv-page">
+  <!-- 顶部导航 -->
+  <view class="conv-nav">
+    <view class="nav-back" bindtap="goBack">‹</view>
+    <text class="nav-title">便利店调酒</text>
+    <view class="nav-more" bindtap="onMore">···</view>
+  </view>
 
-  <view class="section">
-    <view class="tags">
-      <view wx:for="{{places}}" wx:key="label" class="tag {{item.active ? 'active' : ''}}" data-value="{{item.label}}" bindtap="onPlaceTap">{{item.label}}</view>
+  <!-- 背景装饰层（冰箱场景） -->
+  <view class="conv-bg">
+    <image src="/assets/layer3/conv-fridge-bg.png" mode="aspectFill" class="bg-img" />
+    <view class="conv-hero-copy">
+      <view class="conv-kicker">Convenience picks</view>
+      <view class="conv-title">便利店今晚能做什么</view>
+      <view class="conv-subtitle">小瓶酒 + 喜欢的软饮最关键；气泡水只是其中一种，柠檬薄荷买不到也没关系。</view>
     </view>
   </view>
 
-  <view class="section">
-    <view class="section-title">你想要什么感觉？</view>
-    <view class="tags">
-      <view wx:for="{{moods}}" wx:key="label" class="tag {{item.active ? 'active' : ''}}" data-value="{{item.label}}" bindtap="onMoodTap">{{item.label}}</view>
+  <!-- 主推荐方案卡 -->
+  <view wx:if="{{mainPackage}}" class="scheme-hero-card package-card">
+    <!-- 标签行 -->
+    <view class="scheme-badges">
+      <view class="badge-plan">推荐套餐</view>
+      <text class="scheme-deco-tag">多款可选 ↗</text>
     </view>
-  </view>
 
-  <view class="section">
-    <view class="section-title">套餐方案</view>
-    <view class="list">
-      <view wx:for="{{results}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
-        <view class="visual-row">
-          <view class="package-copy">
-            <view class="package-title">{{item.packageTitle}}</view>
-            <view class="section-subtitle">{{item.packageIntro}}</view>
-          </view>
-          <view class="asset-illo">
-            <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
+    <view class="package-body">
+      <view class="scheme-copy package-copy">
+        <text class="scheme-name">{{mainPackage.name}}</text>
+        <view class="scheme-tags-row">
+          <text wx:for="{{mainPackage.tags}}" wx:key="*this" class="scheme-tag">{{item}}</text>
+        </view>
+        <text class="scheme-desc">{{mainPackage.desc}}</text>
+        <button class="scheme-cta" catchtap="onPackageTap">查看组合方案 →</button>
+      </view>
+      <view class="package-list">
+        <view wx:for="{{mainPackage.items}}" wx:key="id" class="package-drink" data-id="{{item.id}}" bindtap="onDetailTap">
+          <image class="package-drink-img" src="{{item.illustration}}" mode="aspectFill" />
+          <view class="package-drink-pin">↗</view>
+          <view class="package-drink-copy">
+            <view class="package-drink-name">{{item.name}}</view>
+            <view class="package-drink-desc">{{item.desc}}</view>
+            <view class="package-drink-tags">
+              <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="package-drink-tag">{{tag}}</text>
+            </view>
           </view>
         </view>
-        <view class="small price">{{item.packageMeta}}</view>
-        <view class="small muted">{{item.packageFit}}</view>
-        <view class="tags">
-          <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
-        </view>
-        <view class="package-action">查看购物清单</view>
       </view>
     </view>
+    <view class="price-tag package-price">
+      <text class="price-label">预计价格</text>
+      <text class="price-val">{{mainPackage.price}}</text>
+    </view>
+  </view>
+
+  <!-- 更多方案 -->
+  <view class="more-schemes-section">
+    <view class="section-head-row">
+      <text class="section-head-title">更多方案</text>
+      <text class="section-hint-right">左右滑动查看更多 ›</text>
+    </view>
+    <scroll-view scroll-x class="scheme-scroll">
+      <view wx:for="{{moreSchemes}}" wx:key="id" class="scheme-mini-card" data-id="{{item.id}}" bindtap="onDetailTap">
+        <view class="mini-info">
+          <text class="mini-name">{{item.name}}</text>
+          <text class="mini-desc">{{item.desc}}</text>
+        </view>
+        <view class="mini-arrow">→</view>
+        <image wx:if="{{item.illustration}}" src="{{item.illustration}}" mode="aspectFill" class="mini-img" />
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 为什么推荐这杯？-->
+  <view class="why-section">
+    <text class="why-title">为什么推荐这杯？</text>
+    <view class="why-grid">
+      <view class="why-item">
+        <text class="why-icon">🛒</text>
+        <text class="why-label">便利店可买齐</text>
+        <text class="why-desc">常见商品，易购齐</text>
+      </view>
+      <view class="why-item">
+        <text class="why-icon">⏱️</text>
+        <text class="why-label">3分钟搞定</text>
+        <text class="why-desc">简单调制，零压力</text>
+      </view>
+      <view class="why-item">
+        <text class="why-icon">🫧</text>
+        <text class="why-label">清爽低负担</text>
+        <text class="why-desc">气泡清爽，不腻口</text>
+      </view>
+      <view class="why-item">
+        <text class="why-icon">😊</text>
+        <text class="why-label">新手不翻车</text>
+        <text class="why-desc">比例友好，易成功</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 小提示 -->
+  <view class="tip-section">
+    <view class="tip-badge">💡 小提示</view>
+    <text class="tip-text">{{mainPackage.tip || '冰块越多越清爽，口感更稳定。'}}</text>
   </view>
 </view>

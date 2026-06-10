@@ -1,4 +1,20 @@
 page {
+  --page-bg: #fbf7ee;
+  --card-bg: rgba(255, 252, 244, 0.88);
+  --mint-bg: #eaf6f0;
+  --ice-blue-bg: #eaf5f7;
+  --amber-bg: #f8e8c7;
+  --primary-green: #2f8f7b;
+  --deep-green: #244d43;
+  --soft-mint: #bee6d8;
+  --lemon-yellow: #f6d46b;
+  --night-blue: #6f91b7;
+  --amber: #d9a95f;
+  --radius-lg: 44rpx;
+  --radius-md: 34rpx;
+  --radius-pill: 999rpx;
+  --shadow-mint: 0 20rpx 60rpx rgba(47, 143, 123, 0.12);
+  --shadow-paper: 0 16rpx 48rpx rgba(80, 70, 50, 0.08);
   min-height: 100%;
   color: #233836;
   background: #f8f1e4;
@@ -10,6 +26,16 @@ text,
 button,
 input {
   box-sizing: border-box;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 1 !important;
+  overflow: visible;
 }
 
 .page {
@@ -39,20 +65,9 @@ input {
   line-height: 1.55;
 }
 
+/* ========== 全局卡片基类（杂志留白风格，非电商容器）========== */
 .card {
-  padding: 24rpx;
-  border: 2rpx solid rgba(61, 119, 118, 0.12);
-  border-radius: 28rpx;
-  background:
-    linear-gradient(145deg, rgba(255, 253, 247, 0.84), rgba(238, 250, 248, 0.68));
-  box-shadow: 0 16rpx 40rpx rgba(57, 96, 102, 0.08);
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-}
-
-.card:active {
-  transform: translateY(-3rpx) scale(0.994);
-  border-color: rgba(80, 169, 165, 0.34);
-  box-shadow: 0 18rpx 42rpx rgba(57, 96, 102, 0.12);
+  padding: 28rpx 0;
 }
 
 .muted {
@@ -95,19 +110,19 @@ input {
   gap: 14rpx;
 }
 
+/* 主按钮（杂志淡色风格，非电商渐变） */
 .button-primary {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 88rpx;
+  height: 80rpx;
   margin: 0;
   border-radius: 999rpx;
-  color: #fffdf8;
-  background: linear-gradient(135deg, #2f7770 0%, #244d50 100%);
-  font-size: 28rpx;
+  color: #2f7d6d;
+  background: rgba(95, 184, 166, 0.10);
+  font-size: 27rpx;
   line-height: 1;
-  box-shadow: 0 14rpx 30rpx rgba(47, 119, 112, 0.22);
-  transition: transform 150ms ease, opacity 150ms ease;
+  font-weight: 500;
 }
 
 .button-primary:active,
@@ -165,11 +180,10 @@ button::after {
   line-height: 1.5;
 }
 
+/* 轻量面板（去卡片化） */
 .soft-panel {
-  border: 2rpx solid rgba(61, 119, 118, 0.12);
-  border-radius: 30rpx;
-  background: rgba(255, 253, 247, 0.78);
-  box-shadow: 0 18rpx 42rpx rgba(57, 96, 102, 0.07);
+  border-radius: 20rpx;
+  background: rgba(255,253,247,0.55);
 }
 
 .visual-row {
@@ -555,4 +569,25 @@ button::after {
   background:
     radial-gradient(circle at 78% 18%, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0) 70rpx),
     linear-gradient(145deg, rgba(238, 255, 252, 0.88), rgba(226, 242, 255, 0.76) 54%, rgba(255, 246, 226, 0.72));
+}
+
+/* Shared hand-drawn button finish */
+.button-primary,
+.button-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid rgba(36, 77, 67, 0.13);
+  box-shadow:
+    0 8rpx 0 rgba(36, 77, 67, 0.06),
+    0 14rpx 26rpx rgba(80, 70, 50, 0.07),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.24);
+  white-space: nowrap;
+}
+
+.button-primary {
+  background:
+    linear-gradient(145deg, rgba(255, 252, 244, 0.84), rgba(190, 230, 216, 0.72));
+  color: #244d43;
+  font-weight: 700;
 }

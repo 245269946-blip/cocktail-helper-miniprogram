@@ -1,40 +1,72 @@
-<view class="page theme-sparkling">
-  <view class="section-title">输入手边材料</view>
-  <view class="section-subtitle">先回答“我现在能做什么”，再提示只差哪一两样。</view>
+<view class="page pantry-page theme-sparkling">
+  <view class="pantry-hero">
+    <view class="pantry-kicker">Pantry Search</view>
+    <view class="section-title">家里有什么？</view>
+    <view class="section-subtitle">搜一下手边材料，或直接点选基酒、饮料和辅助材料，下面会实时给出能做的配方。</view>
+  </view>
 
-  <view class="section list">
-    <view wx:for="{{groups}}" wx:key="title" class="card">
-      <view class="title group-title">{{item.title}}</view>
-      <view class="tags">
-        <view wx:for="{{item.items}}" wx:for-item="choice" wx:key="name" class="tag {{choice.active ? 'active' : ''}}" data-value="{{choice.name}}" bindtap="onToggle">{{choice.name}}</view>
+  <view class="pantry-search">
+    <view class="pantry-search-icon">⌕</view>
+    <input class="pantry-input" value="{{query}}" bindinput="onInput" placeholder="搜威士忌、可乐、柠檬、气泡水" />
+  </view>
+
+  <view wx:if="{{selected.length}}" class="selected-strip">
+    <scroll-view scroll-x class="selected-scroll">
+      <view class="selected-track">
+        <view wx:for="{{selected}}" wx:key="*this" class="selected-pill">{{item}}</view>
+      </view>
+    </scroll-view>
+    <button class="clear-button" bindtap="onClear">清空</button>
+  </view>
+
+  <view class="pantry-picker">
+    <view wx:for="{{groups}}" wx:key="title" class="pantry-group">
+      <view class="pantry-group-head">
+        <view class="pantry-group-title">{{item.title}}</view>
+        <view class="pantry-group-line"></view>
+      </view>
+      <view class="pantry-tags">
+        <view wx:for="{{item.items}}" wx:for-item="choice" wx:key="name" class="pantry-tag {{choice.active ? 'active' : ''}}" data-value="{{choice.name}}" bindtap="onToggle">{{choice.name}}</view>
       </view>
     </view>
   </view>
 
-  <view wx:if="{{selected.length}}" class="section">
-    <button class="button-ghost" bindtap="onClear">清空已选</button>
-  </view>
-
-  <view wx:if="{{result}}" class="section list">
+  <view wx:if="{{selected.length}}" class="pantry-results">
     <block wx:for="{{sections}}" wx:key="key">
-      <view class="section-title">{{item.title}}</view>
-      <view class="section-subtitle pantry-section-desc">{{item.desc}}</view>
-      <view wx:if="{{item.items.length}}" class="list">
-        <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="card drink-card" data-id="{{drink.id}}" bindtap="onDetailTap">
-          <view class="visual-row">
-            <view class="pantry-copy">
-              <view class="title">{{drink.name}}</view>
-              <view class="section-subtitle">{{drink.reason}}</view>
-            </view>
-            <view class="asset-illo">
-              <image class="asset-image" src="{{drink.illustration}}" mode="aspectFit" />
-            </view>
+      <view wx:if="{{item.items.length}}" class="pantry-result-section">
+        <view class="section-head-row">
+          <view>
+            <view class="section-title small-title">{{item.title}}</view>
+            <view class="section-subtitle pantry-section-desc">{{item.desc}}</view>
           </view>
-          <view wx:if="{{drink.missingText}}" class="small missing">只差：{{drink.missingText}}。去便利店补这个就能做。</view>
-          <view class="pantry-action">{{drink.actionText}}</view>
+        </view>
+        <view class="pantry-result-list">
+          <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="pantry-drink-card" data-id="{{drink.id}}" bindtap="onDetailTap">
+            <view class="pantry-card-copy">
+              <view class="pantry-card-action">{{drink.actionText}}</view>
+              <view class="pantry-card-title">{{drink.name}}</view>
+              <view class="pantry-card-desc">{{drink.reason}}</view>
+              <view wx:if="{{drink.missingText}}" class="pantry-missing">只差：{{drink.missingText}}</view>
+            </view>
+            <image class="pantry-card-img" src="{{drink.illustration}}" mode="aspectFill" />
+          </view>
         </view>
       </view>
-      <view wx:else class="empty">暂无匹配</view>
     </block>
+  </view>
+
+  <view wx:else class="pantry-default">
+    <view class="section-title small-title">{{queryCards.length ? '搜索相关配方' : '先从这些常见组合试'}}</view>
+    <scroll-view class="starter-scroll" scroll-x>
+      <view class="starter-track">
+        <view wx:for="{{queryCards.length ? queryCards : starterCards}}" wx:key="id" class="starter-card" data-id="{{item.id}}" bindtap="onDetailTap">
+          <image class="starter-img" src="{{item.illustration}}" mode="aspectFill" />
+          <view class="starter-copy">
+            <view class="starter-name">{{item.name}}</view>
+            <view class="starter-desc">{{item.entryLine || item.reason}}</view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
   </view>
 </view>

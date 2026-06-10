@@ -31,7 +31,7 @@ Page({
     if (!ingredient) return
 
     const recipes = recommend.getItemsByIds(ingredient.recipes || []).map((item) => drinkView.resultCard(item))
-    const lowAlcohol = (ingredient.lowAlcohol || []).map((id) => lowAlcoholLabels[id] || id)
+    const lowAlcohol = (ingredient.lowAlcohol || []).map((item) => lowAlcoholLabels[item] || item)
 
     wx.setNavigationBarTitle({ title: ingredient.name })
     this.setData({ ingredient: illustrations.decorateIngredient(ingredient), recipes, lowAlcohol })

@@ -7,15 +7,29 @@ Page({
   data: {
     rawGroups: data.pantryGroups,
     groups: [],
+    query: '',
     selected: [],
     result: null,
-    sections: []
+    sections: [],
+    queryCards: [],
+    starterCards: []
   },
 
   onLoad() {
     contentStore.getContent().then((content) => {
-      this.setData({ rawGroups: content.pantryGroups }, () => this.updateGroups())
+      this.setData({
+        rawGroups: content.pantryGroups,
+        starterCards: this.buildStarterCards(['gin-tonic', 'cuba-libre', 'whisky-highball', 'white-russian'])
+      }, () => this.updateGroups())
     })
+  },
+
+  onInput(event) {
+    const query = event.detail.value || ''
+    this.setData({
+      query,
+      queryCards: this.buildQueryCards(query)
+    }, () => this.updateGroups())
   },
 
   onToggle(event) {
@@ -46,6 +60,20 @@ Page({
     })
   },
 
+  buildStarterCards(ids) {
+    return recommend.getItemsByIds(ids).map((item) => Object.assign({}, drinkView.resultCard(item), {
+      actionText: '先看看'
+    }))
+  },
+
+  buildQueryCards(query) {
+    const key = (query || '').trim()
+    if (!key) return []
+    return recommend.search(key).slice(0, 4).map((item) => Object.assign({}, drinkView.resultCard(item), {
+      actionText: '相关配方'
+    }))
+  },
+
   buildSection(key, title, desc, items, actionText) {
     return {
       key,
@@ -62,14 +90,20 @@ Page({
 
   updateGroups() {
     const selected = this.data.selected
+    const key = (this.data.query || '').trim().toLowerCase()
     this.setData({
       groups: this.data.rawGroups.map((group) => ({
         title: group.title,
-        items: group.items.map((name) => ({
-          name,
-          active: selected.indexOf(name) >= 0
-        }))
-      }))
+        items: group.items
+          .filter((name) => {
+            if (!key) return true
+            return name.toLowerCase().includes(key) || key.includes(name.toLowerCase())
+          })
+          .map((name) => ({
+            name,
+            active: selected.indexOf(name) >= 0
+          }))
+      })).filter((group) => group.items.length)
     })
   },
 

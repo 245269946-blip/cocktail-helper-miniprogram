@@ -1,39 +1,93 @@
-<view wx:if="{{base}}" class="page">
-  <view class="base-hero">
-    <view class="asset-illo large-asset">
-      <image class="asset-image" src="{{base.illustration}}" mode="aspectFit" />
-    </view>
-    <view class="section-title">{{base.name}}</view>
-    <view class="section-subtitle">{{base.intro}}</view>
-  </view>
-
-  <view class="section card">
-    <view class="title">适合什么风味</view>
-    <view class="tags intro-tags">
-      <view wx:for="{{base.tags}}" wx:key="*this" class="tag">{{item}}</view>
+<view wx:if="{{base}}" class="page base-detail-page">
+  <!-- 导航栏 -->
+  <view class="bd-nav">
+    <view class="nav-back" bindtap="goBack">‹</view>
+    <text class="nav-title">{{base.name}}什么</text>
+    <view class="nav-actions">
+      <text class="nav-star">☆</text>
+      <text class="nav-more" bindtap="onMore">···</text>
     </view>
   </view>
 
-  <view class="section list">
-    <block wx:for="{{sections}}" wx:key="title">
-      <view class="section-title">{{item.title}}</view>
-      <view wx:if="{{item.items.length}}" class="list">
-        <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="card recipe-card" data-id="{{drink.id}}" bindtap="onDetailTap">
-          <view class="visual-row">
-            <view class="recipe-copy">
-              <view class="title">{{drink.name}}</view>
-              <view class="section-subtitle">{{drink.entryLine}}</view>
-            </view>
-            <view class="asset-illo">
-              <image class="asset-image" src="{{drink.illustration}}" mode="aspectFit" />
-            </view>
-          </view>
-          <view class="tags">
-            <view wx:for="{{drink.tags}}" wx:for-item="tag" wx:key="*this" class="tag">{{tag}}</view>
-          </view>
+  <!-- Tab 搜索栏 -->
+  <scroll-view scroll-x enable-flex class="tab-search-bar">
+    <view wx:for="{{searchTabs}}" wx:key="*this"
+          class="tab-item {{item.active ? 'active' : ''}}"
+          bindtap="onTabTap" data-index="{{index}}">
+      {{item.label}}
+    </view>
+  </scroll-view>
+
+  <!-- 主推荐 Hero 卡 -->
+  <view class="hero-card">
+    <!-- 标签 -->
+    <view class="hero-badge-row">
+      <view class="hero-badge">
+        <text class="badge-text">{{base.name}}第一杯推荐</text>
+        <text class="badge-star">⭐</text>
+      </view>
+    </view>
+
+    <view class="hero-body">
+      <view class="hero-left">
+        <text class="hero-name">{{mainRecipe.name}}</text>
+        <text class="hero-name-en">{{mainRecipe.nameEn}}</text>
+        <view class="hero-tags">
+          <text wx:for="{{mainRecipe.tags}}" wx:key="*this" class="h-tag">{{item}}</text>
+        </view>
+        <text class="hero-desc">{{mainRecipe.desc}}</text>
+        <button class="hero-cta" catchtap="onDetailTap" data-id="{{mainRecipe.id}}">查看配方 →</button>
+      </view>
+
+      <view class="hero-right">
+        <image src="{{mainRecipe.illustration}}" mode="aspectFit" class="hero-img" />
+        <!-- 气泡装饰 -->
+        <view wx:if="{{mainRecipe.speechBubble}}" class="img-speech-bubble">
+          {{mainRecipe.speechBubble}}
         </view>
       </view>
-      <view wx:else class="empty">后续补充更多配方</view>
-    </block>
+    </view>
   </view>
+
+  <!-- 快捷筛选行 -->
+  <view class="quick-filters">
+    <view wx:for="{{quickFilters}}" wx:key="label"
+          class="qf-item" data-keyword="{{item.keyword}}" bindtap="onQuickFilter">
+      <text class="qf-name">{{item.label}}</text>
+      <text class="qf-desc">{{item.desc}}</text>
+      <text class="qf-arrow">›</text>
+    </view>
+  </view>
+
+  <!-- 更多搭配列表 -->
+  <view class="more-pairings-section">
+    <view class="pairing-head">
+      <text class="pairing-title">更多{{base.name}}好喝搭配 🥃</text>
+      <text class="pairing-refresh" bindtap="onRefreshPairings">换一换 ↻</text>
+    </view>
+
+    <view class="pairing-list">
+      <block wx:for="{{pairingItems}}" wx:key="id">
+        <view class="pairing-card" data-id="{{item.id}}" bindtap="onDetailTap">
+          <image src="{{item.illustration}}" mode="aspectFill" class="pc-img" />
+          <view class="pc-info">
+            <view class="pc-top">
+              <text class="pc-name">{{item.name}}</text>
+              <text class="pc-name-en">{{item.nameEn || ''}}</text>
+            </view>
+            <view class="pc-tags">
+              <text wx:for="{{item.tags}}" wx:for-item="t" wx:key="*this" class="pc-tag">{{t}}</text>
+            </view>
+            <text class="pc-desc">{{item.desc}}</text>
+          </view>
+          <view class="pc-arrow">›</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 空状态 -->
+<view wx:else class="empty-wrap">
+  <text class="empty-text">暂无该基酒信息</text>
 </view>

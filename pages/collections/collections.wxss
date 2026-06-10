@@ -1,11 +1,122 @@
-.result-card,
-.empty-card {
+/* ============================================================
+   收藏页 —— 杂志风格（留白/呼吸感/品牌氛围）
+   ============================================================ */
+
+/* 页面容器 */
+.page {
+  min-height: 100vh;
+  background: #faf7f2;
+  padding: 32rpx;
+}
+
+/* 标题区 */
+.section-title {
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #1a2820;
+  letter-spacing: 2px;
+  margin-bottom: 8rpx;
+}
+
+.section-subtitle {
+  font-size: 26rpx;
+  color: #9aa8a2;
+  line-height: 1.55;
+  margin-bottom: 48rpx;
+  padding-left: 4rpx;
+}
+
+/* ========== 收藏列表（轻量列表项） ========== */
+.list {
   display: flex;
   flex-direction: column;
-  gap: 16rpx;
+  gap: 0;
+}
+
+.result-card {
+  position: relative;
+  overflow: hidden;
+  padding: 28rpx 24rpx;
+  border-bottom: 1rpx solid rgba(180, 195, 185, 0.10);
+}
+
+.result-card:active { background: rgba(95, 184, 166, 0.04); }
+
+.visual-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
 }
 
 .collection-copy {
   flex: 1;
   min-width: 0;
+}
+
+.collection-copy .title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1a2820;
+  margin-bottom: 6rpx;
+}
+
+.collection-copy .section-subtitle {
+  font-size: 23rpx;
+  color: #8a9892;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+/* 右侧插图 */
+.asset-illo {
+  width: 120rpx;
+  height: 120rpx;
+  flex-shrink: 0;
+  border-radius: 16rpx;
+  overflow: hidden;
+  opacity: 0.88;
+}
+
+.asset-image { width: 100%; height: 100%; }
+
+/* 标签行 */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 14rpx;
+}
+
+.tags .tag {
+  font-size: 21rpx;
+  color: #3d766f;
+  padding: 4rpx 16rpx;
+  background: rgba(207, 242, 237, 0.45);
+  border-radius: 16rpx;
+}
+
+/* ========== 空状态（杂志氛围） ========== */
+.empty-state {
+  text-align: center;
+  padding: 120rpx 40rpx 80rpx;
+}
+
+.empty-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2d3a36;
+  margin-bottom: 16rpx;
+}
+
+.empty-desc {
+  display: block;
+  font-size: 26rpx;
+  color: #9aa8a2;
+  line-height: 1.65;
+  margin-bottom: 40rpx;
+  max-width: 480rpx;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,72 +1,148 @@
 <view class="page results-page {{themeClass}}">
-  <view class="result-head lab-shell">
-    <view>
-      <view class="result-kicker">Search Result</view>
-      <view class="section-title">{{title}}</view>
-      <view class="section-subtitle">{{subtitle}}</view>
-    </view>
-    <view class="sketch-icon icon-glass"></view>
+  <!-- 顶部导航区 -->
+  <view class="results-nav">
+    <view class="nav-back" bindtap="goBack">‹</view>
+    <view class="nav-title">{{title}}</view>
+    <view class="nav-share" bindtap="onShare">⤴</view>
   </view>
 
-  <view wx:if="{{mainRecommendation || results.length}}" class="section list">
-    <view wx:if="{{mainRecommendation}}" class="lead-card card result-card" data-id="{{mainRecommendation.id}}" bindtap="onDetailTap">
-      <view class="lead-label">先看这杯</view>
-      <view class="visual-row">
-        <view class="result-copy">
-          <view class="title">{{mainRecommendation.name}}</view>
-          <view class="small muted">{{mainRecommendation.audienceText}}</view>
-        </view>
-        <view class="asset-illo lead-asset">
-          <image class="asset-image" src="{{mainRecommendation.illustration}}" mode="aspectFit" />
-        </view>
+  <!-- 结果统计 + 装饰 -->
+  <view class="results-header">
+    <view class="header-text">
+      <view class="header-main-line">
+        <text class="header-label">为你找到</text>
+        <text class="header-count">{{totalCount}}</text>
+        <text class="header-unit">种喝法</text>
       </view>
-      <view class="result-entry">{{mainRecommendation.entryLine}}</view>
-      <view class="execute-line">{{mainRecommendation.executionLine}}</view>
-      <view class="lead-action" data-id="{{mainRecommendation.id}}" catchtap="onDetailTap">查看材料步骤</view>
+      <text wx:if="{{searchKeyword}}" class="header-keyword">关键词：{{searchKeyword}}</text>
+    </view>
+    <view class="header-deco">
+      <image src="{{decoImage}}" mode="aspectFill" class="deco-img" />
+    </view>
+  </view>
+
+  <view wx:if="{{mainRecommendation}}" class="decision-copy">
+    <text class="decision-kicker">先喝这杯</text>
+    <text class="decision-title">{{decisionIntro.title || '先给你一杯最稳的'}}</text>
+    <text class="decision-subtitle">{{subtitle}}</text>
+  </view>
+
+  <!-- 主推荐卡（Hero Card） -->
+  <view wx:if="{{mainRecommendation}}" class="hero-card" data-id="{{mainRecommendation.id}}" bindtap="onDetailTap">
+    <view class="hero-cover">
+      <image src="{{mainRecommendation.illustration}}" mode="aspectFill" class="hero-img" />
     </view>
 
-    <view wx:if="{{results.length}}" class="section-title more-title">更多可选方案</view>
-    <view wx:for="{{results}}" wx:key="id" class="card result-card" data-id="{{item.id}}" bindtap="onDetailTap">
-      <view class="visual-row">
-        <view class="result-copy">
-          <view class="title">{{item.name}}</view>
-          <view class="small muted">{{item.audienceText}}</view>
+    <view class="hero-body">
+      <view class="hero-copy">
+        <!-- 星标标签 -->
+        <view class="hero-badge">
+          <text class="badge-star">⭐</text>
+          <text class="badge-text">{{mainRecommendation.badgeText || '第一杯推荐'}}</text>
         </view>
-        <view class="asset-illo">
-          <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
+        <view class="hero-title-row">
+          <text class="hero-title">{{mainRecommendation.name}}</text>
         </view>
-      </view>
-      <view class="type-label">{{item.type === 'scheme' ? '方案' : '配方'}}</view>
-      <view class="result-entry">{{item.entryLine}}</view>
-      <view class="fact-strip">
-        <view wx:for="{{item.basicFacts}}" wx:for-item="fact" wx:key="label" class="fact-pill">
-          <text class="fact-label">{{fact.label}}</text>
-          <text class="fact-value">{{fact.value}}</text>
+        <text class="hero-subtitle-en">{{mainRecommendation.nameEn}}</text>
+        <view class="hero-tags">
+          <text wx:for="{{mainRecommendation.metaTags}}" wx:key="*this" class="hero-tag">{{item}}</text>
         </view>
-      </view>
-      <view class="execute-line">{{item.executionLine}}</view>
-      <view class="result-action" data-id="{{item.id}}" catchtap="onDetailTap">查看材料步骤</view>
-      <view class="score-mini">
-        <view wx:for="{{item.scoreRows}}" wx:for-item="score" wx:key="key" class="score-mini-row">
-          <text class="score-mini-label">{{score.label}}</text>
-          <text class="score-stars">{{score.stars}}</text>
-          <text class="score-note">{{score.note}}</text>
+        <view class="hero-stickers">
+          <text class="hero-sticker">🧊 少材料</text>
+          <text class="hero-sticker">🍶 可照做</text>
+          <text class="hero-sticker">↗ 看详情</text>
         </view>
-      </view>
-    </view>
-
-    <view class="section-title explore-title">继续探索</view>
-    <view class="explore-grid">
-      <view wx:for="{{exploreOptions}}" wx:key="title" class="card explore-card" data-value="{{item.value}}" data-title="{{item.title}}" bindtap="onExploreTap">
-        <view class="explore-card-title">{{item.title}}</view>
-        <view class="small muted">{{item.desc}}</view>
+        <button class="hero-cta" catchtap="onDetailTap" data-id="{{mainRecommendation.id}}">
+          查看配方 →
+        </button>
       </view>
     </view>
   </view>
 
-  <view wx:else class="section card empty-card">
-    <view class="title">还没找到合适结果</view>
-    <view class="section-subtitle">可以试试“金酒”“可乐”“甜口”“便利店调酒”这类关键词。</view>
-    <button class="button-primary empty-button" bindtap="onSearchAgain">重新搜索</button>
+  <!-- 对应搜索结果：先给列表，再给扩展推荐 -->
+  <view wx:if="{{primaryResults.length}}" class="result-list-section">
+    <view class="result-list-head">
+      <text class="result-list-title">对应结果</text>
+      <text class="result-list-count">先看前 3 个</text>
+    </view>
+
+    <view class="result-list">
+      <view wx:for="{{primaryResults}}" wx:key="id" class="result-row" data-id="{{item.id}}" bindtap="onDetailTap">
+        <image class="result-img" src="{{item.thumbnail || item.illustration}}" mode="aspectFill" />
+        <view class="result-copy">
+          <text class="result-name">{{item.name}}</text>
+          <view class="result-tags compact-tags">
+            <text wx:for="{{item.metaTags}}" wx:for-item="tag" wx:key="*this" class="result-tag">{{tag}}</text>
+          </view>
+        </view>
+        <view class="result-arrow">→</view>
+      </view>
+
+      <block wx:if="{{showAllResults}}">
+        <view wx:for="{{extraResults}}" wx:key="id" class="result-row" data-id="{{item.id}}" bindtap="onDetailTap">
+          <image class="result-img" src="{{item.thumbnail || item.illustration}}" mode="aspectFill" />
+          <view class="result-copy">
+            <text class="result-name">{{item.name}}</text>
+            <view class="result-tags compact-tags">
+              <text wx:for="{{item.metaTags}}" wx:for-item="tag" wx:key="*this" class="result-tag">{{tag}}</text>
+            </view>
+          </view>
+          <view class="result-arrow">→</view>
+        </view>
+      </block>
+    </view>
+
+    <button wx:if="{{extraResults.length}}" class="more-results-button" bindtap="onToggleMoreResults">
+      {{showAllResults ? '收起更多结果' : '更多结果'}}
+    </button>
+  </view>
+
+  <!-- 更多配方方向 -->
+  <view wx:if="{{extensionSections.length}}" class="more-section">
+    <view class="more-head">
+      <text class="more-title">更多配方方向</text>
+      <text class="more-hint">按口味 / 场景扩展 ↗</text>
+    </view>
+
+    <view class="more-grid">
+      <block wx:for="{{extensionSections}}" wx:key="title">
+        <view class="ext-card" data-id="{{item.id || item.items[0].id}}" bindtap="onExtCardTap">
+          <view class="ext-card-body">
+            <view class="ext-info">
+              <text class="ext-name">{{item.title}}</text>
+              <text class="ext-desc">{{item.desc}}</text>
+            </view>
+            <view class="ext-arrow-btn">→</view>
+          </view>
+          <image wx:if="{{item.illustration}}" src="{{item.illustration}}" mode="aspectFill" class="ext-img" />
+          <!-- 无图片时显示占位 -->
+          <view wx:else class="ext-img-placeholder"></view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 大家也在搜 -->
+  <view class="trending-section">
+    <view class="trending-head">
+      <text class="trending-title">大家也在搜</text>
+      <text class="trending-tag-hot">热门</text>
+    </view>
+    <scroll-view scroll-x enable-flex class="trending-scroll">
+      <view wx:for="{{trendingSearches}}" wx:key="*this" class="trend-chip" bindtap="onTrendTap" data-keyword="{{item}}">
+        <text class="chip-icon">🍹</text>
+        <text class="chip-text">{{item}}</text>
+        <text class="chip-close">⊙</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{!mainRecommendation && (!extensionSections || extensionSections.length === 0)}}" class="empty-state">
+    <view class="empty-card">
+      <text class="empty-title">还没找到合适结果</text>
+      <text class="empty-desc">可以试试"金汤力""莫吉托""威士忌可乐""百利甜"这类经典酒名，或按基酒/口味搜。</text>
+      <button class="button-primary empty-button" bindtap="onSearchAgain">重新搜索</button>
+    </view>
   </view>
 </view>
