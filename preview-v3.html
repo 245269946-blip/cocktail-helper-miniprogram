@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>调酒助手 v3 · 参考图还原</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Zen+Maru+Gothic:wght@300;400;500;700&family=Shippori+Mincho:wght@400;600;700&family=Hi+Melody&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f0ede8;
+  font-family: 'Zen Maru Gothic', 'Noto Sans SC', sans-serif;
+  color: #4a4640;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* ===== 导航 ===== */
+.nav {
+  display: flex; justify-content: center; gap: 6px;
+  margin-bottom: 24px; flex-wrap: wrap;
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(240,237,232,0.96);
+  padding: 10px 0; backdrop-filter: blur(10px);
+}
+.nav button {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 13px; padding: 7px 16px;
+  border: none; border-radius: 20px;
+  cursor: pointer; transition: all 0.25s;
+  background: #e8e4de; color: #888;
+}
+.nav button:hover { transform: translateY(-1px); }
+.nav button.active {
+  background: #5a9a94; color: #fff;
+}
+
+/* ===== 手机框架 ===== */
+.phone-grid {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 28px;
+  max-width: 1680px; margin: 0 auto;
+}
+.phone-frame {
+  width: 375px; height: 812px;
+  background: #222; border-radius: 44px;
+  padding: 12px; position: relative; flex-shrink: 0;
+  box-shadow: 0 24px 72px rgba(0,0,0,0.18), inset 0 0 0 2px #333;
+}
+.phone-frame::before {
+  content: ''; position: absolute; top: 12px; left: 50%;
+  transform: translateX(-50%); width: 150px; height: 28px;
+  background: #222; border-radius: 0 0 18px 18px; z-index: 10;
+}
+.phone-screen {
+  width: 100%; height: 100%;
+  border-radius: 34px; overflow-y: auto;
+  overflow-x: hidden; background: #faf8f4;
+}
+.phone-screen::-webkit-scrollbar { display: none; }
+.page-label {
+  text-align: center; margin-top: 10px;
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 15px; color: #999;
+  letter-spacing: 2px;
+}
+
+/* ===== 字体系统（参考图风格） ===== */
+.f-title    { font-family: 'Sawarabi Mincho', serif; }      /* 标题：明朝体/宋体感 */
+.f-hand     { font-family: 'Hi Melody', cursive; }           /* 手写：纤细手写 */
+.f-body     { font-family: 'Zen Maru Gothic', sans-serif; }   /* 正文：圆角黑体 */
+.f-mincho   { font-family: 'Shippori Mincho', serif; }        /* 衬线正文 */
+.f-serif-jp { font-family: 'Noto Serif JP', serif; }         /* 日文衬线 */
+
+/* ===== 参考图配色 ===== */
+/* 底色：#faf8f4 暖米白 */
+/* 文字主色：#3a3632 */
+/* 文字次色：#9a958e */
+/* 强调青绿：#5a9a94 / #7eb8bc */
+/* 强调暖色：#c49a6c */
+/* 卡片底：#fff */
+/* 分割线/淡边：#ebe7df */
+
+/* ===== UI组件 — 极简无硬边框 ===== */
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 14px;
+  font-size: 11.5px;
+  letter-spacing: 0.5px;
+}
+.tag-cyan   { background: #edf5f4; color: #4a8a84; }
+.tag-warm   { background: #f8f0e4; color: #a07850; }
+.tag-blue   { background: #eef4f7; color: #5a8a98; }
+.tag-amber  { background: #fdf6ee; color: #b08040; }
+.tag-paper  { 
+  background: linear-gradient(135deg, #fffef8 0%, #f8f6f0 100%); 
+  color: #8a857c;
+  border: 1px dashed #d8d4cc;
+  font-size: 11px;
+  padding: 3px 10px;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+/* CTA按钮 */
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 11px 26px; border-radius: 26px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13.5px; font-weight: 500;
+  border: none; cursor: pointer;
+  letter-spacing: 1.5px;
+  transition: all 0.2s;
+}
+.cta-main {
+  background: linear-gradient(135deg, #7eb8bc 0%, #68a8a4 100%);
+  color: #fff;
+  box-shadow: 0 3px 12px rgba(126,184,188,0.22);
+}
+.cta-soft {
+  background: #fff;
+  color: #5a9a94;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  font-size: 12px;
+  padding: 6px 18px;
+}
+
+/* 对话气泡 — 轻盈版 */
+.bubble {
+  display: inline-block;
+  background: #fff;
+  border-radius: 16px 18px 16px 6px;
+  padding: 10px 14px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 13px;
+  color: #6a6862;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  line-height: 1.65;
+  max-width: 180px;
+}
+.bubble::after {
+  content: '';
+  position: absolute; bottom: -6px; right: 16px;
+  width: 12px; height: 12px;
+  background: #fff;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  transform: rotate(45deg) scale(0.75);
+  border-radius: 0 0 3px 0;
+}
+
+/* 纸条便利贴 */
+.note {
+  background: #fffcf5;
+  padding: 12px 15px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 13px;
+  color: #6a6660;
+  box-shadow: 1px 2px 8px rgba(0,0,0,0.06);
+  border-radius: 2px;
+  line-height: 1.7;
+}
+
+/* 小票锯齿边缘 */
+.receipt {
+  position: relative;
+  background: rgba(255,255,250,0.95);
+  padding: 12px 16px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 12.5px;
+  color: #7a7670;
+  box-shadow: 1px 2px 8px rgba(0,0,0,0.08);
+  width: 140px;
+  border-radius: 2px;
+}
+.receipt h5 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #4a4642;
+  border-bottom: 1.5px dashed #ddd8d0;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+}
+.receipt .r-row { display: flex; justify-content: space-between; margin: 3px 0; }
+.receipt .r-total { 
+  margin-top: 8px; padding-top: 6px; 
+  border-top: 1.5px solid #e8e4dc; 
+  font-weight: 500; color: #3a3834; 
+}
+.receipt::after {
+  content: '';
+  position: absolute; bottom: -6px; left: 0; width: 100%; height: 6px;
+  background: radial-gradient(circle at 5px -3px, transparent 5px, rgba(255,255,250,0.95) 5px) 
+              0 0 / 12px 6px repeat-x;
+}
+
+/* ========================================
+   LAYER 1 — 启动页
+   ======================================== */
+.layer1 .screen-inner {
+  min-height: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #faf8f4;
+}
+.l1-scene {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.l1-overlay {
+  position: relative;
+  z-index: 3;
+  padding: 64px 28px 36px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.l1-h1 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 52px;
+  font-weight: 400;
+  color: #2a302c;
+  line-height: 1.2;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+.l1-sub {
+  font-family: 'Hi Melody', cursive;
+  font-size: 15px;
+  color: #7a867e;
+  margin-top: -2px;
+}
+/* 小票位置 */
+.l1-receipt-wrap {
+  position: absolute;
+  bottom: 200px; left: 22px;
+  z-index: 4;
+  animation: float-gentle 4s ease-in-out infinite;
+}
+/* 气泡位置 */
+.l1-bubble-wrap {
+  position: absolute;
+  bottom: 260px; right: 18px;
+  z-index: 4;
+  animation: float-gentle 5s ease-in-out infinite reverse;
+}
+/* CTA */
+.l1-cta {
+  position: absolute;
+  bottom: 80px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+.l1-brand {
+  position: absolute;
+  bottom: 24px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px;
+  color: #bbb8b2;
+  letter-spacing: 1px;
+  display: flex; align-items: center; gap: 5px;
+}
+
+/* ========================================
+   LAYER 2 — 首页
+   ======================================== */
+.layer2 { background: #faf8f4; }
+.l2-head {
+  padding: 54px 22px 14px;
+  position: relative;
+}
+.l2-head-deco {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 170px;
+  object-fit: cover;
+  opacity: 0.45;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+}
+.l2-logo-row { position: relative; z-index: 2; display: flex; align-items: baseline; gap: 10px; }
+.l2-logo-text {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 28px; font-weight: 400;
+  color: #2a302c;
+  letter-spacing: 3px;
+}
+.l2-slogan {
+  font-family: 'Hi Melody', cursive;
+  font-size: 14px; color: #8a9a92;
+}
+/* 搜索框 */
+.l2-search {
+  position: relative; z-index: 2;
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 8px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 11px 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  border: 1px solid #ece8e0;
+}
+.l2-search input {
+  flex: 1; border: none; outline: none;
+  background: none;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13.5px; color: #555;
+}
+.l2-go-btn {
+  background: #5a9a94; color: #fff;
+  border: none; border-radius: 18px;
+  padding: 7px 17px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+/* 热门标签 */
+.sec-label {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: #a09888;
+  padding: 0 22px;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.tag-scroll {
+  display: flex; gap: 8px;
+  padding: 0 22px;
+  flex-wrap: wrap;
+}
+.t-tag {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12.5px;
+  padding: 5px 15px;
+  background: #fff;
+  color: #6a645a;
+  border-radius: 18px;
+  border: 1px solid #efebe4;
+  white-space: nowrap;
+}
+/* 最近搜索 */
+.recent-row {
+  display: flex; gap: 8px;
+  padding: 12px 22px 0;
+  overflow-x: auto;
+}
+.chip {
+  display: flex; align-items: center; gap: 6px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 6px 12px 6px 6px;
+  white-space: nowrap;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12.5px;
+  color: #6a645a;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.chip img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+
+/* 入口卡片 */
+.entry-card {
+  margin: 18px 22px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 132px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.entry-card .ec-img {
+  position: absolute;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.entry-card .ec-mask {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(250,248,244,0.95) 0%, rgba(250,248,244,0.55) 55%, transparent 100%);
+  z-index: 2;
+}
+.entry-card .ec-body {
+  position: relative; z-index: 3;
+  padding: 20px 20px;
+  max-width: 56%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.entry-card h3 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 23px;
+  font-weight: 400;
+  color: #2a2824;
+  letter-spacing: 2px;
+  margin-bottom: 3px;
+}
+.entry-card p {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12px;
+  color: #aaa5a0;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.ec-arrow {
+  position: absolute; right: 18px;
+  top: 50%; transform: translateY(-50%);
+  z-index: 3;
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: #ccc;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* 今日热配横滑 */
+.today-section { padding: 16px 22px 22px; }
+.today-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px;
+}
+.today-header h3 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 17px; font-weight: 400;
+  color: #3a3834;
+}
+.today-more {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11.5px; color: #b8b4ac;
+}
+.today-scroll {
+  display: flex; gap: 12px;
+  overflow-x: auto; padding: 6px 0 10px;
+}
+.tc-card {
+  flex-shrink: 0; width: 120px;
+}
+.tc-card img {
+  width: 120px; height: 120px;
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 7px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.tc-card h4 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px; color: #3a3834;
+  margin-bottom: 2px;
+}
+.tc-tags { display: flex; gap: 4px; }
+.tc-tag {
+  font-size: 10px; padding: 1px 7px;
+  border-radius: 9px;
+  background: #f2efe8; color: #a09a90;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+/* ========================================
+   LAYER 3-1 — 金酒结果
+   ======================================== */
+.layer3-1 { background: #f6f9f8; }
+.nav-bar {
+  display: flex; align-items: center;
+  padding: 52px 20px 12px; gap: 10px;
+}
+.nb-back { font-size: 19px; color: #7a8a82; }
+.nb-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 15px; font-weight: 500;
+  color: #3a4842; flex: 1;
+}
+.nb-icon { font-size: 17px; color: #b0bab6; }
+.result-hint {
+  padding: 0 22px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 14px; color: #6a7872;
+}
+.result-hint b {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 24px; color: #4a8a84;
+  font-weight: 400;
+}
+.sub-search {
+  margin: 10px 22px 0;
+  display: flex; align-items: center;
+  background: #fff;
+  border-radius: 18px; padding: 8px 14px; gap: 8px;
+  border: 1px solid #e2ece8;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+}
+.sub-search input {
+  border: none; outline: none; background: none;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 12.5px; color: #777; width: 100%;
+}
+
+/* Hero */
+.hero-card {
+  margin: 18px 22px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  min-height: 360px;
+  background: linear-gradient(145deg, #eaf4f2 0%, #ddece9 50%, #eff4f3 100%);
+  box-shadow: 0 4px 20px rgba(74,138,130,0.08);
+}
+.hero-img {
+  position: absolute;
+  right: -15px; top: -8px;
+  width: 68%; height: 108%;
+  object-fit: contain;
+  object-position: right center;
+  z-index: 1;
+}
+.hero-body {
+  position: relative; z-index: 3;
+  padding: 22px 20px 22px 20px;
+  max-width: 56%;
+}
+.star-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(90,154,148,0.1);
+  padding: 4px 11px; border-radius: 12px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px; color: #4a8a84;
+  margin-bottom: 10px;
+}
+.hero-card h2 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 38px; font-weight: 400;
+  color: #1a2820; line-height: 1.1;
+  letter-spacing: 3px; margin-bottom: 2px;
+}
+.en-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 16px; color: #6a9a94;
+  font-style: italic; margin-bottom: 10px;
+  display: block;
+}
+.hero-tags { display: flex; gap: 5px; flex-wrap: wrap; margin: 10px 0 12px; }
+.hero-quote {
+  font-family: 'Hi Melody', cursive;
+  font-size: 13px; color: #5a7068;
+  line-height: 1.7;
+  margin: 12px 0 14px;
+  padding-left: 12px;
+  border-left: 2px solid #c8deda;
+}
+.hero-stamp {
+  position: absolute; bottom: 16px; right: 16px; z-index: 4;
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 11px; color: rgba(90,154,148,0.3);
+  border: 1px solid rgba(90,154,148,0.2);
+  border-radius: 6px; padding: 4px 10px;
+  transform: rotate(-6deg);
+}
+
+/* 扩展网格 */
+.ext-section { padding: 18px 22px 0; }
+.ext-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 12px;
+}
+.ext-header h3 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 19px; font-weight: 400;
+  color: #3a4842;
+}
+.ext-more { font-family: 'Zen Maru Gothic', sans-serif; font-size: 11.5px; color: #b0c0ba; }
+.ext-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-bottom: 20px; }
+.ext-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+}
+.ext-card img { width: 100%; height: 110px; object-fit: cover; }
+.ext-info { padding: 9px 11px 11px; }
+.ext-card h4 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: #3a3834; margin-bottom: 2px;
+}
+.ext-card p { font-family: 'Zen Maru Gothic', sans-serif; font-size: 11px; color: #bbb; }
+.ext-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: #f4f1ea; color: #ccc; font-size: 11px; margin-top: 6px;
+}
+
+/* 大家也在搜 */
+.bottom-chips { padding: 0 22px 24px; }
+.bottom-chips .sec-label { margin-top: 14px; margin-bottom: 8px; }
+
+/* ========================================
+   LAYER 3-2 — 便利店
+   ======================================== */
+.layer3-2 { background: #f2f6f8; position: relative; }
+.bg-fade {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 380px;
+  object-fit: cover; opacity: 0.18; z-index: 0;
+}
+.filter-bar {
+  position: relative; z-index: 2;
+  display: flex; gap: 10px;
+  padding: 0 22px;
+}
+.filter-note {
+  background: #fffcf6;
+  padding: 10px 13px;
+  border-radius: 3px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 12.5px; color: #6a6660;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.05);
+  transform: rotate(-1deg);
+  max-width: 115px;
+}
+.filter-note select {
+  border: none; outline: none; background: none;
+  font-family: inherit; font-size: 12.5px;
+  color: #4a4640; margin-top: 4px; width: 100%;
+}
+.bubble-abs-r {
+  position: absolute; top: 105px; right: 14px; z-index: 3;
+  background: #fff;
+  border-radius: 12px 14px 12px 4px;
+  padding: 9px 12px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 11.5px; color: #6a6862;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transform: rotate(2.5deg);
+  max-width: 105px; line-height: 1.6;
+}
+.hero-conv {
+  position: relative; z-index: 2;
+  margin: 16px 22px;
+  border-radius: 18px; overflow: hidden;
+  min-height: 320px;
+  background: linear-gradient(145deg, #e8f2f6 0%, #dcedf0 100%);
+  box-shadow: 0 4px 18px rgba(60,120,160,0.07);
+}
+.hero-conv-img {
+  position: absolute;
+  right: -8px; top: -8px;
+  width: 72%; height: 112%;
+  object-fit: contain; z-index: 1;
+}
+.hero-conv-body {
+  position: relative; z-index: 3;
+  padding: 20px; max-width: 53%;
+}
+.badge-pill {
+  display: inline-block;
+  background: #7eb8dc; color: #fff;
+  padding: 3px 11px; border-radius: 10px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px; margin-bottom: 8px;
+}
+.hero-conv h2 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 27px; font-weight: 400;
+  color: #1a3040; line-height: 1.2;
+  letter-spacing: 2px;
+}
+.hero-conv h2 span { display: block; font-size: 18px; color: #305060; margin-top: 2px; }
+.price-sticker {
+  position: absolute; bottom: 16px; right: 16px; z-index: 4;
+  background: #fff;
+  border: 1px dashed #ccc;
+  border-radius: 5px; padding: 5px 9px;
+  font-family: 'Hi Melody', cursive; font-size: 10.5px; color: #888;
+  transform: rotate(2.5deg);
+}
+.conv-ext { position: relative; z-index: 2; padding: 16px 22px 0; }
+.conv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+.conv-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 5px rgba(0,0,0,0.03); }
+.conv-card img { width: 100%; height: 92px; object-fit: cover; }
+.conv-card .ci { padding: 7px 9px 9px; }
+.conv-card h4 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 12.5px; font-weight: 500; color: #2a3840; margin-bottom: 1px; }
+.conv-card p { font-family: 'Zen Maru Gothic', sans-serif; font-size: 10.5px; color: #bbb; }
+.points-area { position: relative; z-index: 2; padding: 16px 22px 22px; }
+.pgrid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
+.pitem { text-align: center; padding: 10px 4px; }
+.picon { font-size: 24px; margin-bottom: 5px; }
+.pitem h5 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 11.5px; color: #3a3a3a; margin-bottom: 2px; }
+.pitem p { font-family: 'Zen Maru Gothic', sans-serif; font-size: 10px; color: #bbb; }
+.tip-note {
+  margin-top: 14px;
+  background: #fffcf6;
+  border-radius: 10px 14px 12px 4px;
+  padding: 10px 14px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 12px; color: #6a6660;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  line-height: 1.7;
+}
+
+/* ========================================
+   LAYER 3-3 — 威士忌
+   ======================================== */
+.layer3-3 { background: #faf7f2; }
+.tab-row {
+  display: flex; gap: 7px;
+  padding: 0 22px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+.tab-item {
+  flex-shrink: 0;
+  padding: 5px 13px;
+  border-radius: 14px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11.5px;
+  background: #fff;
+  border: 1px solid #ece8de;
+  color: #8a7a68;
+  white-space: nowrap;
+}
+.tab-item.active {
+  background: #f5eedc;
+  border-color: #d8ccb4;
+  color: #6a4a18;
+}
+/* Hero暖色 */
+.hero-whisky {
+  margin: 0 22px;
+  border-radius: 20px; overflow: hidden;
+  position: relative;
+  min-height: 300px;
+  background: linear-gradient(145deg, #faf3e8 0%, #f0e4d2 50%, #eadcc8 100%);
+  box-shadow: 0 4px 20px rgba(180,140,60,0.06);
+}
+.hw-img {
+  position: absolute; right: -18px; top: -12px;
+  width: 73%; height: 116%;
+  object-fit: contain; z-index: 1;
+}
+.hw-body {
+  position: relative; z-index: 3;
+  padding: 20px 20px; max-width: 54%;
+}
+.rec-badge-w {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(180,140,60,0.08);
+  padding: 4px 11px; border-radius: 12px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px; color: #8a6914;
+  margin-bottom: 8px;
+}
+.hero-whisky h2 {
+  font-family: 'Sawarabi Mincho', serif;
+  font-size: 33px; font-weight: 400;
+  color: #2a1a08; line-height: 1.1;
+  letter-spacing: 3px;
+}
+.bubble-abs-br {
+  position: absolute; bottom: 18px; right: 14px; z-index: 4;
+  background: #fff;
+  border-radius: 12px 14px 12px 4px;
+  padding: 7px 11px;
+  font-family: 'Hi Melody', cursive;
+  font-size: 10.5px; color: #6a5a48;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transform: rotate(3.5deg); max-width: 100px; line-height: 1.6;
+}
+/* 快捷筛选 */
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; padding: 16px 22px 0; }
+.fcard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+  border: 1px solid #f5f0e6;
+  display: flex; align-items: center; gap: 10px;
+}
+.fcard img { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.fc-text h4 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 12.5px; font-weight: 500; color: #3a2a1a; }
+.fc-text p { font-family: 'Zen Maru Gothic', sans-serif; font-size: 10.5px; color: #bbb; margin-top: 2px; }
+.fc-arrow { margin-left: auto; color: #d0c8b6; font-size: 14px; }
+/* 列表 */
+.list-area { padding: 16px 22px 24px; }
+.list-header { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+.list-header h3 { font-family: 'Sawarabi Mincho', serif; font-size: 18px; font-weight: 400; color: #3a2a1a; }
+.list-refresh { margin-left: auto; font-family: 'Zen Maru Gothic', sans-serif; font-size: 11.5px; color: #b8a890; }
+.li-row {
+  display: flex; gap: 12px;
+  padding: 11px; background: #fff;
+  border-radius: 12px; margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+  border: 1px solid #f5f0e6; align-items: center;
+}
+.li-row img { width: 64px; height: 64px; border-radius: 10px; object-fit: cover; flex-shrink: 0; }
+.li-info { flex: 1; }
+.li-info h4 { font-family: 'Zen Maru Gothic', sans-serif; font-size: 13px; font-weight: 500; color: #2a1a08; margin-bottom: 1px; }
+.li-en { font-family: 'Noto Serif JP', serif; font-size: 11.5px; color: #9a8a78; font-style: italic; }
+.li-tags { display: flex; gap: 4px; margin-top: 6px; }
+.li-tags span {
+  font-size: 10px; padding: 2px 8px; border-radius: 9px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+.li-desc { font-family: 'Zen Maru Gothic', sans-serif; font-size: 11.5px; color: #bbb; margin-top: 4px; }
+.li-arr { color: #d0c8b6; font-size: 17px; flex-shrink: 0; }
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+</style>
+</head>
+<body>
+
+<div class="nav" id="nav">
+  <button onclick="show('all')" class="active">全部</button>
+  <button onclick="show('l1')">① 启动页</button>
+  <button onclick="show('l2')">② 首页</button>
+  <button onclick="show('l31')">③ 金酒结果</button>
+  <button onclick="show('l32')">④ 便利店</button>
+  <button onclick="show('l33')">⑤ 威士忌</button>
+</div>
+
+<div class="phone-grid" id="grid">
+
+<!-- ==================== L1 启动页 ==================== -->
+<div class="pw" data-p="l1">
+<div class="phone-frame">
+<div class="phone-screen layer1">
+<div class="screen-inner">
+<img class="l1-scene" src="assets/scenes/scene-splash.png" alt="">
+<div class="l1-overlay">
+<h1 class="l1-h1">今夜，<br>先来一杯</h1>
+<p class="l1-sub">微醺一下，生活就慢了下来。🍋</p>
+</div>
+
+<div class="l1-receipt-wrap">
+<div class="receipt">
+<h5>便利店小票</h5>
+<div class="r-row"><span>金汤力</span><span>¥3.00</span></div>
+<div class="r-row"><span>苏打水</span><span>¥2.00</span></div>
+<div class="r-row"><span>冰块</span><span>¥18.80</span></div>
+<div class="r-row r-total"><span>总计</span><span>¥35.30</span></div>
+</div>
+</div>
+
+<div class="l1-bubble-wrap">
+<div style="position:relative;">
+<div class="bubble">冰块＋气泡<br>青柠＋微醺<br>闷闷好♡</div>
+</div>
+</div>
+
+<div class="l1-cta">
+<button class="cta-btn cta-main">开始今晚第一杯 →</button>
+</div>
+
+<div class="l1-brand"><span>🍸</span> 调酒助手 / 让好喝，触手可得</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page-label">Layer 1 · 启动页</div>
+</div>
+
+
+<!-- ==================== L2 首页 ==================== -->
+<div class="pw" data-p="l2">
+<div class="phone-frame">
+<div class="phone-screen layer2">
+<div class="l2-head">
+<img class="l2-head-deco" src="assets/scenes/scene-header.png" alt="">
+<div class="l2-logo-row">
+<span class="l2-logo-text">调酒助手</span>
+<span class="l2-slogan">今晚·先来一杯 🍋</span>
+</div>
+<div class="l2-search">
+<span style="font-size:17px;color:#bbb;">🔍</span>
+<input type="text" placeholder="搜金汤力 / 金酒兑什么 / 便利店调酒" readonly>
+<button class="l2-go-btn">搜索</button>
+</div>
+</div>
+
+<div class="sec-label">🔥 热门搜索　　<a style="font-size:11px;color:#ccc;text-decoration:none;">换一换 ↻</a></div>
+<div class="tag-scroll">
+<span class="t-tag">金汤力</span>
+<span class="t-tag">莫吉托</span>
+<span class="t-tag">百利甜</span>
+<span class="t-tag">威士忌可乐</span>
+<span class="t-tag">便利店调酒</span>
+</div>
+
+<div class="sec-label" style="margin-top:14px;">🕐 最近搜索　<a style="font-size:11px;color:#ccc;text-decoration:none;">清空</a></div>
+<div class="recent-row">
+<div class="chip"><img src="assets/layer3/deco-gin-lime.png" alt=""> 金酒兑什么 ×</div>
+<div class="chip"><img src="assets/layer3/hero-whisky-highball.png" alt=""> 威士忌可乐 ×</div>
+<div class="chip"><img src="assets/layer3/hero-mojito.png" alt=""> 百利甜怎么喝 ×</div>
+</div>
+
+<!-- 三大入口 -->
+<div class="entry-card">
+<img class="ec-img" src="assets/scenes/scene-pantry.png" alt="">
+<div class="ec-mask"></div>
+<div class="ec-body">
+<h3>家里有什么</h3>
+<p>勾选材料<br>直接出清单</p>
+<button class="cta-btn cta-soft">去选择 ›</button>
+</div>
+<div class="ec-arrow">→</div>
+</div>
+
+<div class="entry-card">
+<img class="ec-img" src="assets/scenes/scene-fridge.png" alt="">
+<div class="ec-mask"></div>
+<div class="ec-body">
+<h3>便利店调酒</h3>
+<p>现在能买<br>现在就能调</p>
+<button class="cta-btn cta-soft" style="background:#e8f4f8;color:#5a8a98;border:none;box-shadow:none;">去逛逛 ›</button>
+</div>
+<div class="ec-arrow">→</div>
+</div>
+
+<div class="entry-card">
+<img class="ec-img" src="assets/scenes/scene-base-spirits.png" alt="">
+<div class="ec-mask"></div>
+<div class="ec-body">
+<h3>按基酒找</h3>
+<p>你手上的酒<br>还能怎么喝</p>
+<button class="cta-btn cta-soft" style="background:#f8f0e4;color:#a07850;border:none;box-shadow:none;">去看看 ›</button>
+</div>
+<div class="ec-arrow">→</div>
+</div>
+
+<!-- 今日热配 -->
+<div class="today-section">
+<div class="today-header">
+<h3>🌙 今日热门配方</h3>
+<span class="today-more">全部配方 ›</span>
+</div>
+<div class="today-scroll">
+<div class="tc-card">
+<img src="assets/layer3/hero-gin-tonic.png" alt="">
+<h4>金汤力</h4>
+<div class="tc-tags"><span class="tc-tag" style="background:#e3f2ed;color:#4a7a72;">清爽</span><span class="tc-tag" style="background:#e3f2ed;color:#4a7a72;">经典</span></div>
+</div>
+<div class="tc-card">
+<img src="assets/layer3/conv-can-drink.png" alt="">
+<h4>便利店特调</h4>
+<div class="tc-tags"><span class="tc-tag" style="background:#eef4f7;color:#5a8a98;">快手</span><span class="tc-tag" style="background:#eef4f7;color:#5a8a98;">简单</span></div>
+</div>
+<div class="tc-card">
+<img src="assets/layer3/hero-whisky-highball.png" alt="">
+<h4>威士忌海波</h4>
+<div class="tc-tags"><span class="tc-tag" style="background:#f8f0e4;color:#a07850;">经典</span><span class="tc-tag" style="background:#f8f0e4;color:#a07850;">畅饮</span></div>
+</div>
+<div class="tc-card">
+<img src="assets/layer3/hero-mojito.png" alt="">
+<h4>莫吉托</h4>
+<div class="tc-tags"><span class="tc-tag" style="background:#e3f2ed;color:#4a7a72;">薄荷</span><span class="tc-tag" style="background:#e3f2ed;color:#4a7a72;">清新</span></div>
+</div>
+</div>
+</div>
+</div><!-- screen -->
+</div>
+</div>
+<div class="page-label">Layer 2 · 搜索首页</div>
+</div>
+
+
+<!-- ==================== L3-1 金酒结果 ==================== -->
+<div class="pw" data-p="l31">
+<div class="phone-frame">
+<div class="phone-screen layer3-1">
+<div class="nav-bar">
+<span class="nb-back">←</span>
+<span class="nb-title">金酒兑什么</span>
+<span class="nb-icon">☆</span>
+</div>
+
+<div class="result-hint">为你找到 <b>28</b> 种喝法</div>
+
+<div class="sub-search">
+<span style="font-size:14px;color:#bbb;">🔍</span>
+<input type="text" placeholder="关键词：金酒 搭配推荐" readonly>
+</div>
+
+<div class="hero-card">
+<img class="hero-img" src="assets/scenes/scene-gin-hero.png" alt="">
+<div class="hero-body">
+<div class="star-badge">⭐ 金酒第一杯推荐</div>
+<h2>金汤力</h2>
+<span class="en-name">Gin Tonic</span>
+<div class="hero-tags">
+<span class="tag tag-cyan">清爽</span>
+<span class="tag tag-cyan">微苦</span>
+<span class="tag tag-cyan">气泡感</span>
+<span class="tag tag-cyan">新手友好</span>
+</div>
+<div class="hero-quote">“想要清爽、不太甜，<br>先从这杯开始。”</div>
+<button class="cta-btn cta-main">查看配方 →</button>
+</div>
+<div class="hero-stamp">Tonight's Choice</div>
+</div>
+
+<div class="ext-section">
+<div class="ext-header"><h3>更多推荐</h3><span class="ext-more">根据你的搜索扩展 ↗</span></div>
+<div class="ext-grid">
+<div class="ext-card">
+<img src="assets/scenes/card-sweeter.png" alt="">
+<div class="ext-info"><h4>更甜一点</h4><p>更好入口的口感款</p><div class="ext-arrow">→</div></div>
+</div>
+<div class="ext-card">
+<img src="assets/scenes/card-convenience.png" alt="">
+<div class="ext-info"><h4>便利店可做</h4><p>现在就能买到材料</p><div class="ext-arrow">→</div></div>
+</div>
+<div class="ext-card">
+<img src="assets/scenes/card-lighter.png" alt="">
+<div class="ext-info"><h4>更低酒感</h4><p>微醺刚刚好</p><div class="ext-arrow">→</div></div>
+</div>
+<div class="ext-card">
+<img src="assets/layer3/ext-gin-variations.png" onerror="this.parentElement.style.visibility='hidden'" alt="">
+<div class="ext-info"><h4>完整酒单</h4><p>全部金酒搭配</p><div class="ext-arrow">→</div></div>
+</div>
+</div>
+</div>
+
+<div class="bottom-chips">
+<div class="sec-label">大家也在搜　<span style="font-size:11px;font-family:'Zen Maru Gothic';color:#7eb8bc;background:#e3f2ed;padding:2px 8px;border-radius:10px;margin-left:4px;">热门</span></div>
+<div class="recent-row">
+<div class="chip"><img src="assets/layer3/deco-gin-lime.png" alt=""> 金酒兑雪碧 ○</div>
+<div class="chip"><img src="assets/layer3/hero-gin-tonic.png" alt=""> 金酒兑果汁 ○</div>
+<div class="chip"><img src="assets/layer3/deco-gin-lime.png" alt=""> 金酒加柠檬 ○</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page-label">Layer 3-1 · 金酒搜索结果</div>
+</div>
+
+
+<!-- ==================== L3-2 便利店 ==================== -->
+<div class="pw" data-p="l32">
+<div class="phone-frame">
+<div class="phone-screen layer3-2">
+<img class="bg-fade" src="assets/scenes/scene-fridge.png" alt="">
+<div class="nav-bar" style="position:relative;z-index:2;">
+<span class="nb-back" style="color:#4a5a64;">←</span>
+<span class="nb-title" style="color:#2a3a44;">便利店调酒</span>
+<span class="nb-icon" style="color:#6a7a84;">···</span>
+</div>
+
+<div class="filter-bar">
+<div class="filter-note">📍 你现在在哪？<select><option>便利店</option><option>超市</option></select></div>
+<div class="filter-note" style="transform:rotate(1deg);">🌙 想要什么感觉？<select><option>清爽微醺</option><option>甜甜的</option><option>够劲儿</option></select></div>
+</div>
+
+<div class="bubble-abs-r">现在就能买<br>现在就能调 ♡</div>
+
+<div class="hero-conv">
+<img class="hero-conv-img" src="assets/scenes/scene-conv-hero.png" alt="">
+<div class="hero-conv-body">
+<div class="badge-pill">推荐方案</div>
+<h2>便利店<br><span>清爽微醺方案</span></h2>
+<div class="hero-tags">
+<span class="tag tag-blue">冰块</span><span class="tag tag-blue">低门槛</span>
+<span class="tag tag-blue">现在能买</span><span class="tag tag-blue">新手友好</span>
+</div>
+<p style="font-family:'Zen Maru Gothic';font-size:12.5px;color:#5a6860;line-height:1.7;margin:10px 0 14px;">
+清爽不甜腻，气感十足，<br>适合下班后放松一下。</p>
+<button class="cta-btn cta-main">查看购买清单 →</button>
+</div>
+<div class="price-sticker">预计价格<br><strong style="font-size:14px;">¥16~22</strong></div>
+</div>
+
+<div class="conv-ext">
+<div class="ext-header"><h3>更多方案</h3><span class="ext-more">左右滑动查看更多 ›</span></div>
+<div class="conv-grid">
+<div class="conv-card"><img src="assets/scenes/card-sweeter.png" alt=""><div class="ci"><h4 style="color:#b06050;">更甜一点</h4><p>果香酸甜，适女生</p></div></div>
+<div class="conv-card"><img src="assets/scenes/card-convenience.png" alt=""><div class="ci"><h4 style="color:#5a9a60;">茶感清爽</h4><p>清爽解腻，低负担</p></div></div>
+<div class="conv-card"><img src="assets/layer3/list-whisky-coke.png" onerror="this.src='assets/scenes/card-convenience.png'" alt=""><div class="ci"><h4 style="color:#8a5040;">咖啡微醺</h4><p>熬夜回甘，提神首选</p></div></div>
+<div class="conv-card"><img src="assets/scenes/card-lighter.png" alt=""><div class="ci"><h4 style="color:#508090;">无酒精清爽</h4><p>气泡清爽，零负担</p></div></div>
+</div>
+</div>
+
+<div class="points-area">
+<div class="ext-header"><h3>为什么推荐这杯？</h3></div>
+<div class="pgrid">
+<div class="pitem"><div class="picon">🛒</div><h5>便利店可买齐</h5><p>常见商品，易购齐</p></div>
+<div class="pitem"><div class="picon">⏱</div><h5>3分钟搞定</h5><p>简单调制，零压力</p></div>
+<div class="pitem"><div class="picon">💨</div><h5>清爽低负担</h5><p>气泡清爽，不腻口</p></div>
+<div class="pitem"><div class="picon">😊</div><h5>新手上路</h5><p>比例友好，易成功</p></div>
+</div>
+<div class="tip-note">💡 <strong style="font-family:'Zen Maru Gothic';font-weight:500;">小提示</strong><br>冰块越多越清爽！摇匀后加冰更爽口～</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page-label">Layer 3-2 · 便利店调酒</div>
+</div>
+
+
+<!-- ==================== L3-3 威士忌 ==================== -->
+<div class="pw" data-p="l33">
+<div class="phone-frame">
+<div class="phone-screen layer3-3">
+<div class="nav-bar">
+<span class="nb-back" style="color:#8a7a68;">←</span>
+<span class="nb-title" style="color:#4a3a28;">威士忌兑什么</span>
+<span class="nb-icon" style="color:#b0a088;">☆</span>
+<span class="nb-icon" style="margin-left:auto;">···</span>
+</div>
+
+<div class="tab-row">
+<span class="tab-item active">威士忌可乐</span>
+<span class="tab-item">威士忌加好喝</span>
+<span class="tab-item">威士忌怎么调</span>
+<span class="tab-item">杰克丹尼怎么喝</span>
+</div>
+
+<div class="hero-whisky">
+<img class="hw-img" src="assets/scenes/scene-whisky-hero.png" alt="">
+<div class="hw-body">
+<div class="rec-badge-w">★ 威士忌第一杯推荐</div>
+<h2>威士忌可乐</h2>
+<span class="en-name" style="color:#9a7a4a;">Whisky Cola</span>
+<div class="hero-tags">
+<span class="tag tag-amber">经典</span>
+<span class="tag tag-amber">气泡感</span>
+<span class="tag tag-amber">懒人</span>
+<span class="tag tag-amber">低门槛</span>
+</div>
+<p style="font-family:'Zen Maru Gothic';font-size:13px;color:#6a5a48;line-height:1.7;margin:10px 0 14px;">
+经典不踩雷，入口顺滑，<br>最容易上手的威士忌喝法。</p>
+<button class="cta-btn cta-main" style="background:linear-gradient(135deg,#c9a84c,#a88a30);box-shadow:0 3px 14px rgba(168,138,48,0.25);">查看配方 →</button>
+</div>
+<div class="bubble-abs-br">可乐的甜<br>让威士忌更顺口</div>
+</div>
+
+<div class="fgrid">
+<div class="fcard">
+<img src="assets/scenes/card-whisky-refresh.png" alt="">
+<div class="fc-text"><h4>更清爽</h4><p>少甜更清爽的喝法</p></div>
+<span class="fc-arrow">→</span>
+</div>
+<div class="fcard">
+<img src="assets/layer3/list-whisky-coke.png" onerror="this.src='assets/scenes/card-convenience.png'" alt="">
+<div class="fc-text"><h4>便利店可做</h4><p>现在就能买到</p></div>
+<span class="fc-arrow">→</span>
+</div>
+<div class="fcard">
+<img src="assets/scenes/card-lighter.png" alt="">
+<div class="fc-text"><h4>更低酒感</h4><p>轻松微醺不上头</p></div>
+<span class="fc-arrow">→</span>
+</div>
+<div class="fcard">
+<img src="assets/layer3/list-whisky-ginger.png" onerror="this.src='assets/scenes/scene-base-spirits.png'" alt="">
+<div class="fc-text"><h4>完整酒单</h4><p>更多威士忌喝法</p></div>
+<span class="fc-arrow">→</span>
+</div>
+</div>
+
+<div class="list-area">
+<div class="list-header"><h3>🥃 更多威士忌好喝搭配</h3><span class="list-refresh">换一换 ⟳</span></div>
+
+<div class="li-row">
+<img src="assets/layer3/hero-whisky-highball.png" alt="">
+<div class="li-info">
+<h4>威士忌苏打 Highball</h4>
+<div class="li-en">Highball</div>
+<div class="li-tags">
+<span style="background:#f5eedc;color:#8b6914;">清爽</span>
+<span style="background:#f5eedc;color:#8b6914;">气泡感</span>
+<span style="background:#f5eedc;color:#8b6914;">日常喝</span>
+</div>
+<div class="li-desc">最简单的威士忌喝法，干净清爽。</div>
+</div>
+<span class="li-arr">→</span>
+</div>
+
+<div class="li-row">
+<img src="assets/scenes/card-whisky-refresh.png" alt="">
+<div class="li-info">
+<h4>威士忌姜汁 Ginger Ale</h4>
+<div class="li-en">Ginger Ale</div>
+<div class="li-tags">
+<span style="background:#fdf0e0;color:#a05200;">微甜</span>
+<span style="background:#fdf0e0;color:#a05200;">辛香</span>
+<span style="background:#fdf0e0;color:#a05200;">温和</span>
+</div>
+<div class="li-desc">姜香温暖，口感更柔和顺口。</div>
+</div>
+<span class="li-arr">→</span>
+</div>
+
+<div class="li-row">
+<img src="assets/layer3/deco-gin-lime.png" onerror="this.style.display='none'" alt="">
+<div class="li-info">
+<h4>威士忌柠檬 Whisky Lemon</h4>
+<div class="li-en">Whisky Lemon</div>
+<div class="li-tags">
+<span style="background:#f0f6e8;color:#4a7a42;">酸甜</span>
+<span style="background:##f0f6e8;color:#4a7a42;">清新</span>
+<span style="background:##f0f6e8;color:#4a7a42;">开胃</span>
+</div>
+<div class="li-desc">柠檬的酸甜让威士忌更清爽。</div>
+</div>
+<span class="li-arr">→</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="page-label">Layer 3-3 · 威士忌详情</div>
+</div>
+
+</div><!-- end grid -->
+
+<script>
+function show(p) {
+  document.querySelectorAll('.pw').forEach(el => el.style.display = el.dataset.p === p || p === 'all' ? '' : 'none');
+  document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[onclick*="${p}"`])?.classList.add('active');
+}
+</script>
+</body>
+</html>
