@@ -1,0 +1,9 @@
+{
+  "name": "cocktail-helper-miniprogram",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static GitHub Pages preview for the cocktail helper miniprogram.",
+  "scripts": {
+    "build": "node scripts/build-pages.js"
+  }
+}

@@ -1,4 +1,5 @@
 ﻿[
+    ".github/workflows/deploy.yml",
     ".gitignore",
     "app.js",
     "app.json",
@@ -352,6 +353,8 @@
     "IMPORT_MANIFEST.md",
     "P0_INTEGRATION_REPORT.md",
     "P1_INTEGRATION_REPORT.md",
+    "package.json",
+    "package-lock.json",
     "pages/base-detail/base-detail.js",
     "pages/base-detail/base-detail.json",
     "pages/base-detail/base-detail.wxml",
@@ -412,6 +415,7 @@
     "project.config.json",
     "PROJECT_OVERVIEW.md",
     "README.md",
+    "scripts/build-pages.js",
     "scripts/export-cloud-data.js",
     "scripts/generate-illustrations.py",
     "scripts/upload-to-github.ps1",
