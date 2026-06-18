@@ -1,6 +1,7 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
+const share = require('../../utils/share')
 
 let pageContent = data
 
@@ -21,6 +22,7 @@ Page({
   },
 
   onLoad() {
+    share.enableShareMenu()
     contentStore.getContent().then((content) => {
       pageContent = content
       this.setData({
@@ -141,5 +143,20 @@ Page({
   nameById(id) {
     const item = ((pageContent.recipes || []).concat(pageContent.schemes || [])).find((recipe) => recipe.id === id)
     return item ? item.name : ''
+  },
+
+  onShareAppMessage() {
+    return share.appMessage({
+      title: '搜酒名、材料和口味，马上找到能做的喝法',
+      path: '/pages/search/search',
+      imageUrl: '/assets/layer2/header-cocktail.png'
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline({
+      title: '搜酒名、材料和口味，马上找到能做的喝法',
+      imageUrl: '/assets/layer2/header-cocktail.png'
+    })
   }
 })

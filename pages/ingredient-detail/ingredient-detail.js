@@ -2,6 +2,7 @@ const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
 const drinkView = require('../../utils/drinkView')
+const share = require('../../utils/share')
 
 const lowAlcoholLabels = {
   'cola-lemon-zero': '可乐 + 柠檬 + 冰块',
@@ -23,6 +24,7 @@ Page({
   },
 
   onLoad(options) {
+    share.enableShareMenu()
     contentStore.getContent().then(() => this.loadIngredient(options))
   },
 
@@ -40,5 +42,28 @@ Page({
   onDetailTap(event) {
     const id = event.currentTarget.dataset.id
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  },
+
+  shareOptions() {
+    const ingredient = this.data.ingredient || {}
+    return {
+      title: ingredient.name ? `${ingredient.name}能调什么｜调酒助手` : '按材料找调酒｜调酒助手',
+      query: { id: ingredient.id },
+      imageUrl: ingredient.illustration || '/assets/layer2/header-cocktail.png'
+    }
+  },
+
+  onShareAppMessage() {
+    const options = this.shareOptions()
+    return share.appMessage({
+      title: options.title,
+      path: '/pages/ingredient-detail/ingredient-detail',
+      query: options.query,
+      imageUrl: options.imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
   }
 })

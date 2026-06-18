@@ -1,0 +1,41 @@
+<view wx:if="{{pick}}" class="page random-page">
+  <view class="random-hero">
+    <image class="random-bg" src="{{pick.detail.illustration}}" mode="aspectFill" />
+    <view class="random-wash"></view>
+
+    <view class="random-topline">
+      <text class="random-date">{{pick.date}}</text>
+      <text class="random-kicker">随机来一杯</text>
+    </view>
+
+    <view class="random-card">
+      <view class="card-label">{{pick.title}}</view>
+      <view class="card-name">{{pick.detail.name}}</view>
+      <view class="card-en">{{pick.detail.entryLine}}</view>
+      <view class="card-sentence">{{pick.sentence}}</view>
+    </view>
+  </view>
+
+  <view class="random-body">
+    <view class="drink-stage">
+      <image class="drink-image" src="{{pick.detail.illustration}}" mode="aspectFit" />
+      <view class="drink-glow"></view>
+    </view>
+
+    <view class="oracle-copy">
+      <view class="oracle-title">今天的风味预告</view>
+      <view class="oracle-desc">{{pick.hint}}</view>
+      <view class="oracle-tags">
+        <text wx:for="{{pick.tags}}" wx:key="*this" class="oracle-tag">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="action-row">
+      <button class="primary-action" bindtap="onDetailTap">查看这杯配方</button>
+      <button wx:if="{{fromShare}}" class="ghost-action" bindtap="onDrawMine">抽我的一杯</button>
+      <button wx:else class="ghost-action" open-type="share">分享这杯</button>
+    </view>
+
+    <view class="tomorrow-note">明天再来，会换一杯。</view>
+  </view>
+</view>

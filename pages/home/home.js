@@ -1,6 +1,8 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
+const share = require('../../utils/share')
+const randomDrink = require('../../utils/randomDrink')
 
 Page({
   data: {
@@ -21,6 +23,7 @@ Page({
       { id: 'cuba-libre', name: '自由古巴', image: illustrations.drinkPath('cuba-libre', 'card'), demand: '想喝可乐朗姆', reason: '朗姆、可乐和青柠，经典、直接，也适合朋友局。', tags: ['经典', '可乐', '聚会'] },
       { id: 'white-russian', name: '白俄罗斯', image: illustrations.drinkPath('white-russian', 'card'), demand: '想喝咖啡奶感', reason: '咖啡棕和奶油白融合，适合夜晚放松。', tags: ['咖啡感', '奶香', '顺滑'] }
     ],
+    randomPreview: [],
     firstRecipe: {
       id: 'gin-tonic',
       name: '金汤力',
@@ -58,11 +61,13 @@ Page({
   },
 
   onLoad() {
+    share.enableShareMenu()
     contentStore.getContent().then((content) => {
       const hotKeywords = (content.hotKeywords || []).slice(0, 8)
       this.setData({
         hotKeywords: ['金酒兑什么', '威士忌酸', '白俄罗斯', '可乐桶', '帕洛玛'].concat(hotKeywords).slice(0, 8),
-        recentSearches: wx.getStorageSync('recentSearches') || []
+        recentSearches: wx.getStorageSync('recentSearches') || [],
+        randomPreview: randomDrink.previewItems()
       })
     })
   },
@@ -136,5 +141,24 @@ Page({
     }
 
     wx.navigateTo({ url: path })
+  },
+
+  onRandomDrinkTap() {
+    wx.navigateTo({ url: '/pages/random-drink/random-drink' })
+  },
+
+  onShareAppMessage() {
+    return share.appMessage({
+      title: '今晚想喝什么，调酒助手帮你配',
+      path: '/pages/home/home',
+      imageUrl: '/assets/layer1/splash-hero.png'
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline({
+      title: '今晚想喝什么，调酒助手帮你配',
+      imageUrl: '/assets/layer1/splash-hero.png'
+    })
   }
 })

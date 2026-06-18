@@ -1,6 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const share = require('../../utils/share')
 
 Page({
   data: {
@@ -14,6 +15,7 @@ Page({
   },
 
   onLoad() {
+    share.enableShareMenu()
     contentStore.getContent().then(() => {
       this.refresh()
     })
@@ -44,5 +46,24 @@ Page({
   onDetailTap(event) {
     const id = event.currentTarget.dataset.id
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  },
+
+  shareOptions() {
+    return {
+      title: `新手调酒：${this.data.flavor}、${this.data.level}、${this.data.buy}可做`,
+      imageUrl: '/assets/layer2/header-cocktail.png'
+    }
+  },
+
+  onShareAppMessage() {
+    return share.appMessage({
+      title: this.shareOptions().title,
+      path: '/pages/beginner/beginner',
+      imageUrl: this.shareOptions().imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
   }
 })

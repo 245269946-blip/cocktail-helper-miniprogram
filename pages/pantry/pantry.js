@@ -2,6 +2,7 @@ const data = require('../../utils/data')
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const share = require('../../utils/share')
 
 Page({
   data: {
@@ -16,6 +17,7 @@ Page({
   },
 
   onLoad() {
+    share.enableShareMenu()
     contentStore.getContent().then((content) => {
       this.setData({
         rawGroups: content.pantryGroups,
@@ -114,5 +116,25 @@ Page({
   onDetailTap(event) {
     const id = event.currentTarget.dataset.id
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
+  },
+
+  shareOptions() {
+    const selectedText = (this.data.selected || []).slice(0, 3).join('、')
+    return {
+      title: selectedText ? `家里有${selectedText}，能调什么？` : '选家里现有材料，看看今晚能调什么',
+      imageUrl: '/assets/layer2/card-pantry.png'
+    }
+  },
+
+  onShareAppMessage() {
+    return share.appMessage({
+      title: this.shareOptions().title,
+      path: '/pages/pantry/pantry',
+      imageUrl: this.shareOptions().imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
   }
 })

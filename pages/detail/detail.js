@@ -3,6 +3,7 @@ const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
 const visualSystem = require('../../utils/visualSystem')
 const drinkProcess = require('../../utils/drinkProcess')
+const share = require('../../utils/share')
 
 function actionPreviewSteps(detail) {
   const steps = (detail.steps || []).slice(0, 3)
@@ -43,6 +44,7 @@ Page({
   },
 
   onLoad(options) {
+    share.enableShareMenu()
     contentStore.getContent().then(() => this.loadDetail(options))
   },
 
@@ -116,5 +118,28 @@ Page({
     wx.navigateTo({
       url: `/pages/results/results?mode=search&value=${encodeURIComponent(value)}&title=${encodeURIComponent(title)}`
     })
+  },
+
+  shareOptions() {
+    const detail = this.data.detail || {}
+    return {
+      title: detail.name ? `${detail.name}怎么调｜调酒助手` : '今晚这杯配方｜调酒助手',
+      query: { id: detail.id },
+      imageUrl: detail.thumbnail || detail.illustration || share.DEFAULT_IMAGE
+    }
+  },
+
+  onShareAppMessage() {
+    const options = this.shareOptions()
+    return share.appMessage({
+      title: options.title,
+      path: '/pages/detail/detail',
+      query: options.query,
+      imageUrl: options.imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
   }
 })

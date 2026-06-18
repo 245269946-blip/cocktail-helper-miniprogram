@@ -1,0 +1,216 @@
+.random-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 82% 2%, rgba(246, 212, 107, 0.20) 0, rgba(246, 212, 107, 0) 260rpx),
+    linear-gradient(180deg, #fbf7ee 0%, #f7efe3 46%, #fbf7ee 100%);
+  overflow: hidden;
+}
+
+.random-hero {
+  position: relative;
+  min-height: 620rpx;
+  overflow: hidden;
+  border-bottom-left-radius: 52rpx;
+  border-bottom-right-radius: 52rpx;
+}
+
+.random-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.72;
+  transform: scale(1.08);
+  filter: saturate(1.04);
+}
+
+.random-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(34, 32, 26, 0.16) 0%, rgba(251, 247, 238, 0.22) 44%, rgba(251, 247, 238, 0.96) 100%),
+    linear-gradient(90deg, rgba(251, 247, 238, 0.92) 0%, rgba(251, 247, 238, 0.58) 52%, rgba(251, 247, 238, 0.12) 100%);
+}
+
+.random-topline {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 46rpx 34rpx 0;
+  color: #5d6a61;
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.random-kicker {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 252, 244, 0.72);
+  color: #2f8f7b;
+}
+
+.random-card {
+  position: relative;
+  z-index: 1;
+  margin: 128rpx 34rpx 0;
+  padding: 38rpx 34rpx 40rpx;
+  border-radius: 42rpx;
+  background: rgba(255, 252, 244, 0.78);
+  box-shadow:
+    0 16rpx 0 rgba(80, 70, 50, 0.035),
+    0 28rpx 70rpx rgba(80, 70, 50, 0.13),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(16rpx);
+}
+
+.card-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46rpx;
+  padding: 0 18rpx;
+  border-radius: 999rpx;
+  background: rgba(47, 143, 123, 0.12);
+  color: #2f7065;
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.card-name {
+  margin-top: 22rpx;
+  color: #201b16;
+  font-size: 68rpx;
+  line-height: 1.04;
+  font-weight: 900;
+}
+
+.card-en {
+  margin-top: 14rpx;
+  color: #59685f;
+  font-size: 25rpx;
+  line-height: 1.45;
+}
+
+.card-sentence {
+  margin-top: 34rpx;
+  color: #2f3932;
+  font-size: 32rpx;
+  line-height: 1.62;
+  font-weight: 600;
+}
+
+.random-body {
+  position: relative;
+  padding: 30rpx 30rpx 70rpx;
+}
+
+.drink-stage {
+  position: relative;
+  height: 360rpx;
+  margin-top: -28rpx;
+}
+
+.drink-image {
+  position: absolute;
+  left: 50%;
+  top: 8rpx;
+  z-index: 2;
+  width: 430rpx;
+  height: 340rpx;
+  transform: translateX(-50%);
+  animation: drink-float 3.8s ease-in-out infinite;
+}
+
+.drink-glow {
+  position: absolute;
+  left: 50%;
+  bottom: 18rpx;
+  width: 360rpx;
+  height: 88rpx;
+  border-radius: 999rpx;
+  background: rgba(47, 143, 123, 0.16);
+  filter: blur(16rpx);
+  transform: translateX(-50%);
+  animation: glow-breathe 3.8s ease-in-out infinite;
+}
+
+@keyframes drink-float {
+  0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
+  50% { transform: translateX(-50%) translateY(-14rpx) scale(1.025); }
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.46; transform: translateX(-50%) scale(0.96); }
+  50% { opacity: 0.76; transform: translateX(-50%) scale(1.08); }
+}
+
+.oracle-copy {
+  padding: 0 8rpx;
+}
+
+.oracle-title {
+  color: #2c241b;
+  font-size: 34rpx;
+  font-weight: 800;
+}
+
+.oracle-desc {
+  margin-top: 12rpx;
+  color: #637169;
+  font-size: 26rpx;
+  line-height: 1.52;
+}
+
+.oracle-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  margin-top: 20rpx;
+}
+
+.oracle-tag {
+  min-height: 42rpx;
+  padding: 0 16rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid rgba(47, 143, 123, 0.20);
+  background: rgba(255, 252, 244, 0.72);
+  color: #2f7065;
+  font-size: 22rpx;
+  line-height: 40rpx;
+}
+
+.action-row {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 34rpx;
+}
+
+.primary-action,
+.ghost-action {
+  flex: 1;
+  height: 86rpx;
+  margin: 0;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.primary-action {
+  background: linear-gradient(135deg, #39b5aa 0%, #2f8f7b 100%);
+  color: #fffdf7;
+  box-shadow: 0 12rpx 30rpx rgba(47, 143, 123, 0.18);
+}
+
+.ghost-action {
+  background: rgba(255, 252, 244, 0.72);
+  color: #2f7065;
+  border: 1rpx solid rgba(47, 143, 123, 0.18);
+}
+
+.tomorrow-note {
+  margin-top: 28rpx;
+  text-align: center;
+  color: #9aa59e;
+  font-size: 23rpx;
+}

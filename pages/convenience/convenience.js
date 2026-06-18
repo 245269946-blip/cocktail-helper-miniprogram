@@ -1,6 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const share = require('../../utils/share')
 
 const CONVENIENCE_DRINK_IDS = ['cv-gin-tonic', 'cv-cuba-libre', 'cv-vodka-soda', 'cv-screwdriver']
 
@@ -19,6 +20,7 @@ Page({
   },
 
   onLoad() {
+    share.enableShareMenu()
     contentStore.getContent().then(() => {
       this.refreshView()
     })
@@ -153,5 +155,25 @@ Page({
     wx.navigateTo({
       url: `/pages/results/results?mode=ids&value=${encodeURIComponent(this.data.mainPackage.ids.join(','))}&title=${encodeURIComponent(this.data.mainPackage.name)}`
     })
+  },
+
+  shareOptions() {
+    const moodText = (this.data.selectedMoods || []).join('、')
+    return {
+      title: `${this.data.place || '便利店'}微醺怎么配${moodText ? `：${moodText}` : ''}`,
+      imageUrl: '/assets/layer2/card-store.png'
+    }
+  },
+
+  onShareAppMessage() {
+    return share.appMessage({
+      title: this.shareOptions().title,
+      path: '/pages/convenience/convenience',
+      imageUrl: this.shareOptions().imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
   }
 })

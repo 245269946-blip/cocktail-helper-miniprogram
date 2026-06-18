@@ -1,6 +1,6 @@
 {
   "name": "cocktail-helper-miniprogram",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "private": true,
   "description": "Static GitHub Pages preview for the cocktail helper miniprogram.",
   "scripts": {

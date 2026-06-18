@@ -3,6 +3,7 @@ const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
 const illustrations = require('../../utils/illustrations')
 const visualSystem = require('../../utils/visualSystem')
+const share = require('../../utils/share')
 
 function uniqueItems(items) {
   const result = []
@@ -60,10 +61,14 @@ Page({
     extraResults: [],
     showAllResults: false,
     extensionSections: [],
-    results: []
+    results: [],
+    shareMode: 'tag',
+    shareValue: '',
+    shareTitle: '推荐结果'
   },
 
   onLoad(options) {
+    share.enableShareMenu()
     contentStore.getContent().then(() => this.loadResults(options))
   },
 
@@ -148,7 +153,10 @@ Page({
       extraResults,
       showAllResults: false,
       extensionSections,
-      results: resultCards
+      results: resultCards,
+      shareMode: mode,
+      shareValue: value,
+      shareTitle: title
     })
   },
 
@@ -279,16 +287,33 @@ Page({
   },
 
   onShare() {
-    wx.showShareMenu({
-      menus: ['shareAppMessage', 'shareTimeline']
-    })
+    share.enableShareMenu()
     wx.showToast({ title: '可从右上角菜单分享', icon: 'none' })
   },
 
   onShareAppMessage() {
+    const options = this.shareOptions()
+    return share.appMessage({
+      title: options.title,
+      path: '/pages/results/results',
+      query: options.query,
+      imageUrl: options.imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
+  },
+
+  shareOptions() {
     return {
-      title: this.data.title || '调酒助手',
-      path: `/pages/results/results?mode=search&value=${encodeURIComponent(this.data.searchKeyword || '')}&title=${encodeURIComponent(this.data.title || '推荐结果')}`
+      title: `${this.data.shareTitle || this.data.title || '推荐结果'}｜调酒助手`,
+      query: {
+        mode: this.data.shareMode || 'tag',
+        value: this.data.shareValue || this.data.searchKeyword || '',
+        title: this.data.shareTitle || this.data.title || '推荐结果'
+      },
+      imageUrl: this.data.decoImage || share.DEFAULT_IMAGE
     }
   },
 

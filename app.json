@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/random-drink/random-drink",
     "pages/search/search",
     "pages/base-list/base-list",
     "pages/base-detail/base-detail",

@@ -1,4 +1,6 @@
-const hotKeywords = ['气泡水能做什么', '咖啡怎么调好喝', '茶饮能调什么', '果汁能调什么', '可乐能调什么', '便利店饮品', '无酒精', '低酒感']
+const expandedRecipes = require('./expandedRecipes')
+
+const hotKeywords = ['气泡水能做什么', '咖啡怎么调好喝', '茶饮能调什么', '果汁能调什么', '可乐能调什么', '便利店饮品', '无酒精', '低酒感', '经典鸡尾酒']
 
 const quickEntries = [
   { title: '搜配方', desc: '明确想喝哪一杯', path: '/pages/search/search' },
@@ -52,14 +54,14 @@ const bases = [
     intro: '金酒最适合做清爽、气泡、柑橘感明显的酒，搭配汤力水、苏打水、柠檬茶都很容易成立。',
     recipes: {
       first: ['gin-tonic'],
-      classic: ['gin-tonic', 'tom-collins', 'negroni', 'dry-martini'],
-      beginner: ['gin-tonic', 'tom-collins'],
+      classic: ['gin-tonic', 'tom-collins', 'negroni', 'dry-martini', 'french-75', 'aviation', 'clover-club', 'bees-knees'],
+      beginner: ['gin-tonic', 'tom-collins', 'bees-knees'],
       convenience: ['gin-tonic', 'tom-collins'],
-      lowAlcohol: ['gin-tonic', 'tom-collins'],
-      sweet: ['tom-collins'],
-      fresh: ['gin-tonic', 'tom-collins'],
-      friendly: ['gin-tonic', 'tom-collins'],
-      advanced: ['negroni', 'dry-martini']
+      lowAlcohol: ['gin-tonic', 'tom-collins', 'french-75'],
+      sweet: ['tom-collins', 'bees-knees', 'clover-club'],
+      fresh: ['gin-tonic', 'tom-collins', 'french-75', 'bees-knees'],
+      friendly: ['gin-tonic', 'tom-collins', 'bees-knees'],
+      advanced: ['negroni', 'dry-martini', 'aviation', 'clover-club', 'french-75']
     }
   },
   {
@@ -70,14 +72,14 @@ const bases = [
     intro: '伏特加本身存在感低，适合和果汁、茶饮、咖啡、汽水组合，做新手第一杯很稳。',
     recipes: {
       first: ['vodka-orange'],
-      classic: ['vodka-orange', 'moscow-mule', 'sea-breeze'],
+      classic: ['vodka-orange', 'moscow-mule', 'sea-breeze', 'cosmopolitan'],
       beginner: ['vodka-orange', 'vodka-soda', 'sea-breeze'],
       convenience: ['vodka-orange', 'vodka-soda', 'sea-breeze'],
       lowAlcohol: ['vodka-orange', 'sea-breeze'],
       sweet: ['vodka-orange', 'sea-breeze'],
       fresh: ['vodka-soda', 'moscow-mule', 'sea-breeze'],
       friendly: ['vodka-orange', 'sea-breeze'],
-      advanced: ['espresso-martini']
+      advanced: ['espresso-martini', 'cosmopolitan']
     }
   },
   {
@@ -88,14 +90,14 @@ const bases = [
     intro: '威士忌适合和可乐、苏打水、乌龙茶、咖啡做长饮，想降低冲击感就加足冰和气泡。',
     recipes: {
       first: ['whisky-highball'],
-      classic: ['whisky-highball', 'whiskey-sour', 'whisky-cola'],
+      classic: ['whisky-highball', 'whiskey-sour', 'whisky-cola', 'old-fashioned', 'manhattan', 'boulevardier', 'sazerac', 'penicillin', 'paper-plane'],
       beginner: ['whisky-cola', 'whisky-oolong'],
       convenience: ['cola-bucket', 'whisky-cola', 'whisky-oolong'],
       lowAlcohol: ['whisky-oolong', 'whisky-highball'],
       sweet: ['cola-bucket', 'whisky-cola'],
-      fresh: ['whisky-highball', 'whiskey-sour'],
+      fresh: ['whisky-highball', 'whiskey-sour', 'paper-plane'],
       friendly: ['whisky-oolong'],
-      advanced: ['whiskey-sour', 'old-fashioned']
+      advanced: ['whiskey-sour', 'old-fashioned', 'manhattan', 'boulevardier', 'sazerac', 'penicillin', 'paper-plane']
     }
   },
   {
@@ -106,14 +108,14 @@ const bases = [
     intro: '朗姆适合做莫吉托、可乐桶和各种果汁长饮，香甜感明显，聚会接受度高。',
     recipes: {
       first: ['cuba-libre'],
-      classic: ['mojito', 'cuba-libre', 'daiquiri', 'caipirinha'],
+      classic: ['mojito', 'cuba-libre', 'daiquiri', 'caipirinha', 'mai-tai', 'jungle-bird', 'dark-n-stormy'],
       beginner: ['cuba-libre', 'mojito', 'caipirinha'],
       convenience: ['cuba-libre'],
       lowAlcohol: ['cuba-libre'],
-      sweet: ['cuba-libre'],
-      fresh: ['mojito', 'caipirinha', 'daiquiri'],
-      friendly: ['cuba-libre'],
-      advanced: ['daiquiri', 'caipirinha']
+      sweet: ['cuba-libre', 'mai-tai', 'jungle-bird'],
+      fresh: ['mojito', 'caipirinha', 'daiquiri', 'dark-n-stormy'],
+      friendly: ['cuba-libre', 'dark-n-stormy'],
+      advanced: ['daiquiri', 'caipirinha', 'mai-tai', 'jungle-bird']
     }
   },
   {
@@ -124,14 +126,32 @@ const bases = [
     intro: '龙舌兰适合和柑橘、盐、气泡、葡萄柚一起出现，做酸甜方向会比纯饮友好得多。',
     recipes: {
       first: ['paloma'],
-      classic: ['margarita', 'paloma', 'tequila-sunrise'],
+      classic: ['margarita', 'paloma', 'tequila-sunrise', 'tommys-margarita', 'naked-and-famous'],
       beginner: ['paloma', 'tequila-sunrise'],
       convenience: ['paloma', 'tequila-sunrise'],
       lowAlcohol: ['paloma'],
-      sweet: ['tequila-sunrise'],
-      fresh: ['paloma', 'tequila-sunrise'],
+      sweet: ['tequila-sunrise', 'naked-and-famous'],
+      fresh: ['paloma', 'tequila-sunrise', 'tommys-margarita'],
       friendly: ['paloma', 'tequila-sunrise'],
-      advanced: ['margarita']
+      advanced: ['margarita', 'tommys-margarita', 'naked-and-famous']
+    }
+  },
+  {
+    id: 'brandy',
+    name: '干邑/白兰地',
+    subtitle: '果干、橙香、温暖老派感',
+    tags: ['酒感', '柑橘', '经典', '进阶'],
+    intro: '干邑和白兰地适合做酸甜短饮，橙味利口酒和柠檬能把厚重酒体变得更利落。',
+    recipes: {
+      first: ['sidecar'],
+      classic: ['sidecar'],
+      beginner: ['sidecar'],
+      convenience: ['sidecar'],
+      lowAlcohol: [],
+      sweet: ['sidecar'],
+      fresh: ['sidecar'],
+      friendly: ['sidecar'],
+      advanced: ['sidecar']
     }
   },
   {
@@ -1703,34 +1723,55 @@ const searchAliases = {
   '伏特加苹果汁': 'vodka-orange',
   '伏特加葡萄柚': 'sea-breeze',
   '金酒柠檬茶': 'tom-collins', '金酒兑柠檬茶': 'tom-collins',
-  '百利甜咖啡': 'baileys-coffee', '百利甜兑咖啡': 'baileys-coffee'
+  '百利甜咖啡': 'baileys-coffee', '百利甜兑咖啡': 'baileys-coffee',
+  '飞行': 'aviation', '飞行鸡尾酒': 'aviation', 'aviation': 'aviation',
+  '蜂之膝': 'bees-knees', '蜂膝': 'bees-knees', '蜂蜜金酒酸': 'bees-knees', "bee's knees": 'bees-knees', 'bees knees': 'bees-knees',
+  '三叶草俱乐部': 'clover-club', '三叶草': 'clover-club', '覆盆子金酒酸': 'clover-club', 'clover club': 'clover-club',
+  '法式75': 'french-75', '法国75': 'french-75', '法兰西75': 'french-75', 'french 75': 'french-75',
+  '曼哈顿': 'manhattan', '曼哈顿鸡尾酒': 'manhattan', 'manhattan': 'manhattan',
+  '林荫大道': 'boulevardier', '布尔瓦迪耶': 'boulevardier', '威士忌内格罗尼': 'boulevardier', 'boulevardier': 'boulevardier',
+  '萨泽拉克': 'sazerac', '萨泽拉克鸡尾酒': 'sazerac', 'sazerac': 'sazerac',
+  '盘尼西林': 'penicillin', '青霉素鸡尾酒': 'penicillin', '姜蜜威士忌酸': 'penicillin', 'penicillin': 'penicillin',
+  '纸飞机': 'paper-plane', '纸飞机鸡尾酒': 'paper-plane', 'paper plane': 'paper-plane',
+  '迈泰': 'mai-tai', '麦泰': 'mai-tai', '美态': 'mai-tai', 'mai tai': 'mai-tai',
+  '丛林鸟': 'jungle-bird', '丛林鸟鸡尾酒': 'jungle-bird', 'jungle bird': 'jungle-bird',
+  '黑暗风暴': 'dark-n-stormy', '黑色风暴': 'dark-n-stormy', '黑朗姆姜啤': 'dark-n-stormy', 'dark n stormy': 'dark-n-stormy',
+  '汤米玛格丽特': 'tommys-margarita', '汤米马格丽特': 'tommys-margarita', "tommy's margarita": 'tommys-margarita',
+  '裸与成名': 'naked-and-famous', '裸露成名': 'naked-and-famous', 'naked and famous': 'naked-and-famous',
+  '大都会': 'cosmopolitan', '大都会鸡尾酒': 'cosmopolitan', 'cosmo': 'cosmopolitan', 'cosmopolitan': 'cosmopolitan',
+  '边车': 'sidecar', '边车鸡尾酒': 'sidecar', '干邑酸': 'sidecar', 'sidecar': 'sidecar'
 }
 
 const searchMappings = [
   {
     keywords: ['金酒兑什么', '金酒怎么喝', '金酒调什么', 'gin兑什么', '金酒搭配'],
-    recipeIds: ['gin-tonic', 'tom-collins', 'negroni', 'dry-martini'],
+    recipeIds: ['gin-tonic', 'tom-collins', 'negroni', 'dry-martini', 'bees-knees', 'french-75', 'aviation'],
     reason: '金酒优先从气泡、柠檬和茶饮方向开始。'
   },
   {
     keywords: ['威士忌怎么喝', '威士忌兑什么', '威士忌调什么', 'whisky怎么喝', '威士忌搭配'],
-    recipeIds: ['whisky-highball', 'whiskey-sour', 'cola-bucket', 'whisky-cola', 'whisky-oolong', 'old-fashioned'],
+    recipeIds: ['whisky-highball', 'whiskey-sour', 'cola-bucket', 'whisky-cola', 'whisky-oolong', 'old-fashioned', 'manhattan', 'penicillin'],
     reason: '威士忌先用苏打、可乐、乌龙茶降低冲击感。'
   },
   {
     keywords: ['伏特加怎么喝', '伏特加兑什么', '伏特加调什么', 'vodka怎么喝', '伏特加搭配'],
-    recipeIds: ['vodka-orange', 'vodka-soda', 'sea-breeze', 'white-russian', 'espresso-martini'],
+    recipeIds: ['vodka-orange', 'vodka-soda', 'sea-breeze', 'white-russian', 'espresso-martini', 'cosmopolitan'],
     reason: '伏特加百搭，果汁、茶饮和气泡水都稳。'
   },
   {
     keywords: ['朗姆怎么喝', '朗姆兑什么', '朗姆调什么', 'rum怎么喝', '朗姆搭配'],
-    recipeIds: ['cuba-libre', 'mojito', 'caipirinha', 'daiquiri'],
+    recipeIds: ['cuba-libre', 'mojito', 'caipirinha', 'daiquiri', 'mai-tai', 'jungle-bird', 'dark-n-stormy'],
     reason: '朗姆适合甜口、可乐、雪碧和薄荷柠檬。'
   },
   {
     keywords: ['龙舌兰怎么喝', '龙舌兰兑什么', '龙舌兰调什么', 'tequila怎么喝', '龙舌兰搭配'],
-    recipeIds: ['paloma', 'tequila-sunrise', 'margarita'],
+    recipeIds: ['paloma', 'tequila-sunrise', 'margarita', 'tommys-margarita', 'naked-and-famous'],
     reason: '龙舌兰先做酸甜长饮，比纯喝友好很多。'
+  },
+  {
+    keywords: ['白兰地怎么喝', '干邑怎么喝', '白兰地调什么', '干邑调什么', 'brandy怎么喝', 'cognac怎么喝'],
+    recipeIds: ['sidecar'],
+    reason: '干邑和白兰地先从边车这类酸甜短饮开始，更容易喝出橙香和酒体。'
   },
   {
     keywords: ['百利甜怎么喝', '百利甜兑什么', '百利甜调什么', '奶酒怎么喝', '百利甜搭配'],
@@ -1800,12 +1841,12 @@ const searchMappings = [
   // === 新增：场景意图词 ===
   {
     keywords: ['聚会喝什么', '聚会调酒', '朋友聚会', '聚会', 'party'],
-    recipeIds: ['cola-bucket', 'cuba-libre', 'tequila-sunrise', 'whisky-cola', 'jager-cola', 'fruit-wine-spritz', 'sangria-light'],
+    recipeIds: ['cola-bucket', 'cuba-libre', 'tequila-sunrise', 'whisky-cola', 'jager-cola', 'fruit-wine-spritz', 'sangria-light', 'cosmopolitan', 'french-75'],
     reason: '聚会优先选接受度高、能批量做的方案。'
   },
   {
     keywords: ['夏天喝什么', '夏天调酒', '夏天', '清爽夏夜', '夏日饮品'],
-    recipeIds: ['mojito', 'caipirinha', 'paloma', 'gin-tonic', 'umeshu-soda', 'fruit-wine-spritz'],
+    recipeIds: ['mojito', 'caipirinha', 'paloma', 'gin-tonic', 'umeshu-soda', 'fruit-wine-spritz', 'dark-n-stormy', 'bees-knees'],
     reason: '夏天优先清爽、气泡、果味和冰饮感方向。'
   },
   {
@@ -1815,7 +1856,7 @@ const searchMappings = [
   },
   {
     keywords: ['约会喝什么', '约会', '两个人喝什么', '浪漫'],
-    recipeIds: ['mimosa', 'aperol-spritz', 'umeshu-soda', 'fruit-wine-spritz'],
+    recipeIds: ['mimosa', 'aperol-spritz', 'umeshu-soda', 'fruit-wine-spritz', 'french-75', 'cosmopolitan', 'clover-club'],
     reason: '约会选好看、低压力、果味和气泡方向。'
   },
   {
@@ -1825,7 +1866,7 @@ const searchMappings = [
   },
   {
     keywords: ['女生喝什么', '女生调酒', '给女生推荐'],
-    recipeIds: ['baileys-milk', 'mimosa', 'umeshu-soda', 'fruit-wine-spritz', 'sea-breeze'],
+    recipeIds: ['baileys-milk', 'mimosa', 'umeshu-soda', 'fruit-wine-spritz', 'sea-breeze', 'cosmopolitan', 'clover-club'],
     reason: '优先甜口、果味、奶香、低酒感方向。'
   },
   {
@@ -1877,7 +1918,7 @@ const searchMappings = [
   },
   {
     keywords: ['酒感强', '想喝醉', '酒感明显', '高度数'],
-    recipeIds: ['old-fashioned', 'negroni', 'espresso-martini', 'margarita'],
+    recipeIds: ['old-fashioned', 'negroni', 'espresso-martini', 'margarita', 'manhattan', 'sazerac', 'boulevardier'],
     reason: '酒感强优先经典短饮和进阶款。'
   },
   {
@@ -1888,9 +1929,9 @@ const searchMappings = [
 ]
 
 const pantryGroups = [
-  { title: '基酒', items: ['金酒', '伏特加', '威士忌', '朗姆', '龙舌兰', '百利甜', '梅酒', '清酒', '野格', '果酒', '起泡酒'] },
-  { title: '饮料', items: ['可乐', '雪碧', '气泡水', '汤力水', '果汁', '橙汁', '葡萄柚汁', '苹果汁', '茶', '绿茶', '咖啡', '牛奶'] },
-  { title: '辅助', items: ['冰块', '柠檬', '青柠', '糖', '盐', '水果', '薄荷', '能量饮料'] }
+  { title: '基酒', items: ['金酒', '伏特加', '威士忌', '朗姆', '龙舌兰', '干邑', '白兰地', '百利甜', '梅酒', '清酒', '野格', '果酒', '起泡酒'] },
+  { title: '饮料', items: ['可乐', '雪碧', '气泡水', '汤力水', '姜汁汽水', '果汁', '橙汁', '菠萝汁', '葡萄柚汁', '蔓越莓汁', '苹果汁', '茶', '绿茶', '咖啡', '牛奶'] },
+  { title: '辅助', items: ['冰块', '柠檬', '青柠', '糖', '蜂蜜', '盐', '水果', '薄荷', '苦精', '金巴利', '甜味美思', '橙味利口酒', '能量饮料'] }
 ]
 
 module.exports = {
@@ -1904,7 +1945,7 @@ module.exports = {
   bases,
   ingredients,
   ingredientCategories,
-  recipes,
+  recipes: recipes.concat(expandedRecipes),
   schemes,
   pantryGroups
 }

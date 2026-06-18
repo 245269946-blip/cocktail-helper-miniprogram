@@ -39,6 +39,7 @@ const P2_BASE_POOL = {
   whisky: '/assets/p2/recipe-whiskey-highball-hero.png',
   rum: '/assets/p2/recipe-cuba-libre-hero.png',
   tequila: '/assets/p2/recipe-tequila-sunrise-hero.png',
+  brandy: '/assets/p2/recipe-sidecar-hero.png',
   baileys: '/assets/p2/recipe-white-russian-hero.png',
   jager: '/assets/p2/recipe-cola-bucket-hero.png',
   sake: '/assets/p2/recipe-vodka-soda-hero.png',
@@ -46,15 +47,15 @@ const P2_BASE_POOL = {
 }
 
 const visual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-hero.png`,
+  card: `/assets/p2/recipe-${slug}-card.png`,
   hero: `/assets/p2/recipe-${slug}-hero.png`,
-  thumb: `/assets/p2/recipe-${slug}-hero.png`
+  thumb: `/assets/p2/recipe-${slug}-thumb.png`
 })
 
 const aliasVisual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-hero.png`,
+  card: `/assets/p2/recipe-${slug}-card.png`,
   hero: `/assets/p2/recipe-${slug}-hero.png`,
-  thumb: `/assets/p2/recipe-${slug}-hero.png`
+  thumb: `/assets/p2/recipe-${slug}-thumb.png`
 })
 
 const P2_RECIPE_VISUALS = {
@@ -104,7 +105,23 @@ const P2_RECIPE_VISUALS = {
   'cv-fruit-low': aliasVisual('paloma'),
   'cv-coffee-night': aliasVisual('white-russian'),
   'cv-nonalcohol-fresh': aliasVisual('vodka-soda'),
-  'supermarket-party': aliasVisual('cola-bucket')
+  'supermarket-party': aliasVisual('cola-bucket'),
+  'aviation': aliasVisual('aviation'),
+  'bees-knees': aliasVisual('bees-knees'),
+  'clover-club': aliasVisual('clover-club'),
+  'french-75': aliasVisual('french-75'),
+  'manhattan': aliasVisual('manhattan'),
+  'boulevardier': aliasVisual('boulevardier'),
+  'sazerac': aliasVisual('sazerac'),
+  'penicillin': aliasVisual('penicillin'),
+  'paper-plane': aliasVisual('paper-plane'),
+  'mai-tai': aliasVisual('mai-tai'),
+  'jungle-bird': aliasVisual('jungle-bird'),
+  'dark-n-stormy': aliasVisual('dark-n-stormy'),
+  'tommys-margarita': aliasVisual('tommys-margarita'),
+  'naked-and-famous': aliasVisual('naked-and-famous'),
+  'cosmopolitan': aliasVisual('cosmopolitan'),
+  'sidecar': aliasVisual('sidecar')
 }
 
 const P2_RECIPE_ALIASES = {
@@ -158,7 +175,27 @@ const P2_RECIPE_ALIASES = {
   '白俄罗斯': 'white-russian',
   '可乐桶': 'cola-bucket',
   '干马天尼': 'dry-martini',
-  '干马丁尼': 'dry-martini'
+  '干马丁尼': 'dry-martini',
+  '飞行': 'aviation',
+  '蜂之膝': 'bees-knees',
+  '蜂膝': 'bees-knees',
+  '三叶草俱乐部': 'clover-club',
+  '三叶草': 'clover-club',
+  '法式75': 'french-75',
+  '法国75': 'french-75',
+  '曼哈顿': 'manhattan',
+  '林荫大道': 'boulevardier',
+  '布尔瓦迪耶': 'boulevardier',
+  '萨泽拉克': 'sazerac',
+  '盘尼西林': 'penicillin',
+  '纸飞机': 'paper-plane',
+  '迈泰': 'mai-tai',
+  '丛林鸟': 'jungle-bird',
+  '黑暗风暴': 'dark-n-stormy',
+  '汤米玛格丽特': 'tommys-margarita',
+  '裸与成名': 'naked-and-famous',
+  '大都会': 'cosmopolitan',
+  '边车': 'sidecar'
 }
 
 const BASE_PATHS = {
@@ -196,7 +233,23 @@ const BASE_PATHS = {
   'white-russian': '/assets/p2/base-white-russian-result.png',
   'cola-bucket': '/assets/p2/base-cola-bucket-result.png',
   'dry-martini': '/assets/p2/base-dry-martini-result.png',
-  'tequila-sunrise': '/assets/p2/base-tequila-sunrise-result.png'
+  'tequila-sunrise': '/assets/p2/base-tequila-sunrise-result.png',
+  'aviation': '/assets/p2/base-aviation-result.png',
+  'bees-knees': '/assets/p2/base-bees-knees-result.png',
+  'clover-club': '/assets/p2/base-clover-club-result.png',
+  'french-75': '/assets/p2/base-french-75-result.png',
+  'manhattan': '/assets/p2/base-manhattan-result.png',
+  'boulevardier': '/assets/p2/base-boulevardier-result.png',
+  'sazerac': '/assets/p2/base-sazerac-result.png',
+  'penicillin': '/assets/p2/base-penicillin-result.png',
+  'paper-plane': '/assets/p2/base-paper-plane-result.png',
+  'mai-tai': '/assets/p2/base-mai-tai-result.png',
+  'jungle-bird': '/assets/p2/base-jungle-bird-result.png',
+  'dark-n-stormy': '/assets/p2/base-dark-n-stormy-result.png',
+  'tommys-margarita': '/assets/p2/base-tommys-margarita-result.png',
+  'naked-and-famous': '/assets/p2/base-naked-and-famous-result.png',
+  'cosmopolitan': '/assets/p2/base-cosmopolitan-result.png',
+  'sidecar': '/assets/p2/base-sidecar-result.png'
 }
 
 function resolveVisual(visual, variant) {
@@ -244,6 +297,7 @@ function basePath(itemOrId) {
   if (key.includes('vodka') || key.includes('伏特加')) return P2_BASE_POOL.vodka
   if (key.includes('rum') || key.includes('朗姆')) return P2_BASE_POOL.rum
   if (key.includes('tequila') || key.includes('龙舌兰')) return P2_BASE_POOL.tequila
+  if (key.includes('brandy') || key.includes('cognac') || key.includes('白兰地') || key.includes('干邑')) return P2_BASE_POOL.brandy
   if (key.includes('baileys') || key.includes('百利')) return P2_BASE_POOL.baileys
   if (key.includes('jager') || key.includes('野格')) return P2_BASE_POOL.jager
   if (key.includes('sake') || key.includes('清酒')) return P2_BASE_POOL.sake

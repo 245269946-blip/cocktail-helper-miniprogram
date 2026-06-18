@@ -18,11 +18,16 @@
         "gin-tonic",
         "tom-collins",
         "negroni",
-        "dry-martini"
+        "dry-martini",
+        "french-75",
+        "aviation",
+        "clover-club",
+        "bees-knees"
       ],
       "beginner": [
         "gin-tonic",
-        "tom-collins"
+        "tom-collins",
+        "bees-knees"
       ],
       "convenience": [
         "gin-tonic",
@@ -30,22 +35,31 @@
       ],
       "lowAlcohol": [
         "gin-tonic",
-        "tom-collins"
+        "tom-collins",
+        "french-75"
       ],
       "sweet": [
-        "tom-collins"
+        "tom-collins",
+        "bees-knees",
+        "clover-club"
       ],
       "fresh": [
         "gin-tonic",
-        "tom-collins"
+        "tom-collins",
+        "french-75",
+        "bees-knees"
       ],
       "friendly": [
         "gin-tonic",
-        "tom-collins"
+        "tom-collins",
+        "bees-knees"
       ],
       "advanced": [
         "negroni",
-        "dry-martini"
+        "dry-martini",
+        "aviation",
+        "clover-club",
+        "french-75"
       ]
     }
   },
@@ -67,7 +81,8 @@
       "classic": [
         "vodka-orange",
         "moscow-mule",
-        "sea-breeze"
+        "sea-breeze",
+        "cosmopolitan"
       ],
       "beginner": [
         "vodka-orange",
@@ -97,7 +112,8 @@
         "sea-breeze"
       ],
       "advanced": [
-        "espresso-martini"
+        "espresso-martini",
+        "cosmopolitan"
       ]
     }
   },
@@ -119,7 +135,13 @@
       "classic": [
         "whisky-highball",
         "whiskey-sour",
-        "whisky-cola"
+        "whisky-cola",
+        "old-fashioned",
+        "manhattan",
+        "boulevardier",
+        "sazerac",
+        "penicillin",
+        "paper-plane"
       ],
       "beginner": [
         "whisky-cola",
@@ -140,14 +162,20 @@
       ],
       "fresh": [
         "whisky-highball",
-        "whiskey-sour"
+        "whiskey-sour",
+        "paper-plane"
       ],
       "friendly": [
         "whisky-oolong"
       ],
       "advanced": [
         "whiskey-sour",
-        "old-fashioned"
+        "old-fashioned",
+        "manhattan",
+        "boulevardier",
+        "sazerac",
+        "penicillin",
+        "paper-plane"
       ]
     }
   },
@@ -170,7 +198,10 @@
         "mojito",
         "cuba-libre",
         "daiquiri",
-        "caipirinha"
+        "caipirinha",
+        "mai-tai",
+        "jungle-bird",
+        "dark-n-stormy"
       ],
       "beginner": [
         "cuba-libre",
@@ -184,19 +215,25 @@
         "cuba-libre"
       ],
       "sweet": [
-        "cuba-libre"
+        "cuba-libre",
+        "mai-tai",
+        "jungle-bird"
       ],
       "fresh": [
         "mojito",
         "caipirinha",
-        "daiquiri"
+        "daiquiri",
+        "dark-n-stormy"
       ],
       "friendly": [
-        "cuba-libre"
+        "cuba-libre",
+        "dark-n-stormy"
       ],
       "advanced": [
         "daiquiri",
-        "caipirinha"
+        "caipirinha",
+        "mai-tai",
+        "jungle-bird"
       ]
     }
   },
@@ -218,7 +255,9 @@
       "classic": [
         "margarita",
         "paloma",
-        "tequila-sunrise"
+        "tequila-sunrise",
+        "tommys-margarita",
+        "naked-and-famous"
       ],
       "beginner": [
         "paloma",
@@ -232,18 +271,61 @@
         "paloma"
       ],
       "sweet": [
-        "tequila-sunrise"
+        "tequila-sunrise",
+        "naked-and-famous"
       ],
       "fresh": [
         "paloma",
-        "tequila-sunrise"
+        "tequila-sunrise",
+        "tommys-margarita"
       ],
       "friendly": [
         "paloma",
         "tequila-sunrise"
       ],
       "advanced": [
-        "margarita"
+        "margarita",
+        "tommys-margarita",
+        "naked-and-famous"
+      ]
+    }
+  },
+  {
+    "id": "brandy",
+    "name": "干邑/白兰地",
+    "subtitle": "果干、橙香、温暖老派感",
+    "tags": [
+      "酒感",
+      "柑橘",
+      "经典",
+      "进阶"
+    ],
+    "intro": "干邑和白兰地适合做酸甜短饮，橙味利口酒和柠檬能把厚重酒体变得更利落。",
+    "recipes": {
+      "first": [
+        "sidecar"
+      ],
+      "classic": [
+        "sidecar"
+      ],
+      "beginner": [
+        "sidecar"
+      ],
+      "convenience": [
+        "sidecar"
+      ],
+      "lowAlcohol": [],
+      "sweet": [
+        "sidecar"
+      ],
+      "fresh": [
+        "sidecar"
+      ],
+      "friendly": [
+        "sidecar"
+      ],
+      "advanced": [
+        "sidecar"
       ]
     }
   },

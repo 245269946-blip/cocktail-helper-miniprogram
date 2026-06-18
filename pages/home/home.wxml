@@ -103,6 +103,19 @@
     </view>
 
     <view class="home-body">
+      <view class="random-entry" bindtap="onRandomDrinkTap">
+        <view class="random-entry-copy">
+          <view class="random-entry-kicker">Mood shuffle</view>
+          <view class="random-entry-title">随机来一杯</view>
+          <view class="random-entry-desc">每天抽一杯适合今天的调酒，带一句好运话。</view>
+          <view class="random-entry-action">抽今天这一杯</view>
+        </view>
+        <view class="random-entry-orbit">
+          <image wx:for="{{randomPreview}}" wx:key="id" class="random-orbit-img img-{{index}}" src="{{item.illustration || item.thumbnail}}" mode="aspectFill" />
+          <view class="random-orbit-glow"></view>
+        </view>
+      </view>
+
       <view class="featured-block">
         <view class="section-head">
           <view>

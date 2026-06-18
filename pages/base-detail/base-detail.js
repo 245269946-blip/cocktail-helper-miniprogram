@@ -2,6 +2,7 @@ const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
 const drinkView = require('../../utils/drinkView')
+const share = require('../../utils/share')
 
 Page({
   data: {
@@ -17,6 +18,7 @@ Page({
   },
 
   onLoad(options) {
+    share.enableShareMenu()
     contentStore.getContent().then(() => this.loadBase(options))
   },
 
@@ -151,5 +153,28 @@ Page({
       pairingItems: nextItems.map((item) => this.enrichPairingItem(item)),
       pairingOffset: nextOffset
     })
+  },
+
+  shareOptions() {
+    const base = this.data.base || {}
+    return {
+      title: base.name ? `${base.name}可以这样喝｜调酒助手` : '按基酒找喝法｜调酒助手',
+      query: { id: base.id },
+      imageUrl: base.illustration || '/assets/layer2/card-base.png'
+    }
+  },
+
+  onShareAppMessage() {
+    const options = this.shareOptions()
+    return share.appMessage({
+      title: options.title,
+      path: '/pages/base-detail/base-detail',
+      query: options.query,
+      imageUrl: options.imageUrl
+    })
+  },
+
+  onShareTimeline() {
+    return share.timeline(this.shareOptions())
   }
 })
