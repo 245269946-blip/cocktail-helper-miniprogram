@@ -1,68 +1,68 @@
-<view class="page search-page lab-page">
-  <view class="search-hero lab-shell">
+<view class="page catalog-page">
+  <view class="catalog-hero">
     <view>
-      <view class="search-kicker">Search First</view>
-      <view class="section-title">搜你想喝的 / 手边有的</view>
-      <view class="section-subtitle">饮品名、材料、口味、便利店、气泡饮、茶饮、咖啡都可以搜。</view>
+      <view class="catalog-kicker">Drink Index</view>
+      <view class="section-title">酒单目录</view>
+      <view class="section-subtitle">共 {{allCount}} 款，按基酒往下挑；想快一点也可以直接筛选。</view>
     </view>
-    <view class="sketch-icon icon-glass"></view>
   </view>
 
-  <view class="search-panel {{isFocused ? 'focused' : ''}}">
-    <input class="search-input" value="{{keyword}}" bindinput="onInput" bindfocus="onFocus" bindblur="onBlur" confirm-type="search" bindconfirm="onSearch" placeholder="搜气泡水 / 柠檬茶 / 咖啡 / 便利店 / 莫吉托" />
-    <button class="button-primary" bindtap="onSearch">查看结果</button>
+  <view class="catalog-search">
+    <input class="catalog-input" value="{{keyword}}" bindinput="onInput" confirm-type="search" bindconfirm="onSearch" placeholder="筛选酒名 / 基酒 / 材料 / 口味" />
+    <button wx:if="{{keyword}}" class="catalog-clear" bindtap="onClearSearch">清空</button>
+    <button class="catalog-submit" bindtap="onSearch">查看匹配</button>
   </view>
 
-  <view class="section featured-search-block">
-    <view class="section-head">
-      <view>
-        <view class="section-label">推荐第一杯</view>
+  <view wx:if="{{recentSearches.length && !keyword}}" class="catalog-strip">
+    <view class="strip-head">
+      <view class="strip-title">最近搜过</view>
+      <view class="strip-action" bindtap="onClearRecent">清空</view>
+    </view>
+    <scroll-view scroll-x class="chip-scroll">
+      <view class="chip-track">
+        <view wx:for="{{recentSearches}}" wx:key="*this" class="catalog-chip" data-keyword="{{item}}" bindtap="onKeywordTap">{{item}}</view>
       </view>
-      <view class="section-action">左右滑动</view>
+    </scroll-view>
+  </view>
+
+  <view wx:if="{{!keyword}}" class="catalog-strip">
+    <view class="strip-head">
+      <view class="strip-title">常用入口</view>
     </view>
-    <scroll-view class="search-featured-scroll" scroll-x>
-      <view class="search-featured-track">
-        <view wx:for="{{featuredRecipes}}" wx:key="id" class="search-featured-card" data-id="{{item.id}}" bindtap="onRecipeTap">
-          <image class="search-featured-img" src="{{item.image}}" mode="aspectFill" />
-          <view class="search-featured-wash"></view>
-          <view class="search-featured-copy">
-            <view class="search-featured-name">{{item.name}}</view>
-            <view class="search-featured-tags">
-              <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="search-featured-tag">{{tag}}</text>
+    <scroll-view scroll-x class="chip-scroll">
+      <view class="chip-track">
+        <view wx:for="{{hotKeywords}}" wx:key="*this" class="catalog-chip" data-keyword="{{item}}" bindtap="onKeywordTap">{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="catalog-list">
+    <view wx:for="{{visibleGroups}}" wx:key="id" class="catalog-group">
+      <view class="catalog-group-head">
+        <view>
+          <view class="catalog-group-title">{{item.title}}</view>
+          <view class="catalog-group-subtitle">{{item.subtitle}}</view>
+        </view>
+        <view class="catalog-count">{{item.items.length}}</view>
+      </view>
+
+      <view class="catalog-grid">
+        <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="catalog-card" data-id="{{drink.id}}" bindtap="onRecipeTap">
+          <image class="catalog-img" src="{{drink.illustration}}" mode="aspectFill" />
+          <view class="catalog-card-copy">
+            <view class="catalog-name">{{drink.name}}</view>
+            <view class="catalog-en">{{drink.nameEn}}</view>
+            <view class="catalog-tags">
+              <text wx:for="{{drink.metaTags}}" wx:for-item="tag" wx:key="*this" class="catalog-tag">{{tag}}</text>
             </view>
           </view>
         </view>
       </view>
-    </scroll-view>
-  </view>
-
-  <!-- 搜索历史（从首页同步） -->
-  <view wx:if="{{recentSearches.length && !keyword}}" class="section">
-    <view class="section-head">
-      <view class="section-label">🕐 最近搜过</view>
-      <view class="section-action" bindtap="onClearRecent">清空</view>
-    </view>
-    <scroll-view scroll-x enable-flex class="history-scroll">
-      <view wx:for="{{recentSearches}}" wx:key="*this" class="history-chip" data-keyword="{{item}}" bindtap="onKeywordTap">{{item}}</view>
-    </scroll-view>
-  </view>
-
-  <view class="section">
-    <view class="section-title">按条件找配方</view>
-    <view class="suggestion-list">
-      <view wx:for="{{suggestionGroups}}" wx:key="title" class="card suggestion-group">
-        <view class="suggestion-title">{{item.title}}</view>
-        <view class="tags">
-          <view wx:for="{{item.items}}" wx:for-item="word" wx:key="*this" class="tag" data-keyword="{{word}}" bindtap="onKeywordTap">{{word}}</view>
-        </view>
-      </view>
     </view>
   </view>
 
-  <view class="section">
-    <view class="section-title">常用入口</view>
-    <view class="tags">
-      <view wx:for="{{hotKeywords}}" wx:key="*this" class="tag" data-keyword="{{item}}" bindtap="onKeywordTap">{{item}}</view>
-    </view>
+  <view wx:if="{{!visibleGroups.length}}" class="catalog-empty">
+    <view class="catalog-empty-title">没有直接命中的酒</view>
+    <view class="section-subtitle">可以换成基酒、材料或口味词，例如“金酒”“菠萝汁”“苦甜”。</view>
   </view>
 </view>

@@ -62,7 +62,7 @@ Page({
     })
     const pairingItems = allSectionItems.slice(0, 6).map((item) => this.enrichPairingItem(item))
 
-    wx.setNavigationBarTitle({ title: base.name + '什么' })
+    wx.setNavigationBarTitle({ title: base.name + '喝法' })
     this.setData({
       base: illustrations.decorateBase(base),
       sections,
@@ -76,23 +76,35 @@ Page({
   },
 
   buildSearchTabs(base) {
+    const first = recommend.getItemsByIds((base.recipes && (base.recipes.first || base.recipes.classic)) || [])
+    const firstName = first[0] ? first[0].name : base.name
     return [
-      { label: base.name + '可乐', active: true, keyword: base.name + '可乐' },
-      { label: base.name + '加什么好喝', active: false, keyword: '' },
-      { label: base.name + '怎么调', active: false, keyword: '' },
-      { label: '杰克丹尼怎么喝', active: false, keyword: '' }
+      { label: `${firstName}怎么做`, active: true, keyword: firstName },
+      { label: `${base.name}加什么好喝`, active: false, keyword: `${base.name}怎么喝` },
+      { label: `${base.name}新手推荐`, active: false, keyword: `新手${base.name}` },
+      { label: `${base.name}完整酒单`, active: false, keyword: base.name }
     ]
   },
 
   enrichMainRecipe(item) {
     const card = drinkView.resultCard(item)
     return Object.assign({}, card, {
-      nameEn: item.nameEn || 'Whisky Cola',
+      nameEn: item.enName || item.nameEn || '',
       tags: item.tags || ['经典', '气泡感', '慵感', '低门槛'],
       desc: item.desc || item.reason || card.entryLine || '经典不踩雷，入口顺滑，最容易上手的喝法。',
-      illustration: illustrations.drinkPath(item, 'card'),
-      speechBubble: item.speechBubble || '可乐的甜\n让威士忌更顺口'
+      illustration: illustrations.drinkPath(item, 'hero'),
+      speechBubble: item.speechBubble || this.speechBubbleFor(item)
     })
+  },
+
+  speechBubbleFor(item) {
+    const tags = item.tags || []
+    if (tags.includes('清爽')) return '冰和柑橘\n把入口打开'
+    if (tags.includes('苦甜')) return '苦甜收尾\n更有层次'
+    if (tags.includes('咖啡感')) return '咖啡香\n撑住夜晚'
+    if (tags.includes('热带')) return '热带果香\n更适合分享'
+    if (tags.includes('经典')) return '经典比例\n先从这杯'
+    return '从这杯开始\n更不容易错'
   },
 
   buildQuickFilters(base) {
@@ -125,6 +137,12 @@ Page({
     const idx = e.currentTarget.dataset.index
     const tabs = this.data.searchTabs.map((t, i) => ({ ...t, active: i === idx }))
     this.setData({ searchTabs: tabs })
+    const keyword = tabs[idx] && tabs[idx].keyword
+    if (keyword) {
+      wx.navigateTo({
+        url: `/pages/results/results?mode=search&value=${encodeURIComponent(keyword)}&title=${encodeURIComponent(keyword)}`
+      })
+    }
   },
 
   onQuickFilter(e) {

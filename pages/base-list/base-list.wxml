@@ -2,6 +2,10 @@
   <view class="section-title">你手上有什么酒？</view>
   <view class="section-subtitle">点进基酒后，看它现在能做什么，而不是只看介绍。</view>
 
+  <view class="base-search">
+    <input class="base-search-input" value="{{query}}" bindinput="onInput" placeholder="筛选金酒 / 威士忌 / 干邑 / 朗姆" />
+  </view>
+
   <view class="section list">
     <view wx:for="{{bases}}" wx:key="id" class="card base-card" data-id="{{item.id}}" bindtap="onBaseTap">
       <view class="visual-row">

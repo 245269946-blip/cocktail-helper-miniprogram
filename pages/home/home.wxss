@@ -1405,6 +1405,37 @@
     0 12rpx 22rpx rgba(80, 70, 50, 0.08);
 }
 
+/* v1.0.4 image layer safety: keep drink artwork visible above washes */
+.first-drink-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.first-drink-bg {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 230rpx;
+  z-index: 0;
+  opacity: 0.96;
+}
+
+.first-drink-wash {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.first-drink-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.random-orbit-img {
+  display: block;
+}
+
 /* Final layout correction: large swipe cards + full condition entries */
 .search-btn,
 .cta-button {
@@ -1685,4 +1716,35 @@
   border-width: 2rpx;
   border-top-width: 2rpx;
   border-radius: 5rpx 5rpx 10rpx 10rpx;
+}
+
+/* v1.0.4 final image layer safety */
+.first-drink-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.first-drink-bg {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 230rpx;
+  z-index: 0;
+  opacity: 0.96;
+}
+
+.first-drink-wash {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.first-drink-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.random-orbit-img {
+  display: block;
 }

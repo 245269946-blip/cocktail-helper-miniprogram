@@ -132,6 +132,14 @@ function mappedSearchItems(key) {
   })
 
   if (normalizedKey.includes('果汁')) ids.push('vodka-orange', 'sea-breeze', 'paloma', 'mimosa')
+  if (normalizedKey.includes('菠萝')) ids.push('jungle-bird', 'mai-tai')
+  if (normalizedKey.includes('蔓越莓')) ids.push('cosmopolitan', 'sea-breeze')
+  if (normalizedKey.includes('姜汁') || normalizedKey.includes('姜啤')) ids.push('dark-n-stormy', 'moscow-mule', 'penicillin')
+  if (normalizedKey.includes('金巴利')) ids.push('negroni', 'boulevardier', 'jungle-bird')
+  if (normalizedKey.includes('甜味美思') || normalizedKey.includes('味美思')) ids.push('manhattan', 'negroni', 'boulevardier')
+  if (normalizedKey.includes('橙味利口酒') || normalizedKey.includes('君度') || normalizedKey.includes('三秒')) ids.push('margarita', 'sidecar', 'cosmopolitan', 'mai-tai')
+  if (normalizedKey.includes('蜂蜜')) ids.push('bees-knees', 'penicillin', 'whiskey-sour')
+  if (normalizedKey.includes('蛋清')) ids.push('clover-club', 'whiskey-sour')
   if (normalizedKey.includes('茶饮') || normalizedKey.includes('茶')) ids.push('whisky-oolong', 'umeshu-oolong', 'sake-green-tea', 'cv-tea-light')
   if (normalizedKey.includes('便利店')) ids.push('cv-fresh-tipsy', 'cv-sweet-party', 'cv-milk-soft', 'cv-tea-light', 'cv-fruit-low')
 
@@ -322,11 +330,23 @@ function materialNames(item) {
 const MATERIAL_ALIASES = {
   '苏打水': '气泡水', '苏打': '气泡水',
   '葡萄柚汽水': '葡萄柚汁', '葡萄柚': '葡萄柚汁',
-  '橙味利口酒': '橙汁',
+  '橙味利口酒': '橙味利口酒',
+  '樱桃利口酒': '甜味美思',
+  '紫罗兰利口酒': '甜味美思',
+  '覆盆子糖浆': '糖',
+  '莓果糖浆': '糖',
   '咖啡利口酒': '咖啡', '冷萃咖啡': '咖啡', '浓缩咖啡': '咖啡',
   '甜味美思': '甜味美思', '苦精': '苦精',
-  '阿佩罗': '阿佩罗', '橙皮': '柠檬', '橙子': '橙汁',
+  '安格斯图拉苦精': '苦精', '佩肖苦精': '苦精',
+  '苦艾酒': '苦精',
+  '金巴利': '金巴利', '阿玛罗': '金巴利',
+  '阿佩罗': '阿佩罗', '黄查特酒': '阿佩罗',
+  '橙皮': '橙味利口酒', '橙子': '橙汁',
   '青柠汁': '青柠', '柠檬汁': '柠檬', '柠檬茶': '茶',
+  '蜂蜜糖浆': '蜂蜜', '蜂蜜姜糖浆': '蜂蜜',
+  '姜糖浆': '姜汁汽水', '姜汁': '姜汁汽水', '姜啤': '姜汁汽水',
+  '菠萝汁': '菠萝汁', '蔓越莓汁': '蔓越莓汁',
+  '蛋清': '蛋清', '杏仁糖浆': '糖',
   '无糖乌龙茶': '茶', '无糖绿茶': '绿茶', '柠檬味气泡水': '气泡水',
   '方糖': '糖', '糖浆': '糖', '盐边': '盐',
   '冰杯': '冰块',
@@ -340,7 +360,9 @@ const BASE_KEYWORDS = {
   '伏特加': '伏特加', 'vodka': '伏特加',
   '威士忌': '威士忌', 'whisky': '威士忌', 'whiskey': '威士忌',
   '朗姆': '朗姆', 'rum': '朗姆', '白朗姆': '朗姆', '黑朗姆': '朗姆',
-  '龙舌兰': '龙舌兰', 'tequila': '龙舌兰',
+  '龙舌兰': '龙舌兰', 'tequila': '龙舌兰', '梅斯卡尔': '龙舌兰', 'mezcal': '龙舌兰',
+  '干邑': '干邑', '白兰地': '白兰地', 'brandy': '白兰地', 'cognac': '干邑',
+  '波本': '威士忌', '黑麦威士忌': '威士忌', '调和威士忌': '威士忌',
   '百利甜': '百利甜', '利口酒': '百利甜', '奶酒': '百利甜',
   '野格': '野格', 'jager': '野格',
   '梅酒': '梅酒', '梅子酒': '梅酒',
@@ -370,11 +392,15 @@ function recipeRequirementNames(item) {
     }
     // 4. 兜底：去掉数量后缀作为材料名
     return line.replace(/\s+\d+.*$/, '').replace(/或.*$/, '').trim()
-  })
+  }).filter((name) => name && name !== '冰块')
 }
 
 function pantryRecommend(selected) {
   const selectedSet = new Set(selected || [])
+  if (selectedSet.has('干邑')) selectedSet.add('白兰地')
+  if (selectedSet.has('白兰地')) selectedSet.add('干邑')
+  if (selectedSet.has('波本')) selectedSet.add('威士忌')
+  if (selectedSet.has('威士忌')) selectedSet.add('波本')
   const result = {
     ready: [],
     missingOne: [],

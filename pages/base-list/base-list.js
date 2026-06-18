@@ -5,14 +5,29 @@ const share = require('../../utils/share')
 
 Page({
   data: {
-    bases: data.bases.map((item) => illustrations.decorateBase(item))
+    rawBases: data.bases.map((item) => illustrations.decorateBase(item)),
+    bases: data.bases.map((item) => illustrations.decorateBase(item)),
+    query: ''
   },
 
   onLoad() {
     share.enableShareMenu()
     contentStore.getContent().then((content) => {
-      this.setData({ bases: content.bases.map((item) => illustrations.decorateBase(item)) })
+      const bases = content.bases.map((item) => illustrations.decorateBase(item))
+      this.setData({ rawBases: bases, bases })
     })
+  },
+
+  onInput(event) {
+    const query = event.detail.value || ''
+    const key = query.trim().toLowerCase()
+    const bases = key
+      ? this.data.rawBases.filter((item) => {
+        const text = [item.id, item.name, item.subtitle, ...(item.tags || [])].join(' ').toLowerCase()
+        return text.includes(key) || key.includes(String(item.name || '').toLowerCase())
+      })
+      : this.data.rawBases
+    this.setData({ query, bases })
   },
 
   onBaseTap(event) {

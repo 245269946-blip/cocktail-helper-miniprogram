@@ -1774,6 +1774,26 @@ const searchMappings = [
     reason: '干邑和白兰地先从边车这类酸甜短饮开始，更容易喝出橙香和酒体。'
   },
   {
+    keywords: ['经典鸡尾酒', '酒吧经典', '经典款', '出名鸡尾酒', '有名的鸡尾酒'],
+    recipeIds: ['gin-tonic', 'negroni', 'dry-martini', 'old-fashioned', 'manhattan', 'sidecar', 'daiquiri', 'mai-tai', 'cosmopolitan', 'french-75'],
+    reason: '经典款优先给酒吧常见、辨识度高、适合继续探索的配方。'
+  },
+  {
+    keywords: ['老酒鬼', '老派', '酒感强', '成熟一点', '不想喝甜饮'],
+    recipeIds: ['old-fashioned', 'manhattan', 'sazerac', 'boulevardier', 'negroni', 'dry-martini'],
+    reason: '老派方向优先短饮、苦甜和高酒感款。'
+  },
+  {
+    keywords: ['现代经典', '新经典', '酒吧新经典', '想喝特别一点'],
+    recipeIds: ['penicillin', 'paper-plane', 'naked-and-famous', 'jungle-bird', 'tommys-margarita', 'espresso-martini'],
+    reason: '现代经典更适合想喝出记忆点的人。'
+  },
+  {
+    keywords: ['热带鸡尾酒', '热带风味', '菠萝调酒', '朗姆热带'],
+    recipeIds: ['mai-tai', 'jungle-bird', 'mojito', 'daiquiri', 'dark-n-stormy', 'cuba-libre'],
+    reason: '热带方向优先朗姆、青柠、菠萝和姜味。'
+  },
+  {
     keywords: ['百利甜怎么喝', '百利甜兑什么', '百利甜调什么', '奶酒怎么喝', '百利甜搭配'],
     recipeIds: ['baileys-milk', 'baileys-coffee'],
     reason: '百利甜优先搭牛奶和咖啡，目标是甜品微醺。'
@@ -1931,7 +1951,7 @@ const searchMappings = [
 const pantryGroups = [
   { title: '基酒', items: ['金酒', '伏特加', '威士忌', '朗姆', '龙舌兰', '干邑', '白兰地', '百利甜', '梅酒', '清酒', '野格', '果酒', '起泡酒'] },
   { title: '饮料', items: ['可乐', '雪碧', '气泡水', '汤力水', '姜汁汽水', '果汁', '橙汁', '菠萝汁', '葡萄柚汁', '蔓越莓汁', '苹果汁', '茶', '绿茶', '咖啡', '牛奶'] },
-  { title: '辅助', items: ['冰块', '柠檬', '青柠', '糖', '蜂蜜', '盐', '水果', '薄荷', '苦精', '金巴利', '甜味美思', '橙味利口酒', '能量饮料'] }
+  { title: '辅助', items: ['冰块', '柠檬', '青柠', '糖', '蜂蜜', '盐', '水果', '薄荷', '蛋清', '苦精', '金巴利', '阿佩罗', '甜味美思', '橙味利口酒', '能量饮料'] }
 ]
 
 module.exports = {

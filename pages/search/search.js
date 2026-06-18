@@ -1,74 +1,147 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
-const illustrations = require('../../utils/illustrations')
+const drinkView = require('../../utils/drinkView')
+const recommend = require('../../utils/recommend')
 const share = require('../../utils/share')
 
 let pageContent = data
 
+function visibleRecipes(content) {
+  return (content.recipes || []).filter((item) => item && !item.hidden)
+}
+
+function normalize(value) {
+  return String(value || '').trim().toLowerCase()
+}
+
+function recipeMatchesBase(recipe, base) {
+  const recipeBase = normalize(recipe.base)
+  const baseName = normalize(base.name)
+  const baseId = normalize(base.id)
+  return recipeBase === baseName ||
+    baseName.includes(recipeBase) ||
+    recipeBase.includes(baseName) ||
+    (baseId === 'brandy' && (recipeBase.includes('干邑') || recipeBase.includes('白兰地'))) ||
+    (baseId === 'whisky' && recipeBase.includes('威士忌'))
+}
+
 Page({
   data: {
     keyword: '',
-    isFocused: false,
     hotKeywords: data.hotKeywords,
     recentSearches: [],
-    suggestionGroups: [],
-    featuredRecipes: [
-      { id: 'gin-tonic', name: '金汤力', image: illustrations.drinkPath('gin-tonic', 'card'), tags: ['清爽', '经典', '新手'] },
-      { id: 'whiskey-sour', name: '威士忌酸', image: illustrations.drinkPath('whiskey-sour', 'card'), tags: ['酸甜', '泡沫感', '经典'] },
-      { id: 'cuba-libre', name: '自由古巴', image: illustrations.drinkPath('cuba-libre', 'card'), tags: ['经典', '可乐', '聚会'] },
-      { id: 'mojito', name: '莫吉托', image: illustrations.drinkPath('mojito', 'card'), tags: ['薄荷', '气泡感', '夏天'] },
-      { id: 'white-russian', name: '白俄罗斯', image: illustrations.drinkPath('white-russian', 'card'), tags: ['咖啡奶感', '顺滑', '夜晚'] }
-    ]
+    catalogGroups: [],
+    visibleGroups: [],
+    allCount: 0
   },
 
   onLoad() {
     share.enableShareMenu()
     contentStore.getContent().then((content) => {
       pageContent = content
+      const catalogGroups = this.buildCatalogGroups(content)
       this.setData({
-        hotKeywords: content.hotKeywords,
+        hotKeywords: content.hotKeywords || [],
         recentSearches: wx.getStorageSync('recentSearches') || [],
-        suggestionGroups: this.buildSuggestionGroups('')
+        catalogGroups,
+        visibleGroups: catalogGroups,
+        allCount: visibleRecipes(content).length
       })
     })
   },
 
   onShow() {
-    /* 每次显示时刷新搜索历史（首页搜索后可能更新）*/
     const recent = wx.getStorageSync('recentSearches') || []
     if (recent.length !== (this.data.recentSearches || []).length) {
       this.setData({ recentSearches: recent })
     }
   },
 
+  buildCatalogGroups(content) {
+    const recipes = visibleRecipes(content)
+    const used = new Set()
+    const groups = (content.bases || []).map((base) => {
+      const items = recipes
+        .filter((recipe) => recipeMatchesBase(recipe, base))
+        .map((item) => this.toCatalogCard(item))
+      items.forEach((item) => used.add(item.id))
+      return {
+        id: base.id,
+        title: base.name,
+        subtitle: base.subtitle || '',
+        items
+      }
+    }).filter((group) => group.items.length)
+
+    const others = recipes
+      .filter((recipe) => !used.has(recipe.id))
+      .map((item) => this.toCatalogCard(item))
+
+    if (others.length) {
+      groups.push({
+        id: 'others',
+        title: '其他喝法',
+        subtitle: '果酒、起泡酒和低酒精方向',
+        items: others
+      })
+    }
+
+    return groups
+  },
+
+  toCatalogCard(item) {
+    const card = drinkView.resultCard(item)
+    return Object.assign({}, card, {
+      base: item.base,
+      aliases: item.aliases || [],
+      searchText: [
+        item.name,
+        item.enName,
+        item.base,
+        item.reason,
+        ...(item.tags || []),
+        ...(item.aliases || []),
+        ...(item.scenes || []),
+        ...recommend.materialNames(item)
+      ].map(normalize).join(' ')
+    })
+  },
+
   onInput(event) {
-    const keyword = event.detail.value
+    const keyword = event.detail.value || ''
     this.setData({
       keyword,
-      suggestionGroups: this.buildSuggestionGroups(keyword)
+      visibleGroups: this.filterGroups(keyword)
     })
+  },
+
+  filterGroups(keyword) {
+    const key = normalize(keyword)
+    if (!key) return this.data.catalogGroups
+    return (this.data.catalogGroups || []).map((group) => {
+      const groupMatched = normalize(group.title).includes(key) || key.includes(normalize(group.title))
+      const items = group.items.filter((item) => {
+        return groupMatched || item.searchText.includes(key) || key.includes(normalize(item.name))
+      })
+      return Object.assign({}, group, { items })
+    }).filter((group) => group.items.length)
   },
 
   onSearch() {
     const keyword = this.data.keyword.trim()
     if (!keyword) return
+    this.saveRecent(keyword)
     wx.navigateTo({
       url: `/pages/results/results?mode=search&value=${encodeURIComponent(keyword)}&title=${encodeURIComponent(keyword)}`
     })
   },
 
-  onFocus() {
-    this.setData({ isFocused: true })
-  },
-
-  onBlur() {
-    this.setData({ isFocused: false })
-  },
-
   onKeywordTap(event) {
     const keyword = event.currentTarget.dataset.keyword
-    wx.navigateTo({
-      url: `/pages/results/results?mode=search&value=${encodeURIComponent(keyword)}&title=${encodeURIComponent(keyword)}`
+    this.saveRecent(keyword)
+    this.setData({
+      keyword,
+      visibleGroups: this.filterGroups(keyword)
     })
   },
 
@@ -77,86 +150,39 @@ Page({
     wx.navigateTo({ url: `/pages/detail/detail?id=${id}` })
   },
 
+  onClearSearch() {
+    this.setData({
+      keyword: '',
+      visibleGroups: this.data.catalogGroups
+    })
+  },
+
   onClearRecent() {
     wx.removeStorageSync('recentSearches')
     this.setData({ recentSearches: [] })
   },
 
-  buildSuggestionGroups(keyword) {
-    const key = (keyword || '').trim()
-    const content = pageContent
-    if (!key) {
-      return [
-        { title: '热门', items: (content.hotKeywords || []).slice(0, 3) },
-        { title: '按酒底', items: ['金酒兑什么', '威士忌怎么喝', '伏特加兑什么'] },
-        { title: '按材料', items: ['气泡水能做什么', '咖啡怎么调好喝', '果汁能调什么'] }
-      ]
-    }
-
-    const base = (content.bases || []).find((item) => key.includes(item.name) || key.toLowerCase().includes(item.id))
-    if (base) {
-      const recipes = base.recipes || {}
-      return [
-        { title: '精准匹配', items: (recipes.first || []).concat(recipes.classic || []).map((id) => this.nameById(id)).filter(Boolean).slice(0, 3) },
-        { title: '条件搜索', items: [`${base.name}兑什么`, `新手${base.name}`, `便利店能做的${base.name}`] },
-        { title: '低门槛方向', items: [`${base.name}低酒感`, `${base.name}不苦`, `${base.name}清爽`] }
-      ]
-    }
-
-    const ingredient = (content.ingredients || []).find((item) => key.includes(item.name))
-    if (ingredient) {
-      return [
-        { title: '精准匹配', items: (ingredient.recipes || []).map((id) => this.nameById(id)).filter(Boolean).slice(0, 3) },
-        { title: '条件搜索', items: [`${ingredient.name}能调什么`, `${ingredient.name}兑什么酒`, `便利店${ingredient.name}调酒`] },
-        { title: '搭配方向', items: (ingredient.goodWith || []).slice(0, 3).map((name) => `${name}+${ingredient.name}`) }
-      ]
-    }
-
-    const mapping = (content.searchMappings || []).find((item) => {
-      return (item.keywords || []).some((word) => word.includes(key) || key.includes(word))
-    })
-    if (mapping) {
-      return [
-        { title: '精准匹配', items: (mapping.recipeIds || []).map((id) => this.nameById(id)).filter(Boolean).slice(0, 3) },
-        { title: '条件搜索', items: (mapping.keywords || []).slice(0, 3) },
-        { title: '继续缩小', items: ['新手友好', '便利店能买齐', '低酒感'] }
-      ]
-    }
-
-    // 未命中任何数据：key 太短或完全没匹配，展示热门词
-    if (key.length < 2) {
-      return [
-        { title: '热门搜索', items: (content.hotKeywords || []).slice(0, 4) },
-        { title: '按酒底找', items: ['金酒兑什么', '威士忌怎么喝', '伏特加兑什么'] },
-        { title: '按场景找', items: ['聚会喝什么', '夏天喝什么', '便利店调酒'] }
-      ]
-    }
-
-    // 有关键词但无精确匹配：给条件搜索建议 + 热门兜底
-    return [
-      { title: '试试这些搜索', items: [`${key}怎么喝`, `${key}兑什么`, `${key}便利店`] },
-      { title: '热门', items: (content.hotKeywords || []).slice(0, 3) },
-      { title: '按场景找', items: ['聚会喝什么', '夏天喝什么', '新手友好', '便利店调酒'] }
-    ]
-  },
-
-  nameById(id) {
-    const item = ((pageContent.recipes || []).concat(pageContent.schemes || [])).find((recipe) => recipe.id === id)
-    return item ? item.name : ''
+  saveRecent(keyword) {
+    const text = String(keyword || '').trim()
+    if (!text) return
+    const recent = wx.getStorageSync('recentSearches') || []
+    const next = [text].concat(recent.filter((item) => item !== text)).slice(0, 8)
+    wx.setStorageSync('recentSearches', next)
+    this.setData({ recentSearches: next })
   },
 
   onShareAppMessage() {
     return share.appMessage({
-      title: '搜酒名、材料和口味，马上找到能做的喝法',
+      title: '完整鸡尾酒目录，按基酒直接挑一杯',
       path: '/pages/search/search',
-      imageUrl: '/assets/layer2/header-cocktail.png'
+      imageUrl: '/assets/p2/recipe-gin-tonic-hero.png'
     })
   },
 
   onShareTimeline() {
     return share.timeline({
-      title: '搜酒名、材料和口味，马上找到能做的喝法',
-      imageUrl: '/assets/layer2/header-cocktail.png'
+      title: '完整鸡尾酒目录，按基酒直接挑一杯',
+      imageUrl: '/assets/p2/recipe-gin-tonic-hero.png'
     })
   }
 })

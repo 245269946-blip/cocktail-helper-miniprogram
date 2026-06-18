@@ -25,9 +25,11 @@
         <view class="pantry-group-title">{{item.title}}</view>
         <view class="pantry-group-line"></view>
       </view>
-      <view class="pantry-tags">
-        <view wx:for="{{item.items}}" wx:for-item="choice" wx:key="name" class="pantry-tag {{choice.active ? 'active' : ''}}" data-value="{{choice.name}}" bindtap="onToggle">{{choice.name}}</view>
-      </view>
+      <scroll-view scroll-x class="pantry-tags-scroll">
+        <view class="pantry-tags">
+          <view wx:for="{{item.items}}" wx:for-item="choice" wx:key="name" class="pantry-tag {{choice.active ? 'active' : ''}}" data-value="{{choice.name}}" bindtap="onToggle">{{choice.name}}</view>
+        </view>
+      </scroll-view>
     </view>
   </view>
 

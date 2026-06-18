@@ -311,3 +311,23 @@
   text-align: center;
 }
 .empty-text { font-size: 28rpx; color: #9aa8a2; }
+
+/* v1.0.4 final image and text safety */
+.hero-card,
+.pairing-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-img,
+.pc-img {
+  display: block;
+  opacity: 1;
+}
+
+.nav-title,
+.tab-item,
+.qf-name,
+.qf-desc {
+  letter-spacing: 0;
+}

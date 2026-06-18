@@ -1192,3 +1192,22 @@
 .ext-desc {
   display: none;
 }
+
+/* v1.0.4 final image layer safety */
+.hero-cover {
+  position: relative;
+  overflow: hidden;
+  min-height: 250rpx;
+  background: rgba(255, 252, 244, 0.72);
+}
+
+.hero-img,
+.result-img {
+  display: block;
+  opacity: 1;
+}
+
+.hero-cover .hero-img {
+  width: 100%;
+  height: 100%;
+}

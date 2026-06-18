@@ -36,7 +36,7 @@
       },
       {
         "pagePath": "pages/search/search",
-        "text": "搜索",
+        "text": "酒单",
         "iconPath": "assets/tabbar/search-normal.png",
         "selectedIconPath": "assets/tabbar/search-active.png"
       },

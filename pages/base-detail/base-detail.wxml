@@ -2,7 +2,7 @@
   <!-- 导航栏 -->
   <view class="bd-nav">
     <view class="nav-back" bindtap="goBack">‹</view>
-    <text class="nav-title">{{base.name}}什么</text>
+    <text class="nav-title">{{base.name}}喝法</text>
     <view class="nav-actions">
       <text class="nav-star">☆</text>
       <text class="nav-more" bindtap="onMore">···</text>

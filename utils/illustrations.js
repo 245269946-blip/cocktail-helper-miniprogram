@@ -47,15 +47,15 @@ const P2_BASE_POOL = {
 }
 
 const visual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-card.png`,
+  card: `/assets/p2/recipe-${slug}-hero.png`,
   hero: `/assets/p2/recipe-${slug}-hero.png`,
-  thumb: `/assets/p2/recipe-${slug}-thumb.png`
+  thumb: `/assets/p2/recipe-${slug}-hero.png`
 })
 
 const aliasVisual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-card.png`,
+  card: `/assets/p2/recipe-${slug}-hero.png`,
   hero: `/assets/p2/recipe-${slug}-hero.png`,
-  thumb: `/assets/p2/recipe-${slug}-thumb.png`
+  thumb: `/assets/p2/recipe-${slug}-hero.png`
 })
 
 const P2_RECIPE_VISUALS = {
