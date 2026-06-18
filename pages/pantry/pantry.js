@@ -21,7 +21,18 @@ Page({
     contentStore.getContent().then((content) => {
       this.setData({
         rawGroups: content.pantryGroups,
-        starterCards: this.buildStarterCards(['gin-tonic', 'cuba-libre', 'whisky-highball', 'white-russian'])
+        starterCards: this.buildStarterCards([
+          'gin-tonic',
+          'cuba-libre',
+          'whisky-highball',
+          'vodka-orange',
+          'mojito',
+          'paloma',
+          'moscow-mule',
+          'white-russian',
+          'aperol-spritz',
+          'bees-knees'
+        ])
       }, () => this.updateGroups())
     })
   },

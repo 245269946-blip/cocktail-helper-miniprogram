@@ -61,13 +61,13 @@ Page({
     const isConvenienceRecipe = (detail.id || '').indexOf('cv-') === 0
     const materialSections = isConvenienceRecipe
       ? [
-        { title: '便利店购买清单', items: detail.materials.convenience || detail.materials.standard || [] },
-        { title: '替换思路', items: detail.substitutes || [] }
+        { key: 'store', title: '便利店购买', cue: '下楼能补齐', items: detail.materials.convenience || detail.materials.standard || [] },
+        { key: 'home', title: '替换思路', cue: '手边先做', items: detail.substitutes || [] }
       ]
       : [
-        { title: '标准版', items: detail.materials.standard || [] },
-        { title: '便利店替代版', items: detail.materials.convenience || [] },
-        { title: '家里简化版', items: detail.materials.simple || [] }
+        { key: 'standard', title: '标准版', cue: '按配方来', items: detail.materials.standard || [] },
+        { key: 'store', title: '便利店版', cue: '买得到', items: detail.materials.convenience || [] },
+        { key: 'home', title: '家里版', cue: '少材料', items: detail.materials.simple || [] }
       ]
 
     const similarItems = recommend.getItemsByIds(detail.similar || [])

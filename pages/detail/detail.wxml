@@ -46,9 +46,19 @@
   <view class="section card">
     <view class="title">材料 / 替代版</view>
     <view class="section-subtitle">{{detail.materialSummary}}</view>
-    <view wx:for="{{materialSections}}" wx:key="title" class="material-section">
-      <view class="material-title">{{item.title}}</view>
-      <view wx:for="{{item.items}}" wx:for-item="line" wx:key="*this" class="body material-line">• {{line}}</view>
+    <view class="material-version-grid">
+      <view wx:for="{{materialSections}}" wx:key="title" class="material-section material-{{item.key}}">
+        <view class="material-doodle">
+          <view class="doodle-main"></view>
+          <view class="doodle-side"></view>
+          <view class="doodle-mark"></view>
+        </view>
+        <view class="material-title">{{item.title}}</view>
+        <view class="material-cue">{{item.cue}}</view>
+        <view class="material-lines">
+          <view wx:for="{{item.items}}" wx:for-item="line" wx:key="*this" class="body material-line">{{line}}</view>
+        </view>
+      </view>
     </view>
   </view>
 

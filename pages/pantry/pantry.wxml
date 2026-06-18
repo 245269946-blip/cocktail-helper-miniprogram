@@ -59,16 +59,14 @@
 
   <view wx:else class="pantry-default">
     <view class="section-title small-title">{{queryCards.length ? '搜索相关配方' : '先从这些常见组合试'}}</view>
-    <scroll-view class="starter-scroll" scroll-x>
-      <view class="starter-track">
-        <view wx:for="{{queryCards.length ? queryCards : starterCards}}" wx:key="id" class="starter-card" data-id="{{item.id}}" bindtap="onDetailTap">
-          <image class="starter-img" src="{{item.illustration}}" mode="aspectFill" />
-          <view class="starter-copy">
-            <view class="starter-name">{{item.name}}</view>
-            <view class="starter-desc">{{item.entryLine || item.reason}}</view>
-          </view>
+    <view class="starter-grid">
+      <view wx:for="{{queryCards.length ? queryCards : starterCards}}" wx:key="id" class="starter-card" data-id="{{item.id}}" bindtap="onDetailTap">
+        <image class="starter-img" src="{{item.illustration}}" mode="aspectFill" />
+        <view class="starter-copy">
+          <view class="starter-name">{{item.name}}</view>
+          <view class="starter-desc">{{item.entryLine || item.reason}}</view>
         </view>
       </view>
-    </scroll-view>
+    </view>
   </view>
 </view>
