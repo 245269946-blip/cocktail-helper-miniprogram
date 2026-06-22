@@ -35,10 +35,11 @@ const ASSET_OVERRIDES = {
 
 function buildAssets(id) {
   const kebab = ASSET_OVERRIDES[id] || toKebabId(id)
-  const hero = `/assets/p2/base-${kebab}-result.png`
+  const card = `/assets/p2/recipe-${kebab}-card.png`
+  const hero = `/assets/p2/recipe-${kebab}-hero.png`
   return {
-    base: hero,
-    card: hero,
+    base: card,
+    card,
     hero
   }
 }
