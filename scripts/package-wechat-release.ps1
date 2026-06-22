@@ -127,7 +127,6 @@ if ($LightUpload -or $HighQualityRepair) {
   @'
 import os
 import re
-import shutil
 from pathlib import Path
 from PIL import Image, ImageEnhance, ImageStat
 
@@ -155,45 +154,33 @@ KEEP_STATIC = {
 }
 
 PRIORITY_P2 = {
-    "base-gin-tonic-result.png",
-    "base-gin-result.png",
-    "base-mojito-result.png",
-    "base-cuba-libre-result.png",
-    "base-white-russian-result.png",
-    "base-vodka-soda-result.png",
-    "base-whiskey-highball-result.png",
-    "base-old-fashioned-result.png",
-    "base-manhattan-result.png",
-    "base-negroni-result.png",
-    "base-margarita-result.png",
-    "base-paloma-result.png",
-    "base-moscow-mule-result.png",
-    "base-tom-collins-result.png",
-    "base-screwdriver-result.png",
-    "base-cv-gin-tonic-result.png",
-    "base-cv-cuba-libre-result.png",
-    "base-cv-vodka-soda-result.png",
-    "base-cola-bucket-result.png",
+    "recipe-gin-tonic-card.png",
+    "recipe-gin-tonic-hero.png",
+    "recipe-whiskey-sour-card.png",
+    "recipe-whiskey-sour-hero.png",
+    "recipe-mojito-card.png",
+    "recipe-mojito-hero.png",
+    "recipe-cuba-libre-card.png",
+    "recipe-cuba-libre-hero.png",
+    "recipe-white-russian-card.png",
+    "recipe-white-russian-hero.png",
 }
 
 REPORT_NAMES = {
-    "assets/p2/base-gin-tonic-result.jpg",
-    "assets/p2/base-gin-result.png",
-    "assets/p2/base-mojito-result.jpg",
-    "assets/p2/base-cuba-libre-result.jpg",
-    "assets/p2/base-white-russian-result.jpg",
+    "assets/p2/recipe-gin-tonic-card.jpg",
+    "assets/p2/recipe-gin-tonic-hero.jpg",
+    "assets/p2/recipe-whiskey-sour-card.jpg",
+    "assets/p2/recipe-mojito-card.jpg",
+    "assets/p2/recipe-cuba-libre-card.jpg",
+    "assets/p2/recipe-white-russian-card.jpg",
     "assets/layer3/conv-fridge-bg.jpg",
-}
-
-KEEP_PNG_AS_PNG = {
-    "assets/p2/base-gin-result.png",
 }
 
 def should_keep_asset(path):
     rel = path.relative_to(root).as_posix()
     name = path.name
     if rel.startswith("assets/p2/"):
-        return name.startswith("base-") and name.endswith("-result.png")
+        return name.startswith("recipe-") and (name.endswith("-card.png") or name.endswith("-hero.png"))
     if rel.startswith("assets/illustrations/ingredients/"):
         return True
     return rel in KEEP_STATIC
@@ -220,8 +207,10 @@ def flatten_image(path):
 
 def image_policy(rel, name):
     if rel.startswith("assets/p2/"):
-        if high_quality_repair and name in PRIORITY_P2:
-            return 560, 64
+        if name.endswith("-card.png"):
+            return (380, 56) if (high_quality_repair and name in PRIORITY_P2) else (340, 48)
+        if name.endswith("-hero.png"):
+            return (520, 60) if (high_quality_repair and name in PRIORITY_P2) else (460, 52)
         if high_quality_repair:
             return 470, 50
         return 520, 56
@@ -270,29 +259,12 @@ for path in list(assets.rglob("*")):
         continue
     max_px, quality = image_policy(rel, path.name)
     out = path.with_suffix(".jpg")
-    if high_quality_repair and rel in KEEP_PNG_AS_PNG:
-        png_out = path.with_suffix(".png")
-        im_png = Image.open(path).convert("RGBA")
-        im_png.thumbnail((max_px, max_px), Image.Resampling.LANCZOS)
-        palette = im_png.convert("P", palette=Image.Palette.ADAPTIVE, colors=96)
-        palette.save(png_out, "PNG", optimize=True)
-        if path != png_out:
-            path.unlink()
-        continue
     im = flatten_image(path)
     im = enhance_image(im, rel, path.name)
     im.thumbnail((max_px, max_px), Image.Resampling.LANCZOS)
     im.save(out, "JPEG", quality=quality, optimize=True, progressive=False)
     if path != out:
         path.unlink()
-
-if high_quality_repair:
-    visible_gin = assets / "p2" / "base-gin-result.jpg"
-    for target_name in ("base-gin-tonic-result.jpg", "base-cv-gin-tonic-result.jpg"):
-        target = assets / "p2" / target_name
-        if visible_gin.exists() and target.exists():
-            target.unlink()
-            shutil.copyfile(visible_gin, target)
 
 for path in root.rglob("*"):
     if path.is_file() and path.suffix.lower() in (".js", ".json", ".wxml", ".wxss"):
@@ -312,11 +284,6 @@ for path in root.rglob("*"):
             next_text = next_text.replace(
                 f"assets/tabbar/{name}.jpg",
                 f"assets/tabbar/{name}.png",
-            )
-        if high_quality_repair:
-            next_text = next_text.replace(
-                "/assets/p2/base-gin-result.jpg",
-                "/assets/p2/base-gin-result.png",
             )
         if next_text != text:
             path.write_text(next_text, encoding="utf-8")
