@@ -164,6 +164,11 @@ PRIORITY_P2 = {
     "recipe-cuba-libre-hero.png",
     "recipe-white-russian-card.png",
     "recipe-white-russian-hero.png",
+    "recipe-gin-tonic-feature.jpg",
+    "recipe-whiskey-sour-feature.jpg",
+    "recipe-mojito-feature.jpg",
+    "recipe-cuba-libre-feature.jpg",
+    "recipe-white-russian-feature.jpg",
 }
 
 REPORT_NAMES = {
@@ -173,6 +178,8 @@ REPORT_NAMES = {
     "assets/p2/recipe-mojito-card.jpg",
     "assets/p2/recipe-cuba-libre-card.jpg",
     "assets/p2/recipe-white-russian-card.jpg",
+    "assets/p2/recipe-gin-tonic-feature.jpg",
+    "assets/p2/recipe-whiskey-sour-feature.jpg",
     "assets/layer3/conv-fridge-bg.jpg",
 }
 
@@ -180,7 +187,7 @@ def should_keep_asset(path):
     rel = path.relative_to(root).as_posix()
     name = path.name
     if rel.startswith("assets/p2/"):
-        return name.startswith("recipe-") and (name.endswith("-card.png") or name.endswith("-hero.png"))
+        return name.startswith("recipe-") and (name.endswith("-card.png") or name.endswith("-hero.png") or name.endswith("-feature.png") or name.endswith("-feature.jpg"))
     if rel.startswith("assets/illustrations/ingredients/"):
         return True
     return rel in KEEP_STATIC
@@ -207,6 +214,8 @@ def flatten_image(path):
 
 def image_policy(rel, name):
     if rel.startswith("assets/p2/"):
+        if name.endswith("-feature.png") or name.endswith("-feature.jpg"):
+            return (300, 62) if high_quality_repair else (280, 54)
         if name.endswith("-card.png"):
             return (380, 56) if (high_quality_repair and name in PRIORITY_P2) else (340, 48)
         if name.endswith("-hero.png"):
