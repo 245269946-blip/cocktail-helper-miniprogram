@@ -27,35 +27,35 @@ const ingredientSlugs = {
   '蜂蜜': 'honey'
 }
 
-const DEFAULT_HERO = '/assets/p2/base-gin-result.png'
-const DEFAULT_CARD = DEFAULT_HERO
-const DEFAULT_LIST = DEFAULT_HERO
-const DEFAULT_CONV = '/assets/p2/base-vodka-soda-result.png'
+const DEFAULT_HERO = '/assets/p2/recipe-gin-tonic-hero.png'
+const DEFAULT_CARD = '/assets/p2/recipe-gin-tonic-card.png'
+const DEFAULT_LIST = DEFAULT_CARD
+const DEFAULT_CONV = '/assets/p2/recipe-vodka-soda-card.png'
 const DEFAULT_DECO = DEFAULT_HERO
 
 const P2_BASE_POOL = {
-  gin: '/assets/p2/base-gin-result.png',
-  vodka: '/assets/p2/base-vodka-soda-result.png',
-  whisky: '/assets/p2/base-whiskey-highball-result.png',
-  rum: '/assets/p2/base-cuba-libre-result.png',
-  tequila: '/assets/p2/base-tequila-sunrise-result.png',
-  brandy: '/assets/p2/base-sidecar-result.png',
-  baileys: '/assets/p2/base-white-russian-result.png',
-  jager: '/assets/p2/base-cola-bucket-result.png',
-  sake: '/assets/p2/base-sake-highball-result.png',
-  'plum-wine': '/assets/p2/base-umeshu-soda-result.png'
+  gin: '/assets/p2/recipe-gin-tonic-card.png',
+  vodka: '/assets/p2/recipe-vodka-soda-card.png',
+  whisky: '/assets/p2/recipe-whiskey-highball-card.png',
+  rum: '/assets/p2/recipe-cuba-libre-card.png',
+  tequila: '/assets/p2/recipe-margarita-card.png',
+  brandy: '/assets/p2/recipe-sidecar-card.png',
+  baileys: '/assets/p2/recipe-white-russian-card.png',
+  jager: '/assets/p2/recipe-cola-bucket-card.png',
+  sake: '/assets/p2/recipe-sake-highball-card.png',
+  'plum-wine': '/assets/p2/recipe-umeshu-soda-card.png'
 }
 
 const visual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-hero.png`,
+  card: `/assets/p2/recipe-${slug}-card.png`,
   hero: `/assets/p2/recipe-${slug}-hero.png`,
-  thumb: `/assets/p2/recipe-${slug}-hero.png`
+  thumb: `/assets/p2/recipe-${slug}-card.png`
 })
 
 const aliasVisual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-hero.png`,
+  card: `/assets/p2/recipe-${slug}-card.png`,
   hero: `/assets/p2/recipe-${slug}-hero.png`,
-  thumb: `/assets/p2/recipe-${slug}-hero.png`
+  thumb: `/assets/p2/recipe-${slug}-card.png`
 })
 
 const P2_RECIPE_VISUALS = {
@@ -199,71 +199,61 @@ const P2_RECIPE_ALIASES = {
 }
 
 const BASE_PATHS = {
-  'mojito': '/assets/p2/base-mojito-result.png',
-  'gin-tonic': '/assets/p2/base-gin-result.png',
-  'baileys-milk': '/assets/p2/base-white-russian-result.png',
-  'whisky-cola': '/assets/p2/base-cola-bucket-result.png',
-  'vodka-orange': '/assets/p2/base-screwdriver-result.png',
-  'whisky-highball': '/assets/p2/base-whiskey-highball-result.png',
-  'whisky-oolong': '/assets/p2/base-whiskey-highball-result.png',
-  'espresso-martini': '/assets/p2/base-espresso-martini-result.png',
-  'tom-collins': '/assets/p2/base-tom-collins-result.png',
-  'negroni': '/assets/p2/base-negroni-result.png',
-  'moscow-mule': '/assets/p2/base-moscow-mule-result.png',
-  'vodka-soda': '/assets/p2/base-vodka-soda-result.png',
-  'cuba-libre': '/assets/p2/base-cuba-libre-result.png',
-  'daiquiri': '/assets/p2/base-daiquiri-result.png',
-  'margarita': '/assets/p2/base-margarita-result.png',
-  'paloma': '/assets/p2/base-paloma-result.png',
-  'jager-cola': '/assets/p2/base-cola-bucket-result.png',
-  'baileys-coffee': '/assets/p2/base-white-russian-result.png',
-  'coffee-tonic': '/assets/p2/base-vodka-soda-result.png',
-  'old-fashioned': '/assets/p2/base-old-fashioned-result.png',
-  'umeshu-soda': '/assets/p2/base-whiskey-highball-result.png',
-  'umeshu-oolong': '/assets/p2/base-whiskey-highball-result.png',
-  'fruit-wine-spritz': '/assets/p2/base-paloma-result.png',
-  'sangria-light': '/assets/p2/base-cola-bucket-result.png',
-  'mimosa': '/assets/p2/base-mimosa-result.png',
-  'aperol-spritz': '/assets/p2/base-aperol-spritz-result.png',
-  'sea-breeze': '/assets/p2/base-sea-breeze-result.png',
-  'sake-highball': '/assets/p2/base-vodka-soda-result.png',
-  'sake-green-tea': '/assets/p2/base-vodka-soda-result.png',
-  'whiskey-sour': '/assets/p2/base-whiskey-sour-result.png',
-  'caipirinha': '/assets/p2/base-caipirinha-result.png',
-  'white-russian': '/assets/p2/base-white-russian-result.png',
-  'cola-bucket': '/assets/p2/base-cola-bucket-result.png',
-  'dry-martini': '/assets/p2/base-dry-martini-result.png',
-  'tequila-sunrise': '/assets/p2/base-tequila-sunrise-result.png',
-  'aviation': '/assets/p2/base-aviation-result.png',
-  'bees-knees': '/assets/p2/base-bees-knees-result.png',
-  'clover-club': '/assets/p2/base-clover-club-result.png',
-  'french-75': '/assets/p2/base-french-75-result.png',
-  'manhattan': '/assets/p2/base-manhattan-result.png',
-  'boulevardier': '/assets/p2/base-boulevardier-result.png',
-  'sazerac': '/assets/p2/base-sazerac-result.png',
-  'penicillin': '/assets/p2/base-penicillin-result.png',
-  'paper-plane': '/assets/p2/base-paper-plane-result.png',
-  'mai-tai': '/assets/p2/base-mai-tai-result.png',
-  'jungle-bird': '/assets/p2/base-jungle-bird-result.png',
-  'dark-n-stormy': '/assets/p2/base-dark-n-stormy-result.png',
-  'tommys-margarita': '/assets/p2/base-tommys-margarita-result.png',
-  'naked-and-famous': '/assets/p2/base-naked-and-famous-result.png',
-  'cosmopolitan': '/assets/p2/base-cosmopolitan-result.png',
-  'sidecar': '/assets/p2/base-sidecar-result.png'
-}
-
-function baseResultFromVisual(visual) {
-  const hero = visual && visual.hero
-  const match = /\/recipe-(.+)-hero\.png$/.exec(hero || '')
-  if (!match) return ''
-  const slug = match[1]
-  return BASE_PATHS[slug] || `/assets/p2/base-${slug}-result.png`
+  'mojito': '/assets/p2/recipe-mojito-card.png',
+  'gin-tonic': '/assets/p2/recipe-gin-tonic-card.png',
+  'baileys-milk': '/assets/p2/recipe-white-russian-card.png',
+  'whisky-cola': '/assets/p2/recipe-cola-bucket-card.png',
+  'vodka-orange': '/assets/p2/recipe-screwdriver-card.png',
+  'whisky-highball': '/assets/p2/recipe-whiskey-highball-card.png',
+  'whisky-oolong': '/assets/p2/recipe-whiskey-highball-card.png',
+  'espresso-martini': '/assets/p2/recipe-espresso-martini-card.png',
+  'tom-collins': '/assets/p2/recipe-tom-collins-card.png',
+  'negroni': '/assets/p2/recipe-negroni-card.png',
+  'moscow-mule': '/assets/p2/recipe-moscow-mule-card.png',
+  'vodka-soda': '/assets/p2/recipe-vodka-soda-card.png',
+  'cuba-libre': '/assets/p2/recipe-cuba-libre-card.png',
+  'daiquiri': '/assets/p2/recipe-daiquiri-card.png',
+  'margarita': '/assets/p2/recipe-margarita-card.png',
+  'paloma': '/assets/p2/recipe-paloma-card.png',
+  'jager-cola': '/assets/p2/recipe-cola-bucket-card.png',
+  'baileys-coffee': '/assets/p2/recipe-white-russian-card.png',
+  'coffee-tonic': '/assets/p2/recipe-vodka-soda-card.png',
+  'old-fashioned': '/assets/p2/recipe-old-fashioned-card.png',
+  'umeshu-soda': '/assets/p2/recipe-whiskey-highball-card.png',
+  'umeshu-oolong': '/assets/p2/recipe-whiskey-highball-card.png',
+  'fruit-wine-spritz': '/assets/p2/recipe-paloma-card.png',
+  'sangria-light': '/assets/p2/recipe-cola-bucket-card.png',
+  'mimosa': '/assets/p2/recipe-mimosa-card.png',
+  'aperol-spritz': '/assets/p2/recipe-aperol-spritz-card.png',
+  'sea-breeze': '/assets/p2/recipe-sea-breeze-card.png',
+  'sake-highball': '/assets/p2/recipe-vodka-soda-card.png',
+  'sake-green-tea': '/assets/p2/recipe-vodka-soda-card.png',
+  'whiskey-sour': '/assets/p2/recipe-whiskey-sour-card.png',
+  'caipirinha': '/assets/p2/recipe-caipirinha-card.png',
+  'white-russian': '/assets/p2/recipe-white-russian-card.png',
+  'cola-bucket': '/assets/p2/recipe-cola-bucket-card.png',
+  'dry-martini': '/assets/p2/recipe-dry-martini-card.png',
+  'tequila-sunrise': '/assets/p2/recipe-tequila-sunrise-card.png',
+  'aviation': '/assets/p2/recipe-aviation-card.png',
+  'bees-knees': '/assets/p2/recipe-bees-knees-card.png',
+  'clover-club': '/assets/p2/recipe-clover-club-card.png',
+  'french-75': '/assets/p2/recipe-french-75-card.png',
+  'manhattan': '/assets/p2/recipe-manhattan-card.png',
+  'boulevardier': '/assets/p2/recipe-boulevardier-card.png',
+  'sazerac': '/assets/p2/recipe-sazerac-card.png',
+  'penicillin': '/assets/p2/recipe-penicillin-card.png',
+  'paper-plane': '/assets/p2/recipe-paper-plane-card.png',
+  'mai-tai': '/assets/p2/recipe-mai-tai-card.png',
+  'jungle-bird': '/assets/p2/recipe-jungle-bird-card.png',
+  'dark-n-stormy': '/assets/p2/recipe-dark-n-stormy-card.png',
+  'tommys-margarita': '/assets/p2/recipe-tommys-margarita-card.png',
+  'naked-and-famous': '/assets/p2/recipe-naked-and-famous-card.png',
+  'cosmopolitan': '/assets/p2/recipe-cosmopolitan-card.png',
+  'sidecar': '/assets/p2/recipe-sidecar-card.png'
 }
 
 function resolveVisual(visual, variant) {
   if (!visual) return variant === 'card' ? DEFAULT_CARD : (variant === 'thumb' ? DEFAULT_LIST : DEFAULT_HERO)
-  const baseResult = baseResultFromVisual(visual)
-  if (baseResult) return baseResult
   return visual[variant] || visual.hero || DEFAULT_HERO
 }
 
