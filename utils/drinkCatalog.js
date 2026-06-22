@@ -13,7 +13,7 @@ function toKebabId(id) {
 }
 
 const ASSET_OVERRIDES = {
-  ginTonic: 'gin',
+  ginTonic: 'gin-tonic',
   whiskyOolong: 'whiskey-highball',
   umeshuSoda: 'whiskey-highball',
   umeshuOolong: 'whiskey-highball',
@@ -25,7 +25,7 @@ const ASSET_OVERRIDES = {
   baileysMilk: 'white-russian',
   baileysCoffee: 'white-russian',
   jagerCola: 'cola-bucket',
-  cvGinTonic: 'gin',
+  cvGinTonic: 'gin-tonic',
   cvTeaLight: 'whiskey-highball',
   cvFruitLow: 'paloma',
   cvMilkSoft: 'white-russian',
