@@ -63,7 +63,9 @@ const P2_RECIPE_VISUALS = {
   'gin-tonic': visual('gin-tonic'),
   'baileys-milk': aliasVisual('white-russian'),
   'whisky-cola': aliasVisual('cola-bucket'),
+  'screwdriver': aliasVisual('screwdriver'),
   'vodka-orange': aliasVisual('screwdriver'),
+  'whiskey-highball': aliasVisual('whiskey-highball'),
   'whisky-highball': aliasVisual('whiskey-highball'),
   'whisky-oolong': aliasVisual('whiskey-highball'),
   'espresso-martini': aliasVisual('espresso-martini'),
@@ -83,6 +85,7 @@ const P2_RECIPE_VISUALS = {
   'umeshu-oolong': aliasVisual('whiskey-highball'),
   'fruit-wine-spritz': aliasVisual('paloma'),
   'sangria-light': aliasVisual('cola-bucket'),
+  'sangria': aliasVisual('cola-bucket'),
   'mimosa': aliasVisual('mimosa'),
   'aperol-spritz': aliasVisual('aperol-spritz'),
   'sea-breeze': aliasVisual('sea-breeze'),
@@ -203,7 +206,9 @@ const BASE_PATHS = {
   'gin-tonic': '/assets/p2/recipe-gin-tonic-card.png',
   'baileys-milk': '/assets/p2/recipe-white-russian-card.png',
   'whisky-cola': '/assets/p2/recipe-cola-bucket-card.png',
+  'screwdriver': '/assets/p2/recipe-screwdriver-card.png',
   'vodka-orange': '/assets/p2/recipe-screwdriver-card.png',
+  'whiskey-highball': '/assets/p2/recipe-whiskey-highball-card.png',
   'whisky-highball': '/assets/p2/recipe-whiskey-highball-card.png',
   'whisky-oolong': '/assets/p2/recipe-whiskey-highball-card.png',
   'espresso-martini': '/assets/p2/recipe-espresso-martini-card.png',
@@ -223,6 +228,7 @@ const BASE_PATHS = {
   'umeshu-oolong': '/assets/p2/recipe-whiskey-highball-card.png',
   'fruit-wine-spritz': '/assets/p2/recipe-paloma-card.png',
   'sangria-light': '/assets/p2/recipe-cola-bucket-card.png',
+  'sangria': '/assets/p2/recipe-cola-bucket-card.png',
   'mimosa': '/assets/p2/recipe-mimosa-card.png',
   'aperol-spritz': '/assets/p2/recipe-aperol-spritz-card.png',
   'sea-breeze': '/assets/p2/recipe-sea-breeze-card.png',
@@ -265,11 +271,21 @@ function normalizeValues(itemOrId) {
     .map((value) => String(value))
 }
 
+function normalizeRecipeSlug(value) {
+  return String(value || '')
+    .trim()
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+    .replace(/_/g, '-')
+    .toLowerCase()
+}
+
 function matchRecipeKey(itemOrId) {
   const values = normalizeValues(itemOrId)
   const joined = values.join(' ').toLowerCase()
   for (const value of values) {
     if (P2_RECIPE_VISUALS[value]) return value
+    const normalized = normalizeRecipeSlug(value)
+    if (P2_RECIPE_VISUALS[normalized]) return normalized
   }
   for (const key of Object.keys(P2_RECIPE_VISUALS)) {
     if (joined.includes(key.toLowerCase())) return key
