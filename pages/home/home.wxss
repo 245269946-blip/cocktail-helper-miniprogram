@@ -1728,14 +1728,14 @@
   display: block;
   position: absolute;
   left: auto;
-  right: 18rpx;
-  top: 24rpx;
-  width: 330rpx;
-  height: 236rpx;
+  right: 30rpx;
+  top: 30rpx;
+  width: 270rpx;
+  height: 270rpx;
   z-index: 2;
   opacity: 1;
-  border-radius: 22rpx;
-  box-shadow: 0 18rpx 34rpx rgba(80, 70, 50, 0.08);
+  border-radius: 30rpx;
+  box-shadow: 0 18rpx 36rpx rgba(80, 70, 50, 0.10);
 }
 
 .first-drink-wash {
@@ -1744,15 +1744,15 @@
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255, 252, 244, 0.98) 0%, rgba(255, 252, 244, 0.92) 50%, rgba(255, 252, 244, 0.18) 100%),
-    linear-gradient(180deg, rgba(255, 252, 244, 0.02) 0%, rgba(255, 252, 244, 0.24) 54%, rgba(255, 252, 244, 0.92) 100%);
+    linear-gradient(90deg, rgba(255, 252, 244, 0.98) 0%, rgba(255, 252, 244, 0.82) 46%, rgba(255, 252, 244, 0.04) 100%),
+    linear-gradient(180deg, rgba(255, 252, 244, 0.00) 0%, rgba(255, 252, 244, 0.10) 52%, rgba(255, 252, 244, 0.92) 100%);
 }
 
 .first-drink-copy {
   position: relative;
   z-index: 3;
-  width: 60%;
-  padding-top: 270rpx;
+  width: 62%;
+  padding-top: 284rpx;
 }
 
 .random-orbit-img {
