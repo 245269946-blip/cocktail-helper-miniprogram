@@ -12,8 +12,29 @@ function toKebabId(id) {
     .toLowerCase()
 }
 
+const ASSET_OVERRIDES = {
+  ginTonic: 'gin',
+  whiskyOolong: 'whiskey-highball',
+  umeshuSoda: 'whiskey-highball',
+  umeshuOolong: 'whiskey-highball',
+  sakeHighball: 'vodka-soda',
+  sakeGreenTea: 'vodka-soda',
+  coffeeTonic: 'vodka-soda',
+  fruitWineSpritz: 'paloma',
+  sangriaLight: 'cola-bucket',
+  baileysMilk: 'white-russian',
+  baileysCoffee: 'white-russian',
+  jagerCola: 'cola-bucket',
+  cvGinTonic: 'gin',
+  cvTeaLight: 'whiskey-highball',
+  cvFruitLow: 'paloma',
+  cvMilkSoft: 'white-russian',
+  cvNonalcoholFresh: 'vodka-soda',
+  cvFreshTipsy: 'vodka-soda'
+}
+
 function buildAssets(id) {
-  const kebab = toKebabId(id)
+  const kebab = ASSET_OVERRIDES[id] || toKebabId(id)
   const hero = `/assets/p2/base-${kebab}-result.png`
   return {
     base: hero,
