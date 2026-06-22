@@ -27,14 +27,14 @@ const ingredientSlugs = {
   '蜂蜜': 'honey'
 }
 
-const DEFAULT_HERO = '/assets/p2/base-gin-tonic-result.png'
+const DEFAULT_HERO = '/assets/p2/base-gin-result.png'
 const DEFAULT_CARD = DEFAULT_HERO
 const DEFAULT_LIST = DEFAULT_HERO
 const DEFAULT_CONV = '/assets/p2/base-vodka-soda-result.png'
 const DEFAULT_DECO = DEFAULT_HERO
 
 const P2_BASE_POOL = {
-  gin: '/assets/p2/base-gin-tonic-result.png',
+  gin: '/assets/p2/base-gin-result.png',
   vodka: '/assets/p2/base-vodka-soda-result.png',
   whisky: '/assets/p2/base-whiskey-highball-result.png',
   rum: '/assets/p2/base-cuba-libre-result.png',
@@ -255,7 +255,9 @@ const BASE_PATHS = {
 function baseResultFromVisual(visual) {
   const hero = visual && visual.hero
   const match = /\/recipe-(.+)-hero\.png$/.exec(hero || '')
-  return match ? `/assets/p2/base-${match[1]}-result.png` : ''
+  if (!match) return ''
+  const slug = match[1]
+  return BASE_PATHS[slug] || `/assets/p2/base-${slug}-result.png`
 }
 
 function resolveVisual(visual, variant) {
