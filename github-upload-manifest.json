@@ -478,6 +478,7 @@
   "scripts/build-pages.js",
   "scripts/export-cloud-data.js",
   "scripts/generate-illustrations.py",
+  "scripts/package-wechat-release.ps1",
   "scripts/upload-to-github.ps1",
   "sitemap.json",
   "utils/cloudConfig.js",
