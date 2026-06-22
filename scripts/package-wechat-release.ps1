@@ -178,11 +178,15 @@ PRIORITY_P2 = {
 
 REPORT_NAMES = {
     "assets/p2/base-gin-tonic-result.jpg",
-    "assets/p2/base-gin-result.jpg",
+    "assets/p2/base-gin-result.png",
     "assets/p2/base-mojito-result.jpg",
     "assets/p2/base-cuba-libre-result.jpg",
     "assets/p2/base-white-russian-result.jpg",
     "assets/layer3/conv-fridge-bg.jpg",
+}
+
+KEEP_PNG_AS_PNG = {
+    "assets/p2/base-gin-result.png",
 }
 
 def should_keep_asset(path):
@@ -266,6 +270,15 @@ for path in list(assets.rglob("*")):
         continue
     max_px, quality = image_policy(rel, path.name)
     out = path.with_suffix(".jpg")
+    if high_quality_repair and rel in KEEP_PNG_AS_PNG:
+        png_out = path.with_suffix(".png")
+        im_png = Image.open(path).convert("RGBA")
+        im_png.thumbnail((max_px, max_px), Image.Resampling.LANCZOS)
+        palette = im_png.convert("P", palette=Image.Palette.ADAPTIVE, colors=96)
+        palette.save(png_out, "PNG", optimize=True)
+        if path != png_out:
+            path.unlink()
+        continue
     im = flatten_image(path)
     im = enhance_image(im, rel, path.name)
     im.thumbnail((max_px, max_px), Image.Resampling.LANCZOS)
@@ -299,6 +312,11 @@ for path in root.rglob("*"):
             next_text = next_text.replace(
                 f"assets/tabbar/{name}.jpg",
                 f"assets/tabbar/{name}.png",
+            )
+        if high_quality_repair:
+            next_text = next_text.replace(
+                "/assets/p2/base-gin-result.jpg",
+                "/assets/p2/base-gin-result.png",
             )
         if next_text != text:
             path.write_text(next_text, encoding="utf-8")
