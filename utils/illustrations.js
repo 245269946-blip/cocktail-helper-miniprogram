@@ -27,23 +27,23 @@ const ingredientSlugs = {
   '蜂蜜': 'honey'
 }
 
-const DEFAULT_HERO = '/assets/p2/recipe-gin-tonic-hero.png'
+const DEFAULT_HERO = '/assets/p2/base-gin-tonic-result.png'
 const DEFAULT_CARD = DEFAULT_HERO
 const DEFAULT_LIST = DEFAULT_HERO
-const DEFAULT_CONV = '/assets/p2/recipe-vodka-soda-hero.png'
+const DEFAULT_CONV = '/assets/p2/base-vodka-soda-result.png'
 const DEFAULT_DECO = DEFAULT_HERO
 
 const P2_BASE_POOL = {
-  gin: '/assets/p2/recipe-gin-tonic-hero.png',
-  vodka: '/assets/p2/recipe-vodka-soda-hero.png',
-  whisky: '/assets/p2/recipe-whiskey-highball-hero.png',
-  rum: '/assets/p2/recipe-cuba-libre-hero.png',
-  tequila: '/assets/p2/recipe-tequila-sunrise-hero.png',
-  brandy: '/assets/p2/recipe-sidecar-hero.png',
-  baileys: '/assets/p2/recipe-white-russian-hero.png',
-  jager: '/assets/p2/recipe-cola-bucket-hero.png',
-  sake: '/assets/p2/recipe-vodka-soda-hero.png',
-  'plum-wine': '/assets/p2/recipe-whiskey-highball-hero.png'
+  gin: '/assets/p2/base-gin-tonic-result.png',
+  vodka: '/assets/p2/base-vodka-soda-result.png',
+  whisky: '/assets/p2/base-whiskey-highball-result.png',
+  rum: '/assets/p2/base-cuba-libre-result.png',
+  tequila: '/assets/p2/base-tequila-sunrise-result.png',
+  brandy: '/assets/p2/base-sidecar-result.png',
+  baileys: '/assets/p2/base-white-russian-result.png',
+  jager: '/assets/p2/base-cola-bucket-result.png',
+  sake: '/assets/p2/base-sake-highball-result.png',
+  'plum-wine': '/assets/p2/base-umeshu-soda-result.png'
 }
 
 const visual = (slug) => ({
@@ -252,8 +252,16 @@ const BASE_PATHS = {
   'sidecar': '/assets/p2/base-sidecar-result.png'
 }
 
+function baseResultFromVisual(visual) {
+  const hero = visual && visual.hero
+  const match = /\/recipe-(.+)-hero\.png$/.exec(hero || '')
+  return match ? `/assets/p2/base-${match[1]}-result.png` : ''
+}
+
 function resolveVisual(visual, variant) {
   if (!visual) return variant === 'card' ? DEFAULT_CARD : (variant === 'thumb' ? DEFAULT_LIST : DEFAULT_HERO)
+  const baseResult = baseResultFromVisual(visual)
+  if (baseResult) return baseResult
   return visual[variant] || visual.hero || DEFAULT_HERO
 }
 
@@ -289,8 +297,8 @@ function drinkPath(itemOrId, variant = 'hero') {
 
 function basePath(itemOrId) {
   const slug = matchRecipeKey(itemOrId)
-  if (slug && P2_RECIPE_VISUALS[slug]) return resolveVisual(P2_RECIPE_VISUALS[slug], 'hero')
   if (slug && BASE_PATHS[slug]) return BASE_PATHS[slug]
+  if (slug && P2_RECIPE_VISUALS[slug]) return resolveVisual(P2_RECIPE_VISUALS[slug], 'hero')
   const key = normalizeValues(itemOrId).join(' ').toLowerCase()
   if (key.includes('whisk') || key.includes('bourbon') || key.includes('威士忌')) return P2_BASE_POOL.whisky
   if (key.includes('gin') || key.includes('金酒')) return P2_BASE_POOL.gin

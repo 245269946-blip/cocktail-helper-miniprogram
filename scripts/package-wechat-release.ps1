@@ -122,11 +122,7 @@ def should_keep_asset(path):
     rel = path.relative_to(root).as_posix()
     name = path.name
     if rel.startswith("assets/p2/"):
-        return (
-            name.startswith("recipe-") and name.endswith("-hero.png")
-        ) or (
-            name.startswith("base-") and name.endswith("-result.png")
-        )
+        return name.startswith("base-") and name.endswith("-result.png")
     if rel.startswith("assets/illustrations/ingredients/"):
         return True
     return rel in KEEP_STATIC
@@ -149,8 +145,8 @@ for path in list(assets.rglob("*")):
     if rel.startswith("assets/tabbar/"):
         continue
     is_p2 = rel.startswith("assets/p2/")
-    max_px = 420 if is_p2 else 320
-    quality = 50 if is_p2 else 45
+    max_px = 520 if is_p2 else 280
+    quality = 56 if is_p2 else 38
     out = path.with_suffix(".jpg")
     im = Image.open(path).convert("RGB")
     im.thumbnail((max_px, max_px), Image.Resampling.LANCZOS)

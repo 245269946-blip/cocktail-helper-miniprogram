@@ -1,6 +1,6 @@
 const DEFAULT_TITLE = '调酒助手'
 const DEFAULT_PATH = '/pages/home/home'
-const DEFAULT_IMAGE = '/assets/p2/recipe-gin-tonic-hero.png'
+const DEFAULT_IMAGE = '/assets/p2/base-gin-tonic-result.png'
 
 function encodeQuery(params) {
   return Object.keys(params || {})

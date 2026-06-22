@@ -14,7 +14,7 @@ function toKebabId(id) {
 
 function buildAssets(id) {
   const kebab = toKebabId(id)
-  const hero = `/assets/p2/recipe-${kebab}-hero.png`
+  const hero = `/assets/p2/base-${kebab}-result.png`
   return {
     base: hero,
     card: hero,

@@ -53,7 +53,7 @@ Page({
     themeClass: 'theme-gin',
     totalCount: 0,
     searchKeyword: '',
-    decoImage: '/assets/p2/recipe-gin-tonic-hero.png',
+    decoImage: '/assets/p2/base-gin-tonic-result.png',
     trendingSearches: ['金汤力', '莫吉托', '威士忌可乐', '百利甜牛奶', '梅酒苏打'],
     decisionIntro: null,
     mainRecommendation: null,
