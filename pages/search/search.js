@@ -175,14 +175,14 @@ Page({
     return share.appMessage({
       title: '完整鸡尾酒目录，按基酒直接挑一杯',
       path: '/pages/search/search',
-      imageUrl: '/assets/p2/base-gin-result.png'
+      imageUrl: '/assets/p2/recipe-gin-tonic-card.png'
     })
   },
 
   onShareTimeline() {
     return share.timeline({
       title: '完整鸡尾酒目录，按基酒直接挑一杯',
-      imageUrl: '/assets/p2/base-gin-result.png'
+      imageUrl: '/assets/p2/recipe-gin-tonic-card.png'
     })
   }
 })
