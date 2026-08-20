@@ -153,17 +153,27 @@ KEEP_STATIC = {
     "assets/scenes/scene-header.png",
 }
 
+PRIORITY_RECIPE_SLUGS = {
+    "gin-tonic",
+    "whiskey-highball",
+    "cuba-libre",
+    "vodka-soda",
+    "moscow-mule",
+    "paloma",
+    "screwdriver",
+    "sea-breeze",
+    "tequila-sunrise",
+    "margarita",
+    "whiskey-sour",
+    "daiquiri",
+    "mojito",
+    "caipirinha",
+    "espresso-martini",
+    "white-russian",
+    "cola-bucket",
+}
+
 PRIORITY_P2 = {
-    "recipe-gin-tonic-card.png",
-    "recipe-gin-tonic-hero.png",
-    "recipe-whiskey-sour-card.png",
-    "recipe-whiskey-sour-hero.png",
-    "recipe-mojito-card.png",
-    "recipe-mojito-hero.png",
-    "recipe-cuba-libre-card.png",
-    "recipe-cuba-libre-hero.png",
-    "recipe-white-russian-card.png",
-    "recipe-white-russian-hero.png",
     "recipe-gin-tonic-feature.jpg",
     "recipe-whiskey-sour-feature.jpg",
     "recipe-mojito-feature.jpg",
@@ -173,7 +183,6 @@ PRIORITY_P2 = {
 
 REPORT_NAMES = {
     "assets/p2/recipe-gin-tonic-card.jpg",
-    "assets/p2/recipe-gin-tonic-hero.jpg",
     "assets/p2/recipe-whiskey-sour-card.jpg",
     "assets/p2/recipe-mojito-card.jpg",
     "assets/p2/recipe-cuba-libre-card.jpg",
@@ -187,7 +196,7 @@ def should_keep_asset(path):
     rel = path.relative_to(root).as_posix()
     name = path.name
     if rel.startswith("assets/p2/"):
-        return name.startswith("recipe-") and (name.endswith("-card.png") or name.endswith("-hero.png") or name.endswith("-feature.png") or name.endswith("-feature.jpg"))
+        return name.startswith("recipe-") and (name.endswith("-card.png") or name.endswith("-feature.png") or name.endswith("-feature.jpg"))
     if rel.startswith("assets/illustrations/ingredients/"):
         return True
     return rel in KEEP_STATIC
@@ -215,11 +224,10 @@ def flatten_image(path):
 def image_policy(rel, name):
     if rel.startswith("assets/p2/"):
         if name.endswith("-feature.png") or name.endswith("-feature.jpg"):
-            return (300, 62) if high_quality_repair else (280, 54)
+            return (460, 74) if high_quality_repair else (320, 58)
         if name.endswith("-card.png"):
-            return (380, 56) if (high_quality_repair and name in PRIORITY_P2) else (340, 48)
-        if name.endswith("-hero.png"):
-            return (520, 60) if (high_quality_repair and name in PRIORITY_P2) else (460, 52)
+            slug = name[len("recipe-"):-len("-card.png")]
+            return (520, 64) if (high_quality_repair and slug in PRIORITY_RECIPE_SLUGS) else (300, 48)
         if high_quality_repair:
             return 470, 50
         return 520, 56
@@ -244,7 +252,10 @@ def enhance_image(im, rel, name):
         stat = ImageStat.Stat(im)
         light = sum(stat.mean) / 3
         contrast = sum(stat.stddev) / 3
-        if name in PRIORITY_P2 or (light > 232 and contrast < 24):
+        slug = ""
+        if name.startswith("recipe-") and name.endswith("-card.png"):
+            slug = name[len("recipe-"):-len("-card.png")]
+        if name in PRIORITY_P2 or slug in PRIORITY_RECIPE_SLUGS or (light > 232 and contrast < 24):
             im = ImageEnhance.Color(im).enhance(1.12)
             im = ImageEnhance.Contrast(im).enhance(1.18)
             im = ImageEnhance.Sharpness(im).enhance(1.16)
