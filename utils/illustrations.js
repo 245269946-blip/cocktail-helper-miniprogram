@@ -27,8 +27,8 @@ const ingredientSlugs = {
   '蜂蜜': 'honey'
 }
 
-const DEFAULT_HERO = '/assets/p2/recipe-gin-tonic-hero.png'
 const DEFAULT_CARD = '/assets/p2/recipe-gin-tonic-card.png'
+const DEFAULT_HERO = DEFAULT_CARD
 const DEFAULT_LIST = DEFAULT_CARD
 const DEFAULT_CONV = '/assets/p2/recipe-vodka-soda-card.png'
 const DEFAULT_DECO = DEFAULT_HERO
@@ -48,13 +48,13 @@ const P2_BASE_POOL = {
 
 const visual = (slug) => ({
   card: `/assets/p2/recipe-${slug}-card.png`,
-  hero: `/assets/p2/recipe-${slug}-hero.png`,
+  hero: `/assets/p2/recipe-${slug}-card.png`,
   thumb: `/assets/p2/recipe-${slug}-card.png`
 })
 
 const aliasVisual = (slug) => ({
   card: `/assets/p2/recipe-${slug}-card.png`,
-  hero: `/assets/p2/recipe-${slug}-hero.png`,
+  hero: `/assets/p2/recipe-${slug}-card.png`,
   thumb: `/assets/p2/recipe-${slug}-card.png`
 })
 
