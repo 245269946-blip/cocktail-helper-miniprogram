@@ -481,6 +481,7 @@
   "scripts/generate-illustrations.py",
   "scripts/package-wechat-release.ps1",
   "scripts/prepare-cloud-images.ps1",
+  "scripts/audit-visible-recipes.js",
   "scripts/upload-to-github.ps1",
   "sitemap.json",
   "utils/cloudConfig.js",

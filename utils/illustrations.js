@@ -42,6 +42,12 @@ const LOCAL_FEATURE_SLUGS = {
   'white-russian': true
 }
 
+const FEATURE_SLUG_OVERRIDES = {
+  'vodka-orange': 'screwdriver',
+  'whisky-highball': 'whiskey-highball',
+  'sangria': 'sangria-light'
+}
+
 const P2_BASE_POOL = {
   gin: '/assets/p2/recipe-gin-tonic-card.png',
   vodka: '/assets/p2/recipe-vodka-soda-card.png',
@@ -70,13 +76,13 @@ const aliasVisual = (slug) => ({
 const P2_RECIPE_VISUALS = {
   'mojito': aliasVisual('mojito'),
   'gin-tonic': visual('gin-tonic'),
-  'baileys-milk': aliasVisual('white-russian'),
-  'whisky-cola': aliasVisual('cola-bucket'),
+  'baileys-milk': aliasVisual('baileys-milk'),
+  'whisky-cola': aliasVisual('whisky-cola'),
   'screwdriver': aliasVisual('screwdriver'),
   'vodka-orange': aliasVisual('screwdriver'),
   'whiskey-highball': aliasVisual('whiskey-highball'),
   'whisky-highball': aliasVisual('whiskey-highball'),
-  'whisky-oolong': aliasVisual('whiskey-highball'),
+  'whisky-oolong': aliasVisual('whisky-oolong'),
   'espresso-martini': aliasVisual('espresso-martini'),
   'tom-collins': aliasVisual('tom-collins'),
   'negroni': aliasVisual('negroni'),
@@ -86,38 +92,38 @@ const P2_RECIPE_VISUALS = {
   'daiquiri': aliasVisual('daiquiri'),
   'margarita': aliasVisual('margarita'),
   'paloma': aliasVisual('paloma'),
-  'jager-cola': aliasVisual('cola-bucket'),
-  'baileys-coffee': aliasVisual('white-russian'),
-  'coffee-tonic': aliasVisual('vodka-soda'),
+  'jager-cola': aliasVisual('jager-cola'),
+  'baileys-coffee': aliasVisual('baileys-coffee'),
+  'coffee-tonic': aliasVisual('coffee-tonic'),
   'old-fashioned': aliasVisual('old-fashioned'),
-  'umeshu-soda': aliasVisual('whiskey-highball'),
-  'umeshu-oolong': aliasVisual('whiskey-highball'),
-  'fruit-wine-spritz': aliasVisual('paloma'),
-  'sangria-light': aliasVisual('cola-bucket'),
+  'umeshu-soda': aliasVisual('umeshu-soda'),
+  'umeshu-oolong': aliasVisual('umeshu-oolong'),
+  'fruit-wine-spritz': aliasVisual('fruit-wine-spritz'),
+  'sangria-light': aliasVisual('sangria-light'),
   'sangria': aliasVisual('cola-bucket'),
   'mimosa': aliasVisual('mimosa'),
   'aperol-spritz': aliasVisual('aperol-spritz'),
   'sea-breeze': aliasVisual('sea-breeze'),
-  'sake-highball': aliasVisual('vodka-soda'),
-  'sake-green-tea': aliasVisual('vodka-soda'),
+  'sake-highball': aliasVisual('sake-highball'),
+  'sake-green-tea': aliasVisual('sake-green-tea'),
   'whiskey-sour': aliasVisual('whiskey-sour'),
   'caipirinha': aliasVisual('caipirinha'),
   'white-russian': aliasVisual('white-russian'),
   'cola-bucket': aliasVisual('cola-bucket'),
   'dry-martini': aliasVisual('dry-martini'),
   'tequila-sunrise': aliasVisual('tequila-sunrise'),
-  'cv-fresh-tipsy': aliasVisual('vodka-soda'),
-  'cv-gin-tonic': visual('gin-tonic'),
-  'cv-cuba-libre': aliasVisual('cuba-libre'),
-  'cv-vodka-soda': aliasVisual('vodka-soda'),
-  'cv-screwdriver': aliasVisual('screwdriver'),
-  'cv-sweet-party': aliasVisual('cola-bucket'),
-  'cv-milk-soft': aliasVisual('white-russian'),
-  'cv-tea-light': aliasVisual('whiskey-highball'),
-  'cv-fruit-low': aliasVisual('paloma'),
-  'cv-coffee-night': aliasVisual('white-russian'),
-  'cv-nonalcohol-fresh': aliasVisual('vodka-soda'),
-  'supermarket-party': aliasVisual('cola-bucket'),
+  'cv-fresh-tipsy': aliasVisual('cv-fresh-tipsy'),
+  'cv-gin-tonic': aliasVisual('cv-gin-tonic'),
+  'cv-cuba-libre': aliasVisual('cv-cuba-libre'),
+  'cv-vodka-soda': aliasVisual('cv-vodka-soda'),
+  'cv-screwdriver': aliasVisual('cv-screwdriver'),
+  'cv-sweet-party': aliasVisual('cv-sweet-party'),
+  'cv-milk-soft': aliasVisual('cv-milk-soft'),
+  'cv-tea-light': aliasVisual('cv-tea-light'),
+  'cv-fruit-low': aliasVisual('cv-fruit-low'),
+  'cv-coffee-night': aliasVisual('cv-coffee-night'),
+  'cv-nonalcohol-fresh': aliasVisual('cv-nonalcohol-fresh'),
+  'supermarket-party': aliasVisual('supermarket-party'),
   'aviation': aliasVisual('aviation'),
   'bees-knees': aliasVisual('bees-knees'),
   'clover-club': aliasVisual('clover-club'),
@@ -315,8 +321,9 @@ function drinkPath(itemOrId, variant = 'hero') {
 function featurePath(itemOrId) {
   const slug = matchRecipeKey(itemOrId)
   if (slug) {
-    const fallback = LOCAL_FEATURE_SLUGS[slug] ? `/assets/p2/recipe-${slug}-feature.jpg` : `/assets/p2/recipe-${slug}-card.png`
-    return imageCloud.featureImage(slug, fallback)
+    const assetSlug = FEATURE_SLUG_OVERRIDES[slug] || slug
+    const fallback = LOCAL_FEATURE_SLUGS[assetSlug] ? `/assets/p2/recipe-${assetSlug}-feature.jpg` : `/assets/p2/recipe-${assetSlug}-card.png`
+    return imageCloud.featureImage(assetSlug, fallback)
   }
   return imageCloud.featureImage('gin-tonic', '/assets/p2/recipe-gin-tonic-feature.jpg')
 }
