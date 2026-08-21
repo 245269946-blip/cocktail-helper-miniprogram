@@ -10,7 +10,7 @@
           <view class="section-subtitle">{{item.entryLine}}</view>
         </view>
         <view class="asset-illo">
-          <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" />
+          <image class="asset-image" src="{{item.illustration}}" mode="aspectFit" lazy-load />
         </view>
       </view>
       <view class="tags">
