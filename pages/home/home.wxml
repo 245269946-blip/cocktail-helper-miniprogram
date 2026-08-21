@@ -111,7 +111,7 @@
           <view class="random-entry-action">抽今天这一杯</view>
         </view>
         <view class="random-entry-orbit">
-          <image wx:for="{{randomPreview}}" wx:key="id" class="random-orbit-img img-{{index}}" src="{{item.illustration || item.thumbnail}}" mode="aspectFill" />
+          <image wx:for="{{randomPreview}}" wx:key="id" class="random-orbit-img img-{{index}}" src="{{item.illustration || item.thumbnail}}" mode="aspectFill" lazy-load />
           <view class="random-orbit-glow"></view>
         </view>
       </view>
@@ -128,7 +128,7 @@
         <scroll-view class="first-drink-scroll" scroll-x>
           <view class="first-drink-track">
             <view wx:for="{{featuredRecipes}}" wx:key="id" class="first-drink-card" data-id="{{item.id}}" bindtap="onRecipeTap">
-              <image class="first-drink-bg" src="{{item.image}}" mode="aspectFill" />
+              <image class="first-drink-bg" src="{{item.image}}" mode="aspectFill" lazy-load />
               <view class="first-drink-wash"></view>
               <view class="first-drink-copy">
                 <view class="first-demand">{{item.demand}}</view>
