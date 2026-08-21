@@ -69,7 +69,7 @@
     <view class="pairing-list">
       <block wx:for="{{pairingItems}}" wx:key="id">
         <view class="pairing-card" data-id="{{item.id}}" bindtap="onDetailTap">
-          <image src="{{item.illustration}}" mode="aspectFill" class="pc-img" />
+          <image src="{{item.illustration}}" mode="aspectFill" class="pc-img" lazy-load />
           <view class="pc-info">
             <view class="pc-top">
               <text class="pc-name">{{item.name}}</text>
