@@ -3,6 +3,7 @@ const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
 const visualSystem = require('../../utils/visualSystem')
 const drinkProcess = require('../../utils/drinkProcess')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 function actionPreviewSteps(detail) {
@@ -74,7 +75,7 @@ Page({
     const isFavorite = favorites.indexOf(detail.id) >= 0
 
     wx.setNavigationBarTitle({ title: detail.name })
-    this.setData({
+    cloudImageResolver.resolve({
       detail: viewDetail,
       themeClass: visualSystem.themeClass(detail),
       scoreRows: viewDetail.scoreRows,
@@ -85,6 +86,8 @@ Page({
       similarItems,
       isFavorite,
       favoriteText: isFavorite ? '已收藏' : '收藏'
+    }).then((resolved) => {
+      this.setData(resolved)
     })
   },
 

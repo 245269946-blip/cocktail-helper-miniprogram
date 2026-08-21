@@ -1,6 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 Page({
@@ -12,7 +13,11 @@ Page({
     share.enableShareMenu()
     contentStore.getContent().then(() => {
       const favorites = wx.getStorageSync('favorites') || []
-      this.setData({ items: recommend.getItemsByIds(favorites).map((item) => drinkView.resultCard(item)) })
+      cloudImageResolver.resolve({
+        items: recommend.getItemsByIds(favorites).map((item) => drinkView.resultCard(item))
+      }).then((resolved) => {
+        this.setData(resolved)
+      })
     })
   },
 

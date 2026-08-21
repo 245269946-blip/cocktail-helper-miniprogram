@@ -1,6 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 const CONVENIENCE_DRINK_IDS = ['cv-gin-tonic', 'cv-cuba-libre', 'cv-vodka-soda', 'cv-screwdriver']
@@ -98,12 +99,14 @@ Page({
     const mainPackage = packageRecipes.length ? this.buildConveniencePackage(packageRecipes) : null
     const moreSchemes = cardResults.slice(0, 5).map((item) => this.enrichMiniCard(item))
 
-    this.setData({
+    cloudImageResolver.resolve({
       places: this.data.allPlaces.map((label) => ({ label, active: label === this.data.place })),
       moods: this.data.allMoods.map((label) => ({ label, active: this.data.selectedMoods.indexOf(label) >= 0 })),
       results: cardResults,
       mainPackage,
       moreSchemes
+    }).then((resolved) => {
+      this.setData(resolved)
     })
   },
 

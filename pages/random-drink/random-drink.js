@@ -1,5 +1,6 @@
 const contentStore = require('../../utils/contentStore')
 const randomDrink = require('../../utils/randomDrink')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 Page({
@@ -14,9 +15,11 @@ Page({
       const pick = randomDrink.buildPick({ id: options.id })
       if (!pick) return
       wx.setNavigationBarTitle({ title: '随机来一杯' })
-      this.setData({
+      cloudImageResolver.resolve({
         pick,
         fromShare: !!options.id
+      }).then((resolved) => {
+        this.setData(resolved)
       })
     })
   },
@@ -29,7 +32,9 @@ Page({
   onDrawMine() {
     const pick = randomDrink.buildPick()
     if (!pick) return
-    this.setData({ pick, fromShare: false })
+    cloudImageResolver.resolve({ pick, fromShare: false }).then((resolved) => {
+      this.setData(resolved)
+    })
   },
 
   shareOptions() {

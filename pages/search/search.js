@@ -2,6 +2,7 @@ const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
 const recommend = require('../../utils/recommend')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 let pageContent = data
@@ -40,12 +41,14 @@ Page({
     contentStore.getContent().then((content) => {
       pageContent = content
       const catalogGroups = this.buildCatalogGroups(content)
-      this.setData({
+      cloudImageResolver.resolve({
         hotKeywords: content.hotKeywords || [],
         recentSearches: wx.getStorageSync('recentSearches') || [],
         catalogGroups,
         visibleGroups: catalogGroups,
         allCount: visibleRecipes(content).length
+      }).then((resolved) => {
+        this.setData(resolved)
       })
     })
   },

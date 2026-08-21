@@ -2,6 +2,7 @@ const data = require('../../utils/data')
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 Page({
@@ -19,7 +20,7 @@ Page({
   onLoad() {
     share.enableShareMenu()
     contentStore.getContent().then((content) => {
-      this.setData({
+      cloudImageResolver.resolve({
         rawGroups: content.pantryGroups,
         starterCards: this.buildStarterCards([
           'gin-tonic',
@@ -33,15 +34,19 @@ Page({
           'aperol-spritz',
           'bees-knees'
         ])
+      }).then((resolved) => {
+        this.setData(resolved, () => this.updateGroups())
       }, () => this.updateGroups())
     })
   },
 
   onInput(event) {
     const query = event.detail.value || ''
-    this.setData({
+    cloudImageResolver.resolve({
       query,
       queryCards: this.buildQueryCards(query)
+    }).then((resolved) => {
+      this.setData(resolved, () => this.updateGroups())
     }, () => this.updateGroups())
   },
 
@@ -62,7 +67,7 @@ Page({
 
   refresh() {
     const result = recommend.pantryRecommend(this.data.selected)
-    this.setData({
+    cloudImageResolver.resolve({
       result,
       sections: [
         this.buildSection('ready', 'A. 现在直接能做', '不用补货，今晚聚会直接能用。', result.ready, '直接做'),
@@ -70,6 +75,8 @@ Page({
         this.buildSection('convenienceFill', 'C. 去便利店补一下', '顺手下楼买一下，5 分钟能齐。', result.convenienceFill, '马上补'),
         this.buildSection('upgrade', 'D. 升级版更好喝', '多补一点材料，口感会明显更完整。', result.upgrade, '升级口感')
       ]
+    }).then((resolved) => {
+      this.setData(resolved)
     })
   },
 

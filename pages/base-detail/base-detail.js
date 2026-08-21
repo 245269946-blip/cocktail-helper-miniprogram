@@ -2,6 +2,7 @@ const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
 const drinkView = require('../../utils/drinkView')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 Page({
@@ -63,7 +64,7 @@ Page({
     const pairingItems = allSectionItems.slice(0, 6).map((item) => this.enrichPairingItem(item))
 
     wx.setNavigationBarTitle({ title: base.name + '喝法' })
-    this.setData({
+    cloudImageResolver.resolve({
       base: illustrations.decorateBase(base),
       sections,
       searchTabs,
@@ -72,6 +73,8 @@ Page({
       pairingItems,
       pairingPool: allSectionItems,
       pairingOffset: 0
+    }).then((resolved) => {
+      this.setData(resolved)
     })
   },
 

@@ -1,6 +1,7 @@
 const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 Page({
@@ -35,11 +36,13 @@ Page({
     if (!results.length) {
       results = recommend.beginnerRecommend(this.data.level, '', this.data.buy)
     }
-    this.setData({
+    cloudImageResolver.resolve({
       levelOptions: levelRaw.map((label) => ({ label, active: label === this.data.level })),
       flavorOptions: flavorRaw.map((label) => ({ label, active: label === this.data.flavor })),
       buyOptions: buyRaw.map((label) => ({ label, active: label === this.data.buy })),
       results: results.map((item) => drinkView.resultCard(item))
+    }).then((resolved) => {
+      this.setData(resolved)
     })
   },
 

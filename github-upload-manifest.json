@@ -485,6 +485,7 @@
   "scripts/upload-to-github.ps1",
   "sitemap.json",
   "utils/cloudConfig.js",
+  "utils/cloudImageResolver.js",
   "utils/contentStore.js",
   "utils/data.js",
   "utils/drinkCatalog.js",

@@ -72,7 +72,7 @@
   <!-- ====== LAYER 2: 今晚第一杯首页 ====== -->
   <view wx:else class="home-main">
     <view class="home-hero">
-      <image class="home-hero-bg" src="/assets/scenes/scene-header.png" mode="aspectFill" />
+      <image class="home-hero-bg" src="{{homeHeroImage}}" mode="aspectFill" />
       <view class="home-hero-wash"></view>
       <view class="hero-profile" bindtap="onTapProfile">⌾</view>
       <view class="hero-note">

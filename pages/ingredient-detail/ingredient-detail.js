@@ -2,6 +2,7 @@ const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
 const drinkView = require('../../utils/drinkView')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 const lowAlcoholLabels = {
@@ -36,7 +37,9 @@ Page({
     const lowAlcohol = (ingredient.lowAlcohol || []).map((item) => lowAlcoholLabels[item] || item)
 
     wx.setNavigationBarTitle({ title: ingredient.name })
-    this.setData({ ingredient: illustrations.decorateIngredient(ingredient), recipes, lowAlcohol })
+    cloudImageResolver.resolve({ ingredient: illustrations.decorateIngredient(ingredient), recipes, lowAlcohol }).then((resolved) => {
+      this.setData(resolved)
+    })
   },
 
   onDetailTap(event) {

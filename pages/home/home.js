@@ -1,12 +1,15 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
+const imageCloud = require('../../utils/imageCloud')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 const randomDrink = require('../../utils/randomDrink')
 
 Page({
   data: {
     showSplash: true,
+    homeHeroImage: '/assets/scenes/scene-header.png',
     keyword: '',
     isFocused: false,
     hotKeywords: ['金酒兑什么', '威士忌酸', '白俄罗斯', '可乐桶', '帕洛玛', '清爽气泡', '甜口', '新手第一杯'],
@@ -64,10 +67,20 @@ Page({
     share.enableShareMenu()
     contentStore.getContent().then((content) => {
       const hotKeywords = (content.hotKeywords || []).slice(0, 8)
-      this.setData({
+      cloudImageResolver.resolve({
+        featuredRecipes: this.data.featuredRecipes,
+        firstRecipe: this.data.firstRecipe,
+        randomPreview: randomDrink.previewItems(),
+        homeHeroImage: imageCloud.drinkImage('gin-tonic', 'card', '/assets/scenes/scene-header.png')
+      }).then((images) => {
+        this.setData({
         hotKeywords: ['金酒兑什么', '威士忌酸', '白俄罗斯', '可乐桶', '帕洛玛'].concat(hotKeywords).slice(0, 8),
-        recentSearches: wx.getStorageSync('recentSearches') || [],
-        randomPreview: randomDrink.previewItems()
+          recentSearches: wx.getStorageSync('recentSearches') || [],
+          featuredRecipes: images.featuredRecipes,
+          firstRecipe: images.firstRecipe,
+          randomPreview: images.randomPreview,
+          homeHeroImage: images.homeHeroImage
+        })
       })
     })
   },

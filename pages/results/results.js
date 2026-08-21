@@ -2,6 +2,7 @@ const recommend = require('../../utils/recommend')
 const contentStore = require('../../utils/contentStore')
 const drinkView = require('../../utils/drinkView')
 const illustrations = require('../../utils/illustrations')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const visualSystem = require('../../utils/visualSystem')
 const share = require('../../utils/share')
 
@@ -140,7 +141,7 @@ Page({
     const displayKeyword = mode === 'ids' ? title : (value || title)
 
     wx.setNavigationBarTitle({ title })
-    this.setData({
+    cloudImageResolver.resolve({
       title,
       subtitle,
       totalCount: allResultsCount,
@@ -157,6 +158,8 @@ Page({
       shareMode: mode,
       shareValue: value,
       shareTitle: title
+    }).then((resolved) => {
+      this.setData(resolved)
     })
   },
 

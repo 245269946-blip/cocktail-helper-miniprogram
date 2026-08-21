@@ -1,6 +1,7 @@
 const data = require('../../utils/data')
 const contentStore = require('../../utils/contentStore')
 const illustrations = require('../../utils/illustrations')
+const cloudImageResolver = require('../../utils/cloudImageResolver')
 const share = require('../../utils/share')
 
 Page({
@@ -14,7 +15,9 @@ Page({
     share.enableShareMenu()
     contentStore.getContent().then((content) => {
       const bases = content.bases.map((item) => illustrations.decorateBase(item))
-      this.setData({ rawBases: bases, bases })
+      cloudImageResolver.resolve({ rawBases: bases, bases }).then((resolved) => {
+        this.setData(resolved)
+      })
     })
   },
 
