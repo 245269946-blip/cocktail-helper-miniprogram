@@ -35,7 +35,7 @@
       </view>
       <view class="package-list">
         <view wx:for="{{mainPackage.items}}" wx:key="id" class="package-drink" data-id="{{item.id}}" bindtap="onDetailTap">
-          <image class="package-drink-img" src="{{item.illustration}}" mode="aspectFill" />
+          <image class="package-drink-img" src="{{item.illustration}}" mode="aspectFill" lazy-load />
           <view class="package-drink-pin">↗</view>
           <view class="package-drink-copy">
             <view class="package-drink-name">{{item.name}}</view>
@@ -66,7 +66,7 @@
           <text class="mini-desc">{{item.desc}}</text>
         </view>
         <view class="mini-arrow">→</view>
-        <image wx:if="{{item.illustration}}" src="{{item.illustration}}" mode="aspectFill" class="mini-img" />
+        <image wx:if="{{item.illustration}}" src="{{item.illustration}}" mode="aspectFill" class="mini-img" lazy-load />
       </view>
     </scroll-view>
   </view>
