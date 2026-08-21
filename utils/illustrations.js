@@ -1,3 +1,5 @@
+const imageCloud = require('./imageCloud')
+
 const ingredientSlugs = {
   '可乐': 'cola',
   '雪碧': 'sprite',
@@ -32,6 +34,13 @@ const DEFAULT_HERO = DEFAULT_CARD
 const DEFAULT_LIST = DEFAULT_CARD
 const DEFAULT_CONV = '/assets/p2/recipe-vodka-soda-card.png'
 const DEFAULT_DECO = DEFAULT_HERO
+const LOCAL_FEATURE_SLUGS = {
+  'gin-tonic': true,
+  'whiskey-sour': true,
+  'mojito': true,
+  'cuba-libre': true,
+  'white-russian': true
+}
 
 const P2_BASE_POOL = {
   gin: '/assets/p2/recipe-gin-tonic-card.png',
@@ -47,15 +56,15 @@ const P2_BASE_POOL = {
 }
 
 const visual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-card.png`,
-  hero: `/assets/p2/recipe-${slug}-card.png`,
-  thumb: `/assets/p2/recipe-${slug}-card.png`
+  card: imageCloud.drinkImage(slug, 'card', `/assets/p2/recipe-${slug}-card.png`),
+  hero: imageCloud.drinkImage(slug, 'card', `/assets/p2/recipe-${slug}-card.png`),
+  thumb: imageCloud.drinkImage(slug, 'card', `/assets/p2/recipe-${slug}-card.png`)
 })
 
 const aliasVisual = (slug) => ({
-  card: `/assets/p2/recipe-${slug}-card.png`,
-  hero: `/assets/p2/recipe-${slug}-card.png`,
-  thumb: `/assets/p2/recipe-${slug}-card.png`
+  card: imageCloud.drinkImage(slug, 'card', `/assets/p2/recipe-${slug}-card.png`),
+  hero: imageCloud.drinkImage(slug, 'card', `/assets/p2/recipe-${slug}-card.png`),
+  thumb: imageCloud.drinkImage(slug, 'card', `/assets/p2/recipe-${slug}-card.png`)
 })
 
 const P2_RECIPE_VISUALS = {
@@ -303,6 +312,15 @@ function drinkPath(itemOrId, variant = 'hero') {
   return variant === 'thumb' ? DEFAULT_LIST : DEFAULT_HERO
 }
 
+function featurePath(itemOrId) {
+  const slug = matchRecipeKey(itemOrId)
+  if (slug) {
+    const fallback = LOCAL_FEATURE_SLUGS[slug] ? `/assets/p2/recipe-${slug}-feature.jpg` : `/assets/p2/recipe-${slug}-card.png`
+    return imageCloud.featureImage(slug, fallback)
+  }
+  return imageCloud.featureImage('gin-tonic', '/assets/p2/recipe-gin-tonic-feature.jpg')
+}
+
 function basePath(itemOrId) {
   const slug = matchRecipeKey(itemOrId)
   if (slug && BASE_PATHS[slug]) return BASE_PATHS[slug]
@@ -351,6 +369,7 @@ function ingredientGroups(groups) {
 
 module.exports = {
   drinkPath,
+  featurePath,
   basePath,
   ingredientPath,
   decorateDrink,
