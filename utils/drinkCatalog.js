@@ -5,6 +5,8 @@
  * and pure query helpers. It is intentionally not wired to pages yet.
  */
 
+const imageCloud = require('./imageCloud')
+
 function toKebabId(id) {
   return String(id || '')
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -36,11 +38,11 @@ const ASSET_OVERRIDES = {
 function buildAssets(id) {
   const kebab = ASSET_OVERRIDES[id] || toKebabId(id)
   const card = `/assets/p2/recipe-${kebab}-card.png`
-  const hero = card
+  const remoteCard = imageCloud.drinkImage(kebab, 'card', card)
   return {
-    base: card,
-    card,
-    hero
+    base: remoteCard,
+    card: remoteCard,
+    hero: remoteCard
   }
 }
 
