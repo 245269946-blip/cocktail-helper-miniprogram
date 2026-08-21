@@ -30,7 +30,7 @@
   <!-- 主推荐卡（Hero Card） -->
   <view wx:if="{{mainRecommendation}}" class="hero-card" data-id="{{mainRecommendation.id}}" bindtap="onDetailTap">
     <view class="hero-cover">
-      <image src="{{mainRecommendation.illustration}}" mode="aspectFill" class="hero-img" />
+      <image src="{{mainRecommendation.illustration}}" mode="aspectFill" class="hero-img" lazy-load />
     </view>
 
     <view class="hero-body">
@@ -68,7 +68,7 @@
 
     <view class="result-list">
       <view wx:for="{{primaryResults}}" wx:key="id" class="result-row" data-id="{{item.id}}" bindtap="onDetailTap">
-        <image class="result-img" src="{{item.thumbnail || item.illustration}}" mode="aspectFill" />
+        <image class="result-img" src="{{item.thumbnail || item.illustration}}" mode="aspectFill" lazy-load />
         <view class="result-copy">
           <text class="result-name">{{item.name}}</text>
           <view class="result-tags compact-tags">
@@ -80,7 +80,7 @@
 
       <block wx:if="{{showAllResults}}">
         <view wx:for="{{extraResults}}" wx:key="id" class="result-row" data-id="{{item.id}}" bindtap="onDetailTap">
-          <image class="result-img" src="{{item.thumbnail || item.illustration}}" mode="aspectFill" />
+          <image class="result-img" src="{{item.thumbnail || item.illustration}}" mode="aspectFill" lazy-load />
           <view class="result-copy">
             <text class="result-name">{{item.name}}</text>
             <view class="result-tags compact-tags">
@@ -114,7 +114,7 @@
             </view>
             <view class="ext-arrow-btn">→</view>
           </view>
-          <image wx:if="{{item.illustration}}" src="{{item.illustration}}" mode="aspectFill" class="ext-img" />
+          <image wx:if="{{item.illustration}}" src="{{item.illustration}}" mode="aspectFill" class="ext-img" lazy-load />
           <!-- 无图片时显示占位 -->
           <view wx:else class="ext-img-placeholder"></view>
         </view>
