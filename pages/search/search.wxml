@@ -48,7 +48,7 @@
 
       <view class="catalog-grid">
         <view wx:for="{{item.items}}" wx:for-item="drink" wx:key="id" class="catalog-card" data-id="{{drink.id}}" bindtap="onRecipeTap">
-          <image class="catalog-img" src="{{drink.illustration}}" mode="aspectFill" />
+          <image class="catalog-img" src="{{drink.illustration}}" mode="aspectFill" lazy-load />
           <view class="catalog-card-copy">
             <view class="catalog-name">{{drink.name}}</view>
             <view class="catalog-en">{{drink.nameEn}}</view>
