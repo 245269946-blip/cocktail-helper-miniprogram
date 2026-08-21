@@ -1,4 +1,11 @@
 const memoryCache = {}
+const LOCAL_FEATURE_SLUGS = {
+  'gin-tonic': true,
+  'whiskey-sour': true,
+  'mojito': true,
+  'cuba-libre': true,
+  'white-russian': true
+}
 
 function isCloudUrl(value) {
   return typeof value === 'string' && value.indexOf('cloud://') === 0
@@ -21,7 +28,7 @@ function collectCloudUrls(value, urls) {
 
 function replaceCloudUrls(value) {
   if (!value) return value
-  if (isCloudUrl(value)) return memoryCache[value] || value
+  if (isCloudUrl(value)) return memoryCache[value] || fallbackForCloudUrl(value)
   if (Array.isArray(value)) return value.map(replaceCloudUrls)
   if (typeof value === 'object') {
     const next = Object.assign({}, value)
@@ -31,6 +38,19 @@ function replaceCloudUrls(value) {
     return next
   }
   return value
+}
+
+function fallbackForCloudUrl(value) {
+  const fileName = String(value || '').split('/').pop()
+  const match = /^recipe-(.+)-(card|feature)\.jpg$/.exec(fileName)
+  if (!match) return value
+
+  const slug = match[1]
+  const variant = match[2]
+  if (variant === 'feature' && LOCAL_FEATURE_SLUGS[slug]) {
+    return `/assets/p2/${fileName}`
+  }
+  return `/assets/p2/recipe-${slug}-card.jpg`
 }
 
 function chunk(list, size) {
@@ -53,11 +73,16 @@ function resolveChunk(fileList) {
         ;(res.fileList || []).forEach((item) => {
           if (item && item.fileID && item.tempFileURL) {
             memoryCache[item.fileID] = item.tempFileURL
+          } else if (item && item.fileID && typeof console !== 'undefined' && console.warn) {
+            console.warn('[cloud-image] temp url unavailable', item.fileID, item.status, item.errMsg)
           }
         })
         resolve()
       },
-      fail() {
+      fail(err) {
+        if (typeof console !== 'undefined' && console.warn) {
+          console.warn('[cloud-image] getTempFileURL failed', err && err.errMsg ? err.errMsg : err)
+        }
         resolve()
       }
     })
@@ -74,5 +99,6 @@ function resolve(value) {
 
 module.exports = {
   resolve,
-  isCloudUrl
+  isCloudUrl,
+  fallbackForCloudUrl
 }
