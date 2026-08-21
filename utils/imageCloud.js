@@ -1,4 +1,4 @@
-const CLOUD_IMAGE_BASE = ''
+const CLOUD_IMAGE_BASE = 'cloud://cloud1-d0gsasl6gcb3f22c5.636c-cloud1-d0gsasl6gcb3f22c5-1472356778'
 const CLOUD_IMAGE_VERSION = 'v1.0.5'
 
 function cleanBase(base) {
@@ -21,7 +21,7 @@ function drinkImage(slug, variant, fallback) {
   const safeSlug = String(slug || '').trim()
   const safeVariant = String(variant || 'card').trim()
   if (!safeSlug) return fallback
-  return withRemote(`cocktail-images/${CLOUD_IMAGE_VERSION}/p2/recipe-${safeSlug}-${safeVariant}.jpg`, fallback)
+  return withRemote(`${CLOUD_IMAGE_VERSION}/p2/recipe-${safeSlug}-${safeVariant}.jpg`, fallback)
 }
 
 function drinkVisual(slug, fallback) {
